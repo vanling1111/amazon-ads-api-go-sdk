@@ -34,89 +34,16 @@ type MonitorConfig struct {
 	Specs []APISpec `json:"specs"`
 }
 
-// 所有需要监控的 API 规范 - 完整的 45 个 API
+// 所有需要监控的 API 规范
+// 使用 CloudFront CDN 的直接 JSON 链接，确保内容稳定、无动态元素
 var apiSpecs = []struct {
 	Name string
 	URL  string
 }{
-	// ========== 核心广告产品 (4) ==========
-	{"Sponsored Products v3", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-products/openapi.json"},
-	{"Sponsored Brands v4", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-brands/openapi.json"},
-	{"Sponsored Display v3", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-display/openapi.yaml"},
-	{"Sponsored TV", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-tv/openapi.json"},
-	
-	// ========== 核心账户管理 (4) ==========
-	{"Profiles v3", "https://advertising.amazon.com/API/docs/en-us/openapi/profiles/openapi.yaml"},
-	{"Portfolios v2", "https://advertising.amazon.com/API/docs/en-us/openapi/portfolios/openapi.json"},
-	{"Advertising Accounts", "https://advertising.amazon.com/API/docs/en-us/openapi/advertising-accounts/openapi.json"},
-	{"Manager Accounts", "https://advertising.amazon.com/API/docs/en-us/openapi/manager-accounts/openapi.json"},
-	
-	// ========== 报告和分析 (5) ==========
-	{"Reporting v3", "https://advertising.amazon.com/API/docs/en-us/openapi/reporting/openapi.json"},
-	{"Brand Metrics", "https://advertising.amazon.com/API/docs/en-us/openapi/brand-metrics/openapi.json"},
-	{"Insights", "https://advertising.amazon.com/API/docs/en-us/openapi/insights/openapi.json"},
-	{"Stores Analytics", "https://advertising.amazon.com/API/docs/en-us/openapi/stores-analytics/openapi.json"},
-	{"Marketing Mix Modeling", "https://advertising.amazon.com/API/docs/en-us/openapi/marketing-mix-modeling/openapi.json"},
-	
-	// ========== DSP (5) ==========
-	{"DSP Audiences", "https://advertising.amazon.com/API/docs/en-us/openapi/dsp-audiences/openapi.json"},
-	{"DSP Conversions", "https://advertising.amazon.com/API/docs/en-us/openapi/dsp-conversions/openapi.json"},
-	{"DSP Measurement", "https://advertising.amazon.com/API/docs/en-us/openapi/dsp-measurement/openapi.json"},
-	{"DSP Target KPI", "https://advertising.amazon.com/API/docs/en-us/openapi/dsp-target-kpi/openapi.json"},
-	{"DSP Advertisers", "https://advertising.amazon.com/API/docs/en-us/openapi/dsp-advertisers/openapi.yaml"},
-	
-	// ========== 受众和定向 (3) ==========
-	{"Audiences Discovery", "https://advertising.amazon.com/API/docs/en-us/openapi/audiences-discovery/openapi.json"},
-	{"Persona Builder", "https://advertising.amazon.com/API/docs/en-us/openapi/persona-builder/openapi.json"},
-	{"Locations", "https://advertising.amazon.com/API/docs/en-us/openapi/locations/openapi.json"},
-	
-	// ========== 创意和素材 (4) ==========
-	{"Creative Assets", "https://advertising.amazon.com/API/docs/en-us/openapi/creative-assets/openapi.yaml"},
-	{"Moderation", "https://advertising.amazon.com/API/docs/en-us/openapi/moderation/openapi.json"},
-	{"Pre-Moderation", "https://advertising.amazon.com/API/docs/en-us/openapi/pre-moderation/openapi.json"},
-	{"Ad Library", "https://advertising.amazon.com/API/docs/en-us/openapi/ad-library/openapi.json"},
-	
-	// ========== 产品和目录 (2) ==========
-	{"Product Metadata", "https://advertising.amazon.com/API/docs/en-us/openapi/product-metadata/openapi.json"},
-	{"Product Eligibility", "https://advertising.amazon.com/API/docs/en-us/openapi/product-eligibility/openapi.json"},
-	
-	// ========== 归因和测量 (2) ==========
-	{"Amazon Attribution", "https://advertising.amazon.com/API/docs/en-us/openapi/amazon-attribution/openapi.json"},
-	{"Reach Forecasting", "https://advertising.amazon.com/API/docs/en-us/openapi/reach-forecasting/openapi.json"},
-	
-	// ========== 财务和预算 (2) ==========
-	{"Billing", "https://advertising.amazon.com/API/docs/en-us/openapi/billing/openapi.json"},
-	{"Account Budgets", "https://advertising.amazon.com/API/docs/en-us/openapi/account-budgets/openapi.json"},
-	
-	// ========== 数据管理 (4) ==========
-	{"Exports", "https://advertising.amazon.com/API/docs/en-us/openapi/exports/openapi.json"},
-	{"Marketing Stream", "https://advertising.amazon.com/API/docs/en-us/openapi/marketing-stream/openapi.json"},
-	{"Hashed Records", "https://advertising.amazon.com/API/docs/en-us/openapi/hashed-records/openapi.json"},
-	{"Data Provider", "https://advertising.amazon.com/API/docs/en-us/openapi/data-provider/openapi.yaml"},
-	
-	// ========== 优化 (1) ==========
-	{"Tactical Recommendations", "https://advertising.amazon.com/API/docs/en-us/openapi/tactical-recommendations/openapi.json"},
-	
-	// ========== 审计和历史 (1) ==========
-	{"Change History", "https://advertising.amazon.com/API/docs/en-us/openapi/change-history/openapi.json"},
-	
-	// ========== 合作伙伴 (1) ==========
-	{"Partner Opportunities", "https://advertising.amazon.com/API/docs/en-us/openapi/partner-opportunities/openapi.json"},
-	
-	// ========== 测试 (1) ==========
-	{"Test Accounts", "https://advertising.amazon.com/API/docs/en-us/openapi/test-accounts/openapi.json"},
-	
-	// ========== 统一 API (1) ==========
-	{"Amazon Ads v1", "https://advertising.amazon.com/API/docs/en-us/openapi/amazon-ads-v1/openapi.json"},
-	
-	// ========== Retail Ad Service (2) ==========
-	{"Retail Ad Service", "https://advertising.amazon.com/API/docs/en-us/openapi/retail-ad-service/openapi.json"},
-	{"Retail Ad Service Identity", "https://advertising.amazon.com/API/docs/en-us/openapi/retail-ad-service-retailer-identity/openapi.json"},
-	
-	// ========== 已弃用/旧版本 (3) ==========
-	{"Posts (Deprecated)", "https://advertising.amazon.com/API/docs/en-us/openapi/posts/openapi.json"},
-	{"Sponsored Products v2", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-products-v2/openapi.yaml"},
-	{"Sponsored Brands v3", "https://advertising.amazon.com/API/docs/en-us/openapi/sponsored-brands-v3/openapi.yaml"},
+	// ========== Amazon Ads 统一 API 规范 ==========
+	// 包含所有 Amazon Ads API 的完整 OpenAPI 3.0 规范
+	// 相比 advertising.amazon.com 的 HTML 页面，CDN 链接内容稳定，不包含动态 session ID
+	{"Amazon Ads API (Unified)", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALL_prod_3p.json"},
 }
 
 func main() {
@@ -185,24 +112,35 @@ func main() {
 			newAPIs = append(newAPIs, fmt.Sprintf("%s (v%s)", spec.Name, version))
 			changedAPIs = append(changedAPIs, fmt.Sprintf("NEW: %s (v%s)", spec.Name, version))
 		} else if prevSpec.Checksum != checksum {
-			// API 规范已变更
-			log.Printf("🔄 Change detected in %s!", spec.Name)
+			// API 规范的 checksum 已变更
+			log.Printf("🔄 Checksum change detected in %s", spec.Name)
 			log.Printf("   Old version: %s", prevSpec.Version)
 			log.Printf("   New version: %s", version)
 			log.Printf("   Old checksum: %s", prevSpec.Checksum[:16])
 			log.Printf("   New checksum: %s", checksum[:16])
 			
+			// 更新 checksum 和时间戳
 			prevSpec.Checksum = checksum
-			prevSpec.Version = version
 			prevSpec.LastCheck = time.Now()
 			
-			hasChanges = true
-			changedAPIs = append(changedAPIs, fmt.Sprintf(
-				"%s: %s → %s", 
-				spec.Name, 
-				prevSpec.Version, 
-				version,
-			))
+			// 只有当版本号真正改变时才算作重要变更
+			if prevSpec.Version != version && version != "unknown" {
+				log.Printf("   ⚠️  VERSION CHANGED: %s → %s", prevSpec.Version, version)
+				prevSpec.Version = version
+				hasChanges = true
+				changedAPIs = append(changedAPIs, fmt.Sprintf(
+					"%s: %s → %s", 
+					spec.Name, 
+					prevSpec.Version, 
+					version,
+				))
+			} else {
+				log.Printf("   ℹ️  Version unchanged (%s), likely formatting/timestamp difference", version)
+				// 只更新 version 字段（可能是 unknown → 具体版本）
+				if version != "unknown" && prevSpec.Version == "unknown" {
+					prevSpec.Version = version
+				}
+			}
 		} else {
 			log.Printf("✅ No changes in %s (v%s)", spec.Name, version)
 			prevSpec.LastCheck = time.Now()
