@@ -100,15 +100,15 @@ var apiSpecs = []struct {
 	{"Amazon Ads API v1", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALL_prod_3p.json"},
 	
 	// ========== Retail Ad Service (2个) ==========
-	{"Retail Ad Service", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailAdService_prod_3p.json"},
-	{"Retail Ad Service Identity", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailAdServiceRetailerIdentity_prod_3p.json"},
+	{"Retail Ad Service", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdvertiserAPIforRetailAdService_prod_3p.json"},
+	{"Retail Ad Service Identity", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailerIdentityAPIforRetailAdService_prod_3p.json"},
 	
 	// ========== Sponsored TV (1个) ==========
 	{"Sponsored TV", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredTV_prod_3p.json"},
 	
 	// ========== 已弃用 (2个) ==========
 	{"Posts (Deprecated)", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Posts_prod_3p.json"},
-	{"Ad Library", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdLibrary_prod_3p.json"},
+	{"Ad Library", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdLibraryAPI_prod_3p.json"},
 }
 
 func main() {
