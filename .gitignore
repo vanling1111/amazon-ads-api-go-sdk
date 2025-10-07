@@ -89,10 +89,11 @@ swagger-codegen-temp/
 codegen-temp/
 *-temp/
 
-# API 监控状态文件（本地测试）
-tools/api-monitor/monitor-state.json
-tools/api-monitor/latest-changes.md
+# API 监控临时文件
 tools/api-monitor/api-monitor.exe
+
+# 注意: monitor-state.json 和 latest-changes.md 需要提交到仓库
+# 这样 GitHub Actions 才能正确跟踪 API 变更历史
 
 # 编译输出
 bin/

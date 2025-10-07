@@ -1,0 +1,319 @@
+{
+  "specs": [
+    {
+      "name": "Profiles v3",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/profiles/3-0/openapi.yaml",
+      "checksum": "d07f0ccdfc93e2d94fc136a07cae8bbf280bcc6f6bc7433803caa32f37106793",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:46:53.4240956+08:00"
+    },
+    {
+      "name": "Manager Accounts",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/ManagerAccount_prod_3p.json",
+      "checksum": "c98f88bbdb6dc0185c7aa0476063c82205e399bc55ce3a28e57e0fc20cc9df07",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:46:55.5640417+08:00"
+    },
+    {
+      "name": "Advertising Accounts",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AdvertisingAccounts_prod_3p.json",
+      "checksum": "edca2dd0e339306371c0cdb229e7e387bae3bd5e39457d23e30f20be525e360f",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:46:57.5971226+08:00"
+    },
+    {
+      "name": "Portfolios",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Portfolios_prod_3p.json",
+      "checksum": "478b89af538708416949f565b8402697e0a1f53d26b0fd5fae22b0b18911017e",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:46:59.7731816+08:00"
+    },
+    {
+      "name": "Billing",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AdvertisingBilling_prod_3p.json",
+      "checksum": "113fd9fafc6cf462ed25ab022b594b7f0da2c8bc8e004954111e7425e472bd0c",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:01.8432285+08:00"
+    },
+    {
+      "name": "Account Budgets",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Advertisers_prod_3p.json",
+      "checksum": "5ccd127af319cd574d0a802b2c863c90d24489908dcefcdf55b1cc9c1acd85e6",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:03.8771883+08:00"
+    },
+    {
+      "name": "Test Accounts",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdvertisingTestAccount_prod_3p.json",
+      "checksum": "56e86cda573f33765385b468aed624243a0bf593b8aa125d1dfa0ca10449f5e4",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:05.9113342+08:00"
+    },
+    {
+      "name": "Sponsored Products v3",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredProducts_prod_3p.json",
+      "checksum": "c002be5e8777a4078e6ac735a982c2203cb5c16a5aba72449d3f5471ba27feba",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:08.0044804+08:00"
+    },
+    {
+      "name": "Sponsored Products v2",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-products/2-0/openapi.yaml",
+      "checksum": "88aa5fbc25bbd7ee51119dce365a9dc743c95fa2ede31ba4f01af2fc911fec91",
+      "version": "2.0",
+      "last_check": "2025-10-08T04:47:10.0617226+08:00"
+    },
+    {
+      "name": "Sponsored Brands v4",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-brands/4-0/openapi.json",
+      "checksum": "79e10f4da103f4e8721190f3856a439509d981b38a106c86bd4889bea9c7cce9",
+      "version": "4.0",
+      "last_check": "2025-10-08T04:47:12.0998581+08:00"
+    },
+    {
+      "name": "Sponsored Brands v3",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-brands/3-0/openapi.yaml",
+      "checksum": "cfa3bdc51b729106ba5e65ac969c57f661d6591bf16061be8824e74263f5f37c",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:14.1598594+08:00"
+    },
+    {
+      "name": "Sponsored Display v3",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-display/3-0/openapi.yaml",
+      "checksum": "eca0bb098b6cf4c41bf5bac445014c3319df06e320f94f46aefaec2e23ede2a9",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:16.2154501+08:00"
+    },
+    {
+      "name": "Reporting v3",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/OfflineReport_prod_3p.json",
+      "checksum": "b108698c0ef8fa135e42080b5f7ac05f4179ac95f221941e616707db9982050f",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:18.2503886+08:00"
+    },
+    {
+      "name": "Brand Metrics",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/BrandMetrics_prod_3p.json",
+      "checksum": "1640511c5316b082b2a14570b056b0ce55388028ac3a8a709e50acdb71ffb0eb",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:20.2858345+08:00"
+    },
+    {
+      "name": "Stores Analytics",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Stores_prod_3p.json",
+      "checksum": "3e5c44bca29e13e3dcef514c565b88a2979560bda053be09fd3addf16d00ff99",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:22.3196164+08:00"
+    },
+    {
+      "name": "Marketing Mix Modeling",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/MarketingMixModeling_prod_3p.json",
+      "checksum": "26bb4903813f526d88a500b21b28154a3f0e84a3152140462404fdddf601519e",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:24.3535735+08:00"
+    },
+    {
+      "name": "Reach Forecasting",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ReachPlanningService_prod_3p.json",
+      "checksum": "cded59052d37a31d6c73eb0f5cfafbda26a206a360489d4e11740cee8141efff",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:26.3925771+08:00"
+    },
+    {
+      "name": "DSP Measurement",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Measurement_prod_3p.json",
+      "checksum": "d147183f9232f1de91911109d627bfa99da4d9c64f8642ba41bea21175136d22",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:28.4394467+08:00"
+    },
+    {
+      "name": "DSP Advertisers",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/dsp/3-0/advertiser.yaml",
+      "checksum": "c24a199f4e96bfe914f1ecd780edbfabc0ddeb28b66bee8bb299f03609f00a05",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:30.4741592+08:00"
+    },
+    {
+      "name": "DSP Audiences",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ADSPAudiences_prod_3p.json",
+      "checksum": "822092f2984a34a999ee0194b0bf92a81a93df5ef62e438ecd9f9576caeb3ab2",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:32.5106209+08:00"
+    },
+    {
+      "name": "DSP Conversions",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ConversionsAPI_prod_3p.json",
+      "checksum": "474ae57519ae5161ad05709e14ca45b98b0c5f150d3d0312051700ca2ee03da8",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:34.5510811+08:00"
+    },
+    {
+      "name": "DSP Target KPI",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/GoalSeekingBidderTargetKPIRecommendation_prod_3p.json",
+      "checksum": "70cf0decfc6a0a80fa3a3f0c08d3ef277e2b81c250e4a67715463e191ce58068",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:36.5823139+08:00"
+    },
+    {
+      "name": "Amazon Attribution",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AmazonAttribution_prod_3p.json",
+      "checksum": "52623b02526a3cd5414422f9d1236a858cad2821475cbfa3a5dee58dfff79afd",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:38.6145628+08:00"
+    },
+    {
+      "name": "Insights",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Insights_prod_3p.json",
+      "checksum": "0969cc926e38e5eb5492019738ad390a0d00d88e3f1dca33dd2adab2a8fb03d2",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:40.6486559+08:00"
+    },
+    {
+      "name": "Partner Opportunities",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PartnerOpportunities_prod_3p.json",
+      "checksum": "cd6c3d70b3751a623c05c158e2b4b95812490e3ae38dce608ebff2b17d4bcc2e",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:42.6855278+08:00"
+    },
+    {
+      "name": "Tactical Recommendations",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/Recommendations_prod_3p.json",
+      "checksum": "7fcc75df5f0034713622276c1dfa1b3ebcab201510c8b79d82165e38146822e5",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:44.7348449+08:00"
+    },
+    {
+      "name": "Persona Builder",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PersonaBuilderAPI_prod_3p.json",
+      "checksum": "5f52ec8d41a62cb71e38a574ce22ace0a7eb8a3b6198d15d8e95148c6497aed7",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:46.7738926+08:00"
+    },
+    {
+      "name": "Creative Assets",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/creative-asset-library/creative-asset-library-openapi.yaml",
+      "checksum": "f1b9b2ccc503cae005018cce7383623721a7a272e52ae6f8f4d3ea0b3756f8bf",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:48.8092706+08:00"
+    },
+    {
+      "name": "Pre-Moderation",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PreModeration_prod_3p.json",
+      "checksum": "734110659e3f6a81d238046b3cf1630c36bc6d3c740263d4768558449c8fd7ed",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:50.8477754+08:00"
+    },
+    {
+      "name": "Moderation",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Moderation_prod_3p.json",
+      "checksum": "d8f4b5ff362cb84a47083125d1a8ceddb709325471cd0366257b22ba28bb1050",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:52.8810034+08:00"
+    },
+    {
+      "name": "Audiences Discovery",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Audiences_prod_3p.json",
+      "checksum": "6c63d14ae205bfdcdd74ca03bf14ecb6b1da60f1607250fd0b6fc3af6bea10e4",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:54.9173273+08:00"
+    },
+    {
+      "name": "Amazon Marketing Stream",
+      "url": "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AmazonMarketingStream_prod_3p.json",
+      "checksum": "a7d5a5912efca84ab25d65991cb98161052e64e22a14101346b95dd6c03b83e0",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:56.9490885+08:00"
+    },
+    {
+      "name": "Locations",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Locations_prod_3p.json",
+      "checksum": "01bfdae68e28c27e706f8bedc6cc5aade092c9cea1347722104f79c07e4ea0cb",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:47:58.9811845+08:00"
+    },
+    {
+      "name": "Exports",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIExports_prod_3p.json",
+      "checksum": "70933e28f5da2f9f8ff5a172b0362238341318e4448121b3103e25731d43ad94",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:01.0125256+08:00"
+    },
+    {
+      "name": "Change History",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Changehistory_prod_3p.json",
+      "checksum": "a4944c16e893322b3e560452c33c3033db2c2f872c68a64b405404683a2bbc57",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:03.0528469+08:00"
+    },
+    {
+      "name": "Data Provider",
+      "url": "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/data-provider/openapi.yaml",
+      "checksum": "e0d1b4eee7094e86b975f11fac9e29d4515262c91d5b8c6ffba0cfffd08ea59c",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:05.0816212+08:00"
+    },
+    {
+      "name": "Hashed Records",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/HashedRecords_prod_3p.json",
+      "checksum": "660d670a23e529e4eb802ee3924e269b665f044b754d37eea4991e2d78a2cad7",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:07.1133365+08:00"
+    },
+    {
+      "name": "Product Metadata",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ProductSelector_prod_3p.json",
+      "checksum": "e8a21e19ce6ae7533b778f9bdf793f20c60303dcf67a08fe2c48eee3f220a852",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:09.1449866+08:00"
+    },
+    {
+      "name": "Product Eligibility",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Eligibility_prod_3p.json",
+      "checksum": "a6f4d81e5180013b129f251cada982f392831fe2ad1c315f6474f830837565e5",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:11.1786333+08:00"
+    },
+    {
+      "name": "Amazon Ads API v1",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALL_prod_3p.json",
+      "checksum": "9196c9b73c99705b8ee8bb90b08430b063e421bfe5c886dcb7dc786718aee5fe",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:13.2229599+08:00"
+    },
+    {
+      "name": "Retail Ad Service",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdvertiserAPIforRetailAdService_prod_3p.json",
+      "checksum": "27a3d5802ffbe03787906d85446c9d0d923adaeac96d875aa25638bb64c5e6d3",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:15.2667098+08:00"
+    },
+    {
+      "name": "Retail Ad Service Identity",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailerIdentityAPIforRetailAdService_prod_3p.json",
+      "checksum": "7e22b83d9aad50d074b8464d966ed1c12523c89faf0a878462264de3dcdbea35",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:17.2995721+08:00"
+    },
+    {
+      "name": "Sponsored TV",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredTV_prod_3p.json",
+      "checksum": "953dd1b11ae917599a6decef4286c88f3e8fb1c0030c687b94de28d3f56a6cbd",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:19.3446749+08:00"
+    },
+    {
+      "name": "Posts (Deprecated)",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Posts_prod_3p.json",
+      "checksum": "46fa72511a9f942dddb5bf574c39ae6d0ca4ff1604188c810ec82df6da063960",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:21.3791693+08:00"
+    },
+    {
+      "name": "Ad Library",
+      "url": "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdLibraryAPI_prod_3p.json",
+      "checksum": "5449810a98951b5031f9cbd5e1c81363fdb00ed3d14e6c8f7f90f1d97c4ca229",
+      "version": "3.0",
+      "last_check": "2025-10-08T04:48:23.4111654+08:00"
+    }
+  ]
+}
