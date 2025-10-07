@@ -1,0 +1,778 @@
+openapi: 3.0.1
+info:
+  title: Eligibility
+  description: Check advertising eligibility of global offers.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /eligibility/product/list:
+    post:
+      tags:
+      - Product Eligibility
+      summary: Gets advertising eligibility status for a list of products.
+      description: |-
+        Gets a list of advertising eligibility objects for a set of products. Requests are permitted only for products sold by the merchant associated with the profile. Note that the request object is a list of ASINs, but multiple SKUs are returned if there is more than one SKU associated with an ASIN. If a product is not eligible for advertising, the response includes an object describing the reasons for ineligibility.
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","advertiser_campaign_view"]
+      operationId: productEligibility
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Request for Product Eligibility
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductEligibilityRequest'
+        required: true
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "401":
+          description: Unauthorized. Request failed because user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "403":
+          description: Forbidden. Request failed because user does not have access
+            to a specified resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "404":
+          description: "Cannot find requested entity. Note that this may occur if\
+            \ a product is not associated with the given profile/merchant, or a product\
+            \ is no longer in the catalog."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "422":
+          description: "Unprocessable entity. The request was understood, but it contained\
+            \ invalid parameters."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "429":
+          description: Too many requests. The request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+        "500":
+          description: Internal server error. Retry later. Contact support if this
+            response persists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductEligibilityError'
+  /eligibility/programs:
+    post:
+      tags:
+      - Program Eligibility
+      description: |-
+        Checks the advertiser's eligibility to ad programs.
+
+        **Authorized resource type**:
+        Global Ad Account ID, Profile ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        []
+      operationId: ProgramEligibility
+      parameters:
+      - name: Accept-Language
+        in: header
+        description: Specify the language in which the response is returned.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/AcceptLanguage'
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: |-
+          The header used to pass global account associated with the advertiser account
+          Use `GET` method on the Global Ads Account resource to list the global ads account associated with the access token passed in the HTTP Authorization header and choose AdvertisingAccountIdentifier id from the response to pass it as input.
+          Use for v2 global calls
+        required: false
+        style: simple
+        explode: false
+        schema:
+          maxLength: 120
+          pattern: \S*
+          type: string
+          description: |-
+            The header used to pass global account associated with the advertiser account
+            Use `GET` method on the Global Ads Account resource to list the global ads account associated with the access token passed in the HTTP Authorization header and choose AdvertisingAccountIdentifier id from the response to pass it as input.
+            Use for v2 global calls
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 180
+          pattern: \S*
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          maxLength: 120
+          pattern: \S*
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      - name: Content-Type
+        in: header
+        description: The content type of the request.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The content type of the request.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProgramEligibilityRequestContent'
+          application/vnd.programeligibility.v2+json:
+            schema:
+              $ref: '#/components/schemas/ProgramEligibilityV2RequestContent'
+            examples:
+              ProgramEligibilityV2_example1:
+                summary: Valid Request
+                value:
+                  maxResults: 1
+      responses:
+        "200":
+          description: ProgramEligibility 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgramEligibilityResponseContent'
+            application/vnd.programeligibility.v2+json:
+              schema:
+                $ref: '#/components/schemas/ProgramEligibilityV2ResponseContent'
+              examples:
+                ProgramEligibilityV2_example1:
+                  summary: Valid Request
+                  value:
+                    eligibilityStatusMaps:
+                    - eligibilityStatusMap:
+                        SB:
+                          eligible: "false"
+                          reasons:
+                          - code: NO_BRAND_RELATIONS
+                            description: Advertiser has no known relations to a brand.
+                            level: INELIGIBLE_WITH_RESOLUTION
+                        SD:
+                          eligible: "false"
+                          reasons:
+                          - code: NO_BRAND_RELATIONS
+                            description: Advertiser has no known relations to a brand.
+                            level: INELIGIBLE_WITH_RESOLUTION
+                        SPOT:
+                          eligible: "false"
+                          reasons:
+                          - code: NO_BRAND_RELATIONS
+                            description: Advertiser has no known relations to a brand.
+                            level: INELIGIBLE_WITH_RESOLUTION
+                      marketplaceId: ATVPDKIKX0DER
+                    nextToken: token
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "404":
+          description: NotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionResponseContent'
+        "429":
+          description: RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateExceededExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+components:
+  schemas:
+    AcceptLanguage:
+      type: string
+      enum:
+      - ar-AE
+      - de-DE
+      - en-AU
+      - en-CA
+      - en-GB
+      - en-IN
+      - en-US
+      - es-ES
+      - es-MX
+      - es-US
+      - fr-CA
+      - fr-FR
+      - it-IT
+      - ja-JP
+      - ko-KR
+      - nl-NL
+      - pl-PL
+      - pt-BR
+      - tr-TR
+      - zh-CN
+    AdProgram:
+      type: string
+      description: This defines the AdPrograms supported
+      enum:
+      - DTC
+      - MAAS
+      - SB
+      - SD
+      - SPOT
+    BadRequestExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Programmatic status code.
+        details:
+          type: string
+          description: A human-readable description of the response.
+    Check:
+      description: A union of all the checks that we would want to skip
+      oneOf:
+      - title: skipAllBillingChecks
+        required:
+        - skipAllBillingChecks
+        type: object
+        properties:
+          skipAllBillingChecks:
+            type: boolean
+            description: Skip all billing/payments/suspension related checks
+    EligibilityStatus:
+      type: object
+      properties:
+        helpUrl:
+          type: string
+          description: A URL with additional information about the status identifier.
+            May not be present for all status identifiers.
+        message:
+          type: string
+          description: A human-readable description of the status identifier specified
+            in the `name` field.
+        name:
+          type: string
+          description: The status identifier.
+          enum:
+          - ADULT_PRODUCT
+          - CLOSED_CATEGORY
+          - INELIGIBLE_CONDITION
+          - INELIGIBLE_OFFER
+          - INELIGIBLE_PRODUCT_COST
+          - LISTING_SUPRESSED
+          - MISSING_IMAGE
+          - MISSING_TITLE
+          - NOT_IN_BUYBOX
+          - OUT_OF_STOCK
+          - RESTRICTED_CATEGORY
+          - VARIATION_PARENT
+        severity:
+          type: string
+          description: "An enumerated advertising eligibility severity status. If\
+            \ set to `INELIGIBLE`, the product cannot be included in an advertisement.\
+            \ If set to `ELIGIBLE_WITH_WARNING`, the product may not receive impressions\
+            \ when included in an advertisement."
+          enum:
+          - ELIGIBLE_WITH_WARNING
+          - INELIGIBLE
+      description: The advertising eligibility status of a product.
+      example:
+        severity: ELIGIBLE_WITH_WARNING
+        name: ADULT_PRODUCT
+        helpUrl: helpUrl
+        message: message
+    EligibilityStatusDetail:
+      type: object
+      properties:
+        eligible:
+          type: boolean
+          description: "Boolean value where if true, advertiser is eligible to access\
+            \ the given program."
+        reasons:
+          maxItems: 99
+          minItems: 1
+          uniqueItems: true
+          type: array
+          description: String identifier for the status.
+          items:
+            $ref: '#/components/schemas/ReasonItem'
+      description: Describes a single program's eligibility status
+      example:
+        reasons:
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        - code: ACCOUNT_SUSPENDED
+          level: INELIGIBLE
+          description: description
+        eligible: true
+    EligibilityStatusDetailV2:
+      type: object
+      properties:
+        adProgram:
+          $ref: '#/components/schemas/AdProgram'
+        eligible:
+          type: boolean
+          description: "Boolean value where if true, advertiser is eligible to access\
+            \ the given program."
+        reasons:
+          maxItems: 99
+          minItems: 1
+          uniqueItems: true
+          type: array
+          description: String identifier for the status.
+          items:
+            $ref: '#/components/schemas/ReasonItem'
+      description: Describes a single program's eligibility status
+    EligibilityStatusMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/EligibilityStatusDetail'
+      description: This is a map that will be key'd on the ad program (SB/SD/DTC/MAAS/SPOT);
+        the value will be an eligibility object.
+      x-schema-name: EligibilityStatusMap
+    GlobalStoreSetting:
+      type: object
+      properties:
+        catalogSourceCountryCode:
+          type: string
+          description: "Country code of source marketplace where seller has listed\
+            \ the product. Possible source country codes include US, UK, DE, JP, and\
+            \ AE."
+      description: "Fields required to check eligibility for [GlobalStore Program](https://sellercentral.amazon.com/help/hub/reference/external/202139180)\
+        \ Ads."
+      example:
+        catalogSourceCountryCode: catalogSourceCountryCode
+    IneligibleLevel:
+      type: string
+      enum:
+      - INELIGIBLE
+      - INELIGIBLE_WITH_RESOLUTION
+    InternalServerErrorExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Programmatic status code.
+        details:
+          type: string
+          description: A human-readable description of the response.
+    MarketplaceEntitiesEligibilityStatusList:
+      type: object
+      properties:
+        eligibilityStatusList:
+          maxItems: 50
+          minItems: 0
+          type: array
+          description: This is a map that will be key'd on the ad program (SB/SD/DTC/MAAS/SPOT);
+            the value will be an eligibility object.
+          items:
+            $ref: '#/components/schemas/EligibilityStatusDetailV2'
+        marketplaceId:
+          type: string
+    NotFoundExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Programmatic status code.
+        details:
+          type: string
+          description: A human-readable description of the response.
+    ProductDetails:
+      required:
+      - asin
+      type: object
+      properties:
+        asin:
+          type: string
+          description: An Amazon product identifier.
+        globalStoreSetting:
+          $ref: '#/components/schemas/GlobalStoreSetting'
+        sku:
+          type: string
+          description: A seller product identifier.
+      description: "An Amazon product identifier, seller product identifier, or both."
+      example:
+        globalStoreSetting:
+          catalogSourceCountryCode: catalogSourceCountryCode
+        asin: asin
+        sku: sku
+    ProductEligibilityError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The HTTP status code of the response.
+        details:
+          type: string
+          description: A human-readable description of the response.
+      description: The error response object.
+    ProductEligibilityRequest:
+      required:
+      - productDetailsList
+      type: object
+      properties:
+        adType:
+          type: string
+          description: Set to 'sp' to check product eligibility for Sponsored Products
+            advertisements. Set to 'sb' to check product eligibility for Sponsored
+            Brands advertisements. Set to 'sd' to check product eligibility for Sponsored
+            Displays advertisements. Set to 'dsp' to check product eligibility for
+            Demand Side Platform advertisements.
+          default: sp
+          enum:
+          - dsp
+          - sb
+          - sd
+          - sp
+        locale:
+          type: string
+          description: Set locale string as "en_US" to specify the language in which
+            the response is returned
+          example: en_US
+        productDetailsList:
+          maxItems: 50
+          minItems: 1
+          type: array
+          description: A list of product identifier objects.
+          items:
+            $ref: '#/components/schemas/ProductDetails'
+      description: A product advertising eligibility request object.
+    ProductEligibilityResponse:
+      type: object
+      properties:
+        productResponseList:
+          type: array
+          description: A list of product advertising eligibility responses.
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+      description: A product advertising eligibility response object.
+      example:
+        productResponseList:
+        - eligibilityStatusList:
+          - severity: ELIGIBLE_WITH_WARNING
+            name: ADULT_PRODUCT
+            helpUrl: helpUrl
+            message: message
+          - severity: ELIGIBLE_WITH_WARNING
+            name: ADULT_PRODUCT
+            helpUrl: helpUrl
+            message: message
+          productDetails:
+            globalStoreSetting:
+              catalogSourceCountryCode: catalogSourceCountryCode
+            asin: asin
+            sku: sku
+          overallStatus: ELIGIBLE
+        - eligibilityStatusList:
+          - severity: ELIGIBLE_WITH_WARNING
+            name: ADULT_PRODUCT
+            helpUrl: helpUrl
+            message: message
+          - severity: ELIGIBLE_WITH_WARNING
+            name: ADULT_PRODUCT
+            helpUrl: helpUrl
+            message: message
+          productDetails:
+            globalStoreSetting:
+              catalogSourceCountryCode: catalogSourceCountryCode
+            asin: asin
+            sku: sku
+          overallStatus: ELIGIBLE
+    ProductResponse:
+      required:
+      - eligibilityStatusList
+      - overallStatus
+      - productDetails
+      type: object
+      properties:
+        eligibilityStatusList:
+          type: array
+          items:
+            $ref: '#/components/schemas/EligibilityStatus'
+        overallStatus:
+          type: string
+          description: A human-readable description of the product's advertising eligibility
+            status. Inherits highest severity from eligibilityStatusList.
+          enum:
+          - ELIGIBLE
+          - ELIGIBLE_WITH_WARNING
+          - INELIGIBLE
+        productDetails:
+          $ref: '#/components/schemas/ProductDetails'
+      description: An product advertising eligibility response.
+      example:
+        eligibilityStatusList:
+        - severity: ELIGIBLE_WITH_WARNING
+          name: ADULT_PRODUCT
+          helpUrl: helpUrl
+          message: message
+        - severity: ELIGIBLE_WITH_WARNING
+          name: ADULT_PRODUCT
+          helpUrl: helpUrl
+          message: message
+        productDetails:
+          globalStoreSetting:
+            catalogSourceCountryCode: catalogSourceCountryCode
+          asin: asin
+          sku: sku
+        overallStatus: ELIGIBLE
+    ProgramEligibilityRequestContent:
+      type: object
+      properties:
+        skipChecks:
+          $ref: '#/components/schemas/Check'
+      description: "A request to evaluate account level eligibility for Amazon ad\
+        \ programs (Sponsored Products, Sponsored Brands, Sponsored Display, Stores,\
+        \ DirectToConsumer, Amazon Attribution, etc)."
+    ProgramEligibilityResponseContent:
+      type: object
+      properties:
+        eligibilityStatusMap:
+          $ref: '#/components/schemas/EligibilityStatusMap'
+      description: An object of program eligibility responses for an advertiser.
+      example:
+        eligibilityStatusMap:
+          key:
+            reasons:
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            - code: ACCOUNT_SUSPENDED
+              level: INELIGIBLE
+              description: description
+            eligible: true
+    ProgramEligibilityV2RequestContent:
+      type: object
+      properties:
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: number
+          description: Max results for pagination
+        nextToken:
+          type: string
+          description: The pagination token that is required to go to the next page
+      description: "A request to evaluate account level eligibility for Amazon ad\
+        \ programs (Sponsored Products, Sponsored Brands, Sponsored Display, Stores,\
+        \ DirectToConsumer, Amazon Attribution, etc)."
+    ProgramEligibilityV2ResponseContent:
+      type: object
+      properties:
+        eligibilityStatusLists:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketplaceEntitiesEligibilityStatusList'
+        nextToken:
+          type: string
+          description: token value allowing to navigate to the next response page
+      description: An object of program eligibility responses for an advertiser.
+    RateExceededExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Programmatic status code.
+        details:
+          type: string
+          description: A human-readable description of the response.
+    ReasonCode:
+      type: string
+      enum:
+      - ACCOUNT_SUSPENDED
+      - ADVERTISER_TYPE_NOT_SUPPORTED
+      - ADVERTISING_ACCOUNT_NOT_FOUND
+      - AMAZON_BUSINESS_EXCLUSIVE_CAMPAIGN_NOT_ELIGIBLE
+      - AMAZON_HAUL_EXCLUSIVE_CAMPAIGN_NOT_ELIGIBLE
+      - AMAZON_MARKETING_CLOUD_ON_DEMAND_NOT_ELIGIBLE
+      - BILLING_ACCOUNT_NOT_FOUND
+      - BLOCKED
+      - BUSINESS_NOT_VERIFIED
+      - BUSINESS_THRESHOLDS_NOT_MET
+      - DIRECT_TO_CONSUMER_OWNER_TAG_ID_NOT_FOUND
+      - DIRECT_TO_CONSUMER_SUBSCRIPTION_NOT_FOUND
+      - DSP_NOT_REQUESTED
+      - DSP_PENDING_SETUP
+      - DSP_REQUEST_PENDING
+      - DSP_REQUEST_REJECTED
+      - DYNAMIC_PRODUCT_SETS_CAMPAIGN_FEATURE_NOT_ELIGIBLE
+      - EXPIRED_PAYMENT_METHOD
+      - GEO_GATED_CAMPAIGN_FEATURE_NOT_ELIGIBLE
+      - GLOBAL_CAMPAIGNS_NOT_ELIGIBLE
+      - MTA_NOT_ELIGIBLE
+      - NOT_BRAND_REPRESENTATIVE
+      - NOT_LAUNCHED_IN_MARKETPLACE
+      - NOT_SETUP_FOR_DSP
+      - NO_BRAND_RELATIONS
+      - NO_TACTIC_ENABLED
+      - PAYMENT_METHOD_NOT_FOUND
+      - PAYMENT_METHOD_NOT_VALID
+      - PAYMENT_PROFILE_NOT_FOUND
+      - PREPAY_BALANCE_TOO_LOW
+      - RO_BALANCE_TOO_LOW
+      - STOCK_FILTER_CAMPAIGN_FEATURE_NOT_ELIGIBLE
+      - SUBSCRIPTION_NOT_FOUND
+      - TAX_INFO_NOT_COMPLETE
+      - UNKNOWN
+      - VETTING_FAILURE
+    ReasonItem:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ReasonCode'
+        description:
+          type: string
+          description: "Message explaining what the status means. Example: Payment\
+            \ preference not found for associated billing account. Please add a new\
+            \ payment method"
+        level:
+          $ref: '#/components/schemas/IneligibleLevel'
+      example:
+        code: ACCOUNT_SUSPENDED
+        level: INELIGIBLE
+        description: description
+    UnauthorizedExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Programmatic status code.
+        details:
+          type: string
+          description: A human-readable description of the response.
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

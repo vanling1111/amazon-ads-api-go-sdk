@@ -1,0 +1,65 @@
+name: Monitor API Changes
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+      
+      - name: Run API Monitor
+        id: monitor
+        run: |
+          cd tools/api-monitor && go run main.go
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      
+      - name: Create Issue on Change
+        if: steps.monitor.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '🔔 Amazon Ads API Specification Update Detected';
+            const body = `## API Specification Changes Detected
+            
+            The automated monitor has detected changes in one or more Amazon Advertising API specifications.
+            
+            ### Action Required
+            
+            1. Review the changes in the API specifications
+            2. Update affected model files
+            3. Regenerate client code if needed
+            4. Run tests to ensure compatibility
+            5. Update version number if breaking changes
+            
+            ### References
+            
+            - [Amazon Advertising API Documentation](https://advertising.amazon.com/API/docs/)
+            - [Project Architecture](https://github.com/${{ github.repository }}/blob/main/docs/ARCHITECTURE.md)
+            
+            ### Workflow Run
+            
+            [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            `;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['api-update', 'automation']
+            });
+

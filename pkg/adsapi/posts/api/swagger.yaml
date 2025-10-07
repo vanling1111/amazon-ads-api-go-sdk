@@ -1,0 +1,5195 @@
+openapi: 3.0.1
+info:
+  title: Posts
+  description: Posts API to manage Posts content.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /bp/v2/posts:
+    post:
+      tags:
+      - Posts
+      summary: |
+        API to create a Post.
+      description: |-
+        API to create a Post.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: CreatePost
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpPost.v2+json:
+            schema:
+              $ref: '#/components/schemas/CreatePostRequestContent'
+        required: true
+      responses:
+        "200":
+          description: CreatePost 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/CreatePostResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/posts/list:
+    post:
+      tags:
+      - Posts
+      summary: |
+        API to get posts data along with performance metrics for each post.
+      description: |-
+        API to get posts data along with performance metrics for each post.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: ListPosts
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpPost.v2+json:
+            schema:
+              $ref: '#/components/schemas/ListPostsRequestContent'
+        required: true
+      responses:
+        "200":
+          description: ListPosts 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/ListPostsResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/posts/{postId}:
+    get:
+      tags:
+      - Posts
+      summary: |
+        Get a post.
+      description: |-
+        Get a post.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetPost
+      parameters:
+      - name: postId
+        in: path
+        description: Identifier for a post.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Identifier for a post.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: GetPost 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/GetPostResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+    put:
+      tags:
+      - Posts
+      summary: |
+        Update a Post's data.
+      description: |-
+        Update a Post's data.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: UpdatePost
+      parameters:
+      - name: postId
+        in: path
+        description: Identifier for a post.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Identifier for a post.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpPost.v2+json:
+            schema:
+              $ref: '#/components/schemas/UpdatePostRequestContent'
+        required: true
+      responses:
+        "200":
+          description: UpdatePost 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/UpdatePostResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/posts/{postId}/submitForReview:
+    put:
+      tags:
+      - Posts
+      summary: |
+        Submit a Post for review.
+      description: |-
+        Submit a Post for review.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: SubmitPostForReview
+      parameters:
+      - name: postId
+        in: path
+        description: Identifier for a post.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Identifier for a post.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpPost.v2+json:
+            schema:
+              $ref: '#/components/schemas/SubmitPostForReviewRequestContent'
+        required: true
+      responses:
+        "200":
+          description: SubmitPostForReview 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/SubmitPostForReviewResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/posts/{postId}/unpublish:
+    put:
+      tags:
+      - Posts
+      summary: |
+        Unpublishes a Post from Amazon.
+      description: |-
+        Unpublishes a Post from Amazon.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: WithdrawPost
+      parameters:
+      - name: postId
+        in: path
+        description: Identifier for a post.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Identifier for a post.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpPost.v2+json:
+            schema:
+              $ref: '#/components/schemas/WithdrawPostRequestContent'
+        required: true
+      responses:
+        "200":
+          description: WithdrawPost 200 response
+          content:
+            application/vnd.bpPost.v2+json:
+              schema:
+                $ref: '#/components/schemas/WithdrawPostResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/products/list:
+    get:
+      tags:
+      - Posts
+      summary: |
+        Get information for a list of products.
+      description: |-
+        Get information for a list of products.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetPostProducts
+      parameters:
+      - name: asins
+        in: query
+        description: A list of product identifiers.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maxItems: 5
+          minItems: 1
+          type: array
+          description: A list of product identifiers.
+          items:
+            type: string
+            description: Identifier for a product on Amazon.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: GetPostProducts 200 response
+          content:
+            application/vnd.bpProduct.v2+json:
+              schema:
+                $ref: '#/components/schemas/GetPostProductsResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/profiles:
+    get:
+      tags:
+      - Posts
+      summary: |
+        Get a list of Post Profiles that the advertiser has access to.
+      description: |-
+        Get a list of Post Profiles that the advertiser has access to.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: ListProfiles
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token to get next page of results from previous call.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: Pagination token to get next page of results from previous
+            call.
+      - name: maxResults
+        in: query
+        description: Number of items to be returned on this call.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 500
+          minimum: 10
+          type: number
+          description: Number of items to be returned on this call.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: ListProfiles 200 response
+          content:
+            application/vnd.bpProfile.v2+json:
+              schema:
+                $ref: '#/components/schemas/ListProfilesResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/profiles/{profileId}:
+    get:
+      tags:
+      - Posts
+      summary: |
+        Get information for a Post Profile.
+      description: |-
+        Get information for a Post Profile.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetProfile
+      parameters:
+      - name: profileId
+        in: path
+        description: Identifier for a profile.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Identifier for a profile.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: GetProfile 200 response
+          content:
+            application/vnd.bpProfile.v2+json:
+              schema:
+                $ref: '#/components/schemas/GetProfileResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/profiles/{profileId}/metrics:
+    post:
+      tags:
+      - Posts
+      summary: |
+        Get brand level performance metrics from Posts.
+      description: |-
+        Get brand level performance metrics from Posts.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetProfileMetrics
+      parameters:
+      - name: profileId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.bpProfile.v2+json:
+            schema:
+              $ref: '#/components/schemas/GetProfileMetricsRequestContent'
+      responses:
+        "200":
+          description: GetProfileMetrics 200 response
+          content:
+            application/vnd.bpProfile.v2+json:
+              schema:
+                $ref: '#/components/schemas/GetProfileMetricsResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /bp/v2/profiles/{profileId}/metrics/download:
+    get:
+      tags:
+      - Posts
+      summary: |
+        Get a URL to download a metrics report for the Post Profile.
+      description: |-
+        Get a URL to download a metrics report for the Post Profile.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetReportDownloadLink
+      parameters:
+      - name: profileId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: metricStartDate
+        in: query
+        description: "The start date to get metrics for. The value is in ISO8601 full-date\
+          \ format (UTC). For example, 2020-08-16."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The start date to get metrics for. The value is in ISO8601\
+            \ full-date format (UTC). For example, 2020-08-16."
+      - name: metricEndDate
+        in: query
+        description: "The end date to get metrics for. The value is in ISO8601 full-date\
+          \ format (UTC). For example, 2020-08-16."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The end date to get metrics for. The value is in ISO8601 full-date\
+            \ format (UTC). For example, 2020-08-16."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: |-
+          The identifier of a profile associated with the advertiser account.
+               Use `GET` method on Profiles resource to list profiles associated with
+               the access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: |-
+            The identifier of a profile associated with the advertiser account.
+                 Use `GET` method on Profiles resource to list profiles associated with
+                 the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: GetReportDownloadLink 200 response
+          content:
+            application/vnd.bpProfile.v2+json:
+              schema:
+                $ref: '#/components/schemas/GetReportDownloadLinkResponseContent'
+        "400":
+          description: ValidationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationExceptionResponseContent'
+        "402":
+          description: ServiceLimitExceededException 402 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLimitExceededExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "409":
+          description: ConflictException 409 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+components:
+  schemas:
+    AccessDeniedExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Access Denied Exception - Caller was not authorized to make this
+        call.
+    AggregateProfileMetrics:
+      type: object
+      properties:
+        clicksToDetailPage:
+          type: number
+        engagements:
+          type: number
+        impressions:
+          type: number
+        reach:
+          type: number
+      description: Set of aggregated metric for a given date range.
+      example:
+        clicksToDetailPage: 0.8008281904610115
+        reach: 5.962133916683182
+        engagements: 6.027456183070403
+        impressions: 1.4658129805029452
+    AggregateType:
+      type: string
+      description: Period of aggregation for metrics at the profile level.
+      enum:
+      - DAY
+      - WEEK
+    ConflictExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Conflict Exception - Updating or deleting this resource can cause
+        an inconsistent state.
+    CreatePostRequestContent:
+      required:
+      - medias
+      - products
+      - profileId
+      type: object
+      properties:
+        caption:
+          type: string
+          description: Caption for a post.
+        medias:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: A list of medias for a post.
+          items:
+            $ref: '#/components/schemas/Media'
+        products:
+          maxItems: 5
+          minItems: 1
+          type: array
+          description: A list of product identifiers.
+          items:
+            type: string
+            description: Identifier for a product on Amazon.
+        profileId:
+          type: string
+          description: Identifier for a profile.
+        scheduledLiveDate:
+          type: string
+          description: "A date and time for when to publish a post. The value is in\
+            \ ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        scheduledWithdrawalDate:
+          type: string
+          description: "A date and time for when to unpublish a post. The value is\
+            \ in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+      description: Contains the post fields to create the post with.
+    CreatePostResponseContent:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/Post'
+      description: Returns the post created.
+      example:
+        post:
+          liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+    GetPostProductsResponseContent:
+      type: object
+      properties:
+        eligibleProducts:
+          maxItems: 5
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        ineligibleProducts:
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: List of ineligible products that cannot be added to a post.
+          items:
+            $ref: '#/components/schemas/IneligibleProduct'
+      example:
+        ineligibleProducts:
+        - ineligibilityCode: INVALID
+          asin: asin
+        - ineligibilityCode: INVALID
+          asin: asin
+        - ineligibilityCode: INVALID
+          asin: asin
+        - ineligibilityCode: INVALID
+          asin: asin
+        - ineligibilityCode: INVALID
+          asin: asin
+        eligibleProducts:
+        - priceSummary:
+            basisPrice: basisPrice
+            minPrice: minPrice
+            winningPrice: winningPrice
+            maxPrice: maxPrice
+          detailPageUrl: detailPageUrl
+          imageUrl: imageUrl
+          name: name
+          availability: availability
+          id: id
+          customerReviewSummary:
+            halfStar: true
+            displayString: displayString
+            totalCustomerReviewCount: 6.027456183070403
+            reviewFullStar: 0.8008281904610115
+            value: 1.4658129
+          isPrime: true
+        - priceSummary:
+            basisPrice: basisPrice
+            minPrice: minPrice
+            winningPrice: winningPrice
+            maxPrice: maxPrice
+          detailPageUrl: detailPageUrl
+          imageUrl: imageUrl
+          name: name
+          availability: availability
+          id: id
+          customerReviewSummary:
+            halfStar: true
+            displayString: displayString
+            totalCustomerReviewCount: 6.027456183070403
+            reviewFullStar: 0.8008281904610115
+            value: 1.4658129
+          isPrime: true
+        - priceSummary:
+            basisPrice: basisPrice
+            minPrice: minPrice
+            winningPrice: winningPrice
+            maxPrice: maxPrice
+          detailPageUrl: detailPageUrl
+          imageUrl: imageUrl
+          name: name
+          availability: availability
+          id: id
+          customerReviewSummary:
+            halfStar: true
+            displayString: displayString
+            totalCustomerReviewCount: 6.027456183070403
+            reviewFullStar: 0.8008281904610115
+            value: 1.4658129
+          isPrime: true
+        - priceSummary:
+            basisPrice: basisPrice
+            minPrice: minPrice
+            winningPrice: winningPrice
+            maxPrice: maxPrice
+          detailPageUrl: detailPageUrl
+          imageUrl: imageUrl
+          name: name
+          availability: availability
+          id: id
+          customerReviewSummary:
+            halfStar: true
+            displayString: displayString
+            totalCustomerReviewCount: 6.027456183070403
+            reviewFullStar: 0.8008281904610115
+            value: 1.4658129
+          isPrime: true
+        - priceSummary:
+            basisPrice: basisPrice
+            minPrice: minPrice
+            winningPrice: winningPrice
+            maxPrice: maxPrice
+          detailPageUrl: detailPageUrl
+          imageUrl: imageUrl
+          name: name
+          availability: availability
+          id: id
+          customerReviewSummary:
+            halfStar: true
+            displayString: displayString
+            totalCustomerReviewCount: 6.027456183070403
+            reviewFullStar: 0.8008281904610115
+            value: 1.4658129
+          isPrime: true
+    GetPostResponseContent:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/Post'
+      description: Returns the post.
+      example:
+        post:
+          liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+    GetProfileMetricsRequestContent:
+      type: object
+      properties:
+        aggregateType:
+          $ref: '#/components/schemas/AggregateType'
+        metricEndDate:
+          type: string
+          description: "The end date to get metrics for. The value is in ISO8601 full-date\
+            \ format (UTC). For example, 2020-08-16."
+        metricStartDate:
+          type: string
+          description: "The start date to get metrics for. The value is in ISO8601\
+            \ full-date format (UTC). For example, 2020-08-16."
+      description: |-
+        Contains the profile identifier to get metrics for, the metric start and end dates, and the type of aggregation period for metrics.
+        AggregateType can be either DAY or WEEK. For example, to get total metrics for a profile for the past 90 days, aggregated by week, you would input
+        the start date as 90 days ago, end date as today, and aggregate type WEEK. Maximum days between start and end date is 365 days. If no dates are
+        provided, the last 30 days of data will be returned.
+    GetProfileMetricsResponseContent:
+      type: object
+      properties:
+        aggregateMetrics:
+          $ref: '#/components/schemas/AggregateProfileMetrics'
+        aggregateType:
+          $ref: '#/components/schemas/AggregateType'
+        metrics:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfileMetric'
+      description: Brand level performance metrics for posts.
+      example:
+        metrics:
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        - date: 2000-01-23T04:56:07.000+00:00
+          clicksToDetailPage: 5.637376656633329
+          reach: 9.301444243932576
+          engagements: 2.3021358869347655
+          impressions: 7.061401241503109
+        aggregateMetrics:
+          clicksToDetailPage: 0.8008281904610115
+          reach: 5.962133916683182
+          engagements: 6.027456183070403
+          impressions: 1.4658129805029452
+        aggregateType: DAY
+    GetProfileResponseContent:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/Profile'
+      description: Returns the profile.
+      example:
+        profile:
+          feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+    GetReportDownloadLinkResponseContent:
+      type: object
+      properties:
+        metricEndDate:
+          type: string
+          description: "The end date to get metrics for. The value is in ISO8601 full-date\
+            \ format (UTC). For example, 2020-08-16."
+        metricStartDate:
+          type: string
+          description: "The start date to get metrics for. The value is in ISO8601\
+            \ full-date format (UTC). For example, 2020-08-16."
+        profileId:
+          type: string
+          description: Identifier for a profile.
+        reportDownloadUrl:
+          type: string
+          description: Link to download a metrics report.
+      description: Returns a URL that can be used to download the metrics report.
+      example:
+        metricEndDate: metricEndDate
+        profileId: profileId
+        reportDownloadUrl: reportDownloadUrl
+        metricStartDate: metricStartDate
+    IneligibleProduct:
+      type: object
+      properties:
+        asin:
+          type: string
+          description: Identifier for a product on Amazon.
+        ineligibilityCode:
+          $ref: '#/components/schemas/ProductIneligibilityCode'
+      description: "A product that is not eligible to be added to a post, along with\
+        \ the reason code."
+      example:
+        ineligibilityCode: INVALID
+        asin: asin
+    InternalServerExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: "Internal Server Exception - Something went wrong with the server.\
+        \ Please try again later. If the issue persists, report an error."
+    ListPostsRequestContent:
+      required:
+      - profileId
+      type: object
+      properties:
+        filters:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: A list of post filters.
+          items:
+            $ref: '#/components/schemas/PostListFilter'
+        maxResults:
+          maximum: 500
+          minimum: 50
+          type: number
+          description: Number of items to be returned on this call.
+        metricEndDate:
+          type: string
+          description: "The end date to get metrics for. The value is in ISO8601 full-date\
+            \ format (UTC). For example, 2020-08-16."
+        metricStartDate:
+          type: string
+          description: "The start date to get metrics for. The value is in ISO8601\
+            \ full-date format (UTC). For example, 2020-08-16."
+        nextToken:
+          type: string
+          description: Pagination token to get next page of results from previous
+            call.
+        profileId:
+          type: string
+          description: Identifier for a profile.
+        selectedMetrics:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: A list of metrics to return for each post.
+          items:
+            $ref: '#/components/schemas/MetricName'
+        sortCriterion:
+          $ref: '#/components/schemas/PostListSortCriterion'
+      description: |-
+        Contains the profile identifier, optional metric date range, filters, sort criteria, and list of metrics to return. Request
+        also contains pagination token and max results for paginated requests.
+    ListPostsResponseContent:
+      type: object
+      properties:
+        isNumPostsOverLimit:
+          type: boolean
+          description: |-
+            No more than 10,000 posts can be sorted by a field other than CREATED_DATE.
+            This value represents if that limit has been reached. If this is the case, you
+            should instruct your users to add more filters to the call.
+        nextToken:
+          type: string
+          description: Pagination token to get next page of results from previous
+            call.
+        posts:
+          maxItems: 500
+          minItems: 0
+          type: array
+          description: A list of posts.
+          items:
+            $ref: '#/components/schemas/Post'
+        totalPosts:
+          type: number
+          description: Total number of posts that exist within the conditions of the
+            request.
+      description: Returns list of posts with metrics. Also returns pagination token
+        to get the next page of posts.
+      example:
+        totalPosts: 0.8008281904610115
+        isNumPostsOverLimit: true
+        nextToken: nextToken
+        posts:
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+        - liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+    ListProfilesResponseContent:
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: Pagination token to get next page of results from previous
+            call.
+        profiles:
+          maxItems: 500
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Profile'
+      description: Returns a list of profiles that the user has access to.
+      example:
+        nextToken: nextToken
+        profiles:
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+        - feedUrl: feedUrl
+          isAuthorized: true
+          brandProfileId: brandProfileId
+          pendingChanges:
+            name: name
+            logoUrl: logoUrl
+            status: status
+          browseNodeId: browseNodeId
+          postProfileId: postProfileId
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          brandId: brandId
+          name: name
+          lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+          logoUrl: logoUrl
+          status: status
+    Media:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        mediaMetadata:
+          $ref: '#/components/schemas/MediaMetadata'
+        mediaType:
+          type: string
+          description: "One of the following: video, image"
+        mediaUrl:
+          type: string
+      description: A media for a post.
+      example:
+        mediaUrl: mediaUrl
+        mediaMetadata:
+          key: mediaMetadata
+        mediaType: mediaType
+        mediaId: mediaId
+    MediaMetadata:
+      type: object
+      additionalProperties:
+        type: string
+      description: "When mediaType is image, keys: assetId. When mediaType is video,\
+        \ keys: assetId, thumbnailUrl, closedCaptionUrl"
+      x-schema-name: MediaMetadata
+    MetricName:
+      type: string
+      description: Available metrics to request for a post.
+      enum:
+      - clickThroughRate
+      - clicksToBrandStore
+      - clicksToDetailPage
+      - clicksToFollow
+      - engagement
+      - impressions
+      - reach
+    MetricsForPost:
+      type: object
+      additionalProperties:
+        type: number
+        format: double
+      description: |-
+        A map of metrics for a post. Represents metric data. The detail on
+        metric data is available in the link below:
+        https://advertising.amazon.com/help#G8FRSCXFWNDW962E.
+         **Note**: Metrics only available for list posts calls.
+      x-schema-name: MetricsForPost
+    Post:
+      type: object
+      properties:
+        caption:
+          type: string
+          description: Caption for a post.
+        createdDate:
+          type: string
+          description: "Date and time for when the post was created. The value is\
+            \ in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        id:
+          type: string
+        isFlaggedForQuality:
+          type: boolean
+          description: Whether the post has quality defects or not.
+        lastModified:
+          type: string
+          description: "Date and time for when the post was last modified. The value\
+            \ is in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        liveDate:
+          type: string
+          description: "Date and time for when the post was published. The value is\
+            \ in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        mediaUrl:
+          type: string
+        medias:
+          maxItems: 1
+          minItems: 0
+          type: array
+          description: A list of medias for a post.
+          items:
+            $ref: '#/components/schemas/Media'
+        metrics:
+          $ref: '#/components/schemas/MetricsForPost'
+        products:
+          maxItems: 5
+          minItems: 1
+          type: array
+          description: A list of product identifiers.
+          items:
+            type: string
+            description: Identifier for a product on Amazon.
+        profileId:
+          type: string
+          description: Identifier for a profile.
+        promotionMetadata:
+          $ref: '#/components/schemas/PromotionMetadata'
+        scheduledLiveDate:
+          type: string
+          description: "Date and time for when the post was unpublished. The value\
+            \ is in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        scheduledWithdrawalDate:
+          type: string
+          description: "A date and time for when to unpublish a post. The value is\
+            \ in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        status:
+          $ref: '#/components/schemas/PostStatus'
+        statusMetadata:
+          $ref: '#/components/schemas/StatusMetadata'
+        version:
+          type: number
+          description: Version of a post. Used to ensure that post writes are consistent.
+            Calls can only update the latest version of a post.
+        withdrawnDate:
+          type: string
+          description: "Date and time for when the post was unpublished. The value\
+            \ is in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+      description: |-
+        A post, along with metadata about the post.
+          **Note: Metrics are not available for a single GetPost request.**
+      example:
+        liveDate: 2000-01-23T04:56:07.000+00:00
+        mediaUrl: mediaUrl
+        statusMetadata:
+          mediaDefects:
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          rejectionReasons:
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+        caption: caption
+        promotionMetadata:
+          isEligibleForPromotion: true
+        withdrawnDate: 2000-01-23T04:56:07.000+00:00
+        version: 6.027456183070403
+        products:
+        - products
+        - products
+        - products
+        - products
+        - products
+        scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+        medias:
+        - mediaUrl: mediaUrl
+          mediaMetadata:
+            key: mediaMetadata
+          mediaType: mediaType
+          mediaId: mediaId
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        profileId: profileId
+        scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+        id: id
+        lastModified: 2000-01-23T04:56:07.000+00:00
+        metrics:
+          key: 0.8008281904610115
+        isFlaggedForQuality: true
+        status: DRAFT
+    PostListFilter:
+      type: object
+      properties:
+        endDate:
+          type: string
+          description: End date for a date range filter.
+          format: date-time
+        fieldName:
+          $ref: '#/components/schemas/PostListFilterField'
+        filterType:
+          $ref: '#/components/schemas/PostListFilterType'
+        startDate:
+          type: string
+          description: Start date for a date range filter.
+          format: date-time
+        values:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: Specifies a list of values to filter by. Applies only for filters
+            of type VALUES and TEXT.
+          items:
+            type: string
+      description: A post filter.
+    PostListFilterField:
+      type: string
+      description: Available post fields to filter a list of posts.
+      enum:
+      - caption
+      - createdDate
+      - flaggedForQuality
+      - state
+    PostListFilterType:
+      type: string
+      description: Types of post filters.
+      enum:
+      - RANGE
+      - TEXT
+      - VALUES
+    PostListSortCriterion:
+      type: object
+      properties:
+        sortField:
+          $ref: '#/components/schemas/PostListSortField'
+        sortOrder:
+          $ref: '#/components/schemas/PostListSortOrder'
+      description: "The criteria to determine how to sort a list of posts. Consists\
+        \ of the field to sort by, and the order."
+    PostListSortField:
+      type: string
+      description: Available post fields to sort by for a list of posts.
+      enum:
+      - clickThroughRate
+      - clicksToBrandStore
+      - clicksToDetailPage
+      - clicksToFollow
+      - createdDate
+      - engagement
+      - impressions
+      - liveDate
+      - reach
+      - state
+    PostListSortOrder:
+      type: string
+      description: "Sorting order (ASC = Ascending, DESC = Descending)."
+      enum:
+      - ASC
+      - DESC
+    PostStatus:
+      type: string
+      description: |-
+        Status of Post:
+         * DRAFT - Post is in DRAFT state.
+         * REVIEW                - Post is in Review.
+         * LIVE - Post is live and available for Amazon Shoppers.
+                        * REJECTED - Post is Rejected. The detail of rejection is available in StatusMetadata.
+                        * WITHDRAWN - Post is Withdrawn from live.
+         * SCHEDULED - Post is scheduled                to go live.
+      enum:
+      - DRAFT
+      - LIVE
+      - REJECTED
+      - REVIEW
+      - SCHEDULED
+      - WITHDRAWN
+    Product:
+      type: object
+      properties:
+        availability:
+          type: string
+        customerReviewSummary:
+          $ref: '#/components/schemas/ProductReviewSummary'
+        detailPageUrl:
+          type: string
+        id:
+          type: string
+        imageUrl:
+          type: string
+        isPrime:
+          type: boolean
+        name:
+          type: string
+        priceSummary:
+          $ref: '#/components/schemas/ProductPriceSummary'
+      example:
+        priceSummary:
+          basisPrice: basisPrice
+          minPrice: minPrice
+          winningPrice: winningPrice
+          maxPrice: maxPrice
+        detailPageUrl: detailPageUrl
+        imageUrl: imageUrl
+        name: name
+        availability: availability
+        id: id
+        customerReviewSummary:
+          halfStar: true
+          displayString: displayString
+          totalCustomerReviewCount: 6.027456183070403
+          reviewFullStar: 0.8008281904610115
+          value: 1.4658129
+        isPrime: true
+    ProductIneligibilityCode:
+      type: string
+      enum:
+      - INVALID
+      - PROHIBITED
+      - UNAUTHORIZED
+    ProductPriceSummary:
+      type: object
+      properties:
+        basisPrice:
+          type: string
+        maxPrice:
+          type: string
+        minPrice:
+          type: string
+        winningPrice:
+          type: string
+      example:
+        basisPrice: basisPrice
+        minPrice: minPrice
+        winningPrice: winningPrice
+        maxPrice: maxPrice
+    ProductReviewSummary:
+      type: object
+      properties:
+        displayString:
+          type: string
+        halfStar:
+          type: boolean
+        reviewFullStar:
+          type: number
+        totalCustomerReviewCount:
+          type: number
+        value:
+          type: number
+          format: float
+      example:
+        halfStar: true
+        displayString: displayString
+        totalCustomerReviewCount: 6.027456183070403
+        reviewFullStar: 0.8008281904610115
+        value: 1.4658129
+    Profile:
+      type: object
+      properties:
+        brandId:
+          type: string
+          description: Identifier for a brand on Brand Registry.
+        brandProfileId:
+          type: string
+          description: Identifier for a Brand Profile.
+        browseNodeId:
+          type: string
+          description: Large Browse Refinement Brand identifier.
+        feedUrl:
+          type: string
+          description: URL for the profile's post feed on Amazon.com
+        isAuthorized:
+          type: boolean
+        lastApprovalDate:
+          type: string
+          format: date-time
+        logoUrl:
+          type: string
+        name:
+          type: string
+        pendingChanges:
+          $ref: '#/components/schemas/ProfilePendingReviewChanges'
+        postProfileId:
+          type: string
+          description: Identifier for a profile.
+        status:
+          type: string
+        statusMetadata:
+          $ref: '#/components/schemas/StatusMetadata'
+      description: A Post Profile represents a brand that can create posts.
+      example:
+        feedUrl: feedUrl
+        isAuthorized: true
+        brandProfileId: brandProfileId
+        pendingChanges:
+          name: name
+          logoUrl: logoUrl
+          status: status
+        browseNodeId: browseNodeId
+        postProfileId: postProfileId
+        statusMetadata:
+          mediaDefects:
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          - mediaDefects
+          rejectionReasons:
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+          - code: code
+            detail: detail
+            evidences:
+            - componentId: componentId
+              type: ASIN
+            - componentId: componentId
+              type: ASIN
+        brandId: brandId
+        name: name
+        lastApprovalDate: 2000-01-23T04:56:07.000+00:00
+        logoUrl: logoUrl
+        status: status
+    ProfileMetric:
+      type: object
+      properties:
+        clicksToDetailPage:
+          type: number
+        date:
+          type: string
+          format: date-time
+        engagements:
+          type: number
+        impressions:
+          type: number
+        reach:
+          type: number
+      description: Set of metrics at a profile level for a particular date.
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        clicksToDetailPage: 5.637376656633329
+        reach: 9.301444243932576
+        engagements: 2.3021358869347655
+        impressions: 7.061401241503109
+    ProfilePendingReviewChanges:
+      type: object
+      properties:
+        logoUrl:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+      description: Values for a profile that are pending review.
+      example:
+        name: name
+        logoUrl: logoUrl
+        status: status
+    PromotionMetadata:
+      type: object
+      properties:
+        isEligibleForPromotion:
+          type: boolean
+          description: Whether the post is eligible for promotion.
+      description: Metadata related to promoting a post to ad.
+      example:
+        isEligibleForPromotion: true
+    RejectionEvidence:
+      type: object
+      properties:
+        componentId:
+          type: string
+        type:
+          $ref: '#/components/schemas/RejectionEvidenceType'
+      description: Additional information for a rejection of a post or profile.
+      example:
+        componentId: componentId
+        type: ASIN
+    RejectionEvidenceType:
+      type: string
+      description: Types of rejection reason evidences.
+      enum:
+      - ASIN
+      - DUPLICATE_IMAGE
+    RejectionReason:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        evidences:
+          type: array
+          items:
+            $ref: '#/components/schemas/RejectionEvidence'
+      description: Reason for rejecting a post or profile.
+      example:
+        code: code
+        detail: detail
+        evidences:
+        - componentId: componentId
+          type: ASIN
+        - componentId: componentId
+          type: ASIN
+    ResourceNotFoundExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Resource Not Found Exception - The request references a resource
+        that does not exist.
+    ServiceLimitExceededExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Service Limit Exceeded Exception - A service limit has been exceeded
+        in this request.
+    StatusMetadata:
+      type: object
+      properties:
+        mediaDefects:
+          maxItems: 50
+          minItems: 0
+          type: array
+          description: Quality defects that can affect the impressions/engagement
+            of a post.
+          items:
+            type: string
+        rejectionReasons:
+          maxItems: 50
+          minItems: 0
+          type: array
+          description: A list of rejection reasons.
+          items:
+            $ref: '#/components/schemas/RejectionReason'
+      description: Additional data about the status of a post/profile.
+      example:
+        mediaDefects:
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        - mediaDefects
+        rejectionReasons:
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+        - code: code
+          detail: detail
+          evidences:
+          - componentId: componentId
+            type: ASIN
+          - componentId: componentId
+            type: ASIN
+    SubmitPostForReviewRequestContent:
+      required:
+      - version
+      type: object
+      properties:
+        version:
+          type: number
+          description: Version of a post. Used to ensure that post writes are consistent.
+            Calls can only update the latest version of a post.
+      description: Contains post identifier and version of the post to submit for
+        review.
+    SubmitPostForReviewResponseContent:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/Post'
+      description: Returns the post submitted for review.
+      example:
+        post:
+          liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+    ThrottlingExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Throttling Exception - Request was throttled.
+    UpdatePostRequestContent:
+      required:
+      - medias
+      - products
+      - profileId
+      - version
+      type: object
+      properties:
+        caption:
+          type: string
+          description: Caption for a post.
+        medias:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: A list of medias for a post.
+          items:
+            $ref: '#/components/schemas/Media'
+        products:
+          maxItems: 5
+          minItems: 1
+          type: array
+          description: A list of product identifiers.
+          items:
+            type: string
+            description: Identifier for a product on Amazon.
+        profileId:
+          type: string
+          description: Identifier for a profile.
+        scheduledLiveDate:
+          type: string
+          description: "A date and time for when to publish a post. The value is in\
+            \ ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        scheduledWithdrawalDate:
+          type: string
+          description: "A date and time for when to unpublish a post. The value is\
+            \ in ISO8601 date-time format (UTC). For example, 2020-08-16T18:20:00.000Z."
+          format: date-time
+        version:
+          type: number
+          description: Version of a post. Used to ensure that post writes are consistent.
+            Calls can only update the latest version of a post.
+      description: |-
+        Contains post identifier and post data for post to be saved.
+         Also contains the version of the post that is intended to be saved.
+    UpdatePostResponseContent:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/Post'
+      description: Returns post that was saved.
+      example:
+        post:
+          liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+    ValidationExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+      description: Validation Exception - Request failed because invalid parameters
+        were provided.
+    WithdrawPostRequestContent:
+      required:
+      - version
+      type: object
+      properties:
+        version:
+          type: number
+          description: Version of a post. Used to ensure that post writes are consistent.
+            Calls can only update the latest version of a post.
+      description: Contains post identifier and version of post to be unpublished.
+    WithdrawPostResponseContent:
+      type: object
+      properties:
+        post:
+          $ref: '#/components/schemas/Post'
+      description: Returns post that was unpublished.
+      example:
+        post:
+          liveDate: 2000-01-23T04:56:07.000+00:00
+          mediaUrl: mediaUrl
+          statusMetadata:
+            mediaDefects:
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            - mediaDefects
+            rejectionReasons:
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+            - code: code
+              detail: detail
+              evidences:
+              - componentId: componentId
+                type: ASIN
+              - componentId: componentId
+                type: ASIN
+          caption: caption
+          promotionMetadata:
+            isEligibleForPromotion: true
+          withdrawnDate: 2000-01-23T04:56:07.000+00:00
+          version: 6.027456183070403
+          products:
+          - products
+          - products
+          - products
+          - products
+          - products
+          scheduledWithdrawalDate: 2000-01-23T04:56:07.000+00:00
+          medias:
+          - mediaUrl: mediaUrl
+            mediaMetadata:
+              key: mediaMetadata
+            mediaType: mediaType
+            mediaId: mediaId
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          profileId: profileId
+          scheduledLiveDate: 2000-01-23T04:56:07.000+00:00
+          id: id
+          lastModified: 2000-01-23T04:56:07.000+00:00
+          metrics:
+            key: 0.8008281904610115
+          isFlaggedForQuality: true
+          status: DRAFT
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

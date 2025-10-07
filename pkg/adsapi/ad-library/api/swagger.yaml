@@ -1,0 +1,983 @@
+openapi: 3.0.1
+info:
+  title: Ad Library API
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /adRepository/ads/list:
+    post:
+      description: |-
+        This is the primary paginated API for retrieving, listing, and searching through the ad repository. By default, a request without any parameters specified will list all items in the repository.
+
+        **Requires one of these permissions**:
+        []
+      operationId: ListAds
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a 'Login with Amazon'
+          account. This is a required header for advertisers and integrators using
+          the Advertising API.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a 'Login with Amazon'
+            account. This is a required header for advertisers and integrators using
+            the Advertising API.
+      requestBody:
+        content:
+          application/vnd.adsrepository.v1.1+json:
+            schema:
+              $ref: '#/components/schemas/ListAdsRequestContent'
+      responses:
+        "200":
+          description: ListAds 200 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/ListAdsResponseContent'
+        "400":
+          description: InvalidInputException 400 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /adRepository/ads/{id}:
+    get:
+      description: |-
+        This is the API for retrieving a single advertisement metadata specified by its id from the ad repository.
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetAdsByID
+      parameters:
+      - name: id
+        in: path
+        description: This parameter will limit results to a single advertisement summary
+          matching the requested identifier.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: This parameter will limit results to a single advertisement
+            summary matching the requested identifier.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a 'Login with Amazon'
+          account. This is a required header for advertisers and integrators using
+          the Advertising API.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a 'Login with Amazon'
+            account. This is a required header for advertisers and integrators using
+            the Advertising API.
+      responses:
+        "200":
+          description: GetAdsByID 200 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/GetAdsByIDResponseContent'
+        "400":
+          description: InvalidInputException 400 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/vnd.adsrepository.v1.1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+components:
+  schemas:
+    AccessDeniedExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Exception for AccessDeniedException 403 response.
+    AdRepositoryResponseMap:
+      required:
+      - advertisementPurpose
+      - advertiserName
+      - deliveryAfterDateUtc
+      - deliveryBeforeDateUtc
+      - id
+      - isRestricted
+      - subjectMatterUrl
+      - targetingMethods
+      - totalRecipientsRange
+      - totalRecipientsRangeBySite
+      - type
+      type: object
+      properties:
+        advertisementPurpose:
+          type: string
+          description: Displays the intent of the advertisement.
+        advertiserName:
+          type: string
+          description: Name of the Advertiser.
+        contentUrls:
+          maxItems: 10
+          minItems: 0
+          type: array
+          description: "List of strings containing link to (1) the store product detail\
+            \ page of products shown in an ad, (2) the store brand page of the brand\
+            \ shown in an ad, or (3) the image of the ad."
+          items:
+            type: string
+        deliveryAfterDateUtc:
+          type: string
+          description: "The specified start date of the delivered ads.The date string\
+            \ is specified in ISO format (YYYY-MM-DD) in UTC timezone. For example:\
+            \ 2020-12-16."
+          format: date-time
+        deliveryBeforeDateUtc:
+          type: string
+          description: "The specified end date of the delivered ads.The date string\
+            \ is specified in ISO format (YYYY-MM-DD) in UTC timezone. For example:\
+            \ 2020-12-16."
+          format: date-time
+        id:
+          type: string
+          description: "Globally unique identifier for the advertisement, to support\
+            \ lookups in the repository.  It represents the combination of an ad-creative\
+            \ identifier, its marketplace and source of record."
+        illegalContentReport:
+          type: boolean
+          description: Describes whether the ad was removed as a result of an illegal
+            content report.
+        isRestricted:
+          type: boolean
+          description: "Whether the ad was paused, removed or suppressed based on\
+            \ alleged illegality or incompatibility with terms and conditions."
+        payerName:
+          type: string
+          description: Name of the entity who paid for the Ad.
+        restrictionCategory:
+          type: string
+          description: "Reason(s) why an ad was paused, removed, or suppressed."
+        restrictionDetectionAutomated:
+          type: boolean
+          description: Describes whether automation was used to identify the restricted
+            ad.
+        subjectMatterUrl:
+          type: string
+          description: Subject matter of the advertisement (link to image or rendering).
+        targetingMethods:
+          maxItems: 10
+          minItems: 0
+          type: array
+          description: |-
+            This field lists the targeted advertising methods with the descriptions.
+                The targeted advertising methods includes:
+                    1: 'LOCATION': 'Their estimated location',
+                    2: 'PAST_ACTIVITY': 'Their past activity on Amazon websites or services',
+                    3: 'ADS_PREFERENCES': 'Their data sharing or personalized ads preferences',
+                    4: 'SEARCH_TERMS': 'The search terms they used or the content or products they were viewing',
+          items:
+            $ref: '#/components/schemas/TargetMethodRecipientGroup'
+        totalRecipientsRange:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        totalRecipientsRangeBySite:
+          $ref: '#/components/schemas/RecipientsBySite'
+        type:
+          $ref: '#/components/schemas/Type'
+      example:
+        restrictionDetectionAutomated: true
+        deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+        totalRecipientsRange:
+          min: 5.559347081229898E18
+          max: 7.386336338223104E17
+        totalRecipientsRangeBySite:
+          amazonIt: null
+          amazonEs: null
+          amazonNl: null
+          amazonFr: null
+          amazonPl: null
+          amazonSe: null
+          amazonBe: null
+          amazonDe: null
+        type: AD
+        advertiserName: advertiserName
+        illegalContentReport: true
+        contentUrls:
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        - contentUrls
+        deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+        advertisementPurpose: advertisementPurpose
+        subjectMatterUrl: subjectMatterUrl
+        payerName: payerName
+        targetingMethods:
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        - ADS_PREFERENCES
+        id: id
+        restrictionCategory: restrictionCategory
+        isRestricted: true
+    GetAdsByIDResponseContent:
+      required:
+      - ad
+      type: object
+      properties:
+        ad:
+          $ref: '#/components/schemas/AdRepositoryResponseMap'
+      example:
+        ad:
+          restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+    InternalServerExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Unexpected error during processing of request.
+    InvalidInputExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Exception for malformed input.
+    ListAdsRequestContent:
+      type: object
+      properties:
+        advertisementPurpose:
+          type: string
+          description: "This parameter will limit results to those matching the requested\
+            \ advertisement purpose. This includes the name of the product, service,\
+            \ or brand within the ad or affiliate marketing content."
+        advertiserName:
+          type: string
+          description: The person or entity on whose behalf the ad or affiliate marketing
+            content is presented. This parameter will limit results to advertisement
+            summaries matching the requested advertiser name.
+        deliveryAfterDateUtc:
+          type: string
+          description: "When specified, limits results to those with delivery date\
+            \ after the specified date string. The date string is specified in ISO\
+            \ format (YYYY-MM-DD) in UTC timezone. For example: 2020-12-16."
+          format: date-time
+        deliveryBeforeDateUtc:
+          type: string
+          description: "When specified, limits results to those with a delivery date\
+            \ prior to the specified date string. The date string is specified in\
+            \ ISO format (YYYY-MM-DD) in UTC timezone. For example: 2020-12-16."
+          format: date-time
+        isRestricted:
+          type: boolean
+          description: "Whether the advertisement was paused, removed or suppressed\
+            \ based on alleged illegality or incompatibility with terms and conditions.\
+            \ Limits results based on their restriction status."
+        maxResults:
+          maximum: 1000
+          minimum: 1
+          type: number
+          description: |-
+            Defaults to 10, with supported values between 1 and 1000.
+                If the size of the result set is larger than the limit, callers will retrieve additional results through pagination parameters.
+        nameMatchType:
+          $ref: '#/components/schemas/NameMatchType'
+        nextToken:
+          type: string
+          description: |-
+            Pagination token to retrieve the next set of results.
+                Callers must make use of the token provided in a previous response to use this parameter.
+        siteName:
+          type: string
+          description: "When specified, limits results based on their delivery to\
+            \ a particular Amazon EU store (e.g., amazon.de, amazon.fr)."
+    ListAdsResponseContent:
+      required:
+      - ads
+      - totalResults
+      type: object
+      properties:
+        ads:
+          maxItems: 1000
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/AdRepositoryResponseMap'
+        nextToken:
+          type: string
+          description: "Operations that return paginated results include a pagination\
+            \ token in this field. To retrieve the next page of results, call the\
+            \ same operation and specify this token in the request. If the nextToken\
+            \ field is empty, there are no further results."
+        totalResults:
+          type: number
+          description: Total number of return results for the query input.
+      example:
+        ads:
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        - restrictionDetectionAutomated: true
+          deliveryAfterDateUtc: 2000-01-23T04:56:07.000+00:00
+          totalRecipientsRange:
+            min: 5.559347081229898E18
+            max: 7.386336338223104E17
+          totalRecipientsRangeBySite:
+            amazonIt: null
+            amazonEs: null
+            amazonNl: null
+            amazonFr: null
+            amazonPl: null
+            amazonSe: null
+            amazonBe: null
+            amazonDe: null
+          type: AD
+          advertiserName: advertiserName
+          illegalContentReport: true
+          contentUrls:
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          - contentUrls
+          deliveryBeforeDateUtc: 2000-01-23T04:56:07.000+00:00
+          advertisementPurpose: advertisementPurpose
+          subjectMatterUrl: subjectMatterUrl
+          payerName: payerName
+          targetingMethods:
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          - ADS_PREFERENCES
+          id: id
+          restrictionCategory: restrictionCategory
+          isRestricted: true
+        totalResults: 1.4658129805029452
+        nextToken: nextToken
+    NameMatchType:
+      type: string
+      enum:
+      - CONTAINS
+      - EXACT_MATCH
+    RecipientsBySite:
+      type: object
+      properties:
+        amazonBe:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonDe:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonEs:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonFr:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonIt:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonNl:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonPl:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+        amazonSe:
+          $ref: '#/components/schemas/TotalRecipientsRange'
+      example:
+        amazonIt: null
+        amazonEs: null
+        amazonNl: null
+        amazonFr: null
+        amazonPl: null
+        amazonSe: null
+        amazonBe: null
+        amazonDe: null
+    ResourceNotFoundExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Request references a resource which does not exist.
+    TargetMethodRecipientGroup:
+      type: string
+      enum:
+      - ADS_PREFERENCES
+      - LOCATION
+      - PAST_ACTIVITY
+      - SEARCH_TERMS
+    ThrottlingExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Exception for ThrottlingException 429 response.
+    TotalRecipientsRange:
+      required:
+      - max
+      - min
+      type: object
+      properties:
+        max:
+          maximum: 9223372036854775807
+          minimum: 0
+          type: number
+        min:
+          maximum: 9223372036854775807
+          minimum: 0
+          type: number
+      example:
+        min: 5.559347081229898E18
+        max: 7.386336338223104E17
+    Type:
+      type: string
+      enum:
+      - AD
+      - AFFILIATE_MARKETING_CONTENT
+    UnauthorizedExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Exception for UnauthorizedException 401 response.
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

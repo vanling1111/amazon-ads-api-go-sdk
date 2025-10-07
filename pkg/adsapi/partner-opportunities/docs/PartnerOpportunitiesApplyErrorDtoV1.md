@@ -1,0 +1,12 @@
+# PartnerOpportunitiesApplyErrorDtoV1
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Code** | **string** |  | [default to null]
+**Failures** | [**[]PartnerOpportunitiesApplyErrorFailures**](PartnerOpportunitiesApplyErrorFailures.md) |  | [default to null]
+**Message** | **string** |  | [default to null]
+**Successes** | [**[]PartnerOpportunitiesApplyErrorSuccesses**](PartnerOpportunitiesApplyErrorSuccesses.md) |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

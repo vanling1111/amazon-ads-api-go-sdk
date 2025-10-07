@@ -1,0 +1,2764 @@
+openapi: 3.0.2
+info:
+  title: Amazon Ads API - Sponsored Products
+  description: "Use the Amazon Ads API for Sponsored Products for campaign, ad group,\
+    \ keyword, negative keyword, and product ad management operations. For more information\
+    \ about Sponsored Products, see the [Sponsored Products Support Center](https://advertising.amazon.com/help?entityId=ENTITY3CWETCZD9HEG2#GWGFKPEWVWG2CLUJ).\
+    \ For onboarding information, see the [account setup](guides/onboarding/overview)\
+    \ topic.<br/> <br/> **Note**: This contract contains endpoints with upcoming planned\
+    \ deprecations. For more information on the latest versions and migration details,\
+    \ see [Deprecations](release-notes/deprecations).<br/> <br/>"
+  contact:
+    name: Amazon Ads API Support
+    url: https://amzn-clicks.atlassian.net/servicedesk/customer/portals
+  license:
+    name: Amazon Ads API License Agreement
+    url: https://advertising.amazon.com/API/docs/license-agreement
+  version: "2.0"
+servers:
+- url: https://advertising-api.amazon.com
+- url: https://advertising-api-eu.amazon.com
+- url: https://advertising-api-fe.amazon.com
+security:
+- bearer: []
+tags:
+- name: Bid recommendations
+- name: Suggested keywords
+- name: Snapshots
+paths:
+  /v2/sp/adGroups/{adGroupId}/bidRecommendations:
+    get:
+      tags:
+      - Bid recommendations
+      summary: "Gets a bid recommendation for an ad group. [PLANNED DEPRECATION 3/27/2024]"
+      description: "**Deprecation notice: This endpoint will be deprecated on March\
+        \ 27, 2024. Use [theme-based bid recommendations](/API/docs/en-us/sponsored-products/3-0/openapi/prod#/ThemeBasedBidRecommendation/GetThemeBasedBidRecommendationForAdGroup_v1)\
+        \ going forward.**"
+      operationId: getAdGroupBidRecommendations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: adGroupId
+        in: path
+        description: The identifier of an existing ad group.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdGroupBidRecommendationsResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: "Either the specified ad group identifier was not found, or\
+            \ the specified ad group was found but no associated bid was found."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/keywords/{keywordId}/bidRecommendations:
+    get:
+      tags:
+      - Bid recommendations
+      summary: "Gets a bid recommendation for a keyword. [PLANNED DEPRECATION 3/27/2024]"
+      description: "**Deprecation notice: This endpoint will be deprecated on March\
+        \ 27, 2024. Use [theme-based bid recommendations](/API/docs/en-us/sponsored-products/3-0/openapi/prod#/ThemeBasedBidRecommendation/GetThemeBasedBidRecommendationForAdGroup_v1)\
+        \ going forward.**"
+      operationId: getKeywordBidRecommendations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: keywordId
+        in: path
+        description: The identifier of an existing keyword.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordBidRecommendationsResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/keywords/bidRecommendations:
+    post:
+      tags:
+      - Bid recommendations
+      summary: "Gets bid recommendations for keywords. [PLANNED DEPRECATION 3/27/2024]"
+      description: "**Deprecation notice: This endpoint will be deprecated on March\
+        \ 27, 2024. Use [theme-based bid recommendations](/API/docs/en-us/sponsored-products/3-0/openapi/prod#/ThemeBasedBidRecommendation/GetThemeBasedBidRecommendationForAdGroup_v1)\
+        \ going forward.**"
+      operationId: createKeywordBidRecommendations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: An array of keyword bid recommendation objects.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeywordBidRecommendationsData'
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BidRecommendationsResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/adGroups/{adGroupId}/suggested/keywords:
+    get:
+      tags:
+      - Suggested keywords
+      summary: Gets suggested keywords for the specified ad group.
+      operationId: getAdGroupSuggestedKeywords
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: adGroupId
+        in: path
+        description: The identifier of a valid ad group.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: maxNumSuggestions
+        in: query
+        description: The maximum number of suggested keywords for the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          default: 100
+      - name: adStateFilter
+        in: query
+        description: Filters results to ad groups with state matching the comma-delimited
+          list.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - enabled
+          - paused
+          - archived
+          - "enabled, paused"
+          - "enabled, archived"
+          - "paused, archived"
+          - "enabled, paused, archived"
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdGroupSuggestedKeywordsResponse'
+        "400":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/adGroups/{adGroupId}/suggested/keywords/extended:
+    get:
+      tags:
+      - Suggested keywords
+      summary: Gets suggested keywords with extended data for the specified ad group.
+      operationId: getAdGroupSuggestedKeywordsEx
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: adGroupId
+        in: path
+        description: The identifier of a valid ad group.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      - name: maxNumSuggestions
+        in: query
+        description: The maximum number of suggested keywords for the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          default: 100
+      - name: suggestBids
+        in: query
+        description: "Set to `yes` to include a suggest bid for the suggested keyword\
+          \ in the response. Otherwise, set to `no`."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          default: "no"
+          enum:
+          - "yes"
+          - "no"
+      - name: adStateFilter
+        in: query
+        description: Filters results to ad groups with state matching the comma-delimited
+          list.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - enabled
+          - paused
+          - archived
+          - "enabled, paused"
+          - "enabled, archived"
+          - "paused, archived"
+          - "enabled, paused, archived"
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdGroupSuggestedKeywordsResponseEx'
+                x-content-type: application/json
+        "400":
+          description: One or more query parameters contained an invalid value.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/asins/{asinValue}/suggested/keywords:
+    get:
+      tags:
+      - Suggested keywords
+      summary: Gets suggested keywords for the specified ASIN.
+      description: Suggested keywords are returned in an array ordered by descending
+        effectiveness.
+      operationId: getAsinSuggestedKeywords
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: asinValue
+        in: path
+        description: An ASIN.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: maxNumSuggestions
+        in: query
+        description: The maximum number of suggested keywords for the response.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          default: 100
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAsinSuggestedKeywordsResponse'
+        "400":
+          description: One or more query parameters contained an invalid value.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/asins/suggested/keywords:
+    post:
+      tags:
+      - Suggested keywords
+      summary: Gets suggested keyword for a specified list of ASINs.
+      description: Suggested keywords are returned in an array ordered by descending
+        effectiveness.
+      operationId: bulkGetAsinSuggestedKeywords
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/suggested_keywords_body'
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGetAsinSuggestedKeywordsResponse'
+        "400":
+          description: One or more query parameters contained an invalid value.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/targets/bidRecommendations:
+    post:
+      tags:
+      - Bid recommendations
+      summary: "Gets a list of bid recommendations for keyword, product, or auto targeting\
+        \ expressions."
+      operationId: getBidRecommendations
+      requestBody:
+        description: "An ad group identifier and list of associated targeting expressions\
+          \ for which to generate bid recommendations. Note that targeting expressions\
+          \ are required to be of the same type. That is, all targeting expressions\
+          \ in the list must be one of **keyword**, **product**, or **auto** target\
+          \ types."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targets_bidRecommendations_body'
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/sp/{recordType}/snapshot:
+    post:
+      tags:
+      - Snapshots
+      summary: Request a snapshot
+      description: "**Note: Snapshots APIs are deprecated and will be shut off on\
+        \ October 15, 2024. For replacement functionality, see the [exports](guides/exports/overview)\
+        \ API. To learn more, view the [migration guide](reference/migration-guides/snapshots-exports).**\
+        \ \n\nRequest a file-based snapshot of all entities of the specified type\
+        \ in the account satisfying the filtering criteria.\n\nTo understand the call\
+        \ flow for asynchronous snapshots, see [Getting started with sponsored ads\
+        \ snapshots](/API/docs/en-us/guides/snapshots/get-started)."
+      operationId: requestSnapshot
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: recordType
+        in: path
+        description: The type of entity for which the snapshot is generated.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - campaigns
+          - adGroups
+          - keywords
+          - negativeKeywords
+          - campaignNegativeKeywords
+          - productAds
+          - targets
+          - negativeTargets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SnapshotRequest'
+        required: true
+      responses:
+        "202":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResponse'
+        "401":
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: true
+  /v2/sp/snapshots/{snapshotId}:
+    get:
+      tags:
+      - Snapshots
+      summary: Get the status of a requested snapshot
+      description: "**Note: Snapshots APIs are deprecated and will be shut off on\
+        \ October 15, 2024. For replacement functionality, see the [exports](guides/exports/overview)\
+        \ API. To learn more, view the [migration guide](reference/migration-guides/snapshots-exports).**\
+        \ \n\nTo understand the call flow for asynchronous snapshots, see [Getting\
+        \ started with sponsored ads snapshots](/API/docs/en-us/guides/snapshots/overview)."
+      operationId: getSnapshotStatus
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: snapshotId
+        in: path
+        description: The snapshot identifier.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResponse'
+        "307":
+          description: Temporary redirect.
+          headers:
+            Location:
+              style: simple
+              explode: false
+              schema:
+                type: string
+                description: The download location of the requested snapshot.
+        "401":
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: true
+  /v2/sp/snapshots/{snapshotId}/download:
+    get:
+      tags:
+      - Snapshots
+      summary: Download requested snapshot
+      description: "**Note: Snapshots APIs are deprecated and will be shut off on\
+        \ October 15, 2024. For replacement functionality, see the [exports](guides/exports/overview)\
+        \ API. To learn more, view the [migration guide](reference/migration-guides/snapshots-exports).**\
+        \ \n\nTo understand the call flow for asynchronous snapshots, see [Getting\
+        \ started with sponsored ads snapshots](/API/docs/en-us/guides/snapshots/get-started)."
+      operationId: downloadSnapshot
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          developer account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: snapshotId
+        in: path
+        description: The snapshot identifier.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      responses:
+        "307":
+          description: Successful operation.
+          headers:
+            Location:
+              style: simple
+              explode: false
+              schema:
+                type: string
+                description: Redirect URI with S3 file location containing snapshot
+                  data
+        "401":
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      deprecated: true
+components:
+  schemas:
+    AdGroup:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        campaignId:
+          type: number
+          description: The identifier of the campaign that the ad group is associated
+            with.
+        defaultBid:
+          type: number
+          description: The bid value used when no bid is specified for keywords in
+            the ad group.
+          format: float
+        state:
+          $ref: '#/components/schemas/State'
+    AdGroupEx:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        campaignId:
+          type: number
+          description: The identifier of the campaign that the ad group is associated
+            with.
+        defaultBid:
+          type: number
+          description: The bid value used when no bid is specified for keywords in
+            the ad group.
+        state:
+          $ref: '#/components/schemas/State'
+        creationDate:
+          type: number
+          description: The creation date of the ad group in epoch time.
+        lastUpdatedDate:
+          type: number
+          description: "The date that any value associated with the ad group was last\
+            \ changed, in epoch time."
+        servingStatus:
+          type: string
+          description: The computed status. See developer notes for more information.
+          enum:
+          - AD_GROUP_ARCHIVED
+          - AD_GROUP_PAUSED
+          - AD_GROUP_STATUS_ENABLED
+          - AD_POLICING_SUSPENDED
+          - AD_GROUP_INCOMPLETE
+          - CAMPAIGN_OUT_OF_BUDGET
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - CAMPAIGN_INCOMPLETE
+          - ACCOUNT_OUT_OF_BUDGET
+          - PENDING_START_DATE
+    AdGroupResponse:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group.
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        details:
+          type: string
+          description: A human-readable description of the code.
+        description:
+          type: string
+          description: A human-readable description of the code.
+    AdGroupBidRecommendationsResponse:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group.
+        suggestedBid:
+          $ref: '#/components/schemas/SuggestedBid'
+      example:
+        suggestedBid:
+          suggested: 6.027456183070403
+          rangeStart: 1.4658129805029452
+          rangeEnd: 5.962133916683182
+        adGroupId: 0.8008281904610115
+    AdGroupSuggestedKeywordsResponse:
+      properties:
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        suggestededKeywords:
+          type: array
+          description: An array of suggested keywords.
+          items:
+            type: string
+      example:
+        suggestededKeywords:
+        - suggestededKeywords
+        - suggestededKeywords
+        adGroupId: 0.8008281904610115
+    AdGroupSuggestedKeywordsResponseEx:
+      properties:
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        campaignId:
+          type: number
+          description: The campaign identifier.
+        keywordText:
+          type: string
+          description: The suggested keyword.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        state:
+          type: string
+          description: The state of the ad for which the keyword is suggested.
+          enum:
+          - enabled
+          - paused
+        bid:
+          type: number
+          description: The suggested bid for the suggested keyword. Note that this
+            field will not be included in the response if the `suggestBids` query
+            parameter is set to `no` in the request.
+      example:
+        campaignId: 6.027456183070403
+        matchType: exact
+        state: enabled
+        bid: 1.4658129805029452
+        adGroupId: 0.8008281904610115
+        keywordText: keywordText
+    ProductAdResponse:
+      properties:
+        adId:
+          type: number
+          description: The product ad identifier.
+        code:
+          type: string
+          description: The enumerated success or error code.
+        details:
+          type: string
+          description: A human-readable description of the code.
+        description:
+          type: string
+          description: A human-readable description of the code.
+    Bidding:
+      type: object
+      properties:
+        strategy:
+          type: string
+          description: |-
+            The bidding strategy.
+            | Value | Strategy name | Description |
+            |----------------|---------------|-------------|
+            | `legacyForSales` | Dynamic bids - down only | Lowers your bids in real time when your ad may be less likely to convert to a sale. Campaigns created before the release of the bidding controls feature used this setting by default. |
+            | `autoForSales` | Dynamic bids - up and down | Increases or decreases your bids in real time by a maximum of 100%. With this setting bids increase when your ad is more likely to convert to a sale, and bids decrease when less likely to convert to a sale. |
+            | `manual` | Fixed bid | Uses your exact bid and any placement adjustments you set, and is not subject to dynamic bidding. |
+          enum:
+          - legacyForSales
+          - autoForSales
+          - manual
+        adjustments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bidding_adjustments'
+      description: Specifies bidding controls.
+    BidRecommendationsResponse:
+      properties:
+        adGroupId:
+          type: string
+          description: The identifier of the ad group that the recommendations are
+            associated with.
+        recommendations:
+          type: array
+          description: An array of bid recommendation objects.
+          items:
+            $ref: '#/components/schemas/BidRecommendationsResponse_recommendations'
+      example:
+        recommendations:
+        - suggestedBid:
+            suggested: 6.027456183070403
+            rangeStart: 1.4658129805029452
+            rangeEnd: 5.962133916683182
+          code: SUCCESS
+          matchType: exact
+          keyword: keyword
+        - suggestedBid:
+            suggested: 6.027456183070403
+            rangeStart: 1.4658129805029452
+            rangeEnd: 5.962133916683182
+          code: SUCCESS
+          matchType: exact
+          keyword: keyword
+        adGroupId: adGroupId
+    BidRecommendationRequest:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group that is associated with the
+            targeting expression used to generate the bid recommendation.
+        expressions:
+          $ref: '#/components/schemas/TargetingExpression'
+    BidRecommendationsForTargetsResponse:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group that the recommended bid are
+            associated with.
+        recommendations:
+          type: array
+          description: An array of recommendation objects.
+          items:
+            $ref: '#/components/schemas/BidRecommendationsForTargetsResponse_recommendations'
+    BrandResponse:
+      properties:
+        id:
+          type: number
+          description: The brand identifier.
+        name:
+          type: string
+          description: The brand name.
+    BulkGetAsinSuggestedKeywordsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/BulkGetAsinSuggestedKeywordsResponse_inner'
+      x-schema-name: BulkGetAsinSuggestedKeywordsResponse
+    CreateAdGroup:
+      properties:
+        name:
+          type: string
+          description: A name for the ad group.
+        campaignId:
+          type: number
+          description: An existing campaign to which the ad group is associated.
+        defaultBid:
+          minimum: 0.02
+          type: number
+          description: A bid value for use when no bid is specified for keywords in
+            the ad group.
+          format: float
+        state:
+          $ref: '#/components/schemas/State'
+    UpdateAdGroup:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group.
+        name:
+          type: string
+          description: The name of the ad group.
+        defaultBid:
+          type: number
+          description: The bid value used when no bid is specified for keywords in
+            the ad group.
+          format: float
+        state:
+          $ref: '#/components/schemas/State'
+    CampaignTags:
+      type: object
+      additionalProperties:
+        type: string
+      description: A list of advertiser-specified custom identifiers for the campaign.
+        Each customer identifier is a key-value pair. You can specify a maximum of
+        50 identifiers.
+      example:
+        PONumber: examplePONumber
+        accountManager: exampleAccountManager
+      x-schema-name: CampaignTags
+    CreateCampaign:
+      properties:
+        portfolioId:
+          type: number
+          description: The identifier of an existing portfolio to which the campaign
+            is associated.
+        name:
+          type: string
+          description: "A name for the campaign. Note that idempotency for this field\
+            \ works different for sellers and vendors. Sellers aren't allowed to have\
+            \ duplicate campaign names, but vendors can have duplicate campaign names."
+        tags:
+          $ref: '#/components/schemas/CampaignTags'
+        campaignType:
+          required:
+          - sponsoredProducts
+          type: string
+          description: The advertising product managed by this campaign.
+          enum:
+          - sponsoredProducts
+        targetingType:
+          type: string
+          description: The type of targeting for the campaign.
+          enum:
+          - manual
+          - auto
+        state:
+          $ref: '#/components/schemas/State'
+        dailyBudget:
+          type: number
+          description: A daily budget for the campaign.
+          format: float
+        startDate:
+          type: string
+          description: A starting date for the campaign to go live. The format of
+            the date is YYYYMMDD.
+        endDate:
+          type: string
+          description: An ending date for the campaign to stop running. The format
+            of the date is YYYYMMDD.
+          nullable: true
+        premiumBidAdjustment:
+          type: boolean
+          description: "If set to true, Amazon increases the default bid for ads that\
+            \ are eligible to appear in this placement. See developer notes for more\
+            \ information."
+        bidding:
+          $ref: '#/components/schemas/Bidding'
+    Campaign:
+      properties:
+        portfolioId:
+          type: number
+          description: The identifier of an existing portfolio to which the campaign
+            is associated.
+        campaignId:
+          type: number
+          description: The identifier of the campaign.
+        name:
+          type: string
+          description: The name of the campaign.
+        tags:
+          $ref: '#/components/schemas/CampaignTags'
+        campaignType:
+          type: string
+          description: The advertising product managed by this campaign.
+          enum:
+          - sponsoredProducts
+        targetingType:
+          type: string
+          description: The type of targeting of the campaign.
+          enum:
+          - manual
+          - auto
+        state:
+          $ref: '#/components/schemas/State'
+        dailyBudget:
+          minimum: 1.0
+          type: number
+          description: The daily budget of the campaign.
+          format: float
+        startDate:
+          type: string
+          description: The starting date of the campaign. The format of the date is
+            YYYYMMDD.
+        endDate:
+          type: string
+          description: The ending date of the campaign to stop running. The format
+            of the date is YYYYMMDD.
+        premiumBidAdjustment:
+          type: boolean
+          description: "If set to true, Amazon increases the default bid for ads that\
+            \ are eligible to appear in this placement. See developer notes for more\
+            \ information."
+        bidding:
+          $ref: '#/components/schemas/Bidding'
+    CampaignEx:
+      properties:
+        portfolioId:
+          type: number
+          description: The identifier of an existing portfolio to which the campaign
+            is associated.
+        campaignId:
+          type: number
+          description: The identifier of the campaign.
+        tags:
+          $ref: '#/components/schemas/CampaignTags'
+        name:
+          type: string
+          description: The name of the campaign.
+        campaignType:
+          type: string
+          description: The advertising product managed by this campaign.
+          enum:
+          - sponsoredProducts
+        targetingType:
+          type: string
+          description: The type of targeting of the campaign.
+          enum:
+          - manual
+          - auto
+        state:
+          $ref: '#/components/schemas/State'
+        dailyBudget:
+          minimum: 1.0
+          type: number
+          description: The daily budget of the campaign.
+          format: float
+        startDate:
+          type: string
+          description: The starting date of the campaign. The format of the date is
+            YYYYMMDD.
+        endDate:
+          type: string
+          description: The ending date of the campaign to stop running. The format
+            of the date is YYYYMMDD.
+        premiumBidAdjustment:
+          type: boolean
+          description: "If set to true, Amazon increases the default bid for ads that\
+            \ are eligible to appear in this placement. See developer notes for more\
+            \ information."
+        bidding:
+          $ref: '#/components/schemas/Bidding'
+        creationDate:
+          type: number
+          description: "The creation date of the campaign, in epoch time."
+        lastUpdatedDate:
+          type: number
+          description: "The date that any value associated with the campaign was last\
+            \ changed, in epoch time."
+        servingStatus:
+          type: string
+          description: The computed status of the campaign. See developer notes for
+            more information.
+          enum:
+          - CAMPAIGN_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_STATUS_ENABLED
+          - ADVERTISER_PAYMENT_FAILED
+          - ADVERTISER_PAYMENT_FAILURE
+          - CAMPAIGN_OUT_OF_BUDGET
+          - PENDING_START_DATE
+          - CAMPAIGN_INCOMPLETE
+          - ENDED
+    CampaignNegativeKeyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the campaign negative keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the campaign negative
+            keyword is associated.
+        state:
+          type: string
+          description: The campaign negative keyword state.
+          enum:
+          - enabled
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+    CreateCampaignNegativeKeyword:
+      properties:
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the campaign negative
+            keyword is associated.
+        state:
+          type: string
+          description: The campaign negative keyword state.
+          enum:
+          - enabled
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+    UpdateCampaignNegativeKeyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the campaign negative keyword.
+        state:
+          type: string
+          description: The campaign negative keyword state.
+          enum:
+          - deleted
+    CampaignNegativeKeywordEx:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the campaign negative keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the campaign negative
+            keyword is associated.
+        state:
+          type: string
+          description: The campaign negative keyword state.
+          enum:
+          - enabled
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+        creationDate:
+          type: number
+          description: Creation date in epoch time.
+        lastUpdatedDate:
+          type: number
+          description: Date of last update in epoch time.
+        servingStatus:
+          type: string
+          description: "The serving status of the campaign negative keyword. See the\
+            \ **computed status** section of the [developer notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for definitions."
+          enum:
+          - TARGETING_CLAUSE_STATUS_LIVE
+          - PENDING_START_DATE
+    CampaignNegativeKeywordResponse:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the campaign negative keyword.
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        details:
+          type: string
+          description: A human-readable description of the code.
+        description:
+          type: string
+          description: A human-readable description of the code.
+    CampaignResponse:
+      properties:
+        campaignId:
+          type: number
+          description: The identifier of the campaign.
+        code:
+          type: string
+          description: An enumerated `SUCCESS` or `ERROR` code for machine use.
+        description:
+          type: string
+          description: A human-readable description of the code.
+    CategoryResponse:
+      properties:
+        id:
+          type: number
+          description: The category identifier.
+        name:
+          type: string
+          description: The category name.
+        isTargetable:
+          type: string
+          description: "If set to `true`, indicates this category can be targeted\
+            \ in a targeting expression. Otherwise, set to false."
+          enum:
+          - "true"
+          - "false"
+        path:
+          type: string
+          description: The path of this category within the category catalog.
+    Error:
+      properties:
+        code:
+          type: string
+          description: An enumerated error for machine use.
+          readOnly: true
+        details:
+          type: string
+          description: A human-readable description of the error.
+          readOnly: true
+    ExpressionType:
+      type: string
+      description: The type of expression.
+      enum:
+      - manual
+      - auto
+    GetAsinSuggestedKeywordsResponse:
+      properties:
+        asin:
+          type: string
+          description: The ASIN for which keywords are suggested.
+        suggestedKeywords:
+          type: array
+          description: The list of suggested keywords.
+          items:
+            $ref: '#/components/schemas/GetAsinSuggestedKeywordsResponse_suggestedKeywords'
+      example:
+        suggestedKeywords:
+        - matchType: exact
+          keywordText: keywordText
+        - matchType: exact
+          keywordText: keywordText
+        asin: asin
+    Keyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the keyword is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this keyword is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The keyword text.
+        nativeLanguageKeyword:
+          type: string
+          description: The unlocalized keyword text in the preferred locale of the
+            advertiser.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        bid:
+          minimum: 0.02
+          type: number
+          description: Bid associated with this keyword. Applicable to biddable match
+            types only.
+          format: float
+    CreateKeyword:
+      properties:
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the keyword is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this keyword is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The keyword text.
+        nativeLanguageKeyword:
+          type: string
+          description: The unlocalized keyword text in the preferred locale of the
+            advertiser.
+        nativeLanguageLocale:
+          type: string
+          description: "The locale preference of the advertiser. For example, if the\
+            \ advertiser’s preferred language is Simplified Chinese, set the locale\
+            \ to `zh_CN`. Supported locales include: Simplified Chinese (locale: zh_CN)\
+            \ for US, UK and CA. English (locale: en_GB) for DE, FR, IT and ES."
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        bid:
+          minimum: 0.02
+          type: number
+          description: Bid associated with this keyword. Applicable to biddable match
+            types only.
+          format: float
+          nullable: true
+    UpdateKeyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword.
+        state:
+          $ref: '#/components/schemas/State'
+        bid:
+          minimum: 0.02
+          type: number
+          description: Bid associated with this keyword. Applicable to biddable match
+            types only.
+          format: float
+          nullable: true
+    KeywordEx:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the keyword is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this keyword is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        nativeLanguageKeyword:
+          type: string
+          description: The unlocalized keyword text in the preferred locale of the
+            advertiser.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        bid:
+          minimum: 0.02
+          type: number
+          description: |-
+            Bid associated with this keyword. This table details the maximum allowable bid (in local currency) for keywords by marketplace:
+            | Marketplace | Currency | Min / Max bid for SP |
+            | --- | --- | --- |
+            | US | USD | 0.02 / 1000 |
+            | CA | CAD | 0.02 / 1000 |
+            | UK | GBP | 0.02 / 1000 |
+            | DE | EUR | 0.02 / 1000 |
+            | FR | EUR | 0.02 / 1000 |
+            | ES | EUR | 0.02 / 1000 |
+            | IT | EUR | 0.02 / 1000 |
+            | JP | JPY | 2.0 / 100000 |
+            | AU | AUD | 0.10 / 1410 |
+            | AE | AED | 0.24 / 184.0 |
+          format: float
+        creationDate:
+          type: number
+          description: Creation date in epoch time.
+        lastUpdatedDate:
+          type: number
+          description: Date of last update in epoch time.
+        servingStatus:
+          type: string
+          description: "The serving status of the keyword. See the **computed status**\
+            \ section of the [developer notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for definitions."
+          enum:
+          - TARGETING_CLAUSE_ARCHIVED
+          - TARGETING_CLAUSE_PAUSED
+          - TARGETING_CLAUSE_STATUS_LIVE
+          - TARGETING_CLAUSE_POLICING_SUSPENDED
+          - CAMPAIGN_OUT_OF_BUDGET
+          - AD_GROUP_PAUSED
+          - AD_GROUP_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - ACCOUNT_OUT_OF_BUDGET
+          - PENDING_START_DATE
+    KeywordBidRecommendationsResponse:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword that the bid is associated with.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group that the bid is associated with.
+        suggestedBid:
+          $ref: '#/components/schemas/SuggestedBid'
+      example:
+        keywordId: 0.8008281904610115
+        suggestedBid:
+          suggested: 6.027456183070403
+          rangeStart: 1.4658129805029452
+          rangeEnd: 5.962133916683182
+        adGroupId: 6.027456183070403
+    KeywordBidRecommendationsData:
+      properties:
+        adGroupId:
+          type: number
+          description: The identifier of the ad group that the keywords are associated
+            with.
+        keywords:
+          maxItems: 5000
+          minItems: 0
+          type: array
+          description: An array of keyword data objects.
+          items:
+            $ref: '#/components/schemas/KeywordBidRecommendationsData_keywords'
+    KeywordResponse:
+      properties:
+        keywordId:
+          type: number
+          description: The identifer of the keyword.
+        code:
+          type: string
+          description: The success or error code for the operation.
+        details:
+          type: string
+          description: The human-readable description of the error.
+        description:
+          type: string
+          description: The human-readable description of the error.
+    MatchType:
+      type: string
+      description: "The type of match. For more information, see [match types](https://advertising.amazon.com/help#GHTRFDZRJPW6764R)\
+        \ in the Amazon Ads support center."
+      enum:
+      - exact
+      - phrase
+      - broad
+    NegativeMatchType:
+      type: string
+      description: "The type of match. For more information, see [match types](https://advertising.amazon.com/help#GHTRFDZRJPW6764R)\
+        \ in the Amazon Ads support center."
+      enum:
+      - negativeExact
+      - negativePhrase
+    NegativeKeyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the negative keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the negative keyword
+            is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which the negative keyword
+            is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+    NegativeKeywordEx:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword.
+        campaignId:
+          type: number
+          description: The identifer of the campaign to which the keyword is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this keyword is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+        creationDate:
+          type: number
+          description: Creation date in epoch time.
+        lastUpdatedDate:
+          type: number
+          description: Date of last update in epoch time.
+        servingStatus:
+          type: string
+          description: "The serving status of the keyword. See the **computed status**\
+            \ section of the [developer notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for definitions."
+          enum:
+          - TARGETING_CLAUSE_ARCHIVED
+          - TARGETING_CLAUSE_PAUSED
+          - TARGETING_CLAUSE_STATUS_LIVE
+          - TARGETING_CLAUSE_POLICING_SUSPENDED
+          - CAMPAIGN_OUT_OF_BUDGET
+          - AD_GROUP_PAUSED
+          - AD_GROUP_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - ACCOUNT_OUT_OF_BUDGET
+          - PENDING_START_DATE
+    CreateNegativeKeyword:
+      properties:
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which the negative keyword
+            is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which the negative keyword
+            is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        keywordText:
+          type: string
+          description: The text of the expression to match against a search query.
+        matchType:
+          $ref: '#/components/schemas/NegativeMatchType'
+    UpdateNegativeKeyword:
+      properties:
+        keywordId:
+          type: number
+          description: The identifer of the keyword.
+        state:
+          $ref: '#/components/schemas/State'
+    NegativeKeywordResponse:
+      properties:
+        keywordId:
+          type: number
+          description: The identifier of the keyword.
+        code:
+          type: string
+          description: The success or error code for the operation.
+        details:
+          type: string
+          description: The human-readable description of the error.
+        description:
+          type: string
+          description: The human-readable description of the error.
+    NegativeTargetingClauseResponse:
+      properties:
+        targetId:
+          type: number
+          description: The negative target identifier.
+        code:
+          type: string
+          description: An enumerated response code.
+        details:
+          type: string
+          description: A human-readable description of the value in the `code` field.
+        description:
+          type: string
+          description: A human-readable description of the value in the `code` field.
+    CreateNegativeTargetingClause:
+      properties:
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this negative target
+            is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this negative target
+            is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The negative targeting expression.
+          items:
+            $ref: '#/components/schemas/NegativeTargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+    UpdateNegativeTargetingClause:
+      properties:
+        targetId:
+          type: number
+          description: The target identifier.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The targeting expression.
+          items:
+            $ref: '#/components/schemas/NegativeTargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+    NegativeTargetingClause:
+      properties:
+        targetId:
+          type: number
+          description: The negative target identifier.
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this negative target
+            is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this negative target
+            is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The negative targeting expression.
+          items:
+            $ref: '#/components/schemas/NegativeTargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/NegativeExpressionType'
+    NegativeTargetingClauseEx:
+      properties:
+        targetId:
+          type: number
+          description: The negative target identifier.
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this negative target
+            is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this negative target
+            is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The negative targeting expression.
+          items:
+            $ref: '#/components/schemas/NegativeTargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/NegativeExpressionType'
+        creationDate:
+          type: number
+          description: The epoch time that the negative targeting clause was created.
+        lastUpdatedDate:
+          type: number
+          description: The epoch time that the negative targeting clause was updated.
+        servingStatus:
+          type: string
+          description: "The computed status of the negative targeting clause. See\
+            \ the [developer notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for more information."
+          enum:
+          - TARGETING_CLAUSE_ARCHIVED
+          - TARGETING_CLAUSE_PAUSED
+          - TARGETING_CLAUSE_STATUS_LIVE
+          - TARGETING_CLAUSE_POLICING_SUSPENDED
+          - CAMPAIGN_OUT_OF_BUDGET
+          - AD_GROUP_PAUSED
+          - AD_GROUP_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - ACCOUNT_OUT_OF_BUDGET
+          - PENDING_START_DATE
+    ProductAd:
+      properties:
+        adId:
+          type: number
+          description: The product ad identifier.
+        campaignId:
+          type: number
+          description: The campaign identifier.
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        sku:
+          type: string
+          description: The SKU associated with the product. Defined for seller accounts
+            only.
+        asin:
+          type: string
+          description: The ASIN associated with the product. Defined for vendors only.
+        state:
+          $ref: '#/components/schemas/State'
+    CreateProductAd:
+      properties:
+        campaignId:
+          type: number
+          description: The campaign identifier.
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        sku:
+          type: string
+          description: The SKU associated with the product. Defined for seller accounts
+            only.
+        asin:
+          type: string
+          description: The ASIN associated with the product. Defined for vendors only.
+        state:
+          $ref: '#/components/schemas/State'
+    UpdateProductAd:
+      properties:
+        adId:
+          type: number
+          description: The product ad identifier.
+        state:
+          $ref: '#/components/schemas/State'
+    ProductAdEx:
+      properties:
+        adId:
+          type: number
+          description: The product ad identifier.
+        campaignId:
+          type: number
+          description: The campaign identifier.
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        sku:
+          type: string
+          description: The SKU associated with the product. Defined for seller accounts
+            only.
+        asin:
+          type: string
+          description: The ASIN associated with the product. Defined for vendors only.
+        state:
+          $ref: '#/components/schemas/State'
+        creationDate:
+          type: number
+          description: The epoch date the product ad was created.
+        lastUpdatedDate:
+          type: number
+          description: The epoch date the product ad was last updated.
+        servingStatus:
+          type: string
+          description: "The computed status of the product ad. See the [developer\
+            \ notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for more information."
+          enum:
+          - AD_ARCHIVED
+          - AD_PAUSED
+          - AD_STATUS_LIVE
+          - AD_POLICING_SUSPENDED
+          - CAMPAIGN_OUT_OF_BUDGET
+          - AD_GROUP_PAUSED
+          - AD_GROUP_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - ACCOUNT_OUT_OF_BUDGET
+          - MISSING_DECORATION
+          - PENDING_START_DATE
+        servingStatusDetails:
+          type: array
+          description: Details of serving status. Only statuses related to moderation
+            according to the ad policy are currently included.
+          items:
+            $ref: '#/components/schemas/ProductAdEx_servingStatusDetails'
+    ProductRecommendationsResponse:
+      properties:
+        totalResultCount:
+          type: number
+          description: The total number of recommendations in the response.
+        recommendedProducts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductRecommendationsResponse_recommendedProducts'
+    RefinementsResponse:
+      properties:
+        categoryId:
+          type: number
+          description: The category identifier.
+        brands:
+          type: array
+          description: The brands found in this category.
+          items:
+            $ref: '#/components/schemas/RefinementsResponse_brands'
+    ReportMetrics:
+      type: string
+      description: "A comma-separated list of the metrics to be included in the report.\
+        \ \nEach report type supports different metrics. To understand supported metrics\
+        \ for each report type, see [Report types](/API/docs/en-us/guides/reporting/v2/report-types)."
+    Report:
+      properties:
+        stateFilter:
+          type: string
+          description: "Filters the response to include reports with `stateFilter`\
+            \ set to one of the values in the comma-delimited list. `stateFilter`\
+            \ and `segment` cannot be used in the same report request. \n`asins` report\
+            \ types do not support the use of `stateFilter`."
+          enum:
+          - enabled
+          - paused
+          - archived
+        campaignType:
+          required:
+          - sponsoredProducts
+          type: string
+          description: The type of campaign. Only required for `asins` reports - don't
+            use with other report types.
+          enum:
+          - sponsoredProducts
+        segment:
+          type: string
+          description: "A secondary dimension used to further segment certain types\
+            \ of reports. `stateFilter` and `segment` cannot be used in the same report\
+            \ request. Keyword search term reports only return search terms that have\
+            \ generated at least one click or sale.\n\n**Note**: Search term reports\
+            \ for auto-targeted campaigns created before 11/14/2018 can be accessed\
+            \ from the `/v2/sp/keywords/report` resource. Search term reports for\
+            \ auto-targeted campaigns generated on-and-after 11/14/2018 can be accessed\
+            \ from the `/v2/sp/targets/report` resource. \n\n| Dimension | Valid report\
+            \ types | Description |\n|-----------|-------------|-------------|\n|\
+            \ query | keywords, targets | Segments a report based on customer search\
+            \ term. |\n| placement | campaigns | Segments a `campaigns` report based\
+            \ on the page location where the ad appeared. |"
+          enum:
+          - query
+          - placement
+        reportDate:
+          type: string
+          description: "The date for which to retrieve the performance report in YYYYMMDD\
+            \ format. The time zone is specified by the profile used to request the\
+            \ report. If this date is today, then the performance report may contain\
+            \ partial information. Reports are not available for data older than 60\
+            \ days. For details on data latency, see the service guarantees in the\
+            \ [developer notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ section."
+        metrics:
+          $ref: '#/components/schemas/ReportMetrics'
+    SnapshotRequest:
+      properties:
+        stateFilter:
+          type: string
+          enum:
+          - enabled
+          - paused
+          - archived
+          - "enabled, paused"
+          - "enabled, archived"
+          - "paused, archived"
+          - "enabled, paused, archived"
+    SnapshotResponse:
+      properties:
+        snapshotId:
+          type: string
+          description: The snapshot identifier.
+        recordType:
+          type: string
+          description: The record type of the report.
+          enum:
+          - campaigns
+          - adGroups
+          - keywords
+          - negativeKeywords
+          - campaignNegativeKeywords
+          - productAds
+          - targets
+          - negativeTargets
+        status:
+          type: string
+          description: The generation status of the snapshot.
+          enum:
+          - IN_PROGRESS
+          - SUCCESS
+          - FAILURE
+      example:
+        snapshotId: snapshotId
+        recordType: campaigns
+        status: IN_PROGRESS
+    State:
+      type: string
+      description: The current resource state.
+      enum:
+      - enabled
+      - paused
+      - archived
+    SuggestedBid:
+      type: object
+      properties:
+        suggested:
+          type: number
+          description: The bid recommendation.
+        rangeStart:
+          type: number
+          description: The lower bound bid recommendation.
+        rangeEnd:
+          type: number
+          description: The upper bound bid recommendation.
+      description: Information about the recommended bid.
+      example:
+        suggested: 6.027456183070403
+        rangeStart: 1.4658129805029452
+        rangeEnd: 5.962133916683182
+    TargetingExpression:
+      properties:
+        expressions:
+          type: array
+          description: List of targeting expressions for which to generate bid recommendations.
+          items:
+            $ref: '#/components/schemas/TargetingExpression_expressions'
+    NegativeExpressionType:
+      type: string
+      description: The type of expression.
+      enum:
+      - manual
+    NegativeTargetingExpressionPredicate:
+      properties:
+        value:
+          type: string
+          description: The expression value
+        type:
+          type: string
+          description: The targeting type
+          enum:
+          - asinBrandSameAs
+          - asinSameAs
+    TargetingExpressionPredicate:
+      properties:
+        value:
+          type: string
+          description: The expression value
+        type:
+          type: string
+          description: |-
+            The type of targeting expression. You can specify values for the following predicates:
+            | Predicate | Description |
+            | --- | --- |
+            | `asinCategorySameAs` | Negatively Target the same category as the category expressed. |
+            | `asinBrandSameAs` | Target the brand that is the same as the brand expressed. |
+            | `asinPriceLessThan` | Target a price that is less than the price expressed. |
+            | `asinPriceBetween` | Target a price that is between the prices expressed. |
+            | `asinPriceGreaterThan` | Target a price that is greater than the price expressed. |
+            | `asinReviewRatingLessThan` | Target a review rating less than the review rating that is expressed. |
+            | `asinReviewRatingBetween` | Target a review rating that is between the review ratings expressed. |
+            | `asinReviewRatingGreaterThan` | Target a review rating that is greater than the review rating expressed. |
+            | `asinSameAs` | Target an ASIN that is the same as the ASIN expressed. |
+            | `asinIsPrimeShippingEligible` | Target products that are Prime Shipping Eligible. This refinement can be applied at a category or brand level only. |
+            | `asinAgeRangeSameAs` | Target an age range that is in the expressed range. This refinement can be applied for toys and games categories only. |
+            | `asinGenreSameAs` | Target products related to the expressed genre. This refinement can be applied for Books and eBooks categories only.   |
+            | `asinExpandedFrom` | Target a single product along with others closely related to it, including substitutes and complements.   |
+            | `queryExactMatches` | Use this enum to exactly match your query with search queries.   |
+            | `queryPhraseMatches` | Use this enum to match your query with search phrases.   |
+            | `queryBroadMatches` | Use this enum to broadly match your query with search queries.   |
+          enum:
+          - asinCategorySameAs
+          - asinBrandSameAs
+          - asinPriceLessThan
+          - asinPriceBetween
+          - asinPriceGreaterThan
+          - asinReviewRatingLessThan
+          - asinReviewRatingBetween
+          - asinReviewRatingGreaterThan
+          - asinSameAs
+          - queryBroadRelMatches
+          - queryHighRelMatches
+          - asinSubstituteRelated
+          - asinAccessoryRelated
+          - asinAgeRangeSameAs
+          - asinGenreSameAs
+          - asinIsPrimeShippingEligible
+          - asinExpandedFrom
+          - queryExactMatches
+          - queryPhraseMatches
+          - queryBroadMatches
+      example:
+        type: asinCategorySameAs
+        value: value
+    TargetingClause:
+      properties:
+        targetId:
+          type: number
+          description: The target identifier.
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this target is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this target is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        resolvedExpression:
+          type: array
+          description: The resolved targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+        bid:
+          $ref: '#/components/schemas/Bid'
+    CreateTargetingClause:
+      properties:
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this target is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this target is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        resolvedExpression:
+          type: array
+          description: The resolved targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+        bid:
+          $ref: '#/components/schemas/Bid'
+    UpdateTargetingClause:
+      properties:
+        targetId:
+          type: number
+          description: The target identifier.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        resolvedExpression:
+          type: array
+          description: The resolved targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+        bid:
+          $ref: '#/components/schemas/Bid'
+    TargetingClauseEx:
+      properties:
+        targetId:
+          type: number
+          description: The target identifier.
+        campaignId:
+          type: number
+          description: The identifier of the campaign to which this target is associated.
+        adGroupId:
+          type: number
+          description: The identifier of the ad group to which this target is associated.
+        state:
+          $ref: '#/components/schemas/State'
+        expression:
+          type: array
+          description: The targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        resolvedExpression:
+          type: array
+          description: The resolved targeting expression.
+          items:
+            $ref: '#/components/schemas/TargetingExpressionPredicate'
+        expressionType:
+          $ref: '#/components/schemas/ExpressionType'
+        bid:
+          $ref: '#/components/schemas/Bid'
+        creationDate:
+          type: number
+          description: The epoch time that the targeting clause was created.
+        lastUpdatedDate:
+          type: number
+          description: The epoch time that the targeting clause was updated.
+        servingStatus:
+          type: string
+          description: "The computed status of the targeting clause. See the [developer\
+            \ notes](https://advertising.amazon.com/API/docs/en-us/reference/concepts/developer-notes)\
+            \ for more information."
+          enum:
+          - TARGETING_CLAUSE_ARCHIVED
+          - TARGETING_CLAUSE_PAUSED
+          - TARGETING_CLAUSE_STATUS_LIVE
+          - TARGETING_CLAUSE_POLICING_SUSPENDED
+          - CAMPAIGN_OUT_OF_BUDGET
+          - AD_GROUP_PAUSED
+          - AD_GROUP_ARCHIVED
+          - CAMPAIGN_PAUSED
+          - CAMPAIGN_ARCHIVED
+          - ACCOUNT_OUT_OF_BUDGET
+          - PENDING_START_DATE
+    TargetingClauseResponse:
+      properties:
+        targetId:
+          type: number
+          description: The target identifier.
+        code:
+          type: string
+          description: An enumerated response code.
+        details:
+          type: string
+          description: A human-readable description of the value in the `code` field.
+        description:
+          type: string
+          description: A human-readable description of the value in the `code` field.
+    UpdateCampaign:
+      properties:
+        campaignId:
+          type: number
+          description: The identifier of an existing campaign to update.
+        portfolioId:
+          type: number
+          description: The identifier of an existing portfolio to which the campaign
+            is associated.
+        name:
+          type: string
+          description: The name of the campaign.
+        tags:
+          $ref: '#/components/schemas/CampaignTags'
+        state:
+          $ref: '#/components/schemas/State'
+        dailyBudget:
+          minimum: 1.0
+          type: number
+          description: The daily budget of the campaign.
+          format: float
+        startDate:
+          type: string
+          description: The starting date of the campaign. The format of the date is
+            YYYYMMDD.
+        endDate:
+          type: string
+          description: The ending date of the campaign to stop running. The format
+            of the date is YYYYMMDD.
+          nullable: true
+        premiumBidAdjustment:
+          type: boolean
+          description: "If set to true, Amazon increases the default bid for ads that\
+            \ are eligible to appear in this placement. See developer notes for more\
+            \ information."
+        bidding:
+          $ref: '#/components/schemas/Bidding'
+    Bid:
+      minimum: 0.02
+      type: number
+      description: |-
+        The bid for ads sourced using the target. Targets that do not have bid values in listTargetingClauses will inherit the defaultBid from the adGroup level. This table details the maximum allowable bid (in local currency) for keywords by marketplace:
+        | Marketplace | Currency | Min / Max bid for SP |
+        | --- | --- | --- |
+        | US | USD | 0.02 / 1000 |
+        | CA | CAD | 0.02 / 1000 |
+        | UK | GBP | 0.02 / 1000 |
+        | DE | EUR | 0.02 / 1000 |
+        | FR | EUR | 0.02 / 1000 |
+        | ES | EUR | 0.02 / 1000 |
+        | IT | EUR | 0.02 / 1000 |
+        | JP | JPY | 2.0 / 100000 |
+        | AU | AUD | 0.10 / 1410 |
+        | AE | AED | 0.24 / 184.0 |
+      format: float
+      nullable: true
+    suggested_keywords_body:
+      type: object
+      properties:
+        asins:
+          type: array
+          description: A list of ASINs.
+          items:
+            type: string
+        maxNumSuggestions:
+          maxItems: 1000
+          minItems: 1
+          type: integer
+          description: The maximum number of suggested keywords in the response.
+          default: 100
+    targets_bidRecommendations_body:
+      type: object
+      properties:
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        expressions:
+          type: array
+          description: The list of targeting expressions.
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/TargetingExpressionPredicate'
+    inline_response_200:
+      type: object
+      properties:
+        adGroupId:
+          type: number
+          description: The ad group identifier.
+        recommendations:
+          type: array
+          description: The list of recommended bids with associated targeting expressions.
+          items:
+            $ref: '#/components/schemas/inline_response_200_recommendations'
+      example:
+        recommendations:
+        - suggestedBid:
+            suggested: 6.027456183070403
+            rangeStart: 1.4658129805029452
+            rangeEnd: 5.962133916683182
+          expression:
+            type: asinCategorySameAs
+            value: value
+          code: SUCCESS
+        - suggestedBid:
+            suggested: 6.027456183070403
+            rangeStart: 1.4658129805029452
+            rangeEnd: 5.962133916683182
+          expression:
+            type: asinCategorySameAs
+            value: value
+          code: SUCCESS
+        adGroupId: 0.8008281904610115
+    Bidding_adjustments:
+      type: object
+      properties:
+        predicate:
+          type: string
+          description: |-
+            You can enable controls to adjust your bid based on the placement location. Specify a location where you want to use bid controls. The percentage value set is the percentage of the original bid for which you want to have your bid adjustment increased. For example, a 50% adjustment on a $1.00 bid would increase the bid to $1.50 for the opportunity to win a specified placement.
+            | Predicate |  Placement |
+            |-----------|------------|
+            | `placementTop` | Top of search (first page) |
+            | `placementProductPage` | Product pages |
+          enum:
+          - placementTop
+          - placementProductPage
+        percentage:
+          type: number
+          description: The bid adjustment percentage value.
+          format: float
+    BidRecommendationsResponse_recommendations:
+      properties:
+        code:
+          type: string
+          description: The resulting status code for retrieving the bid.
+          enum:
+          - SUCCESS
+          - NOT_FOUND
+        keyword:
+          type: string
+          description: The keyword text.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+        suggestedBid:
+          $ref: '#/components/schemas/SuggestedBid'
+      example:
+        suggestedBid:
+          suggested: 6.027456183070403
+          rangeStart: 1.4658129805029452
+          rangeEnd: 5.962133916683182
+        code: SUCCESS
+        matchType: exact
+        keyword: keyword
+    BidRecommendationsForTargetsResponse_recommendations:
+      type: object
+      properties:
+        suggestedBid:
+          $ref: '#/components/schemas/SuggestedBid'
+        expressions:
+          $ref: '#/components/schemas/TargetingExpression'
+    BulkGetAsinSuggestedKeywordsResponse_inner:
+      type: object
+      properties:
+        keywordText:
+          type: string
+          description: The keyword text.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+      example:
+        matchType: exact
+        keywordText: keywordText
+    GetAsinSuggestedKeywordsResponse_suggestedKeywords:
+      type: object
+      properties:
+        keywordText:
+          type: string
+          description: The text of the suggested keyword.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+      example:
+        matchType: exact
+        keywordText: keywordText
+    KeywordBidRecommendationsData_keywords:
+      type: object
+      properties:
+        keyword:
+          type: string
+          description: The keyword text.
+        matchType:
+          $ref: '#/components/schemas/MatchType'
+    ProductAdEx_servingStatusDetails:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The status identifier.
+        severity:
+          type: string
+          description: "An enumerated advertising eligibility severity status. If\
+            \ set to `INELIGIBLE`, the product cannot be included in an advertisement.\
+            \ If set to `ELIGIBLE_WITH_WARNING`, the product may not receive impressions\
+            \ when included in an advertisement."
+        message:
+          type: string
+          description: A human-readable description of the status identifier specified
+            in the `name` field.
+        helpUrl:
+          type: string
+          description: A URL with additional information about the status identifier.
+            May not be present for all status identifiers.
+    ProductRecommendationsResponse_recommendedProducts:
+      type: object
+      properties:
+        recommendedTargetAsin:
+          type: string
+          description: The recommended ASIN for targeting.
+    RefinementsResponse_brands:
+      type: object
+      properties:
+        id:
+          type: number
+          description: "The brand identifier. Note that this is not the same identifier\
+            \ returned from the [getBrands](sponsored-brands/3-0/openapi#/Brands/getBrands)\
+            \ operation."
+        name:
+          type: string
+          description: The brand name.
+    TargetingExpression_expressions:
+      type: object
+      properties:
+        type:
+          type: array
+          description: The type.
+          items:
+            type: string
+            enum:
+            - queryBroadMatches
+            - queryPhraseMatches
+            - queryExactMatches
+            - asinCategorySameAs
+            - asinBrandSameAs
+            - asinPriceLessThan
+            - asinPriceBetween
+            - asinPriceGreaterThan
+            - asinReviewRatingLessThan
+            - asinReviewRatingBetween
+            - asinReviewRatingGreaterThan
+            - asinSameAs
+            - queryBroadRelMatches
+            - queryHighRelMatches
+            - asinSubstituteRelated
+            - asinAccessoryRelated
+        value:
+          type: string
+          description: The expression value
+    inline_response_200_recommendations:
+      type: object
+      properties:
+        suggestedBid:
+          $ref: '#/components/schemas/SuggestedBid'
+        expression:
+          $ref: '#/components/schemas/TargetingExpressionPredicate'
+        code:
+          type: string
+          description: The response code.
+          enum:
+          - SUCCESS
+          - INVALID_ARGUMENT
+          - NOT_FOUND
+          - INTERNAL_ERROR
+          - SERVER_IS_BUSY
+          - UNAUTHORIZED
+      example:
+        suggestedBid:
+          suggested: 6.027456183070403
+          rangeStart: 1.4658129805029452
+          rangeEnd: 5.962133916683182
+        expression:
+          type: asinCategorySameAs
+          value: value
+        code: SUCCESS
+  responses:
+    BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotAcceptable:
+      description: One or more values specified for a parameter was not within the
+        specified acceptable range.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: An invalid parameter was specified.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InvalidQueryParam:
+      description: One or more query parameters contained an invalid value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ResourceNotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    adId:
+      name: adId
+      in: path
+      description: A product ad identifier.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: number
+    adIdFilter:
+      name: adIdFilter
+      in: query
+      description: Restricts results to product ads associated with the product ad
+        identifiers specified in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    adGroupId:
+      name: adGroupId
+      in: path
+      description: The identifier of a valid ad group.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: number
+    adGroupIdFilter:
+      name: adGroupIdFilter
+      in: query
+      description: Restricts results to keywords associated with ad groups specified
+        by identifier in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    adStateFilter:
+      name: adStateFilter
+      in: query
+      description: Filters results to ad groups with state matching the comma-delimited
+        list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - enabled
+        - paused
+        - archived
+        - "enabled, paused"
+        - "enabled, archived"
+        - "paused, archived"
+        - "enabled, paused, archived"
+    campaignIdFilter:
+      name: campaignIdFilter
+      in: query
+      description: A comma-delimited list of campaign identifiers.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    campaignType:
+      name: campaignType
+      in: query
+      description: Restricts results to ad groups within campaign types specified
+        in comma-separated list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    clientHeader:
+      name: Amazon-Advertising-API-ClientId
+      in: header
+      description: The identifier of a client associated with a "Login with Amazon"
+        developer account.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    count:
+      name: count
+      in: query
+      description: Number of records to include in the paged response. Defaults to
+        max page size of 5000.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: number
+    keywordIdFilter:
+      name: keywordIdFilter
+      in: query
+      description: Restricts results to keywords associated with campaigns specified
+        by identifier in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    locale:
+      name: locale
+      in: query
+      description: Restricts results to keywords associated with locale.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    keywordText:
+      name: keywordText
+      in: query
+      description: Restricts results to keywords that match the specified text exactly.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    matchTypeFilter:
+      name: matchTypeFilter
+      in: query
+      description: "Restricts results to keywords with match types within the specified\
+        \ comma-separated list. For more information, see [match types](https://advertising.amazon.com/help#GHTRFDZRJPW6764R)\
+        \ in the Amazon Ads support center."
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - broad
+        - phrase
+        - exact
+    maxNumSuggestions:
+      name: maxNumSuggestions
+      in: query
+      description: The maximum number of suggested keywords for the response.
+      required: false
+      style: form
+      explode: true
+      schema:
+        maximum: 1000
+        minimum: 1
+        type: integer
+        default: 100
+    name:
+      name: name
+      in: query
+      description: Restricts results to campaigns with the specified name.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    negativeAdGroupIdFilter:
+      name: adGroupIdFilter
+      in: query
+      description: Restricts results to negative keywords associated with ad groups
+        specified by identifier in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    negativeCampaignIdFilter:
+      name: campaignIdFilter
+      in: query
+      description: Restricts results to negative keywords associated with campaigns
+        specified by identifier in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    negativeKeywordText:
+      name: keywordText
+      in: query
+      description: Restricts results to negative keywords that match the specified
+        text.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    negativeMatchTypeFilter:
+      name: matchTypeFilter
+      in: query
+      description: "Restricts results to negative keywords with match types within\
+        \ the specified comma-separated list. For more information, see [match types](https://advertising.amazon.com/help#GHTRFDZRJPW6764R)\
+        \ in the Amazon Ads support center."
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - negativePhrase
+        - negativeExact
+    negativeStateFilter:
+      name: stateFilter
+      in: query
+      description: Restricts results to negative resources with state within the specified
+        comma-separated list. Default includes all.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - enabled
+        - archived
+    negativeKeywordIdFilter:
+      name: keywordIdFilter
+      in: query
+      description: Restricts results to negative keywords associated with campaigns
+        specified by identifier in the comma-delimited list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    portfolioIdFilter:
+      name: portfolioIdFilter
+      in: query
+      description: A comma-delimited list of portfolio identifiers.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    profileHeader:
+      name: Amazon-Advertising-API-Scope
+      in: header
+      description: The identifier of a profile associated with the advertiser account.
+        Use `GET` method on Profiles resource to list profiles associated with the
+        access token passed in the HTTP Authorization header.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    startIndex:
+      name: startIndex
+      in: query
+      description: 0-indexed record offset for the result set.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: number
+        default: 0
+    stateFilter:
+      name: stateFilter
+      in: query
+      description: Restricts results to resources with state within the specified
+        comma-separated list.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - enabled
+        - paused
+        - archived
+        - "enabled, paused"
+        - "enabled, archived"
+        - "paused, archived"
+        - "enabled, paused, archived"
+    targetId:
+      name: targetId
+      in: path
+      description: The target identifier.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: number
+    targetIdFilter:
+      name: targetIdFilter
+      in: query
+      description: A comma-delimited list of target identifiers.
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer

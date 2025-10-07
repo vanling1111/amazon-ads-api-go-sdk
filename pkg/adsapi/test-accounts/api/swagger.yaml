@@ -1,0 +1,287 @@
+openapi: 3.0.1
+info:
+  title: AdvertisingTestAccount
+  description: Create test advertising account for 3P API integrators
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /testAccounts:
+    get:
+      tags:
+      - 'Get test account information '
+      description: API to get Account information.
+      operationId: GetAccountInformation
+      parameters:
+      - name: requestId
+        in: query
+        description: request id.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAccountInformationResponse'
+        "400":
+          description: Bad Request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "422":
+          description: Unprocessable entity - Failed due to invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "503":
+          description: Service Unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    post:
+      tags:
+      - Create test account
+      summary: API to create test accounts
+      description: Submit a account creation request. You can create up to 1 test
+        account type per marketplace.
+      operationId: createAccount
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+        required: true
+      responses:
+        "200":
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAccountResponse'
+        "400":
+          description: Bad Request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "422":
+          description: Unprocessable entity - Failed due to invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        "503":
+          description: Service Unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+components:
+  schemas:
+    CreateAccountRequest:
+      required:
+      - accountType
+      - countryCode
+      type: object
+      properties:
+        accountMetaData:
+          $ref: '#/components/schemas/CreateAccountRequest_accountMetaData'
+        accountType:
+          type: string
+          description: Type of test account.
+          enum:
+          - AUTHOR
+          - VENDOR
+        countryCode:
+          type: string
+          description: Country code of the test  account.
+          enum:
+          - AE
+          - AU
+          - BE
+          - BR
+          - CA
+          - DE
+          - EG
+          - ES
+          - FR
+          - IT
+          - JP
+          - MX
+          - NL
+          - PL
+          - SA
+          - SE
+          - SG
+          - TR
+          - UK
+          - US
+    CreateAccountResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: request id.
+          example: A7BCDGCEVXQ1CJJ4301V
+      example:
+        requestId: A7BCDGCEVXQ1CJJ4301V
+    GetAccountInformationResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/GetAccountInformationResponse_inner'
+      x-schema-name: GetAccountInformationResponse
+    error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The HTTP status code of the response.
+        details:
+          type: string
+          description: A human-readable description of the response.
+      description: Error response object.
+    CreateAccountRequest_accountMetaData:
+      properties:
+        vendorCode:
+          type: string
+          description: Vendor code  that needs to  be associated with the vendor  account.
+          example: ABCDE
+    GetAccountInformationResponse_inner:
+      type: object
+      properties:
+        accountType:
+          type: string
+          description: Type of test account.
+          enum:
+          - AUTHOR
+          - VENDOR
+        asins:
+          maxItems: 3
+          minItems: 3
+          type: array
+          description: List of ASIN belonging to Author account.
+          example:
+          - B0123456789
+          - B0123456789
+          - B0123456789
+          items:
+            type: string
+        countryCode:
+          type: string
+          description: Country code of a test account.
+          example: US
+          enum:
+          - AE
+          - AU
+          - BE
+          - BR
+          - CA
+          - DE
+          - EG
+          - ES
+          - FR
+          - IT
+          - JP
+          - MX
+          - NL
+          - PL
+          - SA
+          - SE
+          - SG
+          - TR
+          - UK
+          - US
+        id:
+          type: string
+          description: Identifier for the account.
+          example: ENTITY012345678910
+        status:
+          type: string
+          description: Status  of test account creation request.
+          example: COMPLETED
+          enum:
+          - COMPLETED
+          - FAILED
+          - IN_PROGRESS
+      example:
+        asins:
+        - B0123456789
+        - B0123456789
+        - B0123456789
+        countryCode: US
+        accountType: AUTHOR
+        id: ENTITY012345678910
+        status: COMPLETED
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

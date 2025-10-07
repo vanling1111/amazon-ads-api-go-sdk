@@ -1,0 +1,683 @@
+openapi: 3.0.1
+info:
+  title: Marketing Mix Modeling
+  description: Request reports containing aggregated Amazon sales and media performance
+    signals needed for marketing mix modeling (MMM).
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /mmm/v1/brandGroups/list:
+    post:
+      tags:
+      - Brand Groups
+      summary: List brand groups
+      description: |-
+        Lists the predefined brand groups for which reports may be requested. A `brandGroupId` must be provided in each request to create a report using `POST /mmm/v1/reports`. Brand groups are configured by an MMM program manager as part of the onboarding process. Contact <mmm-support@amazon.com> with any questions about the brand groups defined for your manager account.
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-API-Manager-Account
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["MasterAccount_Manager","MasterAccount_Viewer","ManagerAccount_Dev"]
+      operationId: listMmmBrandGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/brandGroups_list_body'
+            example:
+              countryCodeFilter:
+                include:
+                - CA
+                - US
+              maxResults: "100"
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+              example:
+                brandGroups:
+                - advertiserName: Jack & Jill
+                  brandGroupId: 68d71a07-a3ea-47f2-9051-df7fd08a64da
+                  brandGroupName: Continuous Protection Sunscreen Lotion for Kids
+                  countryCode: US
+                - advertiserName: Accent Athletics
+                  brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                  brandGroupName: Running Shoes
+                  countryCode: US
+                - advertiserName: Accent Athletics
+                  brandGroupId: 23d7c364-0124-410b-b899-8475eddbafef
+                  brandGroupName: Apparel
+                  countryCode: US
+                - advertiserName: Accent Athletics
+                  brandGroupId: e720c323-bbe5-4729-b48e-4952a3b09146
+                  brandGroupName: Apparel
+                  countryCode: CA
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "401":
+          description: Unauthorized. User is not authenticated or is not allowed to
+            invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "403":
+          description: Forbidden. Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "429":
+          description: Too many requests. Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "500":
+          description: Internal server error. Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+  /mmm/v1/reports:
+    post:
+      tags:
+      - Reports
+      summary: Create a report
+      description: |-
+        Creates a report. Each report requires the `brandGroupId` of a predefined brand group listed in `POST /mmm/v1/brandGroups/list`. The response will include a `reportId` that can be used to poll the status and results.
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-API-Manager-Account
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["MasterAccount_Manager","MasterAccount_Viewer","ManagerAccount_Dev"]
+      operationId: createMmmReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1_reports_body'
+            example:
+              configuration:
+                brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                geoDimension: POSTAL_CODE
+                metricsType: MEDIA_AND_SALES
+                timeUnit: WEEKLY
+              description: Weekly media & sales by ZIP Code.
+              dueDate: 2024-04-15
+              endDate: 2024-03-31
+              reportName: Accent Athletics US Running Shoes Q1 2024
+              startDate: 2024-01-01
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmReport'
+              example:
+                configuration:
+                  brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                  geoDimension: POSTAL_CODE
+                  metricsType: MEDIA_AND_SALES
+                  timeUnit: WEEKLY
+                createdAt: 2024-04-12T07:00:00Z
+                description: Weekly media & sales by ZIP Code.
+                dueDate: 2024-04-15
+                endDate: 2024-03-31
+                reportId: 3190da6e-5633-4b9a-b588-acfcdcf4d47e
+                reportName: Accent Athletics US Running Shoes Q1 2024
+                startDate: 2024-01-01
+                status: PENDING
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "401":
+          description: Unauthorized. User is not authenticated or is not allowed to
+            invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "403":
+          description: Forbidden. Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "425":
+          description: Too early. Request is a duplicate of a processing request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "429":
+          description: Too many requests. Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "500":
+          description: Internal server error. Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+  /mmm/v1/reports/{reportId}:
+    get:
+      tags:
+      - Reports
+      summary: Get a report
+      description: |-
+        Gets the generation status of a report by ID. The `reportId` is found in the response to creating a report using `POST /mmm/v1/reports`. When the `status` is `SUCCESSFUL` the output files will be available for download at `urls`. A report may take up to 24 hours to be processed. Repeated calls to check report status may generate a 429 response, indicating that your requests have been throttled. To retrieve reports programmatically, your application logic should institute a delay between requests.
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-API-Manager-Account
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["MasterAccount_Manager","MasterAccount_Viewer","ManagerAccount_Dev"]
+      operationId: getMmmReport
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmReport'
+              examples:
+                failed:
+                  value:
+                    configuration:
+                      brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                      geoDimension: COUNTRY
+                      metricsType: MEDIA_ONLY
+                      timeUnit: WEEKLY
+                    createdAt: 2024-04-12T07:00:00Z
+                    description: National media performance.
+                    dueDate: 2024-04-15
+                    endDate: 2024-03-31
+                    failureCode: NO_DATA
+                    failureMessage: There is no data in the requested date range.
+                    reportId: 3190da6e-5633-4b9a-b588-acfcdcf4d47e
+                    reportName: Accent Athletics US Running Shoes Q1 2024
+                    startDate: 2024-01-01
+                    status: FAILED
+                processing:
+                  value:
+                    configuration:
+                      brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                      geoDimension: COUNTRY
+                      metricsType: MEDIA_ONLY
+                      timeUnit: WEEKLY
+                    createdAt: 2024-04-12T07:00:00Z
+                    description: National media performance.
+                    dueDate: 2024-04-15
+                    endDate: 2024-03-31
+                    reportId: 3190da6e-5633-4b9a-b588-acfcdcf4d47e
+                    reportName: Accent Athletics US Running Shoes Q1 2024
+                    startDate: 2024-01-01
+                    status: PROCESSING
+                succeeded:
+                  value:
+                    configuration:
+                      brandGroupId: d0145381-b4a9-41a0-83de-e56c8f07d712
+                      geoDimension: COUNTRY
+                      metricsType: MEDIA_ONLY
+                      timeUnit: WEEKLY
+                    createdAt: 2024-04-12T07:00:00Z
+                    description: National media performance.
+                    dueDate: 2024-04-15
+                    endDate: 2024-03-31
+                    reportId: 3190da6e-5633-4b9a-b588-acfcdcf4d47e
+                    reportName: Accent Athletics US Running Shoes Q1 2024
+                    startDate: 2024-01-01
+                    status: SUCCEEDED
+                    urls:
+                    - https://example.com/3190da6e-5633-4b9a-b588-acfcdcf4d47e/AggregatedSummaryReport.xlsx
+                    - https://example.com/3190da6e-5633-4b9a-b588-acfcdcf4d47e/CreativeGrainNationalCampaignPerformanceMetrics.tsv.zip
+                    - https://example.com/3190da6e-5633-4b9a-b588-acfcdcf4d47e/SSPANationalCampaignPerformanceMetrics.tsv.zip
+                    urlsExpireAt: 2024-04-12T09:15:45Z
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "401":
+          description: Unauthorized. User is not authenticated or is not allowed to
+            invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "403":
+          description: Forbidden. Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "404":
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "429":
+          description: Too many requests. Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "500":
+          description: Internal server error. Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+    delete:
+      tags:
+      - Reports
+      summary: Delete a report
+      description: |-
+        Deletes a report by ID. Use this operation to cancel or clean up a report.
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-API-Manager-Account
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["MasterAccount_Manager","MasterAccount_Viewer","ManagerAccount_Dev"]
+      operationId: deleteMmmReport
+      responses:
+        "204":
+          description: Successful operation.
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "401":
+          description: Unauthorized. User is not authenticated or is not allowed to
+            invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "403":
+          description: Forbidden. Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "404":
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "429":
+          description: Too many requests. Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+        "500":
+          description: Internal server error. Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmmError'
+components:
+  schemas:
+    MmmBrandGroup:
+      type: object
+      properties:
+        advertiserName:
+          type: string
+          description: Name of the advertiser associated with the brand group.
+        brandGroupId:
+          type: string
+          description: The unique identifier of the brand group.
+        brandGroupName:
+          type: string
+          description: The display name of the brand group.
+        countryCode:
+          type: string
+          description: The ISO 3166 country code of the marketplace associated with
+            the brand group.
+      description: The predefined brand or group of products being reported on.
+      example:
+        countryCode: countryCode
+        brandGroupId: brandGroupId
+        brandGroupName: brandGroupName
+        advertiserName: advertiserName
+    MmmError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Human-readable error message.
+    MmmReport:
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/MmmReportConfiguration'
+        createdAt:
+          type: string
+          description: The date and time when the report was created.
+          format: date-time
+        description:
+          type: string
+          description: A description of the report.
+        dueDate:
+          type: string
+          description: The due date of the report.
+          format: date
+        endDate:
+          type: string
+          description: Inclusive end of the reporting period.
+          format: date
+        failureCode:
+          type: string
+          description: An error code indicating why the report failed. Present when
+            the status is `FAILED`.
+        failureMessage:
+          type: string
+          description: A human-readable message providing more information about the
+            failure. Present when the status is `FAILED`.
+        reportId:
+          type: string
+          description: The unique identifier of the report.
+        reportName:
+          type: string
+          description: The display name of the report.
+        startDate:
+          type: string
+          description: Inclusive start of the reporting period.
+          format: date
+        status:
+          type: string
+          description: |-
+            The report generation status.
+            |Value|Description|
+            |---|---|
+            |PENDING|Report is created and awaiting processing.|
+            |PROCESSING|Report is processing.|
+            |SUCCEEDED|Report is completed. Check `urls` for the output files.|
+            |FAILED|Report processing failed. Check the `failureCode` and `failureMessage` for details.|
+            |CANCELED|Report is canceled. Contact <mmm-support@amazon.com> if this is unexpected.|
+          enum:
+          - CANCELED
+          - FAILED
+          - PENDING
+          - PROCESSING
+          - SUCCEEDED
+        urls:
+          maxItems: 20
+          minItems: 1
+          type: array
+          description: The URLs for downloading output files. Present when the status
+            is `SUCCEEDED`.
+          items:
+            type: string
+        urlsExpireAt:
+          type: string
+          description: The expiration date of the download URLs. Present when the
+            status is `SUCCEEDED`.
+          format: date-time
+      example:
+        failureCode: failureCode
+        reportId: reportId
+        reportName: reportName
+        configuration:
+          metricsType: MEDIA_AND_SALES
+          brandGroupId: brandGroupId
+          geoDimension: COUNTRY
+          timeUnit: DAILY
+        endDate: 2000-01-23
+        dueDate: 2000-01-23
+        description: description
+        urlsExpireAt: 2000-01-23T04:56:07.000+00:00
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        urls:
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        - urls
+        failureMessage: failureMessage
+        startDate: 2000-01-23
+        status: CANCELED
+    MmmReportConfiguration:
+      required:
+      - brandGroupId
+      - geoDimension
+      - metricsType
+      - timeUnit
+      type: object
+      properties:
+        brandGroupId:
+          type: string
+          description: Identifies the brand group being reported on.
+        geoDimension:
+          type: string
+          description: |-
+            Geographic granularity of the report.
+            |Value|Description|
+            |---|---|
+            |COUNTRY|Aggregate metrics by country.|
+            |POSTAL_CODE|Aggregate metrics by postal code, e.g. ZIP Code. Valid only in select countries.|
+            |DMA|Aggregate metrics by DMA® (Designated Market Area) region. Valid only in the US.|
+          enum:
+          - COUNTRY
+          - DMA
+          - POSTAL_CODE
+        metricsType:
+          type: string
+          description: |-
+            The type of metrics to include in the report.
+            |Value|Description|
+            |---|---|
+            |MEDIA_ONLY|Core advertising metrics only.|
+            |MEDIA_AND_SALES|Advertising and retail metrics.|
+          enum:
+          - MEDIA_AND_SALES
+          - MEDIA_ONLY
+        timeUnit:
+          type: string
+          description: |-
+            Time granularity of the report.
+            |Value|Description|
+            |---|---|
+            |DAILY|Aggregate metrics with daily granularity.|
+            |WEEKLY|Aggregate metrics with weekly granularity.|
+          enum:
+          - DAILY
+          - WEEKLY
+      example:
+        metricsType: MEDIA_AND_SALES
+        brandGroupId: brandGroupId
+        geoDimension: COUNTRY
+        timeUnit: DAILY
+    mmmv1brandGroupslist_brandGroupIdFilter:
+      required:
+      - include
+      type: object
+      properties:
+        include:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            type: string
+      description: Only list brand groups with one of these ID values.
+    mmmv1brandGroupslist_countryCodeFilter:
+      required:
+      - include
+      type: object
+      properties:
+        include:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            type: string
+      description: Only list brand groups with one of these ISO 3166 country codes.
+    brandGroups_list_body:
+      type: object
+      properties:
+        brandGroupIdFilter:
+          $ref: '#/components/schemas/mmmv1brandGroupslist_brandGroupIdFilter'
+        countryCodeFilter:
+          $ref: '#/components/schemas/mmmv1brandGroupslist_countryCodeFilter'
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Number of records to include in the paginated response. Defaults
+            to max page size.
+          format: int32
+        nextToken:
+          type: string
+          description: Token value allowing navigation to the next response page.
+    inline_response_200:
+      type: object
+      properties:
+        brandGroups:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MmmBrandGroup'
+        nextToken:
+          type: string
+          description: Token value allowing navigation to the next response page.
+      example:
+        nextToken: nextToken
+        brandGroups:
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+        - countryCode: countryCode
+          brandGroupId: brandGroupId
+          brandGroupName: brandGroupName
+          advertiserName: advertiserName
+    v1_reports_body:
+      required:
+      - configuration
+      - endDate
+      - startDate
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/MmmReportConfiguration'
+        description:
+          type: string
+          description: A description of the report.
+        dueDate:
+          type: string
+          description: The due date of the report. Used for prioritization.
+          format: date
+        endDate:
+          type: string
+          description: Inclusive end of the reporting period. Must be a Saturday or
+            Sunday when `timeUnit` is `WEEKLY`.
+          format: date
+        reportName:
+          type: string
+          description: The display name of the report.
+        startDate:
+          type: string
+          description: Inclusive start of the reporting period. Must be a Sunday or
+            Monday when `timeUnit` is `WEEKLY`.
+          format: date
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

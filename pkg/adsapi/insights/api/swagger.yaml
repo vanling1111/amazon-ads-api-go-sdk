@@ -1,0 +1,429 @@
+openapi: 3.0.1
+info:
+  title: Insights
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /insights/audiences/{audienceId}/overlappingAudiences:
+    get:
+      tags:
+      - Audience insights
+      summary: Retrieves the top audiences that overlap with the provided audience.
+      description: |2-
+
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","advertiser_campaign_view"]
+      operationId: insightsGetAudiencesOverlappingAudiences
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: audienceId
+        in: path
+        description: The identifier of an audience.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: adType
+        in: query
+        description: The advertising program.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DSP
+          - SD
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser you'd like to retrieve overlapping\
+          \ audiences for. This parameter is required for the DSP adType, but is optional\
+          \ for the SD adType."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: minimumOverlapAffinity
+        in: query
+        description: "If specified, the affinities of all returned overlapping audiences\
+          \ will be at least the provided affinity."
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: number
+      - name: maximumOverlapAffinity
+        in: query
+        description: "If specified, the affinities of all returned overlapping audiences\
+          \ will be at most the provided affinity."
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: number
+      - name: audienceCategory
+        in: query
+        description: "If specified, the categories of all returned overlapping audiences\
+          \ will be one of the provided categories."
+        required: false
+        style: form
+        explode: false
+        schema:
+          maxItems: 20
+          minItems: 1
+          type: array
+          items:
+            type: string
+      - name: maxResults
+        in: query
+        description: Sets the maximum number of overlapping audiences in the response.
+          This parameter is supported only for request to return `application/vnd.insightsaudiencesoverlap.v2+json`.
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 500
+          minimum: 1
+          type: integer
+      - name: nextToken
+        in: query
+        description: "Token to be used to request additional overlapping audiences.\
+          \ If not provided, the top 30 overlapping audiences are returned. Note:\
+          \ subsequent calls must be made using the same parameters as used in previous\
+          \ requests."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successfully retrieved the overlapping audiences.
+          content:
+            application/vnd.insightsaudiencesoverlap.v2+json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: Bad request - Failed to retrieve the overlapping audiences
+            because the request parameters are not valid.
+          content:
+            application/vnd.insightserror.v1+json:
+              schema:
+                $ref: '#/components/schemas/insightsError'
+        "403":
+          description: Forbidden - Failed to retrieve the overlapping audiences because
+            the user does not have access to the audience requested.
+          content:
+            application/vnd.insightserror.v1+json:
+              schema:
+                $ref: '#/components/schemas/insightsError'
+        "404":
+          description: Not Found – Overlapping audiences are not available for the
+            audience requested.
+          content:
+            application/vnd.insightserror.v1+json:
+              schema:
+                $ref: '#/components/schemas/insightsError'
+components:
+  schemas:
+    insightsAudiencesOverlapAudienceMetadataV2:
+      required:
+      - audienceId
+      - category
+      - name
+      type: object
+      properties:
+        audienceForecast:
+          $ref: '#/components/schemas/insightsAudiencesOverlapAudienceMetadataV2_audienceForecast'
+        audienceId:
+          type: string
+          description: The identifier of an audience.
+        category:
+          type: string
+          description: The type of the overlapping audience.
+        name:
+          type: string
+          description: Audience name
+      description: Information about any audience included in the response.
+      example:
+        audienceForecast:
+          dailyReach:
+            upperBound: 1
+            lowerBound: 1
+          dailyImpressions:
+            upperBound: 1
+            lowerBound: 1
+        name: name
+        audienceId: audienceId
+        category: category
+    insightsAudiencesOverlapEntryV2:
+      type: object
+      properties:
+        affinity:
+          minimum: 0
+          type: number
+          description: Affinity is a measure of how similar the overlapping audience
+            is to the audience selected to generate the audience overlap insights.
+            An affinity of 2 indicates that the overlapping audience is twice as likely
+            to fall into the audience selected than the average audience on Amazon.
+        audienceMetadata:
+          $ref: '#/components/schemas/insightsAudiencesOverlapAudienceMetadataV2'
+      description: Contains information about the overlapping audiences and their
+        affinity with the provided audience.
+      example:
+        audienceMetadata:
+          audienceForecast:
+            dailyReach:
+              upperBound: 1
+              lowerBound: 1
+            dailyImpressions:
+              upperBound: 1
+              lowerBound: 1
+          name: name
+          audienceId: audienceId
+          category: category
+        affinity: 0.08008281904610115
+    insightsError:
+      required:
+      - message
+      - requestId
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detailed information about the error that occurred.
+        requestId:
+          type: string
+          description: A unique value generated by the server to identify the request.
+      description: The error returned from the server.
+    inline_response_200:
+      required:
+      - marketplace
+      - overlappingAudiences
+      - requestedAudienceMetadata
+      type: object
+      properties:
+        marketplace:
+          type: string
+          description: The locale used to generate the overlapping audiences.
+        nextToken:
+          type: string
+          description: "If present, there are more overlapping audiences than initially\
+            \ returned. Use this token to call the operation again and have the additional\
+            \ overlapping audiences returned. The token is valid for 8 hours from\
+            \ the initial request. Note: subsequent calls must be made using the same\
+            \ parameters as used in previous requests."
+        overlappingAudiences:
+          maxItems: 500
+          minItems: 0
+          type: array
+          description: The list of overlapping audiences.
+          items:
+            $ref: '#/components/schemas/insightsAudiencesOverlapEntryV2'
+        requestedAudienceMetadata:
+          $ref: '#/components/schemas/insightsAudiencesOverlapAudienceMetadataV2'
+      description: Contains metadata for the provided audience and its overlapping
+        audiences.
+      example:
+        overlappingAudiences:
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        - audienceMetadata:
+            audienceForecast:
+              dailyReach:
+                upperBound: 1
+                lowerBound: 1
+              dailyImpressions:
+                upperBound: 1
+                lowerBound: 1
+            name: name
+            audienceId: audienceId
+            category: category
+          affinity: 0.08008281904610115
+        marketplace: marketplace
+        nextToken: nextToken
+        requestedAudienceMetadata: null
+    insightsAudiencesOverlapAudienceMetadataV2_audienceForecast_dailyImpressions:
+      type: object
+      properties:
+        lowerBound:
+          minimum: 1
+          type: integer
+        upperBound:
+          minimum: 1
+          type: integer
+      description: "The available impressions across all inventory types (e.g. display,\
+        \ video, and mobile). This is an estimate and is not guaranteed. It will take\
+        \ at least 2 weeks for the impressions to become available for new audiences.\
+        \ Note: forecasted daily impressions are not available when SD adType is selected."
+      example:
+        upperBound: 1
+        lowerBound: 1
+    insightsAudiencesOverlapAudienceMetadataV2_audienceForecast_dailyReach:
+      type: object
+      properties:
+        lowerBound:
+          minimum: 1
+          type: integer
+        upperBound:
+          minimum: 1
+          type: integer
+      description: "The unique devices reachable across all inventory types (e.g.\
+        \ display, video, and mobile). This is an estimate and is not guaranteed.\
+        \ It will take at least 2 weeks for the reach to become available for new\
+        \ audiences."
+      example:
+        upperBound: 1
+        lowerBound: 1
+    insightsAudiencesOverlapAudienceMetadataV2_audienceForecast:
+      type: object
+      properties:
+        dailyImpressions:
+          $ref: '#/components/schemas/insightsAudiencesOverlapAudienceMetadataV2_audienceForecast_dailyImpressions'
+        dailyReach:
+          $ref: '#/components/schemas/insightsAudiencesOverlapAudienceMetadataV2_audienceForecast_dailyReach'
+      example:
+        dailyReach:
+          upperBound: 1
+          lowerBound: 1
+        dailyImpressions:
+          upperBound: 1
+          lowerBound: 1
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

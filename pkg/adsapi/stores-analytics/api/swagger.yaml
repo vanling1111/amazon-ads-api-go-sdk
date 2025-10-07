@@ -1,0 +1,1139 @@
+openapi: 3.0.1
+info:
+  title: Stores
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /stores/{brandEntityId}/asinMetrics:
+    post:
+      tags:
+      - Stores Analytics
+      description: |-
+        Store asin metrics provides information about your store asin performance, including rendered impressions, viewed impressions, clicks and sales. You can access Stores insights through this API.
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit"]
+      operationId: getAsinEngagementForStore
+      parameters:
+      - name: brandEntityId
+        in: path
+        description: The identifier of the requested store. It can be fetched through
+          calling existing API "/v2/stores" listed here https://advertising.amazon.com/API/docs/en-us/reference/2/stores
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: entityId
+      requestBody:
+        content:
+          application/vnd.GetAsinEngagementForStoreRequest.v1+json:
+            schema:
+              $ref: '#/components/schemas/GetAsinEngagementForStoreRequest'
+        required: true
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/vnd.GetAsinEngagementForStoreResponse.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetAsinEngagementForStoreResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "401":
+          description: Unauthorized - Request failed because user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "403":
+          description: Forbidden - Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "422":
+          description: Unprocessable entity - Failed due to invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "500":
+          description: Internal Server Error - Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+  /stores/{brandEntityId}/insights:
+    post:
+      tags:
+      - Stores Analytics
+      description: |-
+        Stores insights provides information about your store's performance, including traffic and sales. You can access Stores insights through this API.
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit"]
+      operationId: getInsightsForStoreAPI
+      parameters:
+      - name: brandEntityId
+        in: path
+        description: The identifier of the requested store. It can be fetched through
+          calling existing API "/v2/stores" listed here https://advertising.amazon.com/API/docs/en-us/reference/2/stores
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: entityId
+      requestBody:
+        content:
+          application/vnd.GetInsightsForStoreRequest.v1+json:
+            schema:
+              $ref: '#/components/schemas/GetInsightsForStoreRequest'
+            examples:
+              RequestForInsightsMetrics:
+                value:
+                  dimension: DATE
+                  endDate: 2020-01-02
+                  filter:
+                    pageIds:
+                    - page1_id
+                    sources:
+                    - ADS
+                  maxResult: 1000
+                  metrics:
+                  - ORDERS
+                  - SALES
+                  - UNITS
+                  - VIEWS
+                  - VISITORS
+                  - VISITS
+                  paginationToken: string
+                  startDate: 2020-01-01
+              RequestForStoreQualityMetrics:
+                value:
+                  dimension: DATE
+                  endDate: 2020-01-02
+                  metrics:
+                  - ACTIONS_TAKEN_BY_PEERS
+                  - COMPLETED_RECOMMENDATIONS
+                  - CONTRIBUTORS
+                  - DWELL
+                  - PEER_DWELL
+                  - RECOMMENDATIONS
+                  - SCORE_LEVEL
+                  startDate: 2020-01-01
+              RequestForStoreQualityMetricsWithLanguage:
+                value:
+                  dimension: DATE
+                  endDate: 2020-01-02
+                  language: fr-FR
+                  metrics:
+                  - ACTIONS_TAKEN_BY_PEERS
+                  - COMPLETED_RECOMMENDATIONS
+                  - CONTRIBUTORS
+                  - DWELL
+                  - PEER_DWELL
+                  - RECOMMENDATIONS
+                  - SCORE_LEVEL
+                  startDate: 2020-01-01
+        required: true
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/vnd.GetInsightsForStoreResponse.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetInsightsForStoreResponse'
+              examples:
+                "200_OK_Insights_Metrics":
+                  value:
+                    dimension: DATE
+                    metricsDetails:
+                    - date: "20180901"
+                      orders: "123"
+                      sales: "123"
+                      units: "123"
+                      views: "123"
+                      visitors: "123"
+                    - date: "20180902"
+                      orders: "123"
+                      sales: "123"
+                      units: "123"
+                      views: "123"
+                      visitors: "123"
+                    paginationToken: someRandomToken
+                "200_OK_Insights_Metrics_SQS":
+                  value:
+                    dimension: DATE
+                    metricsDetails:
+                    - ACTIONS_TAKEN_BY_PEERS: "3"
+                      COMPLETED_RECOMMENDATIONS:
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Edit best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store home
+                          page.
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Add best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store sub
+                          page.
+                      CONTRIBUTORS:
+                      - Top Contributor#1
+                      DWELL: "113.22"
+                      PEER_DWELL: "3856.83"
+                      RECOMMENDATIONS:
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Edit best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store home
+                          page.
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Add best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store sub
+                          page.
+                      SCORE_LEVEL: Medium
+                      date: "20231002"
+                    - ACTIONS_TAKEN_BY_PEERS: "3"
+                      COMPLETED_RECOMMENDATIONS:
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Edit best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store home
+                          page.
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Add best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store sub
+                          page.
+                      CONTRIBUTORS:
+                      - Top Contributor#1
+                      DWELL: "113.27"
+                      PEER_DWELL: "3856.83"
+                      RECOMMENDATIONS:
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Edit best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store home
+                          page.
+                      - category: Grow sales
+                        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+                        ctaText: Add best selling products
+                        exampleLink: https://www.amazon.com/stores/page/pageId
+                        exampleText: See best selling products or recommended products
+                          tile example.
+                        observedAverageDwellTimeIncrease: 21.00%
+                        recommendedAction: Add a Best selling products on Store sub
+                          page.
+                      SCORE_LEVEL: Medium
+                      date: "20231001"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "401":
+          description: Unauthorized - Request failed because user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "403":
+          description: Forbidden - Request failed because user does not have access
+            to a specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "422":
+          description: Unprocessable entity - Failed due to invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+        "500":
+          description: Internal Server Error - Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoresAnalyticsAPIErrorResponse'
+components:
+  schemas:
+    AsinEngagementDetail:
+      type: object
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: integer
+        - type: number
+      description: "A key-value pair map which contains the dimension and metric information.\
+        \ The key is either dimension name or metric name, while the value is the\
+        \ corresponding dimension value or metric value."
+      example:
+        addToCarts: "1"
+        asin: B08QDPS4M7
+        averageInStockPrice: "102.88"
+        averageSalePrice: "100.14"
+        clickRate: "0.057"
+        clicks: "2"
+        inStockRate: "1"
+        inStockViews: "31"
+        orders: "2"
+        renders: "438"
+        units: "2"
+        views: "31"
+      x-schema-name: AsinEngagementDetail
+    AsinEngagementDimension:
+      type: string
+      description: |-
+        User can use dimensions to aggregate the engagement metrics. Supported dimension types:
+          * `ASIN` - Amazon Standard Identification Number.
+
+          When *dimension* is omitted, user can retrieve select metrics aggregated at the store level. See *metrics* for details.
+      enum:
+      - ASIN
+    AsinEngagementMetric:
+      type: string
+      description: "Store Metric Types: Metrics aggregated at the store level. To\
+        \ be used with *dimension* omitted, otherwise a 422 response is returned.\n\
+        \ * `TOTAL_VIEWS` - Total number of times customers viewed ASINs on the store’\
+        s pages. A view can happen once per store page visit. \n * `TOTAL_CLICKS`\
+        \ - Total count of times a customer clicked an ASIN related widget on the\
+        \ store’s pages.\n\n Asin Metric Types: Metrics aggregated at the ASIN level.\
+        \ To be used with a supported dimension type (see *dimension*), otherwise\
+        \ a 422 response is returned.\n  * `RENDERS` - Number of times the asin rendered\
+        \ on a store page, this does not guarentee the customer saw the asin.\n *\
+        \ `VIEWS` - Number of times the a customer viewed an ASIN. Can happen once\
+        \ per page visit.\n  * `ORDERS` - Estimated total orders placed by Store visitors\
+        \ on the day of the ASIN view. \n Orders can have one or more total units.\n\
+        \ * `UNITS` - Estimated units purchased by Store visitors during attributed\
+        \ orders for the ASIN.\n * `ADD_TO_CARTS` - Total number of times an asin\
+        \ was added to cart by a customer on a store page. \n  * `IN_STOCK_VIEWS`\
+        \ - Total views of an asin on a store page while the asin was in stock. For\
+        \ asins with variations, the customer must have selected a variation which\
+        \ as in stock to be counted.\n  * `AVERAGE_IN_STOCK_PRICE` - Average price\
+        \ in local currency the asin was viewed at by customers while it was in stock.\
+        \ \n  *  `IN_STOCK_RATE` - Rate at which customers viewed an asin while it\
+        \ was in stock. \n  *  `AVERAGE_SALE_PRICE` - Average price in local currency\
+        \ for which the asin sold for during the order. \n  *  `CONVERSION_RATE` -\
+        \ Rate at which customers ordered a unit of the item over how many times customers\
+        \ clicked the item. \n  *  `CLICKS` - Count of how many times a customer clicked\
+        \ an asin related widget on the store page. \n  *  `CLICK_RATE` - Rate at\
+        \ which the asin was clicker per view. This ratio can be above one if the\
+        \ widget is interacted with on a widget with engaging features. (Product Showcase,\
+        \ Variation Selection in Product Grid, or Interactive Image)"
+      enum:
+      - ADD_TO_CARTS
+      - AVERAGE_IN_STOCK_PRICE
+      - AVERAGE_SALE_PRICE
+      - CLICKS
+      - CLICK_RATE
+      - CONVERSION_RATE
+      - IN_STOCK_RATE
+      - IN_STOCK_VIEWS
+      - ORDERS
+      - RENDERS
+      - TOTAL_CLICKS
+      - TOTAL_VIEWS
+      - UNITS
+      - VIEWS
+    GetAsinEngagementForStoreRequest:
+      required:
+      - endDate
+      - metrics
+      - startDate
+      type: object
+      properties:
+        dimension:
+          $ref: '#/components/schemas/AsinEngagementDimension'
+        endDate:
+          type: string
+          description: The end date (inclusive) in YYYY-MM-DD format for the time
+            period from when to fetch the insights.
+          format: date
+          example: 2020-01-02
+        metrics:
+          maxItems: 12
+          minItems: 0
+          type: array
+          description: List of the engagement metrics to be fetched. At least one
+            metric should be specified.
+          example:
+          - ADD_TO_CARTS
+          - AVERAGE_IN_STOCK_PRICE
+          - AVERAGE_SALE_PRICE
+          - CLICKS
+          - CLICK_RATE
+          - CONVERSION_RATE
+          - IN_STOCK_RATE
+          - IN_STOCK_VIEWS
+          - ORDERS
+          - RENDERS
+          - UNITS
+          - VIEWS
+          items:
+            $ref: '#/components/schemas/AsinEngagementMetric'
+        orderBy:
+          $ref: '#/components/schemas/SortOrder'
+        sortBy:
+          description: "Nullable metric to sort on. If a value is provided, it must\
+            \ also appear in the metrics list. If no value is provided, the result\
+            \ is not guaranteed to be sorted. This field is only valid when the dimension\
+            \ is ASIN."
+          example: UNITS
+        startDate:
+          type: string
+          description: The start date (inclusive) in YYYY-MM-DD format for the time
+            period from when to fetch the insights.
+          format: date
+          example: 2020-01-01
+    GetAsinEngagementForStoreResponse:
+      type: object
+      properties:
+        dimension:
+          $ref: '#/components/schemas/AsinEngagementDimension'
+        metricsDetails:
+          maxItems: 1500
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/AsinEngagementDetail'
+      example:
+      - addToCarts: "1"
+        asin: B07MP1Q3W8
+        averageInStockPrice: "10.88"
+        averageSalePrice: "10.93"
+        clickRate: "0.888"
+        clicks: "22"
+        inStockRate: "0.0871"
+        inStockViews: "20"
+        orders: "10"
+        renders: "487"
+        units: "12"
+        views: "319"
+      - addToCarts: "1"
+        asin: B08QDPS4M7
+        averageInStockPrice: "102.88"
+        averageSalePrice: "100.14"
+        clickRate: "0.057"
+        clicks: "2"
+        inStockRate: "1"
+        inStockViews: "31"
+        orders: "2"
+        renders: "438"
+        units: "2"
+        views: "31"
+    GetInsightsForStoreRequest:
+      required:
+      - dimension
+      - endDate
+      - metrics
+      - startDate
+      type: object
+      properties:
+        dimension:
+          $ref: '#/components/schemas/InsightDimension'
+        endDate:
+          type: string
+          description: The end date (inclusive) in YYYY-MM-DD format for the time
+            period from when to fetch the insights.
+          format: date
+          example: 2020-01-02
+        filter:
+          allOf:
+          - $ref: '#/components/schemas/InsightFilter'
+        language:
+          type: string
+          description: |-
+            This parameter is only available for Insights Metrics request for Store Quality(SQS). The language parameter is to request RECOMMENDATIONS and CONTRIBUTORS metrics in the requested language. Currently, we support 35 languages. This parameter is optional and default value is 'en' English. Following are the values expected in `language` parameter.
+             <table>
+               <tr>
+                <th>S no.</th>
+                <th>Language Code</th>
+                <th>Language description</th>
+               </tr>
+               <tr>
+                 <th>1</th>
+                 <th>French (Canada)</th>
+                 <th>fr-CA</th>
+               </tr>
+               <tr>
+                 <th>2</th>
+                 <th>French (France)</th>
+                 <th>fr-FR</th>
+               </tr>
+               <tr>
+                 <th>3</th>
+                 <th>German</th>
+                 <th>de-DE</th>
+               </tr>
+               <tr>
+                 <th>4</th>
+                 <th>Czech</th>
+                 <th>cs-CZ</th>
+               </tr>
+               <tr>
+                <th>5</th>
+                <th>Polish</th>
+                <th>pl-PL</th>
+              </tr>
+              <tr>
+                <th>6</th>
+                <th>Turkish</th>
+                <th>tr-TR</th>
+              </tr>
+              <tr>
+                <th>7</th>
+                <th>Dutch</th>
+                <th>nl-NL</th>
+              </tr>
+              <tr>
+                <th>8</th>
+                <th>Italian</th>
+                <th>it-IT</th>
+              </tr><tr>
+                 <th>9</th>
+                 <th>Spanish (Spain)</th>
+                 <th>es-ES</th>
+               </tr>
+               <tr>
+                 <th>10</th>
+                 <th>Spanish (Mexico)</th>
+                 <th>es-MX</th>
+               </tr>
+             <tr>
+                 <th>11</th>
+                 <th>Spanish (Columbia)</th>
+                 <th>es-CO</th>
+               </tr>
+              <tr>
+                 <th>12</th>
+                 <th>Portugese (Brazil)</th>
+                 <th>pt-BR</th>
+               </tr>
+               <tr>
+                 <th>13</th>
+                 <th>Hindi (India)</th>
+                 <th>hi-IN</th>
+               </tr><tr>
+                 <th>14</th>
+                 <th>Tamil (India)</th>
+                 <th>ta-IN</th>
+               </tr>
+               <tr>
+                 <th>15</th>
+                 <th>Telugu (India)</th>
+                 <th>te-IN</th>
+               </tr>
+               <tr>
+                 <th>16</th>
+                 <th>Kanada (India)</th>
+                 <th>kn-IN</th>
+               </tr>
+               <tr>
+                 <th>17</th>
+                 <th>Malyalam (India)</th>
+                 <th>ml-IN</th>
+               </tr><tr>
+                 <th>18</th>
+                 <th>Bangla (India)</th>
+                 <th>bn-IN</th>
+               </tr>
+               <tr>
+                 <th>19</th>
+                 <th>Marathi (India)</th>
+                 <th>mr-IN</th>
+               </tr>
+               <tr>
+                 <th>20</th>
+                 <th>Japanese</th>
+                 <th>ja-JP</th>
+               </tr>
+               <tr>
+                 <th>21</th>
+                 <th>Simplified Chinese</th>
+                 <th>zh-CN</th>
+               <tr>
+            <th>
+            22</th>
+            <th>
+            Chinese - TAIWAN</th>
+            <th>
+            zh-TW</th>
+            </tr>
+            <tr>
+            <th>
+            23</th>
+            <th>
+            Vietnamese</th>
+            <th>
+            vi-VN</th>
+            </tr>
+            <tr>
+            <th>
+            24</th>
+            <th>
+            Arabic (U.A.E.)</th>
+            <th>
+            ar-AE</th>
+            </tr>
+            <tr>
+            <th>
+            25</th>
+            <th>
+            Swedish (Sweden)</th>
+            <th>
+            sv-SE</th>
+            </tr>
+            <tr>
+            <th>
+            26</th>
+            <th>
+            Thai (Thailand)</th>
+            <th>
+            th-TH</th>
+            </tr>
+            <tr>
+            <th>
+            27</th>
+            <th>
+            Korean</th>
+            <th>
+            ko-KR</th>
+            </tr>
+            </tr><tr>
+                 <th>28</th>
+                 <th>English</th>
+                 <th>en</th>
+               </tr>
+            <tr>
+                 <th>29</th>
+                 <th>English (US)</th>
+                 <th>en-US</th>
+               </tr>
+            <tr>
+                 <th>30</th>
+                 <th>English (Canada)</th>
+                 <th>en-CA</th>
+               </tr>
+            <tr>
+                 <th>31</th>
+                 <th>English (India)</th>
+                 <th>en-IN</th>
+               </tr>
+            <tr>
+                 <th>32</th>
+                 <th>English (UK)</th>
+                 <th>en-GB</th>
+               </tr>
+            <tr>
+                 <th>33</th>
+                 <th>English (UAE)</th>
+                 <th>en-AE</th>
+               </tr>
+            <tr>
+                 <th>34</th>
+                 <th>English(Australia)</th>
+                 <th>en-AU</th>
+               </tr>
+            <tr>
+                 <th>35</th>
+                 <th>English (Singapore)</th>
+                 <th>en-SG</th>
+               </tr>
+             </table>
+             <br><br>
+          example: es-MX
+        maxResult:
+          maximum: 1500
+          minimum: 1
+          type: integer
+          description: "The max number of result that will be returned in one response.\
+            \ The max allowed value will be 1500. If the parameter is not presented,\
+            \ it will be default to 1500."
+          example: 1000
+        metrics:
+          maxItems: 20
+          minItems: 1
+          type: array
+          description: List of the insight metrics to be fetched. Only one metric
+            should be specified.
+          example:
+          - ORDERS
+          - SALES
+          - UNITS
+          - VIEWS
+          - VISITORS
+          - VISITS
+          items:
+            $ref: '#/components/schemas/InsightMetric'
+        paginationToken:
+          type: string
+          description: The token that last request returned. It will be used to fetch
+            next page of response.
+        startDate:
+          type: string
+          description: "The start date (inclusive) in YYYY-MM-DD format for the time\
+            \ period from when to fetch the insights. The earliest date will be 2018-09-01,\
+            \ if the input is earlier, it will be default to 2018-09-01"
+          format: date
+          example: 2020-01-01
+    GetInsightsForStoreResponse:
+      type: object
+      properties:
+        dimension:
+          $ref: '#/components/schemas/InsightDimension'
+        filter:
+          $ref: '#/components/schemas/InsightFilter'
+        metricsDetails:
+          maxItems: 1500
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/InsightMetricsDetail'
+        paginationToken:
+          type: string
+          description: The token can be directly used to fetch next page of the result.
+            The token can only been used when the token is been created less than
+            24 hours and the request input is same as last request
+      example:
+        dimension: DATE
+        metricsDetails:
+        - date: "20180901"
+          orders: "123"
+          sales: "123"
+          units: "123"
+          views: "123"
+          visitors: "123"
+        - date: "20180902"
+          orders: "123"
+          sales: "123"
+          units: "123"
+          views: "123"
+          visitors: "123"
+        paginationToken: someRandomToken
+    InsightDimension:
+      type: string
+      description: "User can use dimensions to aggregate the insight metrics. Supported\
+        \ dimension types:\n  * `DATE` - For aggregation by date.\n  * `PAGE` - For\
+        \ aggregation by page.\n  * `SOURCE` - For aggregation by source.\n  * `TAG`\
+        \ - For aggregation by tag.\n  * `STORE` - For aggregation by store. This\
+        \ dimension is only supported for \"DWELL_TIME\", \"BOUNCE_RATE\", \"NEW_TO_STORE\"\
+        \ \n \n Please check *metrics* for more detailsdetails.\n  \n<br><br> Not\
+        \ all InsightMetrics can be aggregated using above dimensions. Below is the\
+        \ supported metrics for each dimension,\n<table>\n  <tr>\n    <th>InsightDimension</th>\n\
+        \    <th>Supported InsightMetrics</th>\n  </tr>\n  <tr>\n    <th>DATE</th>\n\
+        \    <th>Either \"VIEWS, ORDERS, UNITS, SALES, VISITS, DWELL_TIME, BOUNCE_RATE,\
+        \ NEW_TO_STORE\" or \"SCORE_LEVEL, RECOMMENDATIONS, CONTRIBUTORS, DWELL, PEER_DWELL,\
+        \ COMPLETED_RECOMMENDATIONS, ACTIONS_TAKEN_BY_PEERS\" (Store Quality metrics)</th>\n\
+        \  </tr>\n  <tr>\n    <th>PAGE</th>\n    <th>VIEWS, ORDERS, UNITS, SALES,\
+        \ VISITS,  DWELL_TIME, BOUNCE_RATE </th>\n  </tr>\n  <tr>\n    <th>SOURCE</th>\n\
+        \    <th>VIEWS, ORDERS, UNITS, SALES, VISITS,  DWELL_TIME, BOUNCE_RATE </th>\n\
+        \  </tr>\n  <tr>\n    <th>TAG</th>\n    <th>VIEWS, ORDERS, UNITS, SALES, VISITS,\
+        \  DWELL_TIME, BOUNCE_RATE </th>\n  </tr>\n<tr>\n    <th> STORE </th>\n  \
+        \  <th> DWELL_TIME, BOUNCE_RATE, NEW_TO_STORE</th>\n  </tr>\n</table>\n<br><br>"
+      enum:
+      - DATE
+      - PAGE
+      - SOURCE
+      - STORE
+      - TAG
+    InsightFilter:
+      type: object
+      properties:
+        pageIds:
+          maxItems: 200
+          minItems: 0
+          type: array
+          description: List of pages to be fetched for insight metrics. Users can
+            first make request to the API with the same parameters but without the
+            filter to retrieve all the available page ids.
+          items:
+            type: string
+        sources:
+          maxItems: 200
+          minItems: 0
+          type: array
+          description: List of sources to be fetched for insight metrics.
+          items:
+            $ref: '#/components/schemas/TrafficSource'
+        tags:
+          maxItems: 200
+          minItems: 0
+          type: array
+          description: List of tags to be fetched for insight metrics. Users can first
+            make request to the API with the same parameters but without the filter
+            to retrieve all the available tag names.
+          items:
+            type: string
+      description: "The filter to restrict the return data. Users can specifiy the\
+        \ pages/source/tags they feel interested in for the insights. The relationship\
+        \ between each field is 'AND'. E.g. The user can speficy {pageIds=[page1_id],\
+        \ sources=[source1]} to retrieve the related insights for page1 and source1.\
+        \ The user can specify {pageIds=[page1_id], tags=[tag1_name]} to retrieve\
+        \ related insights for page1 and tag1. <br><br> However, specifying both \"\
+        sources\" and \"tags\" is currently not supported. Users cannot retrieve insights\
+        \ for given sources and tags as all the tags belong to a specific source named\
+        \ \"tagged\"."
+      example:
+        pageIds:
+        - page1_id
+        sources:
+        - ADS
+    InsightMetric:
+      type: string
+      description: "Insight Metric Type:\n  * `VIEWS` - Number of page views. Data\
+        \ is available from August 30, 2017. <br> \"VIEW\" metric can be aggregated\
+        \ by all InsightDimensions.\n  * `ORDERS` - Estimated total orders placed\
+        \ by Store visitors within 14 days of\n    their visit. Orders contain one\
+        \ or more units sold. Data is\n    available from April 15, 2018. <br> \"\
+        ORDERS\" metric can be aggregated by all the InsightDimensions.\n  * `UNITS`\
+        \ - Estimated units purchased by Store visitors within 14 days of their\n\
+        \    last visit. Data is available from December 25, 2017. <br> \"UNITS\"\
+        \ metric can be aggregated by all the InsightDimensions.\n  * `SALES` - Estimated\
+        \ total sales generated by Store visitors within 14 days of\n    their last\
+        \ visit. Data is available from December 25, 2017. <br> \"SALES\" metric can\
+        \ be aggregated by all the InsightDimensions.\n  * `VISITS` - Total visits\
+        \ to a page within a single day.\n    Each visitor can visit more than one\
+        \ page, and they can visit your\n    Store from more than one traffic source.\
+        \ Data is available from May\n    30, 2018. <br> \"VISITS\" metric can be\
+        \ aggregated by all the InsightDimensions.\n  * `VISITORS` - Total visitors\
+        \ to your Store within the selected date range,\n    calculated based on daily\
+        \ unique users or devices. One visitor can\n    visit more than one page,\
+        \ and they can visit your Store from more\n    than one traffic source. The\
+        \ total visitors by page or source may\n    sum up to a value larger than\
+        \ the total visitors by day to the Store\n    or to the page. Data is available\
+        \ from August 30, 2017. <br> \"VISITORS\" metric currently can only be aggregated\
+        \ by InsightDimension \"Date\". Users won't be able to get this metric when\
+        \ specifying other InsightDimensions. This is because number of visitors are\
+        \ measured at store level. This also means this metric won't be impacted by\
+        \ the InsightFilter.\n * `SCORE_LEVEL` This metric is for Store Quality rating\
+        \ calculated on various factors defining the quality of a store. It can be\
+        \ `HIGH`, `MEDIUM` or `LOW`. This metric currently can only be aggregated\
+        \ by InsightDimension \"DATE\".  \n * `RECOMMENDATIONS` This metric is an\
+        \ Array of Object containing 8 fields. \n \t1. `recommendedAction` is a description\
+        \ of recommendation (for example `Add a video`).\n\t2. `recommendedActionId`\
+        \ is an Id of each element in the array. \n\t3. `category` This field is a\
+        \ category in which Advertisers may see improvements. For ex (Grow sales).\
+        \ \n\t3. `exampleText` is the text to show on the hyperlink to the example\
+        \ of the recommendations. \n\t5. `exampleLink` is the link to the example\
+        \ store containing the recommendattion. \n\t6. `ctaText` is the text to show\
+        \ on the hyperlink to the CTA (Call to Action) link where Advertisers can\
+        \ log-in to Store builder and add the mentioned recommendations. For Ex (Add\
+        \ best-selling products). \n\t7. `ctaLink` is th CTA (Call to Action) link\
+        \ where Advertisers can log-in to Store builder and add the mentioned recommendations.\
+        \ \n\t8. `observedAverageDwellTimeIncrease`, is the improvement it might bring\
+        \ in the overall store quality.\n * `CONTRIBUTORS` This metric is the array\
+        \ of recommendations applied by the Store Owner which resulted in the improvement\
+        \ of overall store quality. This metric currently can only be aggregated by\
+        \ InsightDimension \"DATE\".\n * `DWELL` This metric is the time a customer\
+        \ spends on the store, on an average. This metric is specifically for the\
+        \ store quality and mesasures the time spent by a shoping customer on the\
+        \ store This is calculated differently from \"DWELL_TIME\". This metric currently\
+        \ can only be aggregated by InsightDimension \"DATE\". \n * `PEER_DWELL` This\
+        \ metric is the time a customer spends on other similar (peer) stores on an\
+        \ average. This metric currently can only be aggregated by InsightDimension\
+        \ \"DATE\".\n * `COMPLETED_RECOMMENDATIONS` This metric is an Array of Object\
+        \ containing 6 fields. \n \t1. `recommendedAction` is a description of recommendation\
+        \ (for example `Add a video`).\n\t2. `recommendedActionId` is an Id of each\
+        \ element in the array. \n\t3. `category` This field is a category in which\
+        \ Advertisers may see improvements. For ex (Grow sales). \n\t3. `exampleText`\
+        \ is the text to show on the hyperlink to the example of the recommendations.\
+        \ \n\t5. `exampleLink` is the link to the example store containing the recommendattion.\
+        \ \n\t6. `observedAverageDwellTimeIncrease`, is the improvement it might bring\
+        \ in the overall store quality.\n * `DWELL_TIME` This metric represents the\
+        \ average time a customer spends on the store, providing insights into user\
+        \ engagement by calculating the average duration of visits. <br> \"DWELL_TIME\"\
+        \ metric can be aggregated by all the InsightDimensions or at the store level.\
+        \ For aggregation at store level, *dimension* must be ommited from the request.\n\
+        \ * `BOUNCE_RATE` This metric provides insights into visitor engagement by\
+        \ measuring the ratio of total bounce visits(customer who landed on the store\
+        \ and left quickly without engaging) to total landing visits. It provides\
+        \ insights into user interaction, available at both page and store levels.\
+        \ <br> \"BOUNCE_RATE\" metric can be aggregated by all the InsightDimensions\
+        \ or at the store level. For aggregation at store level, *dimension* must\
+        \ be ommited from the request.\n * `NEW_TO_STORE` This metric reports the\
+        \ total count of unique visitors who are new to the store, providing valuable\
+        \ insights into the number of first-time shoppers. <br> \"NEW_TO_STORE\" metric\
+        \ currently can only be aggregated by InsightDimension \"DATE\" or at the\
+        \ store level. For aggregation at store level, *dimension* must be ommited\
+        \ from the request.\n * `ACTIONS_TAKEN_BY_PEERS` This metric informs about\
+        \ the number of recommendations customer's peer stores have taken on an average.\
+        \ This is helpful in relating it with the `PEER_DWELL` time.\n * `VIDEO_STARTED`\
+        \ This is calculated by dividing the visit with video started by Total Page\
+        \ Visits.\n * `VIDEO_10S_PLAYED` The number of visits where the shopper watched\
+        \ the complete video or 10 seconds, whichever is shorter.\n * `VIDEO_25P_PLAYED`\
+        \ The number of visits where the video was viewed to 25%.\n * `VIDEO_50P_PLAYED`\
+        \ The number of visits where the video was viewed to 50%.\n * `VIDEO_75P_PLAYED`\
+        \ The number of visits where the video was viewed to 75%.\n * `VIDEO_COMPLETED`\
+        \ The number of visits where the video was viewed to 100%."
+      enum:
+      - ACTIONS_TAKEN_BY_PEERS
+      - BOUNCE_RATE
+      - COMPLETED_RECOMMENDATIONS
+      - CONTRIBUTORS
+      - DWELL
+      - DWELL_TIME
+      - NEW_TO_STORE
+      - ORDERS
+      - PEER_DWELL
+      - RECOMMENDATIONS
+      - SALES
+      - SCORE_LEVEL
+      - UNITS
+      - VIDEO_10S_PLAYED
+      - VIDEO_25P_PLAYED
+      - VIDEO_50P_PLAYED
+      - VIDEO_75P_PLAYED
+      - VIDEO_COMPLETED
+      - VIDEO_STARTED
+      - VIEWS
+      - VISITORS
+      - VISITS
+    InsightMetricsDetail:
+      type: object
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: integer
+        - type: number
+        - type: boolean
+        - type: array
+          description: List of CONTRIBUTORS to the store quality in requested language.
+            English is default language.
+          items:
+            type: string
+        - type: array
+          description: List of RECOMMENDATIONS to increase the store quality in requested
+            language. English is default language.
+          items:
+            $ref: '#/components/schemas/StoreQualityRecommendation'
+        - type: array
+          description: List of COMPLETED_RECOMMENDATIONS which resulted in increase
+            of the store quality. It can be provided in requested language. English
+            is default language.
+          items:
+            $ref: '#/components/schemas/StoreQualityCompletedRecommendation'
+      description: "A key-value pair map which contains the dimension and metric information.\
+        \ The key is either dimension name or metric name, while the value is the\
+        \ corresponding dimension value or metric value. Addition of boolean,Array\
+        \ and Object is solely for the Store Quality metrics."
+      example:
+        ACTIONS_TAKEN_BY_PEERS: "3"
+        COMPLETED_RECOMMENDATIONS:
+        - category: Grow sales
+          ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+          ctaText: Edit best selling products
+          exampleLink: https://www.amazon.com/stores/page/pageId
+          exampleText: See best selling products or recommended products tile example.
+          observedAverageDwellTimeIncrease: 21.00%
+          recommendedAction: Add a Best selling products on Store home page.
+        - category: Grow sales
+          ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+          ctaText: Add best selling products
+          exampleLink: https://www.amazon.com/stores/page/pageId
+          exampleText: See best selling products or recommended products tile example.
+          observedAverageDwellTimeIncrease: 21.00%
+          recommendedAction: Add a Best selling products on Store sub page.
+        CONTRIBUTORS:
+        - Top Contributor#1
+        DWELL: "3000.34"
+        PEER_DWELL: "3856.83"
+        RECOMMENDATIONS:
+        - category: Grow sales
+          ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+          ctaText: Edit best selling products
+          exampleLink: https://www.amazon.com/stores/page/pageId
+          exampleText: See best selling products or recommended products tile example.
+          observedAverageDwellTimeIncrease: 21.00%
+          recommendedAction: Add a Best selling products on Store home page.
+        - category: Grow sales
+          ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+          ctaText: Add best selling products
+          exampleLink: https://www.amazon.com/stores/page/pageId
+          exampleText: See best selling products or recommended products tile example.
+          observedAverageDwellTimeIncrease: 21.00%
+          recommendedAction: Add a Best selling products on Store sub page.
+        date: 2020-01-01
+        orders: "10"
+        sales: "500.5"
+        units: "10"
+        views: "1000"
+        visitors: "200"
+        visits: "500"
+      x-schema-name: InsightMetricsDetail
+    SortOrder:
+      type: string
+      description: Describes whether a sort should be ascending (ASC) or descending
+        (DESC).
+      example: ASC
+      enum:
+      - ASC
+      - DESC
+    StoreQualityCompletedRecommendation:
+      type: object
+      properties:
+        category:
+          type: string
+          description: The category in which the store owners could see improvment
+            by this recommendation.
+        exampleLink:
+          type: string
+          description: Link to the example store with a sample to showcase a recommended
+            action.
+        exampleText:
+          type: string
+          description: The text to describe the example to showcase the recommended
+            action.
+        observedAverageDwellTimeIncrease:
+          type: string
+          description: The percentage by which store quality could improve by this
+            recommendation.
+        recommendedAction:
+          type: string
+          description: description of the recommendation.
+      description: The Object containing recommendations to improve store quality.
+      example:
+        category: Grow sales
+        exampleLink: https://www.amazon.com/stores/page/pageId
+        exampleText: See best selling products or recommended products tile example.
+        observedAverageDwellTimeIncrease: 21.00%
+        recommendedAction: Add a Best selling products on Store home page.
+    StoreQualityRecommendation:
+      type: object
+      properties:
+        category:
+          type: string
+          description: The category in which the store owners could see improvment
+            by this recommendation.
+        ctaLink:
+          type: string
+          description: Call to Action(CTA) link to take customer to the page where
+            the changes can be made.
+        ctaText:
+          type: string
+          description: Text describing the Call to Action(CTA).
+        exampleLink:
+          type: string
+          description: Link to the example store with a sample to showcase a recommended
+            action.
+        exampleText:
+          type: string
+          description: The text to describe the example to showcase the recommended
+            action.
+        observedAverageDwellTimeIncrease:
+          type: string
+          description: The percentage by which store quality could improve by this
+            recommendation.
+        recommendedAction:
+          type: string
+          description: description of the recommendation.
+      description: The Object containing recommendations to improve store quality.
+      example:
+        category: Grow sales
+        ctaLink: https://<builderUniqueURLForTheLoggedInStore>
+        ctaText: Add best-selling products
+        exampleLink: https://www.amazon.com/stores/page/pageId
+        exampleText: See best selling products or recommended products tile example.
+        observedAverageDwellTimeIncrease: 21.00%
+        recommendedAction: Add a Best selling products on Store home page.
+    StoresAnalyticsAPIErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The HTTP status code of the response.
+        details:
+          type: string
+          description: A human-readable description of the response.
+      description: The error response object for analytics API.
+      example:
+        code: "500"
+        description: Internal Server Error - Something went wrong on the server. Retry
+          later and report an error if unresolved.
+    TrafficSource:
+      type: string
+      description: |
+        Traffic Source Type:
+          * `ADS` - Traffic from Sponsored Brands ads on Amazon.
+          * `ORGANIC` - Traffic originating from your brand link on Amazon product detail pages.
+          * `OTHER` - All other traffic sources not categorized.
+      enum:
+      - ADS
+      - ORGANIC
+      - OTHER
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

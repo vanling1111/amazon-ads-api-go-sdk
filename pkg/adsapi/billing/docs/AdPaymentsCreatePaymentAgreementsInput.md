@@ -1,0 +1,9 @@
+# AdPaymentsCreatePaymentAgreementsInput
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**PaymentAgreements** | [***[]AdPaymentsPaymentAgreement**](array.md) |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

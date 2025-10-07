@@ -1,0 +1,1573 @@
+openapi: 3.0.1
+info:
+  title: Amazon Marketing Stream
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /dsp/streams/subscriptions:
+    get:
+      tags:
+      - DSP Stream Subscription
+      description: |-
+        List subscriptions
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: ListDspStreamSubscriptions
+      parameters:
+      - name: maxResults
+        in: query
+        description: "desired number of entries in the response, defaults to maximum\
+          \ value"
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5000
+          minimum: 1
+          type: number
+          description: "desired number of entries in the response, defaults to maximum\
+            \ value"
+      - name: startingToken
+        in: query
+        description: "Token which can be used to get the next page of results, if\
+          \ more entries exist"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Token which can be used to get the next page of results, if\
+            \ more entries exist"
+      - name: Amazon-Ads-Account-ID
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      responses:
+        "200":
+          description: ListDspStreamSubscriptions 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListDspStreamSubscriptionsResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+    post:
+      tags:
+      - DSP Stream Subscription
+      description: |-
+        Create a new subscription
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: CreateDspStreamSubscription
+      parameters:
+      - name: Amazon-Ads-Account-ID
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      requestBody:
+        content:
+          application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+            schema:
+              $ref: '#/components/schemas/CreateDspStreamSubscriptionRequestContent'
+        required: true
+      responses:
+        "200":
+          description: CreateDspStreamSubscription 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/CreateDspStreamSubscriptionResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "409":
+          description: OperationConflictError 409 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/OperationConflictErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+  /dsp/streams/subscriptions/{subscriptionId}:
+    get:
+      tags:
+      - DSP Stream Subscription
+      description: |-
+        Fetch a specific subscription by Id
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: GetDspStreamSubscription
+      parameters:
+      - name: subscriptionId
+        in: path
+        description: Unique subscription identifier
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      - name: Amazon-Ads-Account-ID
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      responses:
+        "200":
+          description: GetDspStreamSubscription 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetDspStreamSubscriptionResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+    put:
+      tags:
+      - DSP Stream Subscription
+      description: |-
+        Update an existing subscription
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: UpdateDspStreamSubscription
+      parameters:
+      - name: subscriptionId
+        in: path
+        description: Unique subscription identifier
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      - name: Amazon-Ads-Account-ID
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      requestBody:
+        content:
+          application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+            schema:
+              $ref: '#/components/schemas/UpdateDspStreamSubscriptionRequestContent'
+      responses:
+        "200":
+          description: UpdateDspStreamSubscription 200 response
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "409":
+          description: OperationConflictError 409 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/OperationConflictErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+  /streams/subscriptions:
+    get:
+      tags:
+      - Stream Subscription
+      description: |-
+        List subscriptions
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: ListStreamSubscriptions
+      parameters:
+      - name: maxResults
+        in: query
+        description: "desired number of entries in the response, defaults to maximum\
+          \ value"
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5000
+          minimum: 1
+          type: number
+          description: "desired number of entries in the response, defaults to maximum\
+            \ value"
+      - name: startingToken
+        in: query
+        description: "Token which can be used to get the next page of results, if\
+          \ more entries exist"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Token which can be used to get the next page of results, if\
+            \ more entries exist"
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use GET method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: ListStreamSubscriptions 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListStreamSubscriptionsResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "401":
+          description: UnauthorizedAccessError 401 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedAccessErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+    post:
+      tags:
+      - Stream Subscription
+      description: |-
+        Create a new subscription
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: CreateStreamSubscription
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use GET method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+            schema:
+              $ref: '#/components/schemas/CreateStreamSubscriptionRequestContent'
+        required: true
+      responses:
+        "200":
+          description: CreateStreamSubscription 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/CreateStreamSubscriptionResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "401":
+          description: UnauthorizedAccessError 401 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedAccessErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "409":
+          description: OperationConflictError 409 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/OperationConflictErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+  /streams/subscriptions/{subscriptionId}:
+    get:
+      tags:
+      - Stream Subscription
+      description: |-
+        Fetch a specific subscription by Id
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: GetStreamSubscription
+      parameters:
+      - name: subscriptionId
+        in: path
+        description: Unique subscription identifier
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use GET method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header.
+      responses:
+        "200":
+          description: GetStreamSubscription 200 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetStreamSubscriptionResponseContent'
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "401":
+          description: UnauthorizedAccessError 401 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedAccessErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+    put:
+      tags:
+      - Stream Subscription
+      description: |-
+        Update an existing subscription
+        Note: trailing slash in request uri is not allowed
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["view_performance_dashboard"]
+      operationId: UpdateStreamSubscription
+      parameters:
+      - name: subscriptionId
+        in: path
+        description: Unique subscription identifier
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: The identifier of a DSP advertiser level account
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a DSP advertiser level account
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use GET method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+            schema:
+              $ref: '#/components/schemas/UpdateStreamSubscriptionRequestContent'
+      responses:
+        "200":
+          description: UpdateStreamSubscription 200 response
+        "400":
+          description: InvalidRequestError 400 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestErrorResponseContent'
+        "401":
+          description: UnauthorizedAccessError 401 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedAccessErrorResponseContent'
+        "403":
+          description: AccessForbiddenError 403 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccessForbiddenErrorResponseContent'
+        "404":
+          description: ResourceNotFoundError 404 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundErrorResponseContent'
+        "409":
+          description: OperationConflictError 409 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/OperationConflictErrorResponseContent'
+        "429":
+          description: TooManyRequestsError 429 response
+          headers:
+            Retry-After:
+              description: this type is used to convey a recommended delay before
+                next re-try attempt to the operation given in seconds
+              style: simple
+              explode: false
+              schema:
+                type: number
+                description: this type is used to convey a recommended delay before
+                  next re-try attempt to the operation given in seconds
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsErrorResponseContent'
+        "500":
+          description: InternalServerError 500 response
+          content:
+            application/vnd.amazonmarketingstreamsubscriptions.v1+json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorResponseContent'
+components:
+  schemas:
+    AccessForbiddenErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    CreateDspStreamSubscriptionRequestContent:
+      required:
+      - clientRequestToken
+      - dataSetId
+      type: object
+      properties:
+        clientRequestToken:
+          maxLength: 36
+          minLength: 22
+          type: string
+          description: |-
+            Unique value supplied by the caller used to track identical API requests.
+            Should request be re-tried, the caller should supply the same value. We recommend using GUID.
+        dataSetId:
+          type: string
+          description: "Identifier of data set, callers can be subscribed to. Please\
+            \ refer to https://advertising.amazon.com/API/docs/en-us/amazon-marketing-stream/data-guide\
+            \ for the list of all data sets."
+        destination:
+          $ref: '#/components/schemas/Destination'
+        destinationArn:
+          maxLength: 2048
+          minLength: 20
+          type: string
+          description: |-
+            AWS ARN of the destination endpoint associated with the subscription.
+            Supported destination types:
+            - SQS
+        notes:
+          maxLength: 128
+          type: string
+          description: Additional details associated with the subscription
+    CreateDspStreamSubscriptionResponseContent:
+      required:
+      - clientRequestToken
+      - subscriptionId
+      type: object
+      properties:
+        clientRequestToken:
+          maxLength: 36
+          minLength: 22
+          type: string
+          description: |-
+            Unique value supplied by the caller used to track identical API requests.
+            Should request be re-tried, the caller should supply the same value. We recommend using GUID.
+        subscriptionId:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      example:
+        clientRequestToken: clientRequestToken
+        subscriptionId: subscriptionId
+    CreateStreamSubscriptionRequestContent:
+      required:
+      - clientRequestToken
+      - dataSetId
+      type: object
+      properties:
+        clientRequestToken:
+          maxLength: 36
+          minLength: 22
+          type: string
+          description: |-
+            Unique value supplied by the caller used to track identical API requests.
+            Should request be re-tried, the caller should supply the same value. We recommend using GUID.
+        dataSetId:
+          type: string
+          description: "Identifier of data set, callers can be subscribed to. Please\
+            \ refer to https://advertising.amazon.com/API/docs/en-us/amazon-marketing-stream/data-guide\
+            \ for the list of all data sets."
+        destination:
+          $ref: '#/components/schemas/Destination'
+        destinationArn:
+          maxLength: 2048
+          minLength: 20
+          type: string
+          description: |-
+            AWS ARN of the destination endpoint associated with the subscription.
+            Supported destination types:
+            - SQS
+        notes:
+          maxLength: 128
+          type: string
+          description: Additional details associated with the subscription
+    CreateStreamSubscriptionResponseContent:
+      required:
+      - clientRequestToken
+      - subscriptionId
+      type: object
+      properties:
+        clientRequestToken:
+          maxLength: 36
+          minLength: 22
+          type: string
+          description: |-
+            Unique value supplied by the caller used to track identical API requests.
+            Should request be re-tried, the caller should supply the same value. We recommend using GUID.
+        subscriptionId:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+      example:
+        clientRequestToken: clientRequestToken
+        subscriptionId: subscriptionId
+    Destination:
+      type: object
+      properties:
+        firehoseDestination:
+          $ref: '#/components/schemas/FirehoseDestination'
+        sqsDestination:
+          $ref: '#/components/schemas/SqsDestination'
+      example:
+        firehoseDestination:
+          deliveryStreamArn: deliveryStreamArn
+          subscriberRoleArn: subscriberRoleArn
+          subscriptionRoleArn: subscriptionRoleArn
+        sqsDestination:
+          queueArn: queueArn
+    FirehoseDestination:
+      required:
+      - deliveryStreamArn
+      - subscriberRoleArn
+      - subscriptionRoleArn
+      type: object
+      properties:
+        deliveryStreamArn:
+          maxLength: 255
+          type: string
+        subscriberRoleArn:
+          maxLength: 255
+          type: string
+        subscriptionRoleArn:
+          maxLength: 255
+          type: string
+      example:
+        deliveryStreamArn: deliveryStreamArn
+        subscriberRoleArn: subscriberRoleArn
+        subscriptionRoleArn: subscriptionRoleArn
+    GetDspStreamSubscriptionResponseContent:
+      required:
+      - subscription
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/StreamSubscription'
+      example:
+        subscription:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+    GetStreamSubscriptionResponseContent:
+      required:
+      - subscription
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/StreamSubscription'
+      example:
+        subscription:
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+    InternalServerErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    InvalidRequestErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ListDspStreamSubscriptionsResponseContent:
+      required:
+      - subscriptions
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: "Token which can be used to get the next page of results, if\
+            \ more entries exist"
+        subscriptions:
+          maxItems: 5000
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/StreamSubscription'
+      example:
+        subscriptions:
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        nextToken: nextToken
+    ListStreamSubscriptionsResponseContent:
+      required:
+      - subscriptions
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: "Token which can be used to get the next page of results, if\
+            \ more entries exist"
+        subscriptions:
+          maxItems: 5000
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/StreamSubscription'
+      example:
+        subscriptions:
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        - createdDate: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          dataSetId: dataSetId
+          destinationArn: destinationArn
+          destination:
+            firehoseDestination:
+              deliveryStreamArn: deliveryStreamArn
+              subscriberRoleArn: subscriberRoleArn
+              subscriptionRoleArn: subscriptionRoleArn
+            sqsDestination:
+              queueArn: queueArn
+          updatedDate: 2000-01-23T04:56:07.000+00:00
+          subscriptionId: subscriptionId
+          status: ACTIVE
+        nextToken: nextToken
+    OperationConflictErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ResourceNotFoundErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    SqsDestination:
+      required:
+      - queueArn
+      type: object
+      properties:
+        queueArn:
+          maxLength: 255
+          type: string
+      example:
+        queueArn: queueArn
+    StreamSubscription:
+      required:
+      - createdDate
+      - dataSetId
+      - status
+      - subscriptionId
+      - updatedDate
+      type: object
+      properties:
+        createdDate:
+          type: string
+          description: ISO8601 Timestamp
+          format: date-time
+        dataSetId:
+          type: string
+          description: "Identifier of data set, callers can be subscribed to. Please\
+            \ refer to https://advertising.amazon.com/API/docs/en-us/amazon-marketing-stream/data-guide\
+            \ for the list of all data sets."
+        destination:
+          $ref: '#/components/schemas/Destination'
+        destinationArn:
+          maxLength: 2048
+          minLength: 20
+          type: string
+          description: |-
+            AWS ARN of the destination endpoint associated with the subscription.
+            Supported destination types:
+            - SQS
+        notes:
+          maxLength: 128
+          type: string
+          description: Additional details associated with the subscription
+        status:
+          $ref: '#/components/schemas/SubscriptionEntityStatus'
+        subscriptionId:
+          maxLength: 255
+          type: string
+          description: Unique subscription identifier
+        updatedDate:
+          type: string
+          description: ISO8601 Timestamp
+          format: date-time
+      example:
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        notes: notes
+        dataSetId: dataSetId
+        destinationArn: destinationArn
+        destination:
+          firehoseDestination:
+            deliveryStreamArn: deliveryStreamArn
+            subscriberRoleArn: subscriberRoleArn
+            subscriptionRoleArn: subscriptionRoleArn
+          sqsDestination:
+            queueArn: queueArn
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        subscriptionId: subscriptionId
+        status: ACTIVE
+    SubscriptionEntityStatus:
+      type: string
+      description: "Current status of the entity. Possible values are PROVISIONING,\
+        \ PENDING_CONFIRMATION, ACTIVE, ARCHIVED, FAILED_CONFIRMATION, SUSPENDED,\
+        \ FAILED_PROVISIONING"
+      enum:
+      - ACTIVE
+      - ARCHIVED
+      - FAILED_CONFIRMATION
+      - FAILED_PROVISIONING
+      - PENDING_CONFIRMATION
+      - PROVISIONING
+      - SUSPENDED
+    TooManyRequestsErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    UnauthorizedAccessErrorResponseContent:
+      required:
+      - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    UpdateDspStreamSubscriptionRequestContent:
+      type: object
+      properties:
+        notes:
+          maxLength: 128
+          type: string
+          description: Additional details associated with the subscription
+        status:
+          $ref: '#/components/schemas/UpdateEntityStatus'
+    UpdateEntityStatus:
+      type: string
+      description: Update the status of the entity
+      enum:
+      - ARCHIVED
+    UpdateStreamSubscriptionRequestContent:
+      type: object
+      properties:
+        notes:
+          maxLength: 128
+          type: string
+          description: Additional details associated with the subscription
+        status:
+          $ref: '#/components/schemas/UpdateEntityStatus'
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

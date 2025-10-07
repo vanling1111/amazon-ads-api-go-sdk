@@ -1,0 +1,1392 @@
+openapi: 3.0.1
+info:
+  title: Advertising Accounts
+  description: Public API for managing advertising accounts.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /adsAccounts:
+    post:
+      tags:
+      - Account
+      summary: "Create a new advertising account tied to a specific Amazon vendor,\
+        \ seller or author, or to a business who does not sell on Amazon."
+      description: |-
+        Create a new advertising account tied to a specific Amazon vendor, seller or author, or to a business who does not sell on Amazon.
+
+        **Requires one of these permissions**:
+        []
+      operationId: RegisterAdsAccount
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a Login with Amazon
+          account.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a Login with Amazon
+            account.
+      requestBody:
+        content:
+          application/vnd.registeradsaccountresource.v1+json:
+            schema:
+              $ref: '#/components/schemas/RegisterAdsAccountRequestContent'
+      responses:
+        "201":
+          description: RegisterAdsAccount 201 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterAdsAccountResponseContent'
+        "400":
+          description: V2InvalidInputException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InvalidInputExceptionResponseContent'
+        "403":
+          description: V2AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2AccessDeniedExceptionResponseContent'
+        "429":
+          description: V2RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2RateExceededExceptionResponseContent'
+        "500":
+          description: V2InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InternalServerExceptionResponseContent'
+  /adsAccounts/list:
+    post:
+      tags:
+      - Account
+      summary: List all advertising accounts for the user associated with the access
+        token.
+      description: |-
+        List all advertising accounts for the user associated with the access token.
+
+        **Requires one of these permissions**:
+        []
+      operationId: ListAdsAccounts
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a Login with Amazon
+          account.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a Login with Amazon
+            account.
+      requestBody:
+        content:
+          application/vnd.listaccountsresource.v1+json:
+            schema:
+              $ref: '#/components/schemas/ListAdsAccountsRequestContent'
+      responses:
+        "200":
+          description: ListAdsAccounts 200 response
+          content:
+            application/vnd.listaccountsresource.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListAdsAccountsResponseContent'
+        "400":
+          description: V2InvalidInputException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InvalidInputExceptionResponseContent'
+        "403":
+          description: V2AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2AccessDeniedExceptionResponseContent'
+        "429":
+          description: V2RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2RateExceededExceptionResponseContent'
+        "500":
+          description: V2InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InternalServerExceptionResponseContent'
+  /adsAccounts/{advertisingAccountId}:
+    get:
+      tags:
+      - Account
+      summary: Request attributes of a given advertising account.
+      description: |-
+        Request attributes of a given advertising account.
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetAccount
+      parameters:
+      - name: advertisingAccountId
+        in: path
+        description: This is the global advertising account Id from the client.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          pattern: "^[A-Za-z0-9.-]+$"
+          type: string
+          description: This is the global advertising account Id from the client.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a Login with Amazon
+          account.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a Login with Amazon
+            account.
+      responses:
+        "200":
+          description: GetAccount 200 response
+          content:
+            application/vnd.accountresource.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetAccountResponseContent'
+        "400":
+          description: InvalidInputException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: AdvertisingAccountNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdvertisingAccountNotFoundExceptionResponseContent'
+        "429":
+          description: RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateExceededExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+  /termsTokens:
+    post:
+      tags:
+      - Terms Token
+      summary: Create a new UUID terms token for the customer to accept advertising
+        terms
+      description: |-
+        Create a new UUID terms token for the customer to accept advertising terms
+
+        **Requires one of these permissions**:
+        []
+      operationId: CreateTermsToken
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: An identifier of API client making the request on behalf of the
+          customer.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          pattern: "^[A-Za-z0-9.-]+$"
+          type: string
+          description: An identifier of API client making the request on behalf of
+            the customer.
+        examples:
+          CreateTermsToken_example1:
+            summary: Request with a valid input.
+            value: amzn1.application-oa2-client.647610038d6d4f3d868b6207ec6ef9ca
+      requestBody:
+        content:
+          application/vnd.GlobalRegistrationService.TermsTokenResource.v1.0+json:
+            schema:
+              $ref: '#/components/schemas/CreateTermsTokenRequestContent'
+            examples:
+              CreateTermsToken_example1:
+                summary: Request with a valid input.
+      responses:
+        "201":
+          description: CreateTermsToken 201 response
+          content:
+            application/vnd.termstokenresource.v1+json:
+              schema:
+                $ref: '#/components/schemas/CreateTermsTokenResponseContent'
+              examples:
+                CreateTermsToken_example1:
+                  summary: Request with a valid input.
+                  value:
+                    termsToken: 4de3327e-a595-44cb-b689-f7f746805c02
+                    termsUrl: https://advertising.amazon.com/terms/agreement/4de3327e-a595-44cb-b689-f7f746805c02
+        "400":
+          description: V2InvalidInputException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InvalidInputExceptionResponseContent'
+        "403":
+          description: V2AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2AccessDeniedExceptionResponseContent'
+        "429":
+          description: V2RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2RateExceededExceptionResponseContent'
+        "500":
+          description: V2InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InternalServerExceptionResponseContent'
+  /termsTokens/{termsToken}:
+    get:
+      tags:
+      - Terms Token
+      summary: Get the terms token status for the customer
+      description: |-
+        Get the terms token status for the customer
+
+        **Requires one of these permissions**:
+        []
+      operationId: GetTermsToken
+      parameters:
+      - name: termsToken
+        in: path
+        description: |
+          A Terms Token refers to an UUID token used for terms and conditions acceptance
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: A Terms Token refers to an UUID token used for terms and conditions
+            acceptance
+        examples:
+          GetTermsToken_example1:
+            summary: Request with a valid input.
+            value: 481cea33-463b-4cbe-9593-762ea68306ad
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a Login with Amazon
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a Login with Amazon
+            account.
+        examples:
+          GetTermsToken_example1:
+            summary: Request with a valid input.
+            value: amzn1.application-oa2-client.ee9a9686317b4ef594d2cacbb41d30ea
+      responses:
+        "200":
+          description: GetTermsToken 200 response
+          content:
+            application/vnd.termstokenresource.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetTermsTokenResponseContent'
+              examples:
+                GetTermsToken_example1:
+                  summary: Request with a valid input.
+                  value:
+                    termsTokenStatus: ACCEPTED
+        "400":
+          description: V2InternalInvalidInputException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InternalInvalidInputExceptionResponseContent'
+        "403":
+          description: V2AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2AccessDeniedExceptionResponseContent'
+        "429":
+          description: V2RateExceededException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2RateExceededExceptionResponseContent'
+        "500":
+          description: V2InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2InternalServerExceptionResponseContent'
+components:
+  schemas:
+    AccessDeniedExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: User does not have sufficient access to perform this action.
+    AdsAccount:
+      required:
+      - adsAccountId
+      type: object
+      properties:
+        accountName:
+          type: string
+        adsAccountId:
+          pattern: "^[A-Za-z0-9.-]+$"
+          type: string
+          description: This is the global advertising account Id from the client.
+        status:
+          $ref: '#/components/schemas/Status'
+      description: |-
+        Ads Account structure response consists of the GlobalAccountID
+        (advertisingAccountId) and other account metadata.
+      example:
+        accountName: accountName
+        adsAccountId: adsAccountId
+        status: CREATED
+    AdsAccountWithMetaData:
+      required:
+      - adsAccountId
+      type: object
+      properties:
+        accountName:
+          type: string
+        adsAccountId:
+          pattern: "^[A-Za-z0-9.-]+$"
+          type: string
+          description: This is the global advertising account Id from the client.
+        alternateIds:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/AlternateId'
+        countryCodes:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: |
+            Amazon Ads is available in many but not all countries where Amazon sells goods.
+            For vendors, Global accounts come stock with all countries where Amazon Ads is available.
+            For sellers, Global Accounts will contain only countries where the seller is registered to sell.
+            For non-endemic, Global Accounts only support US now
+          items:
+            type: string
+            description: |
+              A Country Code refers to 2-digit (UPPER CASE) country code
+        errors:
+          $ref: '#/components/schemas/CountryCodeToErrorListMap'
+        status:
+          $ref: '#/components/schemas/Status'
+      description: |
+        Ads Account structure response consists of the GlobalAccountID
+        (advertisingAccountId) and other account metadata.
+      example:
+        countryCodes:
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        - countryCodes
+        alternateIds:
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        - countryCode: countryCode
+          profileId: 0.8008281904610115
+          entityId: entityId
+        accountName: accountName
+        adsAccountId: adsAccountId
+        errors:
+          key:
+          - errorMessage: errorMessage
+            errorCode: errorCode
+            errorId: 6.027456183070403
+          - errorMessage: errorMessage
+            errorCode: errorCode
+            errorId: 6.027456183070403
+        status: CREATED
+    AdvertisingAccountNotFoundExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Advertising Account not found.
+    AlternateId:
+      type: object
+      properties:
+        countryCode:
+          type: string
+          description: The country code of the advertising account
+        entityId:
+          type: string
+          description: The entity id of the advertising account
+        profileId:
+          type: number
+          description: The Profile Id of the advertising account
+      description: "A construct that represents alternate Id an Ads Account could\
+        \ have, such profile Id"
+      example:
+        countryCode: countryCode
+        profileId: 0.8008281904610115
+        entityId: entityId
+    AmazonAuthor:
+      type: object
+      properties:
+        email:
+          type: string
+          description: The email address of the KDP or Author Central account
+      description: Represent an Amazon Author.
+    AmazonSeller:
+      type: object
+      properties:
+        sellerCentralAccount:
+          type: string
+          description: The merchant customer id of the seller central account
+      description: Represent an Amazon Seller.
+    AmazonVendor:
+      type: object
+      properties:
+        vendorGroup:
+          type: string
+          description: The vendor group id of the vendor
+      description: Represent an Amazon Vendor.
+    Association:
+      type: object
+      properties:
+        amazonAuthor:
+          $ref: '#/components/schemas/AmazonAuthor'
+        amazonSeller:
+          $ref: '#/components/schemas/AmazonSeller'
+        amazonVendor:
+          $ref: '#/components/schemas/AmazonVendor'
+        business:
+          $ref: '#/components/schemas/Business'
+      description: "Association can represent an Amazon Vendor, Seller or business\
+        \ who does not sell on Amazon"
+    Business:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: Address line 1 of the business
+        addressLine2:
+          type: string
+          description: Address line 2 of the business.
+        city:
+          type: string
+          description: The city of the business.
+        countryCode:
+          type: string
+          description: Country code of the business.
+        name:
+          type: string
+          description: The name of the business.
+        phone:
+          type: string
+          description: The phone number of the business.
+        state:
+          type: string
+          description: The state of the business.
+        websiteUrl:
+          type: string
+          description: The website url of the business.
+        zipCode:
+          type: string
+          description: Zip code of the business.
+      description: |-
+        Represent a business who does not sell on Amazon.
+        These fields are containing information about the client's business and will be used for business verification.
+    CountryCodeToErrorListMap:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/Error'
+      x-schema-name: CountryCodeToErrorListMap
+    CreateTermsTokenRequestContent:
+      type: object
+      properties:
+        termsType:
+          $ref: '#/components/schemas/TermsType'
+    CreateTermsTokenResponseContent:
+      required:
+      - termsToken
+      - termsUrl
+      type: object
+      properties:
+        termsToken:
+          type: string
+          description: A Terms Token refers to an UUID token used for terms and conditions
+            acceptance
+        termsUrl:
+          type: string
+          description: The link to advertising terms page where the advertiser can
+            view and accept.
+      example:
+        termsUrl: termsUrl
+        termsToken: termsToken
+    Error:
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+        errorId:
+          type: number
+        errorMessage:
+          minLength: 1
+          type: string
+      description: |-
+        Error structure is to describe the various errors consist of
+        error id, error code, and a readable error message
+      example:
+        errorMessage: errorMessage
+        errorCode: errorCode
+        errorId: 6.027456183070403
+    GetAccountResponseContent:
+      type: object
+      properties:
+        adsAccount:
+          $ref: '#/components/schemas/AdsAccountWithMetaData'
+      example:
+        adsAccount:
+          countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+    GetTermsTokenResponseContent:
+      required:
+      - termsTokenStatus
+      type: object
+      properties:
+        termsTokenStatus:
+          $ref: '#/components/schemas/TermsTokenStatus'
+        termsType:
+          $ref: '#/components/schemas/TermsType'
+      example:
+        termsTokenStatus: ACCEPTED
+        termsType: ADSP
+    InternalServerExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Unexpected error during processing of request.
+    InvalidInputExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: |
+        Request failed because invalid parameters were provided.
+        Ensure that all required parameters are provided.
+    ListAdsAccountsRequestContent:
+      type: object
+      properties:
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: number
+        nextToken:
+          type: string
+          description: The token is used to fetch the next page of results if they
+            exist.
+    ListAdsAccountsResponseContent:
+      type: object
+      properties:
+        adsAccounts:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/AdsAccountWithMetaData'
+        nextToken:
+          type: string
+      example:
+        nextToken: nextToken
+        adsAccounts:
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+        - countryCodes:
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          - countryCodes
+          alternateIds:
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          - countryCode: countryCode
+            profileId: 0.8008281904610115
+            entityId: entityId
+          accountName: accountName
+          adsAccountId: adsAccountId
+          errors:
+            key:
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+            - errorMessage: errorMessage
+              errorCode: errorCode
+              errorId: 6.027456183070403
+          status: CREATED
+    RateExceededExceptionResponseContent:
+      type: object
+      properties:
+        message:
+          type: string
+      description: Maximum sending rate exceeded.
+    RegisterAdsAccountRequestContent:
+      type: object
+      properties:
+        accountName:
+          type: string
+          description: "Account names are typically the name of the company or brand\
+            \ being advertised. We recommend that you avoid using personal details\
+            \ such as first name, last name, phone number, social security number,\
+            \ credit card or other personally identifiable information."
+        associations:
+          maxItems: 1
+          minItems: 0
+          type: array
+          description: "Associations you would like to link to this advertising account,\
+            \ could be Amazon Vendor, Seller, or just a regular business"
+          items:
+            $ref: '#/components/schemas/Association'
+        countryCodes:
+          maxItems: 1
+          minItems: 0
+          type: array
+          description: The countries that you want this account to operate in.
+          items:
+            type: string
+            description: A Country Code refers to 2-digit (UPPER CASE) country code
+        termsToken:
+          type: string
+          description: "We recommend you do not provide this field since we can determine\
+            \ if the customer has accepted the terms for you. An obfuscated identifier\
+            \ of the termsToken, which is activated when an advertisers accepts the\
+            \ Amazon Ads Agreement in relation to the ads account being register."
+    RegisterAdsAccountResponseContent:
+      type: object
+      properties:
+        adsAccount:
+          $ref: '#/components/schemas/AdsAccount'
+      example:
+        adsAccount:
+          accountName: accountName
+          adsAccountId: adsAccountId
+          status: CREATED
+    Status:
+      type: string
+      description: |
+        The current state of the account. Statuses include Pending, Partially Created, Created, and Disabled.
+        If the account is in pending, it's registration is in progress and you'll need to call back again for an updated status.
+        Partially Created means that the account is registered for some, but not all marketplaces,
+        and the user may proceed with their global account for those marketplaces.
+        Created means that it has been fully registered, and Disabled means that the account is no longer accessible.
+      enum:
+      - CREATED
+      - DISABLED
+      - PARTIALLY_CREATED
+      - PENDING
+    TermsTokenStatus:
+      type: string
+      description: |-
+        The current state of the terms token.
+        Created is the initial state, that's after the integrator requests a token.
+        Accepted is set once the customer has viewed the terms page and accepted it.
+        Redeemed means when the token is used and cannot be used again.
+      enum:
+      - ACCEPTED
+      - CREATED
+      - REDEEMED
+    TermsType:
+      type: string
+      description: |-
+        There are different Terms and Conditions for different amazon advertising platforms.
+        This enum will keep track of these different types of terms and is used in validating
+        whether or not a given user in an advertising account has accepted T&C or not.
+      enum:
+      - ADSP
+      - ADVERTISING
+      - MARKETING_CLOUD
+      - PARTNER_NETWORK
+    V2AccessDeniedExceptionResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      description: User does not have sufficient access to perform this action.
+    V2InternalInvalidInputExceptionResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      description: |-
+        Request failed because invalid parameters were provided.
+        Ensure that all required parameters are provided.
+    V2InternalServerExceptionResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      description: Unexpected error during processing of request.
+    V2InvalidInputExceptionResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      description: |
+        Request failed because invalid parameters were provided.
+        Ensure that all required parameters are provided.
+    V2RateExceededExceptionResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      description: Maximum sending rate exceeded.
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

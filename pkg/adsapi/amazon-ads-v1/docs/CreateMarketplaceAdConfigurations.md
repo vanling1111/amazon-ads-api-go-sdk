@@ -1,0 +1,10 @@
+# CreateMarketplaceAdConfigurations
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Marketplace** | [***Marketplace**](Marketplace.md) |  | [optional] [default to null]
+**Overrides** | [***CreateMarketplaceAdFieldOverrides**](CreateMarketplaceAdFieldOverrides.md) |  | [optional] [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

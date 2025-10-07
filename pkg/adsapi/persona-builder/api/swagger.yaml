@@ -1,0 +1,2445 @@
+openapi: 3.0.1
+info:
+  title: Persona Builder API
+  description: DSP Persona Builder API.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /insights/bandedSize:
+    post:
+      tags:
+      - Persona Builder API
+      description: |-
+        Get banded size of number of unique customers that are in the input expression.
+
+        **Requires one of these permissions**:
+        []
+      operationId: BandedSize
+      parameters:
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+          \ that you'd like to retrieve insights for."
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+            \ that you'd like to retrieve insights for."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      requestBody:
+        content:
+          application/vnd.bandedsizeinputexpression.v1+json:
+            schema:
+              $ref: '#/components/schemas/InputExpression'
+            examples:
+              BandedSize_example1:
+                summary: Audience Targeting Expression as an input
+                description: An example of BandedSize with Audience Targeting Expression
+                  as an input.
+                value:
+                  audienceTargetingExpression:
+                    audiences:
+                    - audienceId: "12345"
+                      groupId: customerProvidedString1
+                      negative: "false"
+                    - audienceId: "23456"
+                      groupId: customerProvidedString1
+                      negative: "false"
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/vnd.bandedsizeinsights.v1+json:
+              schema:
+                $ref: '#/components/schemas/BandedSizeResponseContent'
+              examples:
+                BandedSize_example1:
+                  summary: An example of BandedSize response
+                  value:
+                    estimatedSize:
+                      max: 500000
+                      min: 100000
+                    lastUpdatedAt: 2023-04-03T19:35:20.567Z
+        "400":
+          description: Bad Request or request body is not matching with input model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspBadRequestExceptionV1ResponseContent'
+        "401":
+          description: Unauthenticated request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnauthorizedExceptionV1ResponseContent'
+        "403":
+          description: Forbidden - Request failed because user is not authorized to
+            access a resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspForbiddenExceptionV1ResponseContent'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspNotFoundExceptionV1ResponseContent'
+        "415":
+          description: Unsupported Media Type - Version not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnsupportedMediaTypeExceptionV1ResponseContent'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspTooManyRequestsExceptionV1ResponseContent'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspInternalServerExceptionV1ResponseContent'
+  /insights/demographics:
+    post:
+      tags:
+      - Persona Builder API
+      description: |-
+        Get demographic insights for the input expression.
+
+        **Requires one of these permissions**:
+        []
+      operationId: Demographics
+      parameters:
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+          \ that you'd like to retrieve insights for."
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+            \ that you'd like to retrieve insights for."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      requestBody:
+        content:
+          application/vnd.demographicinputexpressions.v1+json:
+            schema:
+              $ref: '#/components/schemas/InputExpression'
+            examples:
+              Demographics_example1:
+                summary: Audience Targeting Expression as an input
+                description: An example of Demographics API input expression using
+                  Audience Targeting Expression as an input.
+                value:
+                  audienceTargetingExpression:
+                    audiences:
+                    - audienceId: "12345"
+                      groupId: customerProvidedString1
+                      negative: "false"
+                    - audienceId: "23456"
+                      groupId: customerProvidedString1
+                      negative: "false"
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/vnd.demographicinsights.v1+json:
+              schema:
+                $ref: '#/components/schemas/DemographicsResponseContent'
+              examples:
+                Demographics_example1:
+                  summary: An example of Demographics response
+                  value:
+                    demographics:
+                      gender:
+                      - attribute: MALE
+                        insightMetrics:
+                          affinity: "2.1"
+                          overlapPercentage: "55"
+                        segmentId: "12345"
+                      - attribute: FEMALE
+                        insightMetrics:
+                          affinity: "1.9"
+                          overlapPercentage: "45"
+                        segmentId: "23456"
+                      propertyOwnership:
+                      - attribute: OWNING
+                        insightMetrics:
+                          affinity: "2.1"
+                          overlapPercentage: "55"
+                        segmentId: "34567"
+                      - attribute: RENTING
+                        insightMetrics:
+                          affinity: "1.9"
+                          overlapPercentage: "45"
+                        segmentId: "45678"
+                    lastUpdatedAt: 2023-04-03T19:35:20.567Z
+        "400":
+          description: Bad Request or request body is not matching with input model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspBadRequestExceptionV1ResponseContent'
+        "401":
+          description: Unauthenticated request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnauthorizedExceptionV1ResponseContent'
+        "403":
+          description: Forbidden - Request failed because user is not authorized to
+            access a resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspForbiddenExceptionV1ResponseContent'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspNotFoundExceptionV1ResponseContent'
+        "415":
+          description: Unsupported Media Type - Version not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnsupportedMediaTypeExceptionV1ResponseContent'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspTooManyRequestsExceptionV1ResponseContent'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspInternalServerExceptionV1ResponseContent'
+  /insights/primeVideo:
+    post:
+      tags:
+      - Persona Builder API
+      description: |-
+        Get Prime Video insights for the input expression.
+
+        **Requires one of these permissions**:
+        []
+      operationId: PrimeVideo
+      parameters:
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+          \ that you'd like to retrieve insights for."
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+            \ that you'd like to retrieve insights for."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      requestBody:
+        content:
+          application/vnd.primevideoinputexpressions.v1+json:
+            schema:
+              $ref: '#/components/schemas/PrimeVideoInputExpression'
+            examples:
+              PrimeVideo_example1:
+                summary: Audience Targeting Expression as an input
+                description: An example of PrimeVideo input expression using Audience
+                  Targeting Expression as an input.
+                value:
+                  audienceTargetingExpression:
+                    audiences:
+                    - audienceId: "12345"
+                      groupId: customerProvidedString1
+                      negative: "true"
+                    - audienceId: "23456"
+                      groupId: customerProvidedString1
+                      negative: "true"
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/vnd.primevideoinsights.v1+json:
+              schema:
+                $ref: '#/components/schemas/PrimeVideoResponseContent'
+              examples:
+                PrimeVideo_example1:
+                  summary: An example of PrimeVideo response
+                  value:
+                    lastUpdatedAt: 2023-04-03T19:35:20.567Z
+                    primeVideoInsights:
+                      dateRange:
+                        endDate: 2023-04-04T00:00:00.000Z
+                        startDate: 2023-04-01T00:00:00.000Z
+                      genres:
+                      - genre: Horror
+                        insight:
+                          affinity: "1.9"
+                          overlapPercentage: "12"
+                      - genre: Comedy
+                        insight:
+                          affinity: "1.5"
+                          overlapPercentage: "10"
+                      series:
+                      - insight:
+                          affinity: "1.9"
+                          overlapPercentage: "12"
+                        series: Series TV 1
+                      - insight:
+                          affinity: "1.5"
+                          overlapPercentage: "10"
+                        series: Series TV 2
+        "400":
+          description: Bad Request or request body is not matching with input model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspBadRequestExceptionV1ResponseContent'
+        "401":
+          description: Unauthenticated request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnauthorizedExceptionV1ResponseContent'
+        "403":
+          description: Forbidden - Request failed because user is not authorized to
+            access a resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspForbiddenExceptionV1ResponseContent'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspNotFoundExceptionV1ResponseContent'
+        "415":
+          description: Unsupported Media Type - Version not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnsupportedMediaTypeExceptionV1ResponseContent'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspTooManyRequestsExceptionV1ResponseContent'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspInternalServerExceptionV1ResponseContent'
+  /insights/topCategoriesPurchased:
+    post:
+      tags:
+      - Persona Builder API
+      description: |-
+        Get insights on top retail categories purchased by customers in the input expression.
+
+        **Requires one of these permissions**:
+        []
+      operationId: TopCategoriesPurchased
+      parameters:
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+          \ that you'd like to retrieve insights for."
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+            \ that you'd like to retrieve insights for."
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of objects in the returned array. Use\
+          \ in conjunction with the nextToken parameter to control pagination. For\
+          \ example, supplying maxResults=20 with a previously returned token will\
+          \ fetch up to the next 20 items. In some cases, fewer items may be returned.<br/>Default:\
+          \ 30; <br/>Minimum: 1; <br/>Maximum:250."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 250
+          minimum: 1
+          type: number
+          description: "Sets the maximum number of objects in the returned array.\
+            \ Use in conjunction with the nextToken parameter to control pagination.\
+            \ For example, supplying maxResults=20 with a previously returned token\
+            \ will fetch up to the next 20 items. In some cases, fewer items may be\
+            \ returned.<br/>Default: 30; <br/>Minimum: 1; <br/>Maximum:250."
+      - name: nextToken
+        in: query
+        description: "Operations that return paginated results include a pagination\
+          \ token in this field. To retrieve the next page of results, call the same\
+          \ operation and specify this token in the request. If the nextToken field\
+          \ is empty, there are no further results."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Operations that return paginated results include a pagination\
+            \ token in this field. To retrieve the next page of results, call the\
+            \ same operation and specify this token in the request. If the nextToken\
+            \ field is empty, there are no further results."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      requestBody:
+        content:
+          application/vnd.topcategoriespurchasedinputexpression.v1+json:
+            schema:
+              $ref: '#/components/schemas/InputExpression'
+            examples:
+              TopCategoriesPurchased_example1:
+                summary: Audience Targeting Expression as an input
+                description: An example of TopCategoriesPurchased using Audience Targeting
+                  Expression as an input.
+                value:
+                  audienceTargetingExpression:
+                    audiences:
+                    - audienceId: "12345"
+                      groupId: customerProvidedString1
+                      negative: "true"
+                    - audienceId: "23456"
+                      groupId: customerProvidedString1
+                      negative: "true"
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/vnd.topcategoriespurchasedinsights.v1+json:
+              schema:
+                $ref: '#/components/schemas/TopCategoriesPurchasedResponseContent'
+              examples:
+                TopCategoriesPurchased_example1:
+                  description: An example of TopCategoriesPurchased response.
+                  value:
+                    lastUpdatedAt: 2023-04-03T19:35:20.567Z
+                    retailCategories:
+                    - id: retailCategoryId1
+                      insightMetrics:
+                        affinity: "1.5"
+                        overlapPercentage: "10"
+                      name: Retail Category 1
+                      path:
+                      - browseNodeName: "Clothing, Shoes & Jewelry"
+                      - browseNodeName: Self Service
+                      - browseNodeName: Special Features Stores
+                    - id: retailCategoryId2
+                      insightMetrics:
+                        affinity: "2.3"
+                        overlapPercentage: "12"
+                      name: Retail Category 2
+                      path:
+                      - browseNodeName: "Clothing, Shoes & Jewelry"
+                      - browseNodeName: Self Service
+        "400":
+          description: Bad Request or request body is not matching with input model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspBadRequestExceptionV1ResponseContent'
+        "401":
+          description: Unauthenticated request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnauthorizedExceptionV1ResponseContent'
+        "403":
+          description: Forbidden - Request failed because user is not authorized to
+            access a resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspForbiddenExceptionV1ResponseContent'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspNotFoundExceptionV1ResponseContent'
+        "415":
+          description: Unsupported Media Type - Version not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnsupportedMediaTypeExceptionV1ResponseContent'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspTooManyRequestsExceptionV1ResponseContent'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspInternalServerExceptionV1ResponseContent'
+  /insights/topOverlappingAudiences:
+    post:
+      tags:
+      - Persona Builder API
+      description: |-
+        Get top audiences overlapping with the input expression.
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: TopOverlappingAudiences
+      parameters:
+      - name: advertiserId
+        in: query
+        description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+          \ that you'd like to retrieve insights for."
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "The identifier of the advertiser, retrieved from /dsp/advertisers,\
+            \ that you'd like to retrieve insights for."
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of objects in the returned array. Use\
+          \ in conjunction with the nextToken parameter to control pagination. For\
+          \ example, supplying maxResults=20 with a previously returned token will\
+          \ fetch up to the next 20 items. In some cases, fewer items may be returned.<br/>Default:\
+          \ 30; <br/>Minimum: 1; <br/>Maximum:250."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 250
+          minimum: 1
+          type: number
+          description: "Sets the maximum number of objects in the returned array.\
+            \ Use in conjunction with the nextToken parameter to control pagination.\
+            \ For example, supplying maxResults=20 with a previously returned token\
+            \ will fetch up to the next 20 items. In some cases, fewer items may be\
+            \ returned.<br/>Default: 30; <br/>Minimum: 1; <br/>Maximum:250."
+      - name: nextToken
+        in: query
+        description: "Operations that return paginated results include a pagination\
+          \ token in this field. To retrieve the next page of results, call the same\
+          \ operation and specify this token in the request. If the nextToken field\
+          \ is empty, there are no further results."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          description: "Operations that return paginated results include a pagination\
+            \ token in this field. To retrieve the next page of results, call the\
+            \ same operation and specify this token in the request. If the nextToken\
+            \ field is empty, there are no further results."
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+      requestBody:
+        content:
+          application/vnd.topoverlappingaudiencesinputexpression.v1+json:
+            schema:
+              $ref: '#/components/schemas/TopOverlappingAudiencesInputExpression'
+            examples:
+              TopOverlappingAudiences_example1:
+                summary: Audience Targeting Expression as an input
+                description: An example of TopOverlappingAudiences API input expression
+                  using Audience Targeting Expression as an input.
+                value:
+                  audienceTargetingExpression:
+                    audiences:
+                    - audienceId: "12345"
+                      groupId: customerProvidedString1
+                      negative: "false"
+                    - audienceId: "23456"
+                      groupId: customerProvidedString1
+                      negative: "false"
+                  categoryFilter:
+                  - THIRD_PARTY
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/vnd.topoverlappingaudiencesinsights.v1+json:
+              schema:
+                $ref: '#/components/schemas/TopOverlappingAudiencesResponseContent'
+              examples:
+                TopOverlappingAudiences_example1:
+                  summary: An example of TopOverlappingAudiences response
+                  value:
+                    audiences:
+                    - category: Demographics
+                      forecast:
+                        dailyImpressions:
+                          lowerBound: "10000"
+                          upperBound: "50000"
+                        dailyReach:
+                          lowerBound: "10000"
+                          upperBound: "50000"
+                      id: audienceId1
+                      insightMetrics:
+                        affinity: "1.5"
+                        overlapPercentage: "10"
+                      name: Name of audience 1
+                    - category: Demographics
+                      forecast:
+                        dailyImpressions:
+                          lowerBound: "50000"
+                          upperBound: "100000"
+                        dailyReach:
+                          lowerBound: "50000"
+                          upperBound: "100000"
+                      id: audienceId2
+                      insightMetrics:
+                        affinity: "3"
+                        overlapPercentage: "20"
+                      name: Name of audience 2
+                    lastUpdatedAt: 2023-04-03T19:35:20.567Z
+                    nextToken: string
+        "400":
+          description: Bad Request or request body is not matching with input model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspBadRequestExceptionV1ResponseContent'
+        "401":
+          description: Unauthenticated request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnauthorizedExceptionV1ResponseContent'
+        "403":
+          description: Forbidden - Request failed because user is not authorized to
+            access a resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspForbiddenExceptionV1ResponseContent'
+        "404":
+          description: Not Found - Requested resource does not exist or is not visible
+            for the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspNotFoundExceptionV1ResponseContent'
+        "415":
+          description: Unsupported Media Type - Version not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspUnsupportedMediaTypeExceptionV1ResponseContent'
+        "429":
+          description: Too Many Requests - Request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspTooManyRequestsExceptionV1ResponseContent'
+        "500":
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DspInternalServerExceptionV1ResponseContent'
+components:
+  schemas:
+    ActorInsight:
+      required:
+      - actor
+      - insight
+      type: object
+      properties:
+        actor:
+          type: string
+          description: The actor's name.
+        insight:
+          $ref: '#/components/schemas/InsightMetric'
+      example:
+        actor: actor
+        insight:
+          overlapPercentage: 60.27456183070403
+          affinity: 0.08008281904610115
+    AudienceCategory:
+      type: string
+      description: Categories of audiences that are supported.
+      enum:
+      - ADVERTISER_AUDIENCES
+      - COMBINED_AUDIENCES
+      - CUSTOM_BUILT
+      - DEMOGRAPHIC
+      - INTEREST
+      - IN_MARKET
+      - LIFESTYLE
+      - LIFE_EVENT
+      - LOOKALIKE
+      - THIRD_PARTY
+    AudienceInsight:
+      required:
+      - category
+      - forecast
+      - id
+      - insightMetrics
+      - name
+      type: object
+      properties:
+        audienceDetailPageUrl:
+          type: string
+          description: Link to the audience details page within the Amazon Advertising
+            Console for the given audience.
+        category:
+          type: string
+          description: "Category of the audience segment. Example: interests"
+        forecast:
+          $ref: '#/components/schemas/Forecast'
+        id:
+          type: string
+          description: Identifier for the target audience.
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        name:
+          type: string
+          description: Name of the target audience.
+      example:
+        audienceDetailPageUrl: audienceDetailPageUrl
+        name: name
+        insightMetrics:
+          overlapPercentage: 60.27456183070403
+          affinity: 0.08008281904610115
+        forecast:
+          dailyReach: null
+          dailyImpressions:
+            upperBound: 6.027456183070403
+            lowerBound: 0.8008281904610115
+        id: id
+        category: category
+    AudienceTargetingExpression:
+      required:
+      - audiences
+      type: object
+      properties:
+        audiences:
+          maxItems: 5500
+          minItems: 1
+          type: array
+          description: "Specify groups of audiences to include or exclude when targeting.<ul><li>Included\
+            \ groups are joined by an intersection. Users must be in all of the groups\
+            \ specified to be included.</li><li>Audiences within a group are joined\
+            \ by a union. Users can be in any of the audiences specified to be included/excluded.</li><li>Users\
+            \ within the same group must either be included or excluded.</li><li>You\
+            \ can specify up to 10 groups to be included, but only 1 group to be excluded.</li><li>Up\
+            \ to 500 audienceIds can be specified per group.</li><ul>"
+          items:
+            $ref: '#/components/schemas/AudienceV1'
+    AudienceV1:
+      required:
+      - audienceId
+      - groupId
+      - negative
+      type: object
+      properties:
+        audienceId:
+          type: string
+          description: An audience identifier retrieved from the audiences/list resource.
+        groupId:
+          type: string
+          description: A customer-provided string used to create a group of audiences.
+            This string is only used for this single request. Amazon does not store
+            it.
+        negative:
+          type: boolean
+          description: Whether to include (false) or exclude (true) audiences when
+            targeting. Only one state may be used per groupId
+    BandedSizeInsights:
+      required:
+      - min
+      type: object
+      properties:
+        max:
+          minimum: 0
+          type: number
+          description: |-
+            Optional: The upper bound of estimated unique customers who are in the input audience set.
+                                If it is not present, this means there is no upper bound. For example, a value of
+                                {"min" : 100000000} alone means the estimated unique customers who are in the input
+                                audience set is 100M or more.
+        min:
+          minimum: 0
+          type: number
+          description: The lower bound of estimated unique customers who are in the
+            input audience set.
+      example:
+        min: 0.6027456183070403
+        max: 0.08008281904610115
+    BandedSizeResponseContent:
+      required:
+      - estimatedSize
+      - lastUpdatedAt
+      type: object
+      properties:
+        estimatedSize:
+          $ref: '#/components/schemas/BandedSizeInsights'
+        lastUpdatedAt:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating when insight was
+            last generated for the audience targeting expression.
+          format: date-time
+      example:
+        estimatedSize:
+          min: 0.6027456183070403
+          max: 0.08008281904610115
+        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+    BrowseNode:
+      required:
+      - browseNodeName
+      type: object
+      properties:
+        browseNodeName:
+          type: string
+          description: Name of the browse node in native language of the marketplace.
+      example:
+        browseNodeName: browseNodeName
+    Currency:
+      type: string
+      description: Currency which represents the income figures. This will be native
+        to the input marketplace.
+      enum:
+      - AED
+      - AUD
+      - BRL
+      - CAD
+      - EUR
+      - GBP
+      - INR
+      - JPY
+      - MXN
+      - SAR
+      - SEK
+      - TRY
+      - USD
+    DateRangeInsight:
+      required:
+      - endDate
+      - startDate
+      type: object
+      properties:
+        endDate:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating the end date of
+            the insight.
+          format: date-time
+        startDate:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating the start date
+            of the insight.
+          format: date-time
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
+    DemographicInsights:
+      type: object
+      properties:
+        age:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RangedDemographicInsight'
+        childrenAge:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RangedDemographicInsight'
+        childrenCount:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RangedDemographicInsight'
+        education:
+          maxItems: 4
+          minItems: 2
+          type: array
+          items:
+            $ref: '#/components/schemas/EducationInsight'
+        gender:
+          maxItems: 4
+          minItems: 2
+          type: array
+          items:
+            $ref: '#/components/schemas/GenderInsight'
+        income:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/IncomeDemographicInsight'
+        propertyOwnership:
+          maxItems: 2
+          minItems: 2
+          type: array
+          items:
+            $ref: '#/components/schemas/PropertyOwnershipInsight'
+      example:
+        income:
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        - segmentId: segmentId
+          insightMetrics: null
+          range: null
+          currency: AED
+        childrenAge:
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        education:
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BACHELORS_DEGREE
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BACHELORS_DEGREE
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BACHELORS_DEGREE
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BACHELORS_DEGREE
+        gender:
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BOTH
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BOTH
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BOTH
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: BOTH
+        propertyOwnership:
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: OWNING
+        - segmentId: segmentId
+          insightMetrics: null
+          attribute: OWNING
+        age:
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        - segmentId: segmentId
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          range:
+            min: 0.5962133916683182
+            max: 0.14658129805029452
+        childrenCount:
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+    DemographicsResponseContent:
+      required:
+      - demographics
+      - lastUpdatedAt
+      type: object
+      properties:
+        demographics:
+          $ref: '#/components/schemas/DemographicInsights'
+        lastUpdatedAt:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating when insight was
+            last generated for the input audience set.
+          format: date-time
+      example:
+        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        demographics:
+          income:
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          - segmentId: segmentId
+            insightMetrics: null
+            range: null
+            currency: AED
+          childrenAge:
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          education:
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BACHELORS_DEGREE
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BACHELORS_DEGREE
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BACHELORS_DEGREE
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BACHELORS_DEGREE
+          gender:
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BOTH
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BOTH
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BOTH
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: BOTH
+          propertyOwnership:
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: OWNING
+          - segmentId: segmentId
+            insightMetrics: null
+            attribute: OWNING
+          age:
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          - segmentId: segmentId
+            insightMetrics:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+            range:
+              min: 0.5962133916683182
+              max: 0.14658129805029452
+          childrenCount:
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+          - null
+    DirectorInsight:
+      required:
+      - director
+      - insight
+      type: object
+      properties:
+        director:
+          type: string
+          description: The director's name.
+        insight:
+          $ref: '#/components/schemas/InsightMetric'
+      example:
+        insight: null
+        director: director
+    DspBadRequestExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspForbiddenExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspInternalServerExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspNotFoundExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspSubErrorV1:
+      required:
+      - errorType
+      - message
+      type: object
+      properties:
+        errorType:
+          type: string
+        fieldName:
+          type: string
+        message:
+          type: string
+    DspTooManyRequestsExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspUnauthorizedExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    DspUnsupportedMediaTypeExceptionV1ResponseContent:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+        requestId:
+          type: string
+    Education:
+      type: string
+      enum:
+      - BACHELORS_DEGREE
+      - BACHELOR_DEGREE_OR_MORE
+      - GRADUATE_DEGREE
+      - HIGH_SCHOOL
+      - SOME_COLLEGE
+    EducationInsight:
+      required:
+      - attribute
+      - insightMetrics
+      - segmentId
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/Education'
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        segmentId:
+          type: string
+          description: Canonical ID of the segment the demographic insight attribute
+            maps to.
+      example:
+        segmentId: segmentId
+        insightMetrics: null
+        attribute: BACHELORS_DEGREE
+    Forecast:
+      required:
+      - dailyImpressions
+      - dailyReach
+      type: object
+      properties:
+        dailyImpressions:
+          $ref: '#/components/schemas/ForecastBands'
+        dailyReach:
+          $ref: '#/components/schemas/ForecastBands'
+      example:
+        dailyReach: null
+        dailyImpressions:
+          upperBound: 6.027456183070403
+          lowerBound: 0.8008281904610115
+    ForecastBands:
+      required:
+      - lowerBound
+      type: object
+      properties:
+        lowerBound:
+          type: number
+          description: minimum number of devices reached/ minimum number of available
+            impressions.
+        upperBound:
+          type: number
+          description: "Optional: maximum number of devices reached/ maximum number\
+            \ of available impressions.\n\t               If it is not present, this\
+            \ means there is no upper bound. For example, a value of\n\t         \
+            \      {\"lowerbound\" : 100000000} alone means the estimated reach/impression\
+            \ forecast is over 100M."
+      example:
+        upperBound: 6.027456183070403
+        lowerBound: 0.8008281904610115
+    Gender:
+      type: string
+      enum:
+      - BOTH
+      - FEMALE
+      - MALE
+      - UNKNOWN
+    GenderInsight:
+      required:
+      - attribute
+      - insightMetrics
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/Gender'
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        segmentId:
+          type: string
+          description: Canonical ID of the segment the demographic insight attribute
+            maps to.
+      example:
+        segmentId: segmentId
+        insightMetrics: null
+        attribute: BOTH
+    GenreInsight:
+      required:
+      - genre
+      - insight
+      type: object
+      properties:
+        genre:
+          type: string
+          description: A human readable genre name.
+        insight:
+          $ref: '#/components/schemas/InsightMetric'
+      example:
+        insight: null
+        genre: genre
+    IncomeDemographicInsight:
+      required:
+      - currency
+      - insightMetrics
+      - range
+      - segmentId
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        range:
+          $ref: '#/components/schemas/Range'
+        segmentId:
+          type: string
+          description: Canonical ID of the segment the demographic insight attribute
+            maps to.
+      example:
+        segmentId: segmentId
+        insightMetrics: null
+        range: null
+        currency: AED
+    InputExpression:
+      required:
+      - audienceTargetingExpression
+      type: object
+      properties:
+        audienceTargetingExpression:
+          $ref: '#/components/schemas/AudienceTargetingExpression'
+      description: The input expression should consist of audience targeting expression.
+    InsightMetric:
+      required:
+      - affinity
+      - overlapPercentage
+      type: object
+      properties:
+        affinity:
+          minimum: 0
+          type: number
+          description: |-
+            Affinity is a measure of how likely customers in the input audience are to belong to this segment. An
+                                affinity of 5 indicates that customers in the input audience are 5 times as likely to belong to this
+                                segment than the average of customers on Amazon.
+          format: double
+        overlapPercentage:
+          maximum: 100
+          minimum: 0
+          type: number
+          description: |-
+            Percentage of customers in the input audience who are part of this segment. For example, a value of 5
+                                means 5% of customers in this segment share the input audience.
+          format: double
+      example:
+        overlapPercentage: 60.27456183070403
+        affinity: 0.08008281904610115
+    MovieInsight:
+      required:
+      - insight
+      - movie
+      type: object
+      properties:
+        insight:
+          $ref: '#/components/schemas/InsightMetric'
+        movie:
+          type: string
+          description: A human readable movie name.
+      example:
+        insight: null
+        movie: movie
+    PrimeVideoCategory:
+      type: string
+      description: Prime video's supported categories.
+      enum:
+      - ACTORS
+      - DIRECTORS
+      - GENRES
+      - MOVIES
+      - SERIES
+    PrimeVideoInputExpression:
+      required:
+      - audienceTargetingExpression
+      type: object
+      properties:
+        audienceTargetingExpression:
+          $ref: '#/components/schemas/AudienceTargetingExpression'
+        categoryFilter:
+          maxItems: 4
+          minItems: 1
+          uniqueItems: true
+          type: array
+          description: |-
+            Optional: A list of prime video categories to filter insights on. By default it will return all
+                               prime video category types in response.
+          items:
+            $ref: '#/components/schemas/PrimeVideoCategory'
+      description: The input expression should consist of audience targeting expression.
+    PrimeVideoInsight:
+      type: object
+      properties:
+        actors:
+          maxItems: 50
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ActorInsight'
+        dateRange:
+          $ref: '#/components/schemas/DateRangeInsight'
+        directors:
+          maxItems: 50
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectorInsight'
+        genres:
+          maxItems: 50
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/GenreInsight'
+        movies:
+          maxItems: 50
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MovieInsight'
+        series:
+          maxItems: 50
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/SeriesInsight'
+      example:
+        movies:
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        - insight: null
+          movie: movie
+        actors:
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        - actor: actor
+          insight:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+        dateRange:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          startDate: 2000-01-23T04:56:07.000+00:00
+        genres:
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        - insight: null
+          genre: genre
+        series:
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        - insight: null
+          series: series
+        directors:
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+        - insight: null
+          director: director
+    PrimeVideoResponseContent:
+      required:
+      - lastUpdatedAt
+      - primeVideoInsights
+      type: object
+      properties:
+        lastUpdatedAt:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating when insight was
+            last generated for the input expression.
+          format: date-time
+        primeVideoInsights:
+          $ref: '#/components/schemas/PrimeVideoInsight'
+      example:
+        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        primeVideoInsights:
+          movies:
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          - insight: null
+            movie: movie
+          actors:
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          - actor: actor
+            insight:
+              overlapPercentage: 60.27456183070403
+              affinity: 0.08008281904610115
+          dateRange:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            startDate: 2000-01-23T04:56:07.000+00:00
+          genres:
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          - insight: null
+            genre: genre
+          series:
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          - insight: null
+            series: series
+          directors:
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+          - insight: null
+            director: director
+    PropertyOwnership:
+      type: string
+      enum:
+      - OWNING
+      - RENTING
+    PropertyOwnershipInsight:
+      required:
+      - attribute
+      - insightMetrics
+      - segmentId
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/PropertyOwnership'
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        segmentId:
+          type: string
+          description: Canonical ID of the segment the demographic insight attribute
+            maps to.
+      example:
+        segmentId: segmentId
+        insightMetrics: null
+        attribute: OWNING
+    Range:
+      type: object
+      properties:
+        max:
+          minimum: 0
+          type: number
+          description: |-
+            Upper bound of the range (inclusive). Optional - if max does not exist then the range has no upper
+                                bound and is bound by the min range alone. Either one of max or min will always exist.
+        min:
+          minimum: 0
+          type: number
+          description: |-
+            Lower bound of the range (inclusive). Optional - if min does not exist then the range has no lower
+                                bound and is bound by the max range alone. Either one of max or min will always exist.
+      example:
+        min: 0.5962133916683182
+        max: 0.14658129805029452
+    RangedDemographicInsight:
+      required:
+      - insightMetrics
+      - range
+      - segmentId
+      type: object
+      properties:
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        range:
+          $ref: '#/components/schemas/Range'
+        segmentId:
+          type: string
+          description: Canonical ID of the segment the demographic insight attribute
+            maps to.
+      example:
+        segmentId: segmentId
+        insightMetrics:
+          overlapPercentage: 60.27456183070403
+          affinity: 0.08008281904610115
+        range:
+          min: 0.5962133916683182
+          max: 0.14658129805029452
+    SeriesInsight:
+      required:
+      - insight
+      - series
+      type: object
+      properties:
+        insight:
+          $ref: '#/components/schemas/InsightMetric'
+        series:
+          type: string
+          description: A human readable TV Series name.
+      example:
+        insight: null
+        series: series
+    TopCategoriesPurchasedResponseContent:
+      required:
+      - lastUpdatedAt
+      - retailCategories
+      type: object
+      properties:
+        lastUpdatedAt:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating when insight was
+            last generated for the input audience set.
+          format: date-time
+        nextToken:
+          type: string
+          description: |-
+            Optional: If present, there are more insights than initially returned. Use this token to call the operation again
+                                and have the additional insights returned. The token is valid for 8 hours from the initial request.
+        retailCategories:
+          maxItems: 30
+          minItems: 1
+          type: array
+          description: "Top retail categories purchased by customers in the input\
+            \ expression., ordered by the affinity score.\n                    \n\
+            \ \n Affinity represents a measure of how likely customers in the input\
+            \ expression are to make a purchase\n                    from the category.\
+            \ An affinity of 5 indicates that customers in the input expression are\
+            \ 5 times as likely to\n                    buy from this category than\
+            \ the average of customers on Amazon."
+          items:
+            $ref: '#/components/schemas/TopRetailCategoryInsight'
+      example:
+        retailCategories:
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        - path:
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          - browseNodeName: browseNodeName
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          id: id
+        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        nextToken: nextToken
+    TopOverlappingAudiencesInputExpression:
+      required:
+      - audienceTargetingExpression
+      type: object
+      properties:
+        audienceTargetingExpression:
+          $ref: '#/components/schemas/AudienceTargetingExpression'
+        categoryFilter:
+          maxItems: 8
+          minItems: 1
+          uniqueItems: true
+          type: array
+          description: "Optional: A list of audience categories to filter insights\
+            \ on. By default it will return all audience category types in response,\
+            \ ordered by affinity score."
+          items:
+            $ref: '#/components/schemas/AudienceCategory'
+      description: The input expression should consist of audience targeting expression.
+    TopOverlappingAudiencesResponseContent:
+      required:
+      - audiences
+      - lastUpdatedAt
+      type: object
+      properties:
+        audiences:
+          maxItems: 30
+          minItems: 1
+          type: array
+          description: "Top audiences associated with customers in the input expression,\
+            \ ordered by the affinity score.\n                    \n Affinity is a\
+            \ measure of how likely customers in the input expression are to belong\
+            \ to a specific\n                    audience. An affinity of 5 for some\
+            \ audience indicates that customers in the input expression set\n    \
+            \                are 5 times as likely to belong to this audience than\
+            \ the average of customers on Amazon."
+          items:
+            $ref: '#/components/schemas/AudienceInsight'
+        lastUpdatedAt:
+          type: string
+          description: UTC timestamp in ISO 8601 format indicating when insight was
+            last generated for the input audience set.
+          format: date-time
+        nextToken:
+          type: string
+          description: "Optional: If present, there are more insights than initially\
+            \ returned. Use this token to call the operation again and have the additional\
+            \ insights returned. The token is valid for 8 hours from the initial request."
+      example:
+        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        nextToken: nextToken
+        audiences:
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+        - audienceDetailPageUrl: audienceDetailPageUrl
+          name: name
+          insightMetrics:
+            overlapPercentage: 60.27456183070403
+            affinity: 0.08008281904610115
+          forecast:
+            dailyReach: null
+            dailyImpressions:
+              upperBound: 6.027456183070403
+              lowerBound: 0.8008281904610115
+          id: id
+          category: category
+    TopRetailCategoryInsight:
+      required:
+      - id
+      - insightMetrics
+      - name
+      - path
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier of retail category.
+        insightMetrics:
+          $ref: '#/components/schemas/InsightMetric'
+        name:
+          type: string
+          description: Name of retail category.
+        path:
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: "The hierarchical path that leads to a category node, starting\
+            \ with the root node."
+          items:
+            $ref: '#/components/schemas/BrowseNode'
+      example:
+        path:
+        - browseNodeName: browseNodeName
+        - browseNodeName: browseNodeName
+        - browseNodeName: browseNodeName
+        - browseNodeName: browseNodeName
+        - browseNodeName: browseNodeName
+        name: name
+        insightMetrics:
+          overlapPercentage: 60.27456183070403
+          affinity: 0.08008281904610115
+        id: id
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

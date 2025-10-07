@@ -1,0 +1,141 @@
+# ==========================================
+# Amazon Ads API Go SDK - .gitignore
+# ==========================================
+
+# ========== Go 相关 ==========
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage
+coverage.out
+coverage.html
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories (uncomment if needed)
+# vendor/
+
+# ========== IDE 和编辑器 ==========
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Cursor
+.cursor/
+
+# GoLand / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ========== 操作系统 ==========
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ========== 临时文件和缓存 ==========
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.cache
+
+# Log files
+*.log
+logs/
+
+# ========== 项目特定 ==========
+# Swagger Codegen 临时目录
+swagger-codegen-temp/
+codegen-temp/
+*-temp/
+
+# API 监控状态文件（本地测试）
+tools/api-monitor/monitor-state.json
+tools/api-monitor/latest-changes.md
+tools/api-monitor/api-monitor.exe
+
+# 编译输出
+bin/
+build/
+dist/
+
+# 配置文件（包含敏感信息）
+config.yaml
+.env
+.env.local
+.env.*.local
+
+# 测试覆盖率报告
+coverage/
+htmlcov/
+
+# ========== 依赖和工具 ==========
+# 下载的第三方工具（保留在仓库中便于离线使用）
+# swagger-codegen-cli-3.0.62.jar - 保留
+
+# ========== 文档生成 ==========
+# 临时生成的文档
+site/
+_site/
+
+# ========== 其他 ==========
+# Backup files
+*.bak
+*.backup
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# 保留的文件说明
+# ==========================================
+# swagger-codegen-cli-3.0.62.jar - 保留在仓库中
+# specs/*.json, specs/*.yaml - 保留在仓库中
+# 所有生成的 API 代码 - 保留在仓库中

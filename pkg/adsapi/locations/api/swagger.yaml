@@ -1,0 +1,275 @@
+openapi: 3.0.1
+info:
+  title: Locations
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /locations/list:
+    post:
+      tags:
+      - Locations
+      summary: Gets location objects based on one or more filters.
+      description: |-
+        Note: This endpoint is currently limited to US only. Gets a list of location objects after filtering on at least one of **locationId**, **name**, **category**. Each item in the resulting set will match all specified filters.
+
+
+        **Requires one of these permissions**:
+        []
+      operationId: listLocations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Token from a previous request. Use in conjunction with the `maxResults`
+          parameter to control pagination of the returned array.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: "Sets the number of locations in the returned array. Use in conjunction\
+          \ with the `nextToken` parameter to control pagination. The range for maxResults\
+          \ is [1,2000] with default as 10. For example, supplying maxResults=20 with\
+          \ a previously returned token will fetch the next 20 items."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 2000
+          minimum: 1
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListLocationsRequestBodyV1'
+      responses:
+        "200":
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found. The requested resource does not exist or is not
+            visible for the user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "412":
+          description: The input provided does not meet the required constraints for
+            this operation to be performed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      properties:
+        errors:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/SubError'
+        message:
+          type: string
+          description: A human-readable description of the response.
+        requestId:
+          type: string
+          description: Request Id that uniquely identifies your request.
+      description: The error response object.
+    ListLocationsRequestBodyV1:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationFilterV1'
+      description: Resulting locations will match all specified filters
+    LocationCategoryV1:
+      type: string
+      description: The location category.
+      enum:
+      - CITY
+      - COUNTRY
+      - DMA
+      - POSTAL_CODE
+      - STATE
+    LocationFilterV1:
+      type: object
+      properties:
+        field:
+          type: string
+          description: "Field to filter by. Supported enums are 'locationId', 'name',\
+            \ and 'category'. The 'name' filter is a fuzzy search. If 'category' is\
+            \ specified, the values must match either 'CITY', 'STATE', 'DMA', 'COUNTRY',\
+            \ or 'POSTAL_CODE'."
+          enum:
+          - category
+          - locationId
+          - name
+        values:
+          type: array
+          items:
+            type: string
+    LocationIdV1:
+      type: string
+      description: The identifier of the location.
+    LocationV1:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/LocationCategoryV1'
+        locationId:
+          $ref: '#/components/schemas/LocationIdV1'
+        name:
+          type: string
+          description: The location name.
+      example:
+        locationId: locationId
+        name: name
+        category: CITY
+    SubError:
+      required:
+      - errorType
+      - message
+      type: object
+      properties:
+        errorType:
+          type: string
+        fieldName:
+          type: string
+        message:
+          type: string
+      description: The sub error object.
+    inline_response_200:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationV1'
+        nextToken:
+          type: string
+          description: Token used in following requests for pagination.
+      description: List of locations.
+      example:
+        nextToken: nextToken
+        locations:
+        - locationId: locationId
+          name: name
+          category: CITY
+        - locationId: locationId
+          name: name
+          category: CITY
+  responses:
+    HexgateBadRequestV1:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgateForbiddenV1:
+      description: Forbidden. The request failed because the user does not have access
+        to the specified resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgateInternalServerErrorV1:
+      description: Internal Server Error. Something went wrong on the server. Retry
+        later and report an error if unresolved.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgateNotFoundV1:
+      description: Not Found. The requested resource does not exist or is not visible
+        for the user.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgatePreconditionFailedV1:
+      description: The input provided does not meet the required constraints for this
+        operation to be performed successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgateTooManyRequestsV1:
+      description: Too Many Requests. The request was rate-limited. Retry later.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    HexgateUnauthorizedV1:
+      description: Unauthorized. The request failed because the user is not authenticated
+        or is not allowed to invoke the operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

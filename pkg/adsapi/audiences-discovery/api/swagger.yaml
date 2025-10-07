@@ -1,0 +1,1551 @@
+openapi: 3.0.1
+info:
+  title: Audiences
+  description: Audience Discovery API
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /audiences/list:
+    post:
+      tags:
+      - Discovery
+      summary: Gets audience segments based on filters
+      description: |-
+        Returns a list of audience segments for an advertiser. The result set can be filtered by providing an array of Filter objects. Each item in the resulting set will match all specified filters.
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","advertiser_campaign_view","campaign_edit"]
+      operationId: listAudiences
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: advertiserId
+        in: query
+        description: "The advertiser to retrieve segments for. This parameter is required\
+          \ for the DSP adType, but optional for the SD adType."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: canTarget
+        in: query
+        description: "When set to true, only targetable audience segments will be\
+          \ returned."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          default: false
+      - name: nextToken
+        in: query
+        description: Token from a previous request. Use in conjunction with the `maxResults`
+          parameter to control pagination of the returned array.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of audiences in the returned array.\
+          \ Use in conjunction with the `nextToken` parameter to control pagination.\
+          \ For example, supplying maxResults=20 with a previously returned token\
+          \ will fetch up to the next 20 items. In some cases, fewer items may be\
+          \ returned."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 250
+          minimum: 1
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListAudiencesRequestBodyV1'
+        required: false
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAudiencesResponseV1'
+        "400":
+          description: Bad Request. The request could not be processed or handled.
+            Please correct the issues specified and try again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user is unauthenticated
+            or does not have access to the specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+  /audiences/taxonomy/list:
+    post:
+      tags:
+      - Discovery
+      summary: Browse the taxonomy of audience categories
+      description: |-
+        Returns a list of audience categories for a given category path
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Advertising-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","advertiser_campaign_view","campaign_edit"]
+      operationId: fetchTaxonomy
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: advertiserId
+        in: query
+        description: "The advertiser associated with the advertising account. This\
+          \ parameter is required for the DSP adType, but optional for the SD adType."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Token from a previous request. Use in conjunction with the `maxResults`
+          parameter to control pagination of the returned array.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of categories in the returned array.\
+          \ Use in conjunction with the `nextToken` parameter to control pagination.\
+          \ For example, supplying maxResults=20 with a previously returned token\
+          \ will fetch up to the next 20 items. In some cases, fewer items may be\
+          \ returned."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 250
+          minimum: 1
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchTaxonomyRequestBodyV1'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FetchTaxonomyResponseV1'
+        "400":
+          description: Bad Request. The request could not be processed or handled.
+            Please correct the issues specified and try again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user is unauthenticated
+            or does not have access to the specified resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceErrorV1'
+  /dsp/audiences/delete:
+    post:
+      tags:
+      - Ads
+      description: |-
+        Deletes an existing targeting audience based on audience ID. Only available for the audiences of the type: *PRODUCT_PURCHASES*, *PRODUCT_VIEWS*, *PRODUCT_SIMS*, *PRODUCT_SEARCH* and *COMBINED_AUDIENCE*
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","audiences_edit"]
+      operationId: DspAudienceDelete
+      parameters:
+      - name: AdvertiserId
+        in: header
+        description: ID that describe DSP advertiser level accounts that exists under
+          a manager account (previously under a DSP entity). The owner of the audience.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: ID that describe DSP advertiser level accounts that exists
+            under a manager account (previously under a DSP entity). The owner of
+            the audience.
+        examples:
+          DspAudienceDelete_example1:
+            summary: Audience Delete Success example.
+            value: "592059203698558089"
+          DspAudienceDelete_example2:
+            summary: Audience Delete Failure Example.
+            value: "592059203698558000"
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          DspAudienceDelete_example1:
+            summary: Audience Delete Success example.
+            value: amzn1.application-oa2-client.d23523d24fad2a0a2d16241f57183a7
+          DspAudienceDelete_example2:
+            summary: Audience Delete Failure Example.
+            value: amzn1.application-oa2-client.d23523d24fad2a0a2d16241f57183a7
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          DspAudienceDelete_example1:
+            summary: Audience Delete Success example.
+            value: "3900820857650036"
+          DspAudienceDelete_example2:
+            summary: Audience Delete Failure Example.
+            value: "3900820857650000"
+      requestBody:
+        content:
+          application/vnd.dspaudiences.v1+json:
+            schema:
+              $ref: '#/components/schemas/DspAudienceDeleteRequestContent'
+            examples:
+              DspAudienceDelete_example1:
+                summary: Audience Delete Success example.
+                value:
+                  dspAudienceDeleteRequestItems:
+                  - audienceId: 4ga88r63
+                    idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+              DspAudienceDelete_example2:
+                summary: Audience Delete Failure Example.
+                value:
+                  dspAudienceDeleteRequestItems:
+                  - audienceId: 4ga88r45
+                    idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66aba5
+        required: true
+      responses:
+        "207":
+          description: DspAudienceDelete 207 response
+          content:
+            application/vnd.dspaudiences.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspAudienceDeleteResponseContent'
+              examples:
+                DspAudienceDelete_example1:
+                  summary: Audience Delete Success example.
+                  value:
+                    failed: []
+                    success:
+                    - audienceId: 4ga88r63
+                      idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                      index: "0"
+                DspAudienceDelete_example2:
+                  summary: Audience Delete Failure Example.
+                  value:
+                    failed:
+                    - audienceId: 4ga88r45
+                      errors:
+                      - errorCode: VALUE_INVALID
+                        errorId: "10001"
+                        errorMessage: Invalid Audience type selected.
+                      httpStatusCode: "400"
+                      idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66aba5
+                      index: "0"
+                      message: Delete request failed.
+                      requestId: 3fa85f64-5717-4562-b3fc-2c8563214cd3
+                    success: []
+        "400":
+          description: AudienceDeleteAdMutationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteAdMutationExceptionResponseContent'
+        "401":
+          description: AudienceDeleteUnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteUnauthorizedExceptionResponseContent'
+        "403":
+          description: AudienceDeleteAccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteAccessDeniedExceptionResponseContent'
+        "429":
+          description: AudienceDeleteThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteThrottlingExceptionResponseContent'
+        "500":
+          description: AudienceDeleteInternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteInternalServerExceptionResponseContent'
+        "502":
+          description: AudienceDeleteBadGatewayException 502 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudienceDeleteBadGatewayExceptionResponseContent'
+  /dsp/audiences/edit:
+    put:
+      tags:
+      - Ads
+      description: |-
+        Updates an existing targeting audience based on an audience definition and audience ID.
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_edit","audiences_edit"]
+      operationId: DspAudienceEdit
+      parameters:
+      - name: AdvertiserId
+        in: header
+        description: ID that describe DSP advertiser level accounts that exists under
+          a manager account (previously under a DSP entity). The owner of the audience.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: ID that describe DSP advertiser level accounts that exists
+            under a manager account (previously under a DSP entity). The owner of
+            the audience.
+        examples:
+          DspAudienceEdit_example1:
+            summary: Audience Edit example.
+            value: myAdvertiserId
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          DspAudienceEdit_example1:
+            summary: Audience Edit example.
+            value: myClientId
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          DspAudienceEdit_example1:
+            summary: Audience Edit example.
+            value: myAPIScope
+      requestBody:
+        content:
+          application/vnd.dspaudiences.v1+json:
+            schema:
+              $ref: '#/components/schemas/DspAudienceEditRequestContent'
+            examples:
+              DspAudienceEdit_example1:
+                summary: Audience Edit example.
+                value:
+                  dspAudienceEditRequestItems:
+                  - audienceId: 4ga88r63
+                    audienceType: PRODUCT_PURCHASES
+                    description: Description for Audience Name.
+                    idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                    lookback: "10"
+                    name: AudienceName
+                    rules:
+                    - attributeType: ASIN
+                      attributeValues:
+                      - B08V4T57R2
+                      clause: INCLUDE
+                      operator: ONE_OF
+        required: true
+      responses:
+        "200":
+          description: DspAudienceEdit 200 response
+          content:
+            application/vnd.dspaudiences.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspAudienceEditResponseContent'
+              examples:
+                DspAudienceEdit_example1:
+                  summary: Audience Edit example.
+                  value:
+                    failed:
+                    - audienceId: 4ga88r63
+                      errors:
+                      - errorType: VALUE_INVALID
+                        fieldName: audienceType
+                        message: Invalid Audience type selected
+                      idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                      index: "0"
+                      message: Edit request failed.
+                    success:
+                    - audienceId: 4ga88r63
+                      idempotencyKey: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+                      index: "0"
+        "400":
+          description: AdMutationException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdMutationExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: AccessDeniedException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessDeniedExceptionResponseContent'
+        "404":
+          description: ResourceNotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundExceptionResponseContent'
+        "429":
+          description: ThrottlingException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingExceptionResponseContent'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerExceptionResponseContent'
+        "502":
+          description: BadGatewayException 502 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadGatewayExceptionResponseContent'
+components:
+  schemas:
+    AccessDeniedErrorCode:
+      type: string
+      enum:
+      - ACCESS_DENIED
+    AccessDeniedExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/AccessDeniedErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: User does not have sufficient access to perform this action.
+    AdMutationExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/InvalidArgumentErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+    AttributeType:
+      type: string
+      description: "For a given audienceType, the type of the attributes being supplied."
+      enum:
+      - ASIN
+    AudienceCommonFieldsV1:
+      required:
+      - audienceId
+      - audienceName
+      - category
+      - description
+      - forecasts
+      - status
+      type: object
+      properties:
+        audienceId:
+          type: string
+          description: Audience segment identifier
+        audienceName:
+          type: string
+          description: Audience name
+        category:
+          type: string
+          description: Audience segment category
+        createDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+          description: Audience description
+        forecasts:
+          $ref: '#/components/schemas/AudienceCommonFieldsV1_forecasts'
+        status:
+          type: string
+          enum:
+          - Active
+          - Deactivated
+          - Deprecated
+          - Failed
+          - Pending
+          - Processing
+        subCategory:
+          type: string
+          description: Audience segment sub-category
+        updateDate:
+          type: string
+          format: date-time
+    AudienceDeleteAccessDeniedExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+      description: User does not have sufficient access to perform this action.
+    AudienceDeleteAdMutationExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+    AudienceDeleteBadGatewayExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+      description: Unexpected error during processing of request.
+    AudienceDeleteInternalServerExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+      description: Unexpected error during processing of request.
+    AudienceDeleteThrottlingExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+      description: Request was denied due to request throttling.
+    AudienceDeleteUnauthorizedExceptionResponseContent:
+      required:
+      - errorResponse
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/DspAudienceDeleteResponse'
+      description: Caller does not have permissions to edit specified audience.
+    AudienceErrorV1:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AudienceSubErrorV1'
+        message:
+          type: string
+          description: A human-readable description of the response.
+        requestId:
+          type: string
+          description: A value created by Amazon API Gateway that uniquely identifies
+            your request.
+      description: The error response object.
+    AudienceFilterV1:
+      type: object
+      properties:
+        field:
+          type: string
+          description: "Field to filter by. Supported enums are 'audienceName', 'category',\
+            \ 'categoryPath', 'audienceId' and 'status'. The 'audienceName' is a broad\
+            \ match filter but not an exact match. The 'category' enum returns all\
+            \ audiences under a high-level category, whereas the 'categoryPath' enum\
+            \ expects a path of nodes in the taxonomy tree and returns audiences attached\
+            \ directly to the node at the specified path."
+        operator:
+          type: string
+          description: Operator to apply to the specified filter.
+          default: EQ
+          enum:
+          - EQ
+          - NOT_EQ
+        values:
+          type: array
+          items:
+            type: string
+    AudienceSubErrorV1:
+      required:
+      - errorType
+      - message
+      type: object
+      properties:
+        errorType:
+          type: string
+        fieldName:
+          type: string
+        message:
+          type: string
+      description: The sub error object.
+    AudienceType:
+      type: string
+      description: |-
+        Type of the audience which is being edited.
+        This type must match the current audience type associated with the audienceId.
+      enum:
+      - PRODUCT_PURCHASES
+      - PRODUCT_SEARCH
+      - PRODUCT_SIMS
+      - PRODUCT_VIEWS
+    AudienceV1:
+      allOf:
+      - $ref: '#/components/schemas/AudienceCommonFieldsV1'
+      - oneOf:
+        - $ref: '#/components/schemas/DSPAudienceFieldsV1'
+        - $ref: '#/components/schemas/SDAudienceFieldsV1'
+        - $ref: '#/components/schemas/STAudienceFieldsV1'
+    BadGatewayErrorCode:
+      type: string
+      enum:
+      - BAD_GATEWAY
+    BadGatewayExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/BadGatewayErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: Unexpected error during processing of request.
+    Clause:
+      type: string
+      description: parameter used to include or exclude this particular rule. Currently
+        only include is supported.
+      enum:
+      - INCLUDE
+    DSPAudienceFieldsV1:
+      type: object
+      properties:
+        fees:
+          type: array
+          description: "Fees that will apply to this segment. Not all segments have\
+            \ fees. Fees may differ depending on the supply type the segment is attached\
+            \ to. In this case, multiple fee objects will be present."
+          items:
+            $ref: '#/components/schemas/DSPAudienceFieldsV1_fees'
+        providerId:
+          type: string
+          description: The Data Management Platform provider identifier. Only applicable
+            to Third party audience segments.
+    DSPAudienceRule:
+      required:
+      - attributeType
+      - attributeValues
+      - clause
+      - operator
+      type: object
+      properties:
+        attributeType:
+          $ref: '#/components/schemas/AttributeType'
+        attributeValues:
+          maxItems: 1000
+          minItems: 1
+          type: array
+          description: "For a given audienceType and attributeType combination, the\
+            \ attribute values being supplied."
+          items:
+            type: string
+        clause:
+          $ref: '#/components/schemas/Clause'
+        operator:
+          $ref: '#/components/schemas/Operator'
+      description: |-
+        Rule to define an audience.
+
+        **Rule Constraints Table**: Provides available valid combinations of parameters allowed in DspAudienceRule
+        | audienceType | attributeType | attributeValues | max attribute values  |  max rules |
+        |------------------------------|------------------|-----------------------------------------------------------------------------------------------------|------|---|
+        | PRODUCT_PURCHASES            |        ASIN      | product IDs (ASINs) e.g. B08V4T57R2                                                                 | 1000 | 1
+        | PRODUCT_VIEWS                |        ASIN      | product IDs (ASINs) e.g. B08V4T57R2                                                                 | 1000 | 1
+        | PRODUCT_SEARCH               |        ASIN      | product IDs (ASINs) e.g. B08V4T57R2                                                                 | 1000 | 1
+        | PRODUCT_SIMS                 |        ASIN      | product IDs (ASINs) e.g. B08V4T57R2                                                                 | 1000 | 1
+    DSPInventoryForecastV1:
+      required:
+      - dailyImpressions
+      - dailyReach
+      type: object
+      properties:
+        dailyImpressions:
+          $ref: '#/components/schemas/ForecastBucketV1'
+        dailyReach:
+          $ref: '#/components/schemas/ForecastBucketV1'
+    DspAudienceDeleteErrorItem:
+      required:
+      - audienceId
+      - errors
+      - httpStatusCode
+      - index
+      - message
+      - requestId
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: Identifier of audience for which delete was attempted.
+        errors:
+          maxItems: 7
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteErrorItemError'
+        httpStatusCode:
+          type: integer
+          description: HTTP Response Code for the request
+        index:
+          type: integer
+          description: Index of the DspAudienceDeleteRequestItem from the request.
+            e.g. 1st item in the request will correspond to index 0 in the response.
+        message:
+          type: string
+          description: A human-readable description of the response.
+        requestId:
+          type: string
+      example:
+        requestId: requestId
+        index: 1
+        audienceId: audienceId
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        - fieldName: fieldName
+          errorMessage: errorMessage
+          errorCode: OTHER
+          errorId: 0
+        httpStatusCode: 6
+    DspAudienceDeleteErrorItemError:
+      required:
+      - errorCode
+      - errorId
+      - errorMessage
+      type: object
+      properties:
+        errorCode:
+          $ref: '#/components/schemas/ErrorType'
+        errorId:
+          type: integer
+        errorMessage:
+          type: string
+        fieldName:
+          type: string
+      example:
+        fieldName: fieldName
+        errorMessage: errorMessage
+        errorCode: OTHER
+        errorId: 0
+    DspAudienceDeleteRequestContent:
+      required:
+      - dspAudienceDeleteRequestItems
+      type: object
+      properties:
+        dspAudienceDeleteRequestItems:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: A list of audiences to be deleted
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteRequestItem'
+    DspAudienceDeleteRequestItem:
+      required:
+      - audienceId
+      - idempotencyKey
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The audience identifier of the audience to be actioned.
+        idempotencyKey:
+          pattern: "[A-Za-z1-9\\-]{1,36}"
+          type: string
+          description: unique request token for this request.
+    DspAudienceDeleteResponse:
+      required:
+      - failed
+      - success
+      type: object
+      properties:
+        failed:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteErrorItem'
+        success:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteSuccessItem'
+      description: Holds an array of successful items and an array of error items
+        from the request.
+    DspAudienceDeleteResponseContent:
+      required:
+      - failed
+      - success
+      type: object
+      properties:
+        failed:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteErrorItem'
+        success:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceDeleteSuccessItem'
+      description: Holds an array of successful items and an array of error items
+        from the request.
+      example:
+        success:
+        - idempotencyKey: idempotencyKey
+          index: 5
+          audienceId: audienceId
+        failed:
+        - requestId: requestId
+          index: 1
+          audienceId: audienceId
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          - fieldName: fieldName
+            errorMessage: errorMessage
+            errorCode: OTHER
+            errorId: 0
+          httpStatusCode: 6
+    DspAudienceDeleteSuccessItem:
+      required:
+      - audienceId
+      - idempotencyKey
+      - index
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The audience identifier of the audience to be actioned.
+        idempotencyKey:
+          type: string
+          description: unique request token for this request.
+        index:
+          type: integer
+          description: index of the DspAudienceEditRequestItem from the request. e.g.
+            1st item in the request will correspond to index 0 in the response.
+      description: The success response object.
+      example:
+        idempotencyKey: idempotencyKey
+        index: 5
+        audienceId: audienceId
+    DspAudienceEditRequestContent:
+      required:
+      - dspAudienceEditRequestItems
+      type: object
+      properties:
+        dspAudienceEditRequestItems:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: "A list of audience edit objects containing fields to be overwritten.\
+            \ For each object, specify fields and their values to be modified."
+          items:
+            $ref: '#/components/schemas/DspAudienceEditRequestItem'
+    DspAudienceEditRequestItem:
+      required:
+      - audienceId
+      - audienceType
+      - idempotencyKey
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The audience identifier of the audience to be actioned.
+        audienceType:
+          $ref: '#/components/schemas/AudienceType'
+        description:
+          maxLength: 1000
+          minLength: 1
+          type: string
+          description: The audience description.
+        idempotencyKey:
+          pattern: "[A-Za-z1-9\\-]{1,36}"
+          type: string
+          description: unique request token for this request.
+        lookback:
+          maximum: 365
+          minimum: 1
+          type: integer
+          description: |-
+            The specified time period (in days) to include those who performed the action in the audience.
+            Lookback Constraints Table: Provides available valid values of lookback allowed for given audienceType
+            | audienceType | lookback range |
+            |------------------------------|-------|
+            | PRODUCT_PURCHASES            | 1-365 |
+            | PRODUCT_VIEWS                |  1-90 |
+            | PRODUCT_SEARCH               |  1-90 |
+            | PRODUCT_SIMS                 |  1-90 |
+        name:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The audience name.
+        rules:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: "Set of rules to define an audience, these rules will be ORed."
+          items:
+            $ref: '#/components/schemas/DSPAudienceRule'
+      description: Partial audience model to be used for edit of the audience.
+    DspAudienceEditResponseContent:
+      required:
+      - failed
+      - success
+      type: object
+      properties:
+        failed:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceErrorItem'
+        success:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceSuccessItem'
+      description: Holds an array of successful items and an array of error items
+        from the request.
+      example:
+        success:
+        - idempotencyKey: idempotencyKey
+          index: 6
+          audienceId: audienceId
+        failed:
+        - idempotencyKey: idempotencyKey
+          index: 0
+          audienceId: audienceId
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+          - fieldName: fieldName
+            errorType: OTHER
+            message: message
+    DspAudienceErrorItem:
+      required:
+      - audienceId
+      - errors
+      - idempotencyKey
+      - index
+      - message
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: Identifier of audience for which edit was attempted.
+        errors:
+          maxItems: 7
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspAudienceErrorItemError'
+        idempotencyKey:
+          type: string
+          description: unique request token for this request.
+        index:
+          type: integer
+          description: Index of the DspAudienceEditRequestItem from the request. e.g.
+            1st item in the request will correspond to index 0 in the response.
+        message:
+          type: string
+          description: A human-readable description of the response.
+      example:
+        idempotencyKey: idempotencyKey
+        index: 0
+        audienceId: audienceId
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+        - fieldName: fieldName
+          errorType: OTHER
+          message: message
+    DspAudienceErrorItemError:
+      required:
+      - errorType
+      - message
+      type: object
+      properties:
+        errorType:
+          $ref: '#/components/schemas/ErrorType'
+        fieldName:
+          type: string
+        message:
+          type: string
+      example:
+        fieldName: fieldName
+        errorType: OTHER
+        message: message
+    DspAudienceSuccessItem:
+      required:
+      - audienceId
+      - idempotencyKey
+      - index
+      type: object
+      properties:
+        audienceId:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The audience identifier of the audience to be actioned.
+        idempotencyKey:
+          type: string
+          description: unique request token for this request.
+        index:
+          type: integer
+          description: index of the DspAudienceEditRequestItem from the request. e.g.
+            1st item in the request will correspond to index 0 in the response.
+      description: The success response object.
+      example:
+        idempotencyKey: idempotencyKey
+        index: 6
+        audienceId: audienceId
+    ErrorType:
+      type: string
+      enum:
+      - OTHER
+      - VALUE_INVALID
+      - VALUE_NOT_FOUND
+      - VALUE_OUT_OF_RANGE
+    FetchTaxonomyNodeV1:
+      type: object
+      properties:
+        audienceCount:
+          type: integer
+          format: int64
+        category:
+          type: string
+      example:
+        audienceCount: 0
+        category: category
+    FetchTaxonomyRequestBodyV1:
+      type: object
+      properties:
+        adType:
+          type: string
+          enum:
+          - DSP
+          - SD
+          - ST
+        categoryPath:
+          type: array
+          items:
+            type: string
+        countries:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: "The ISO Alpha-2 country codes to search audiences from. This\
+            \ field must be specified if the advertiser does not have an associated\
+            \ country. Currently, it is only supported to specify a single country\
+            \ per request."
+          items:
+            type: string
+      description: "The response data will have the categories that are under the\
+        \ given path, and main categories will be returned if no path is specified.\
+        \ The response data also depends on the adType specified here since ad programs\
+        \ may support targeting audiences in certain categories."
+    FetchTaxonomyResponseV1:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/FetchTaxonomyNodeV1'
+        categoryPath:
+          type: array
+          items:
+            type: string
+        nextToken:
+          type: string
+      example:
+        categoryPath:
+        - categoryPath
+        - categoryPath
+        nextToken: nextToken
+        categories:
+        - audienceCount: 0
+          category: category
+        - audienceCount: 0
+          category: category
+    ForecastBucketV1:
+      type: object
+      properties:
+        lowerBoundInclusive:
+          type: integer
+          description: "The inclusive lower bound for the bucket.  If not specified,\
+            \ the bucket captures all values below the upper bound."
+          format: int64
+        upperBoundExclusive:
+          type: integer
+          description: "The exclusive upper bound for the bucket.  If not specified,\
+            \ the bucket captures all values above the lower bound."
+          format: int64
+    InternalErrorErrorCode:
+      type: string
+      enum:
+      - INTERNAL_ERROR
+    InternalServerExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/InternalErrorErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: Unexpected error during processing of request.
+    InvalidArgumentErrorCode:
+      type: string
+      enum:
+      - INVALID_ARGUMENT
+    InventoryForecastV1:
+      oneOf:
+      - $ref: '#/components/schemas/DSPInventoryForecastV1'
+      - $ref: '#/components/schemas/SDInventoryForecastV1'
+      - $ref: '#/components/schemas/STInventoryForecastV1'
+    ListAudiencesRequestBodyV1:
+      type: object
+      properties:
+        adType:
+          type: string
+          enum:
+          - DSP
+          - SD
+          - ST
+        countries:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: "The ISO Alpha-2 country codes to search audiences from. This\
+            \ field must be specified if the advertiser does not have an associated\
+            \ country. Currently, it is only supported to specify a single country\
+            \ per request."
+          items:
+            type: string
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AudienceFilterV1'
+      description: Resulting segments will match all specified filters
+    ListAudiencesResponseV1:
+      type: object
+      properties:
+        audiences:
+          type: array
+          description: "Array of segments matching given filters sorted by create\
+            \ time, earliest first."
+          items:
+            $ref: '#/components/schemas/AudienceV1'
+        matchCount:
+          type: integer
+          format: int64
+        nextToken:
+          type: string
+      example:
+        nextToken: nextToken
+        audiences:
+        - ""
+        - ""
+        matchCount: 0
+    NotFoundErrorCode:
+      type: string
+      enum:
+      - NOT_FOUND
+    Operator:
+      type: string
+      description: "For a given attributeType, operator used for attributeValues."
+      enum:
+      - ONE_OF
+    ResourceNotFoundExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/NotFoundErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: Request references a resource which does not exist.
+    SDAudienceFieldsV1:
+      type: object
+    SDInventoryForecastV1:
+      required:
+      - dailyReach
+      type: object
+      properties:
+        dailyReach:
+          $ref: '#/components/schemas/ForecastBucketV1'
+    STAudienceFieldsV1:
+      type: object
+    STInventoryForecastV1:
+      required:
+      - dailyReach
+      type: object
+      properties:
+        dailyReach:
+          $ref: '#/components/schemas/ForecastBucketV1'
+    ThrottledErrorCode:
+      type: string
+      enum:
+      - THROTTLED
+    ThrottlingExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ThrottledErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: Request was denied due to request throttling.
+    UnauthorizedErrorCode:
+      type: string
+      enum:
+      - UNAUTHORIZED
+    UnauthorizedExceptionResponseContent:
+      required:
+      - code
+      - message
+      - requestId
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/UnauthorizedErrorCode'
+        message:
+          type: string
+          description: Human readable error message.
+        requestId:
+          type: string
+          description: RequestId of the failed request.
+      description: Caller does not have permissions to edit specified audience.
+    AudienceCommonFieldsV1_forecasts_inventoryForecasts:
+      type: object
+      properties:
+        all:
+          $ref: '#/components/schemas/InventoryForecastV1'
+    AudienceCommonFieldsV1_forecasts:
+      required:
+      - inventoryForecasts
+      type: object
+      properties:
+        inventoryForecasts:
+          $ref: '#/components/schemas/AudienceCommonFieldsV1_forecasts_inventoryForecasts'
+    DSPAudienceFieldsV1_fees:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: "Fee amount in base currency units, multiplied by scaling factor\
+            \ ('scale')."
+        currency:
+          type: string
+          description: "Base currency, such as US Dollar."
+          enum:
+          - AED
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - INR
+          - JPY
+          - KSA
+          - MXN
+          - SEK
+          - TRY
+          - USD
+        feeCalculationType:
+          type: string
+          description: How the fee is applied.
+        impressionSupplyType:
+          type: string
+          description: To which supply types this fee applies to. The fee may be different
+            for different supply types.
+        scale:
+          type: integer
+          description: "Scale of the amount relative to the base currency unit. For\
+            \ instance, if the scale is 1000, the currency is USD, and the amount\
+            \ is 500, the human-readable fee is $0.50."
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

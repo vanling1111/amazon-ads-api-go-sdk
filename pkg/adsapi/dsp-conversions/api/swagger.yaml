@@ -1,0 +1,5110 @@
+openapi: 3.0.1
+info:
+  title: Conversions API
+  description: Conversion management.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /accounts/{accountId}/dsp/adTagEvents/{adTagId}/list:
+    get:
+      tags:
+      - Amazon Ad Tag
+      summary: Gets a list of available event metadata for the given ad tag.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Manager-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["ads_data_manager_view"]
+      operationId: dspAmazonAdTagGetEventsByAdTagId
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-Manager-Account-ID
+        in: header
+        description: The identifier of an Amazon Ads Manager Account. This ID can
+          be retrieved by making a GET request to the /managerAccounts endpoint.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: adTagId
+        in: path
+        description: The identifier of the ad tag.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: searchTerm
+        in: query
+        description: A string used to fuzzy search for event metadata by event name.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: startDateTime
+        in: query
+        description: "A date string to create a time window for events that have seen\
+          \ activity. If not set, a start date 30 days before the request was sent\
+          \ will be chosen. The oldest start date is 1 year before the request was\
+          \ sent to this api."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+        example: 2022-02-20T23:49:00Z
+      - name: nextToken
+        in: query
+        description: Token from a previous request. Use to control pagination of the
+          returned array.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of associated conversions in the returned\
+          \ array. Use in conjunction with the `nextToken` parameter to control pagination.\
+          \ The range for maxResults is [1,100] with default as 10. For example, supplying\
+          \ maxResults=20 with a previously returned token will fetch up to the next\
+          \ 20 items. In some cases, fewer items may be returned."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      - name: endDateTime
+        in: query
+        description: "A date string to create a time window for events that have seen\
+          \ activity. If not set, the day and time the request was sent will be chosen\
+          \ as the end date. The maximum end date is the day the request to this api\
+          \ was sent."
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          format: date-time
+        example: 2022-02-25T23:49:00Z
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListAdTagEventsResponseV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspamazonadtagevents.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/amazonAdTag:
+    get:
+      tags:
+      - Amazon Ad Tag
+      summary: Gets an Amazon Ad Tag for a given advertiser
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+
+        **Authorized resource type**:
+        Global Manager Account ID
+
+        **Parameter name**:
+        Amazon-Ads-Manager-Account-ID
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["ads_data_manager_view"]
+      operationId: dspAmazonAdTagGetAdTagByAdvertiserId
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-Manager-Account-ID
+        in: header
+        description: The identifier of an Amazon Ads Manager Account. This ID can
+          be retrieved by making a GET request to the /managerAccounts endpoint.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspamazonadtags.v1+json:
+              schema:
+                $ref: '#/components/schemas/GetAdTagResponseV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspamazonadtags.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspamazonadtags.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspamazonadtags.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspamazonadtags.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/batchOrders/conversionDefinitionAssociations:
+    post:
+      tags:
+      - Conversion Order Association
+      summary: Retrieve associated conversion definitions for orders.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_view"]
+      operationId: dspAmazonBatchGetConversionDefinitionsForOrders
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: A list of orderIds to retrieve the associated conversion definitions.
+        content:
+          application/vnd.dspbatchgetconversiondefinitions.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchGetConversionDefinitionsAssociatedForOrdersRequestV1'
+        required: true
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/BatchGetConversionDefinitionsForOrdersResponseV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspbatchgetconversiondefinitions.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions:
+    put:
+      tags:
+      - Amazon Conversion Definitions
+      summary: Batch update conversion definitions.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonUpdateConversionDefinitions
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspconversiondefinition.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateConversionDefinitionsRequestV1'
+          application/vnd.dspconversiondefinition.v2+json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateConversionDefinitionsRequestV2'
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/ConversionDefinitionsBatchResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+    post:
+      tags:
+      - Amazon Conversion Definitions
+      summary: Batch create conversion definitions.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonCreateConversionDefinitions
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspconversiondefinition.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchCreateConversionDefinitionsRequestV1'
+          application/vnd.dspconversiondefinition.v2+json:
+            schema:
+              $ref: '#/components/schemas/BatchCreateConversionDefinitionsRequestV2'
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/ConversionDefinitionsBatchResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions/delete:
+    post:
+      tags:
+      - Data Deletion Requests
+      summary: "Deletes existing event data associated with user(s). Supply all match\
+        \ keys associated with the user. Events processed before the deletion request\
+        \ will be deleted from our advertising systems. However, any events for these\
+        \ users sent after the deletion request will not be deleted. Therefore you\
+        \ must stop sending events for opted-out users after the deletion request\
+        \ is made in order to effectuate the opt-out."
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonDeletionRequest
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspuserdeletionrequest.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteUserEventsRequestV1'
+        required: true
+      responses:
+        "207":
+          description: Accepted.
+          content:
+            application/vnd.dspuserdeletionrequest.v1+json:
+              schema:
+                $ref: '#/components/schemas/BatchDeleteUserEventsResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspuserdeletionrequest.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspuserdeletionrequest.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspuserdeletionrequest.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions/eventData:
+    post:
+      tags:
+      - Conversion Event Data
+      summary: "Import conversion event data. This API expects one source per request\
+        \ across all conversion event data and supports partial import. Only conversion\
+        \ event data with matching conversion source will be imported, the rest will\
+        \ be rejected."
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonIngestConversionData
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspconversioneventimport.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchImportConversionEventDataRequestV1'
+        required: true
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/vnd.dspconversioneventimport.v1+json:
+              schema:
+                $ref: '#/components/schemas/BatchImportConversionEventDataResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversioneventimport.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversioneventimport.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversioneventimport.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions/list:
+    post:
+      tags:
+      - Amazon Conversion Definitions
+      summary: Retrieve a list of conversion definitions based on filters.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+      operationId: dspAmazonListConversionDefinitions
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Filters to apply when retrieving conversion definitions.
+        content:
+          application/vnd.dspconversiondefinition.v1+json:
+            schema:
+              $ref: '#/components/schemas/ListConversionDefinitionsRequestV1'
+        required: true
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListConversionDefinitionsResponseV1'
+            application/vnd.dspconversiondefinition.v2+json:
+              schema:
+                $ref: '#/components/schemas/ListConversionDefinitionsResponseV2'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspconversiondefinition.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions/{conversionDefinitionId}/adTagEventAssociations:
+    get:
+      tags:
+      - Conversion Ad Tag Association
+      summary: Retrieve associated Amazon adTag event for a ConversionDefinition.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+      operationId: dspAmazonGetAdTagAssociatedEvent
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: conversionDefinitionId
+        in: path
+        description: The identifier of the ConversionDefinition.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/ConversionDefinitionAssociatedAdTagEventV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+    post:
+      tags:
+      - Conversion Ad Tag Association
+      summary: Associate/Dissociate an Amazon adTag event to a ConversionDefinition.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonUpdateAdTagAssociatedEvent
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: conversionDefinitionId
+        in: path
+        description: The identifier of the ConversionDefinition.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspconversionadtageventassociation.v1+json:
+            schema:
+              $ref: '#/components/schemas/ConversionDefinitionAdTagEventAssociationRequestV1'
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/ConversionDefinitionAssociatedAdTagEventV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/conversionDefinitions/{conversionDefinitionId}/mobileMeasurementPartnerAppRegistration:
+    get:
+      tags:
+      - Apps
+      summary: Retrieve associated Mobile Measurement Partner App for a ConversionDefinition.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+      operationId: dspAmazonGetAssociatedMobileAppForConversionDefinition
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: conversionDefinitionId
+        in: path
+        description: The identifier of the ConversionDefinition.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspassociatedmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/AssociatedMobileMeasurementPartnerAppRegistrationV1'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dspconversionadtageventassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/mobileMeasurementPartners:
+    put:
+      tags:
+      - Apps
+      summary: Update a Mobile Measurement Partner app registration. Updates may sever
+        the data connection between the Mobile Measurement Partner and Amazon.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonBatchUpdateMobileMeasurementPartnerAppRegistration
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateMobileMeasurementPartnerAppRegistrationRequestV1'
+        required: true
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/MobileMeasurementPartnerAppBatchResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+    post:
+      tags:
+      - Apps
+      summary: Create a new Mobile Measurement Partner app registration.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonBatchCreateMobileMeasurementPartnerAppRegistration
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchCreateMobileMeasurementPartnerAppRegistrationRequestV1'
+        required: true
+      responses:
+        "207":
+          description: Multi-status.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/MobileMeasurementPartnerAppBatchResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/mobileMeasurementPartners/delete:
+    post:
+      tags:
+      - Apps
+      summary: Marks a Mobile Measurement Partner app registration as deleted. Deleted
+        Mobile Measurement Partner app registrations will sever the data connection
+        between the Mobile Measurement Partner and Amazon.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_edit"]
+      operationId: dspAmazonDeleteMeasurementPartnerAppRegistrations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchDeleteMobileMeasurementPartnerAppRegistrationRequestV1'
+        required: true
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/MobileMeasurementPartnerAppBatchResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/mobileMeasurementPartners/list:
+    post:
+      tags:
+      - Apps
+      summary: List Mobile Measurement Partner App Registrations
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["event_manager_view"]
+      operationId: dspAmazonListMobileMeasurementPartnerAppRegistrations
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+            schema:
+              $ref: '#/components/schemas/ListMobileMeasurementPartnerAppRegistrationsRequestV1'
+        required: true
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/ListMobileMeasurementPartnerAppRegistrationsResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dspmobilemeasurementpartnerappregistration.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+  /accounts/{accountId}/dsp/orders/{orderId}/conversionDefinitionAssociations:
+    get:
+      tags:
+      - Conversion Order Association
+      summary: Retrieve associated conversion definitions for an order.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_view"]
+      operationId: dspAmazonGetAssociatedConversionDefinitionsForOrder
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        description: The identifier of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Token from a previous request. Use in conjunction with the `maxResults`
+          parameter to control pagination of the returned array.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: "Sets the maximum number of associated conversions in the returned\
+          \ array. Use in conjunction with the `nextToken` parameter to control pagination.\
+          \ The range for maxResults is [1,100] with default as 10. For example, supplying\
+          \ maxResults=20 with a previously returned token will fetch up to the next\
+          \ 20 items. In some cases, fewer items may be returned."
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/OrderAssociatedConversionDefinitionsResponseV1'
+            application/vnd.dsporderconversionassociation.v2+json:
+              schema:
+                $ref: '#/components/schemas/OrderAssociatedConversionDefinitionsResponseV2'
+        "400":
+          description: Bad Request.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "500":
+          description: Internal Server Error. Something went wrong on the server.
+            Retry later and report an error if unresolved.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+    post:
+      tags:
+      - Conversion Order Association
+      summary: Associate/Dissociate conversion definitions to an order.
+      description: |2-
+
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: dspAmazonUpdateAssociatedConversionDefinitionsForOrder
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a `Login with Amazon`
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use GET method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id profileId from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. DSP Entity ID is not supported.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account Identifier you use to access the DSP. This is your DSP
+          Advertiser ID. This header is required for access to any DSP data when you
+          have been directly invited to the advertiser.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        description: The identifier of the order.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.dsporderconversionassociation.v1+json:
+            schema:
+              $ref: '#/components/schemas/BatchAssociateConversionDefinitionsRequestV1'
+          application/vnd.dsporderconversionassociation.v2+json:
+            schema:
+              $ref: '#/components/schemas/BatchAssociateConversionDefinitionsRequestV2'
+      responses:
+        "207":
+          description: Success.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/BatchAssociateConversionDefinitionsResponseV1'
+        "401":
+          description: Unauthorized. The request failed because the user is not authenticated
+            or is not allowed to invoke the operation.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "403":
+          description: Forbidden. The request failed because the user does not have
+            access to the specified resource.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+        "429":
+          description: Too Many Requests. The request was rate-limited. Retry later.
+          content:
+            application/vnd.dsporderconversionassociation.v1+json:
+              schema:
+                $ref: '#/components/schemas/DspErrorV1'
+components:
+  schemas:
+    AmazonAdTagEventAssociationStatusV1:
+      type: string
+      description: "The conversion definition association status of the event. If\
+        \ the event is associated to an existing conversion definition, it will be\
+        \ marked as IN_USE. If the event has no existing association, it will be marked\
+        \ as AVAILABLE for conversion definition purposes."
+      enum:
+      - AVAILABLE
+      - IN_USE
+    AmazonAdTagEventV1:
+      type: object
+      properties:
+        eventName:
+          type: string
+          description: The name of the event.
+        lastActivityDateTime:
+          type: string
+          description: The last time this event was triggered within the dates supplied
+            by the startDateTime and endDateTime fields.
+          format: date-time
+        status:
+          $ref: '#/components/schemas/AmazonAdTagEventAssociationStatusV1'
+      example:
+        eventName: eventName
+        lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+        status: AVAILABLE
+    AmazonAdTagV1:
+      type: object
+      properties:
+        createDateTime:
+          type: string
+          description: The reported timestamp of when the ad tag was created in ISO
+            format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          example: 2023-01-01T23:49:00Z
+        tagId:
+          type: string
+          description: A string depicting the ID of the ad tag.
+      description: An Amazon ad tag for a given advertiser.
+      example:
+        tagId: tagId
+        createDateTime: 2023-01-01T23:49:00Z
+    AssociatedMobileMeasurementPartnerAppRegistrationV1:
+      type: object
+      properties:
+        associatedMobileApp:
+          $ref: '#/components/schemas/MobileMeasurementPartnerAppRegistrationV1'
+        eventName:
+          type: string
+          description: Mobile measurement partner event associated with this conversion
+            definition
+      example:
+        associatedMobileApp:
+          mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        eventName: eventName
+    BatchAssociateConversionDefinitionsRequestV1:
+      maxItems: 100
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/BatchAssociateConversionDefinitionsRequestV1_inner'
+    BatchAssociateConversionDefinitionsRequestV2:
+      maxItems: 100
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/BatchAssociateConversionDefinitionsRequestV2_inner'
+    BatchAssociateConversionDefinitionsResponseV1:
+      type: object
+      properties:
+        error:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionErrorResponseV1'
+        success:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionSuccessResponseV1'
+      example:
+        success:
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        error:
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+    BatchCreateConversionDefinitionsRequestV1:
+      maxItems: 10
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/ConversionDefinitionInputV1'
+    BatchCreateConversionDefinitionsRequestV2:
+      maxItems: 10
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/ConversionDefinitionInputV2'
+    BatchCreateMobileMeasurementPartnerAppRegistrationRequestV1:
+      maxItems: 10
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/MobileMeasurementPartnerAppRegistrationV1'
+    BatchDeleteMobileMeasurementPartnerAppRegistrationRequestV1:
+      maxItems: 1
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/DeleteMobileMeasurementPartnerAppRegistrationV1'
+    BatchDeleteUserEventsRequestV1:
+      required:
+      - deletionRequests
+      type: object
+      properties:
+        deletionRequests:
+          maxItems: 500
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/EventDeletionRequestV1'
+    BatchDeleteUserEventsResponseV1:
+      type: object
+      properties:
+        error:
+          maxItems: 500
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDeletionRequestErrorResponseV1'
+        success:
+          maxItems: 500
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDeletionRequestSuccessResponseV1'
+      example:
+        success:
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        - index: 6
+        error:
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+    BatchGetConversionDefinitionsAssociatedForOrdersRequestV1:
+      type: object
+      properties:
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: "Sets the maximum number of conversions in the returned array.\
+            \ Use in conjunction with the `nextToken` parameter to control pagination.\
+            \ The range for maxResults is [1,100] with default as 10. For example,\
+            \ supplying maxResults=20 with a previously returned token will fetch\
+            \ up to the next 20 items. In some cases, fewer items may be returned."
+        nextToken:
+          type: string
+          description: Token from a previous request. Use in conjunction with the
+            `maxResults` parameter to control pagination of the returned array.
+        orderIds:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            type: string
+    BatchGetConversionDefinitionsForOrdersResponseV1:
+      type: object
+      properties:
+        conversionDefinitions:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: List of associated ConversionDefinitions.
+          items:
+            $ref: '#/components/schemas/BatchOrdersAssociatedConversionDefinitionsV1'
+        maxResults:
+          type: string
+        nextToken:
+          type: string
+      example:
+        maxResults: maxResults
+        nextToken: nextToken
+        conversionDefinitions:
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+        - campaignId: campaignId
+          conversionDefinitionId: conversionDefinitionId
+    BatchImportConversionEventDataRequestV1:
+      required:
+      - eventData
+      - source
+      type: object
+      properties:
+        eventData:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionEventDataV1'
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+    BatchImportConversionEventDataResponseV1:
+      type: object
+      properties:
+        error:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionEventDataErrorResponseV1'
+        success:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionEventDataSuccessResponseV1'
+      example:
+        success:
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        - index: 6
+          message: message
+        error:
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+    BatchOrdersAssociatedConversionDefinitionsV1:
+      type: object
+      properties:
+        campaignId:
+          type: string
+          description: Order identifier for this conversion definition.
+        conversionDefinitionId:
+          type: string
+          description: Associated conversion definition identifier for the order.
+      example:
+        campaignId: campaignId
+        conversionDefinitionId: conversionDefinitionId
+    BatchUpdateConversionDefinitionsRequestV1:
+      maxItems: 10
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/UpdateConversionDefinitionV1'
+    BatchUpdateConversionDefinitionsRequestV2:
+      maxItems: 10
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/UpdateConversionDefinitionV2'
+    BatchUpdateMobileMeasurementPartnerAppRegistrationRequestV1:
+      maxItems: 1
+      minItems: 1
+      type: array
+      items:
+        $ref: '#/components/schemas/UpdateMobileMeasurementPartnerAppRegistrationV1'
+    ConversionDefinitionAdTagEventAssociationRequestV1:
+      required:
+      - adTagEventName
+      - adTagId
+      - operation
+      type: object
+      properties:
+        adTagEventName:
+          type: string
+        adTagId:
+          type: string
+        operation:
+          type: string
+          enum:
+          - ADD
+          - REMOVE
+      description: The combination of adTagId and adTagEventName identifies an unique
+        adTag event.
+    ConversionDefinitionAssociatedAdTagEventV1:
+      type: object
+      properties:
+        adTagEventName:
+          type: string
+        adTagId:
+          type: string
+      example:
+        adTagEventName: adTagEventName
+        adTagId: adTagId
+    ConversionDefinitionCountingMethodV1:
+      type: string
+      description: "Method used to determine whether all or only the first conversion\
+        \ event per user, per conversion definition are ingested within a 24 hour\
+        \ window."
+      enum:
+      - EVERY
+      - FIRST
+    ConversionDefinitionCreatedByV1:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: ID of the account which created the conversion definition.
+            The value could be either DSP Advertiser ID or manager Account ID.
+        name:
+          type: string
+          description: Name of the account which created the conversion definition.
+      example:
+        accountId: accountId
+        name: name
+    ConversionDefinitionCreatedSourceV1:
+      type: string
+      enum:
+      - AMAZON_AD_TAG
+      - MMP
+      - SERVER_TO_SERVER
+    ConversionDefinitionCurrencyCodeV1:
+      type: string
+      description: "The currencyCode associated with the 'value' of the event in ISO-4217\
+        \ format. Only applicable for OFF_AMAZON_PURCHASES conversion type. If not\
+        \ provided, the currencyCode setting on the conversion definition will be\
+        \ used."
+      enum:
+      - AED
+      - AUD
+      - BRL
+      - CAD
+      - CNY
+      - DKK
+      - EUR
+      - GBP
+      - INR
+      - JPY
+      - MXN
+      - NOK
+      - NZD
+      - SAR
+      - SEK
+      - SGD
+      - TRY
+      - USD
+    ConversionDefinitionErrorResponseV1:
+      type: object
+      properties:
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        errors:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        message:
+          type: string
+          description: A human-readable message of the code.
+      example:
+        code: code
+        index: 0
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+    ConversionDefinitionFilterV1:
+      required:
+      - field
+      - values
+      type: object
+      properties:
+        field:
+          type: string
+          enum:
+          - CONVERSION_DEFINITION_ID
+        values:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            type: string
+    ConversionDefinitionInputV1:
+      required:
+      - conversionType
+      - countingMethod
+      - name
+      - source
+      - sourceType
+      - value
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The id of the ConversionDefinition.
+          readOnly: true
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV1'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        createTime:
+          type: string
+          description: The timestamp of when the ConversionDefinition was created
+            in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastActivityTime:
+          type: string
+          description: The latest timestamp of when a conversion event for the ConversionDefinition
+            was imported in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          description: Date and time last edit was made to conversion settings in
+            ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        name:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the ConversionDefinition.
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          multipleOf: 0.01
+          maximum: 9999999999999
+          type: number
+          description: |-
+            The value of the event.<br>
+            When the conversionType of the associated Conversion Definition is OFF_AMAZON_PURCHASES, this represents a monetary value. Must be a minimum of 0 and must not exceed 2 decimal points. If not specified, a default of 0 will be applied.<br>
+            When the conversionType of the associated Conversion Definition is not OFF_AMAZON_PURCHASES, this represents a non-monetary value based on a scale of your choosing. Can be negative and must not exceed 2 decimal points. If not specified on the conversion definition, a default of 1 will be applied.
+          format: double
+      description: The conversion definition object.
+    ConversionDefinitionInputV2:
+      required:
+      - conversionType
+      - countingMethod
+      - name
+      - source
+      - sourceType
+      - value
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The id of the ConversionDefinition.
+          readOnly: true
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV2'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        createTime:
+          type: string
+          description: The timestamp of when the ConversionDefinition was created
+            in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastActivityTime:
+          type: string
+          description: The latest timestamp of when a conversion event for the ConversionDefinition
+            was imported in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          description: Date and time last edit was made to conversion settings in
+            ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        name:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the ConversionDefinition.
+        partner:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the third-party service used to deliver the conversions
+            (if applicable).
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          multipleOf: 0.01
+          maximum: 9999999999999
+          type: number
+          description: |-
+            The value of the event.<br>
+            When the conversionType of the associated Conversion Definition is OFF_AMAZON_PURCHASES, this represents a monetary value. Must be a minimum of 0 and must not exceed 2 decimal points. If not specified, a default of 0 will be applied.<br>
+            When the conversionType of the associated Conversion Definition is not OFF_AMAZON_PURCHASES, this represents a non-monetary value based on a scale of your choosing. Can be negative and must not exceed 2 decimal points. If not specified on the conversion definition, a default of 1 will be applied.
+          format: double
+      description: The conversion definition object.
+    ConversionDefinitionSourceTypeV1:
+      type: string
+      description: |-
+        The type of source for the conversion definition. The sourceType must be compatible with the specified source value according to the following mapping:
+        * `ANDROID`: Compatible with `SERVER_TO_SERVER`
+        * `FIRE_TV`: Compatible with `SERVER_TO_SERVER`
+        * `FIRE_TABLET`: Compatible with `SERVER_TO_SERVER`
+        * `IOS`: Compatible with `SERVER_TO_SERVER`
+        * `OFFLINE`: Compatible with `SERVER_TO_SERVER`
+        * `WEBSITE`: Compatible with `AMAZON_AD_TAG` and `SERVER_TO_SERVER`
+      enum:
+      - ANDROID
+      - FIRE_TABLET
+      - FIRE_TV
+      - IOS
+      - OFFLINE
+      - WEBSITE
+    ConversionDefinitionSourceV1:
+      type: string
+      description: |-
+        The source of the conversion definition. The source must be compatible with the specified sourceType value according to the following mapping:
+        * `SERVER_TO_SERVER`: Compatible with `ANDROID`, `FIRE_TV`, `FIRE_TABLET`, `OFFLINE`, `WEBSITE`, and `IOS`
+      enum:
+      - AMAZON_AD_TAG
+      - SERVER_TO_SERVER
+    ConversionDefinitionSuccessResponseV1:
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+      example:
+        index: 6
+        conversionDefinitionId: conversionDefinitionId
+    ConversionDefinitionTypeV1:
+      type: string
+      description: "Conversion Types:\n* `ADD_TO_SHOPPING_CART` - When customers add\
+        \ a product to their shopping cart\t\n* `APPLICATION` - When customers submit\
+        \ an application\t\n* `CHECKOUT` - When customers submit an application\t\n\
+        * `CONTACT` - When customers provide supplies contact information, such as\
+        \ email, phone number, etc.\n* `LEAD` - When customers perform an action that\
+        \ initiates a sales lead\t\n* `OFF_AMAZON_PURCHASES` - When customers make\
+        \ a purchase for a service or product\t\n* `PAGE_VIEW` - When customers make\
+        \ a purchase for a service or product\t\n* `SEARCH` - When customers perform\
+        \ a search for a product\n* `SIGN_UP` - When customers sign up for a product\
+        \ or service\t\n* `SUBSCRIBE` - When customers sign up for your service\t\n\
+        * `OTHER` - Customer actions that don't fit the definition of the standard\
+        \ conversion types\t"
+      enum:
+      - ADD_TO_SHOPPING_CART
+      - APPLICATION
+      - CHECKOUT
+      - CONTACT
+      - LEAD
+      - OFF_AMAZON_PURCHASES
+      - OTHER
+      - PAGE_VIEW
+      - SEARCH
+      - SIGN_UP
+      - SUBSCRIBE
+    ConversionDefinitionTypeV2:
+      type: string
+      description: "Conversion Types:\n* `ADD_TO_SHOPPING_CART` - When customers add\
+        \ a product to their shopping cart\t\n* `APPLICATION` - When customers submit\
+        \ an application\t\n* `CHECKOUT` - When customers submit an application\t\n\
+        * `CONTACT` - When customers provide supplies contact information, such as\
+        \ email, phone number, etc.\n* `LEAD` - When customers perform an action that\
+        \ initiates a sales lead\t\n* `OFF_AMAZON_PURCHASES` - When customers make\
+        \ a purchase for a service or product\t\n* `MOBILE_APP_FIRST_START` - When\
+        \ customers launch the downloaded app for the first time.\n* `PAGE_VIEW` -\
+        \ When customers make a purchase for a service or product\t\n* `SEARCH` -\
+        \ When customers perform a search for a product\n* `SIGN_UP` - When customers\
+        \ sign up for a product or service\t\n* `SUBSCRIBE` - When customers sign\
+        \ up for your service\t\n* `OTHER` - Customer actions that don't fit the definition\
+        \ of the standard conversion types\t"
+      enum:
+      - ADD_TO_SHOPPING_CART
+      - APPLICATION
+      - CHECKOUT
+      - CONTACT
+      - LEAD
+      - MOBILE_APP_FIRST_START
+      - OFF_AMAZON_PURCHASES
+      - OTHER
+      - PAGE_VIEW
+      - SEARCH
+      - SIGN_UP
+      - SUBSCRIBE
+    ConversionDefinitionV1:
+      required:
+      - conversionType
+      - countingMethod
+      - name
+      - source
+      - sourceType
+      - value
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The id of the ConversionDefinition.
+          readOnly: true
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV1'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        createTime:
+          type: string
+          description: The timestamp of when the ConversionDefinition was created
+            in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        createdBy:
+          $ref: '#/components/schemas/ConversionDefinitionCreatedByV1'
+        lastActivityTime:
+          type: string
+          description: The latest timestamp of when a conversion event for the ConversionDefinition
+            was imported in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          description: Date and time last edit was made to conversion settings in
+            ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        name:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the ConversionDefinition.
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          multipleOf: 0.01
+          maximum: 9999999999999
+          type: number
+          description: |-
+            The value of the event.<br>
+            When the conversionType of the associated Conversion Definition is OFF_AMAZON_PURCHASES, this represents a monetary value. Must be a minimum of 0 and must not exceed 2 decimal points. If not specified, a default of 0 will be applied.<br>
+            When the conversionType of the associated Conversion Definition is not OFF_AMAZON_PURCHASES, this represents a non-monetary value based on a scale of your choosing. Can be negative and must not exceed 2 decimal points. If not specified on the conversion definition, a default of 1 will be applied.
+          format: double
+      description: The conversion definition object.
+      example:
+        countingMethod: EVERY
+        createTime: 2000-01-23T04:56:07.000+00:00
+        createdBy:
+          accountId: accountId
+          name: name
+        sourceType: ANDROID
+        name: name
+        lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+        source: AMAZON_AD_TAG
+        conversionDefinitionId: conversionDefinitionId
+        conversionType: ADD_TO_SHOPPING_CART
+        lastActivityTime: 2000-01-23T04:56:07.000+00:00
+        value: 8.008281904609314E11
+    ConversionDefinitionV2:
+      required:
+      - conversionType
+      - countingMethod
+      - name
+      - source
+      - sourceType
+      - value
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The id of the ConversionDefinition.
+          readOnly: true
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV2'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        createTime:
+          type: string
+          description: The timestamp of when the ConversionDefinition was created
+            in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        createdBy:
+          $ref: '#/components/schemas/ConversionDefinitionCreatedByV1'
+        dataSetName:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The dataset name linked to this conversion definition.
+        lastActivityTime:
+          type: string
+          description: The latest timestamp of when a conversion event for the ConversionDefinition
+            was imported in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          description: Date and time last edit was made to conversion settings in
+            ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        name:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the ConversionDefinition.
+        partner:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: The name of the third-party service used to deliver the conversions
+            (if applicable).
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionCreatedSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          multipleOf: 0.01
+          maximum: 9999999999999
+          type: number
+          description: |-
+            The value of the event.<br>
+            When the conversionType of the associated Conversion Definition is OFF_AMAZON_PURCHASES, this represents a monetary value. Must be a minimum of 0 and must not exceed 2 decimal points. If not specified, a default of 0 will be applied.<br>
+            When the conversionType of the associated Conversion Definition is not OFF_AMAZON_PURCHASES, this represents a non-monetary value based on a scale of your choosing. Can be negative and must not exceed 2 decimal points. If not specified on the conversion definition, a default of 1 will be applied.
+          format: double
+      description: The conversion definition object.
+    ConversionDefinitionsBatchResponseV1:
+      type: object
+      properties:
+        error:
+          maxItems: 10
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionErrorResponseV1'
+        success:
+          maxItems: 10
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionSuccessResponseV1'
+      example:
+        success:
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        - index: 6
+          conversionDefinitionId: conversionDefinitionId
+        error:
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+    ConversionDeletionRequestErrorResponseV1:
+      type: object
+      properties:
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        errors:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        message:
+          type: string
+          description: A human-readable message of the code.
+      example:
+        code: code
+        index: 0
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+    ConversionDeletionRequestSuccessResponseV1:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+      example:
+        index: 6
+    ConversionEventDataErrorResponseV1:
+      type: object
+      properties:
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        errors:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        message:
+          type: string
+          description: A human-readable message of the code.
+      example:
+        code: code
+        index: 0
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+    ConversionEventDataSuccessResponseV1:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        message:
+          type: string
+          description: A human-readable message containing further details.
+      example:
+        index: 6
+        message: message
+    ConversionEventDataV1:
+      required:
+      - conversionDefinitionId
+      - countryCode
+      - matchKeys
+      - name
+      - timestamp
+      type: object
+      properties:
+        clientDedupeId:
+          type: string
+          description: "An identifier chosen by the advertiser to represent a user\
+            \ event. This parameter is used for deduplication across all conversion\
+            \ definitions (events) and all sources (Amazon Ad tag, Conversions API,\
+            \ Mobile Measurement Partner). In case of multiple events containing the\
+            \ same cientDedupeId, only the first will be kept. Common values used\
+            \ for deduplication are transaction ID or order ID. Do not use user identifiers\
+            \ (hashed or unhashed) for this purpose."
+        conversionDefinitionId:
+          type: string
+          description: The id of the associated ConversionDefinition.
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: |-
+            The country where the event originates from. e.g. US<br>
+            This value is based on [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), two-letter country codes defined in ISO 3166-1, part of the ISO 3166 standard[1] published by the International Organization for Standardization (ISO), to represent countries, dependent territories, and special areas of geographical interest.
+        currencyCode:
+          $ref: '#/components/schemas/ConversionDefinitionCurrencyCodeV1'
+        dataProcessingOptions:
+          type: string
+          description: A flag for signaling how an event shall be processed. Events
+            marked for limited data use will not be processed.
+          enum:
+          - LIMITED_DATA_USE
+        matchKeys:
+          maxItems: 9
+          minItems: 1
+          type: array
+          description: "Array representing the user and device identifier types/values\
+            \ to be used for attribution to traffic events. Match key value must be\
+            \ normalized and hashed, except for MAID which should not be hashed. ADID,\
+            \ IDFA, or FIREADID can be passed into the MAID field for mobile identifiers.\
+            \  All match keys provided must follow the [formatting guidelines](https://advertising.amazon.com/dsp/help/ss/en/audiences#GCCXMZYCK4RXWS6C).\
+            \ Only SHA-256 is supported."
+          items:
+            $ref: '#/components/schemas/ConversionMatchKeyV1'
+        name:
+          type: string
+          description: The name of the imported event.
+        timestamp:
+          type: string
+          description: The timestamp when the event occurred in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+            The event's timestamp must be no more than 7 days old at the time of import.
+          format: date-time
+        unitsSold:
+          maximum: 9999999999999
+          minimum: 1
+          type: integer
+          description: "The number of items purchased. Only applicable for OFF_AMAZON_PURCHASES\
+            \ conversion type. If not provided on the conversion event, a default\
+            \ of 1 will be applied."
+          format: int64
+        value:
+          multipleOf: 0.01
+          maximum: 9999999999999.99
+          minimum: -9999999999999.99
+          type: number
+          description: |-
+            The value of the event.<br>
+            When the conversionType of the associated Conversion Definition is OFF_AMAZON_PURCHASES, this represents a monetary value. Must be a minimum of 0 and must not exceed 2 decimal points. If not provided, the static value provided on the conversion definition will be used.<br>
+            When the conversionType of the associated Conversion Definition is not OFF_AMAZON_PURCHASES, this represents a non-monetary value based on a scale of your choosing. Can be negative and must not exceed 2 decimal points. If not provided, the static value provided on the conversion definition will be used.
+          format: double
+    ConversionMatchKeyTypeV1:
+      type: string
+      enum:
+      - ADDRESS
+      - CITY
+      - EMAIL
+      - FIRST_NAME
+      - LAST_NAME
+      - MAID
+      - PHONE
+      - POSTAL
+      - RAMP_ID
+      - STATE
+    ConversionMatchKeyV1:
+      required:
+      - type
+      - values
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ConversionMatchKeyTypeV1'
+        values:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: List of SHA-256 hashed identifier values of the customer who
+            performed the event.
+          items:
+            type: string
+      description: "The identifier used to match people for attribution. Match key\
+        \ value must be normalized and hashed, except for MAID which should not be\
+        \ hashed. ADID, IDFA, or FIREADID can be passed into the MAID field for mobile\
+        \ identifiers.  All match keys provided must follow the [formatting guidelines](https://advertising.amazon.com/dsp/help/ss/en/audiences#GCCXMZYCK4RXWS6C).\
+        \ Only SHA-256 is supported."
+    DeleteMobileMeasurementPartnerAppRegistrationV1:
+      required:
+      - mmpAppId
+      type: object
+      properties:
+        mmpAppId:
+          type: string
+    DspErrorV1:
+      type: object
+      properties:
+        errors:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        message:
+          type: string
+          description: A human-readable description of the response.
+        requestId:
+          type: string
+          description: A value created by Amazon API Gateway that uniquely identifies
+            your request.
+      description: The error response object.
+    DspSubErrorV1:
+      required:
+      - errorType
+      - message
+      type: object
+      properties:
+        errorType:
+          type: string
+        fieldName:
+          type: string
+        message:
+          type: string
+      description: The sub error object.
+      example:
+        fieldName: fieldName
+        errorType: errorType
+        message: message
+    EventDeletionRequestV1:
+      type: object
+      properties:
+        matchKeys:
+          maxItems: 9
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionMatchKeyV1'
+      description: All ConversionMatchKey objects for a single user should be grouped
+        into a single EventDeletionRequest list.
+    GetAdTagResponseV1:
+      type: object
+      properties:
+        adTag:
+          $ref: '#/components/schemas/AmazonAdTagV1'
+      example:
+        adTag:
+          tagId: tagId
+          createDateTime: 2023-01-01T23:49:00Z
+    ListAdTagEventsResponseV1:
+      type: object
+      properties:
+        amazonAdTagEvents:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: Array of Amazon ad tag events given filters.
+          items:
+            $ref: '#/components/schemas/AmazonAdTagEventV1'
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+          description: Token from a previous request. Use in conjunction with the
+            `maxResults` parameter to control pagination of the returned array.
+      example:
+        amazonAdTagEvents:
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        - eventName: eventName
+          lastActivityDateTime: 2000-01-23T04:56:07.000+00:00
+          status: AVAILABLE
+        maxResults: 0
+        nextToken: nextToken
+    ListConversionDefinitionsRequestV1:
+      type: object
+      properties:
+        filters:
+          maxItems: 10
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionFilterV1'
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: "Sets the maximum number of conversions in the returned array.\
+            \ Use in conjunction with the `nextToken` parameter to control pagination.\
+            \ The range for maxResults is [1,100] with default as 10. For example,\
+            \ supplying maxResults=20 with a previously returned token will fetch\
+            \ up to the next 20 items. In some cases, fewer items may be returned."
+        nextToken:
+          type: string
+          description: Token from a previous request. Use in conjunction with the
+            `maxResults` parameter to control pagination of the returned array.
+    ListConversionDefinitionsResponseV1:
+      type: object
+      properties:
+        conversionDefinitions:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: Array of conversion definitions given filters.
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionV1'
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+      example:
+        maxResults: 6
+        nextToken: nextToken
+        conversionDefinitions:
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+        - countingMethod: EVERY
+          createTime: 2000-01-23T04:56:07.000+00:00
+          createdBy:
+            accountId: accountId
+            name: name
+          sourceType: ANDROID
+          name: name
+          lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          source: AMAZON_AD_TAG
+          conversionDefinitionId: conversionDefinitionId
+          conversionType: ADD_TO_SHOPPING_CART
+          lastActivityTime: 2000-01-23T04:56:07.000+00:00
+          value: 8.008281904609314E11
+    ListConversionDefinitionsResponseV2:
+      type: object
+      properties:
+        conversionDefinitions:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: Array of conversion definitions given filters.
+          items:
+            $ref: '#/components/schemas/ConversionDefinitionV2'
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+    ListMobileMeasurementPartnerAppRegistrationsRequestV1:
+      type: object
+      properties:
+        filters:
+          maxItems: 10
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MobileMeasurementPartnerAppRegistrationFilterV1'
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: "Sets the maximum number of conversions in the returned array.\
+            \ Use in conjunction with the `nextToken` parameter to control pagination.\
+            \ The range for maxResults is [1,100] with default as 10. For example,\
+            \ supplying maxResults=20 with a previously returned token will fetch\
+            \ up to the next 20 items. In some cases, fewer items may be returned."
+        nextToken:
+          type: string
+          description: Token from a previous request. Use in conjunction with the
+            `maxResults` parameter to control pagination of the returned array.
+    ListMobileMeasurementPartnerAppRegistrationsResponseV1:
+      type: object
+      properties:
+        appRegistrations:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: Array of Mobile Measurement Partner app registrations given
+            filters.
+          items:
+            $ref: '#/components/schemas/MobileMeasurementPartnerAppRegistrationV1'
+        maxResults:
+          type: integer
+        nextToken:
+          type: string
+      example:
+        maxResults: 0
+        nextToken: nextToken
+        appRegistrations:
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+        - mmpAppId: mmpAppId
+          appName: appName
+          lastEventReceived: 2000-01-23T04:56:07.000+00:00
+          bundleId: bundleId
+          mmpName: ADJUST
+          platform: ANDROID
+          conversionsCreated: 0.8008281904610115
+    MobileMeasurementPartnerAppBatchResponseV1:
+      type: object
+      properties:
+        error:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MobileMeasurementPartnerErrorResponseV1'
+        success:
+          maxItems: 1
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/MobileMeasurementPartnerSuccessResponseV1'
+      example:
+        success:
+        - mmpAppId: mmpAppId
+          index: 6
+        error:
+        - code: code
+          index: 0
+          message: message
+          errors:
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+          - fieldName: fieldName
+            errorType: errorType
+            message: message
+    MobileMeasurementPartnerAppRegistrationFilterV1:
+      required:
+      - field
+      - values
+      type: object
+      properties:
+        field:
+          type: string
+          enum:
+          - APP_NAME
+          - APP_STORE_ID
+          - MMP_NAME
+          - PLATFORM
+        values:
+          maxItems: 100
+          minItems: 1
+          type: array
+          items:
+            type: string
+    MobileMeasurementPartnerAppRegistrationV1:
+      required:
+      - appName
+      - bundleId
+      - mmpName
+      - platform
+      type: object
+      properties:
+        appName:
+          type: string
+          description: The name of the application.
+        bundleId:
+          type: string
+          description: The ID of the application with the app store it is registered
+            with. The bundleId + platform + mmpName must be unique within your advertiser
+            account.
+        conversionsCreated:
+          type: number
+          description: The number of conversions associated with this mobile application.
+          readOnly: true
+        lastEventReceived:
+          type: string
+          description: The latest timestamp of when a conversion event for the mobile
+            application was imported in ISO format (YYYY-MM-DDThh:mm:ssTZD).
+          format: date-time
+          readOnly: true
+        mmpAppId:
+          type: string
+          description: The id of the mobile measurement partner app registration.
+          readOnly: true
+        mmpName:
+          $ref: '#/components/schemas/MobileMeasurementPartnerNameV1'
+        platform:
+          $ref: '#/components/schemas/MobileMeasurementPartnerPlatformV1'
+      example:
+        mmpAppId: mmpAppId
+        appName: appName
+        lastEventReceived: 2000-01-23T04:56:07.000+00:00
+        bundleId: bundleId
+        mmpName: ADJUST
+        platform: ANDROID
+        conversionsCreated: 0.8008281904610115
+    MobileMeasurementPartnerErrorResponseV1:
+      type: object
+      properties:
+        code:
+          type: string
+          description: An enumerated success or error code for machine use.
+        errors:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/DspSubErrorV1'
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        message:
+          type: string
+          description: A human-readable message of the code.
+      example:
+        code: code
+        index: 0
+        message: message
+        errors:
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+        - fieldName: fieldName
+          errorType: errorType
+          message: message
+    MobileMeasurementPartnerNameV1:
+      type: string
+      enum:
+      - ADJUST
+      - AIRBRIDGE
+      - APPSFLYER
+      - BRANCH
+      - KOCHAVA
+      - SINGULAR
+      - TENJIN
+    MobileMeasurementPartnerPlatformV1:
+      type: string
+      enum:
+      - ANDROID
+      - FIRE_TV
+    MobileMeasurementPartnerSuccessResponseV1:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: "The index of the object in the request, starting from 1."
+          format: int32
+        mmpAppId:
+          type: string
+          description: ID of the create mobile measurement partner application registration.
+      example:
+        mmpAppId: mmpAppId
+        index: 6
+    OrderAssociatedConversionDefinitionV1:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Associated conversion definition identifier for the order.
+        isOptimized:
+          type: boolean
+          description: Denotes whether this conversion definition is optimized for
+            this order.
+    OrderAssociatedConversionDefinitionsResponseV1:
+      type: object
+      properties:
+        conversionDefinitionIds:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: List of associated ConversionDefinition identifiers for the
+            order.
+          items:
+            type: string
+        maxResults:
+          type: string
+        nextToken:
+          type: string
+      example:
+        maxResults: maxResults
+        nextToken: nextToken
+        conversionDefinitionIds:
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+        - conversionDefinitionIds
+    OrderAssociatedConversionDefinitionsResponseV2:
+      type: object
+      properties:
+        conversionDefinitions:
+          maxItems: 100
+          minItems: 0
+          type: array
+          description: List of associated ConversionDefinitions for the order.
+          items:
+            $ref: '#/components/schemas/OrderAssociatedConversionDefinitionV1'
+        maxResults:
+          type: string
+        nextToken:
+          type: string
+    UpdateConversionDefinitionV1:
+      required:
+      - conversionDefinitionId
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The identifier of the ConversionDefinition.
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV1'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        name:
+          type: string
+          description: The name of the ConversionDefinition.
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          type: number
+          description: The default value of each conversion event. Monetary value
+            for OFF_AMAZON_PURCHASES ConversionDefinition type and non-monetary value
+            for all other ConversionDefinition types.
+          format: double
+    UpdateConversionDefinitionV2:
+      required:
+      - conversionDefinitionId
+      type: object
+      properties:
+        conversionDefinitionId:
+          type: string
+          description: The identifier of the ConversionDefinition.
+        conversionType:
+          $ref: '#/components/schemas/ConversionDefinitionTypeV2'
+        countingMethod:
+          $ref: '#/components/schemas/ConversionDefinitionCountingMethodV1'
+        name:
+          type: string
+          description: The name of the ConversionDefinition.
+        partner:
+          type: string
+          description: The name of the third-party service used to deliver the conversions
+            (if applicable).
+        source:
+          $ref: '#/components/schemas/ConversionDefinitionSourceV1'
+        sourceType:
+          $ref: '#/components/schemas/ConversionDefinitionSourceTypeV1'
+        value:
+          type: number
+          description: The default value of each conversion event. Monetary value
+            for OFF_AMAZON_PURCHASES ConversionDefinition type and non-monetary value
+            for all other ConversionDefinition types.
+          format: double
+    UpdateMobileMeasurementPartnerAppRegistrationV1:
+      required:
+      - mmpAppId
+      type: object
+      properties:
+        appName:
+          type: string
+          description: The name of the application.
+        bundleId:
+          type: string
+          description: The ID of the application with the app store it is registered
+            with.
+        mmpAppId:
+          type: string
+          description: The identifier of the app registration.
+    BatchAssociateConversionDefinitionsRequestV1_inner:
+      required:
+      - conversionDefinitionId
+      - operation
+      properties:
+        conversionDefinitionId:
+          type: string
+        operation:
+          type: string
+          enum:
+          - ADD
+          - REMOVE
+    BatchAssociateConversionDefinitionsRequestV2_inner:
+      required:
+      - conversionDefinitionId
+      - isOptimized
+      - operation
+      properties:
+        conversionDefinitionId:
+          type: string
+        isOptimized:
+          type: boolean
+          description: Denotes the association should be considered as optimized.
+        operation:
+          type: string
+          enum:
+          - ADD
+          - REMOVE
+  responses: {}
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      description: Account Identifier you use to access the DSP. This is your DSP
+        Advertiser ID. DSP Entity ID is not supported.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    clientHeader:
+      name: Amazon-Advertising-API-ClientId
+      in: header
+      description: The identifier of a client associated with a `Login with Amazon`
+        account.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    dspAccountId:
+      name: Amazon-Ads-AccountId
+      in: header
+      description: Account Identifier you use to access the DSP. This is your DSP
+        Advertiser ID. This header is required for access to any DSP data when you
+        have been directly invited to the advertiser.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    managerAccountId:
+      name: Amazon-Ads-Manager-Account-ID
+      in: header
+      description: The identifier of an Amazon Ads Manager Account. This ID can be
+        retrieved by making a GET request to the /managerAccounts endpoint.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    profileHeader:
+      name: Amazon-Advertising-API-Scope
+      in: header
+      description: The identifier of a profile associated with the advertiser account.
+        Use GET method on Profiles resource to list profiles associated with the access
+        token passed in the HTTP Authorization header and choose profile id profileId
+        from the response to pass it as input.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

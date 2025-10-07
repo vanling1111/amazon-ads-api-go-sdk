@@ -1,0 +1,11 @@
+# BulkGetBillingNotificationsSuccess
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AdvertiserMarketplace** | [***AdvertiserMarketplace**](advertiserMarketplace.md) |  | [optional] [default to null]
+**BillingNotifications** | [**[]BillingNotification**](billingNotification.md) |  | [default to null]
+**Index** | **int32** |  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

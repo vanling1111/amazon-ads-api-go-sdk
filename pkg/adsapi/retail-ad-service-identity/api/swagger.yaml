@@ -1,0 +1,258 @@
+openapi: 3.0.1
+info:
+  title: Retailer Identity API for Retail Ad Service
+  description: This API allows advertisers to retrieve retailer details for use in
+    Retail Ad Service campaign management APIs.
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /ras/v1/retailers/list:
+    post:
+      tags:
+      - Retailers
+      summary: Returns a list of Retailers.
+      description: |-
+        Returns an array of all active retailers.
+
+        **Requires one of these permissions**:
+        []
+      operationId: RASv1ListRetailers
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use GET method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListRetailersRequestContent'
+      responses:
+        "200":
+          description: ListRetailers 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityListRetailersResponseContent'
+        "400":
+          description: ListRetailers Bad Request 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "403":
+          description: Forbidden 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: Not Found 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "413":
+          description: Content Too Large 413 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "429":
+          description: ThrottlingException 429 response
+          headers:
+            Retry-After:
+              description: "Delay in seconds, before the next re-try attempt to the\
+                \ operation is recommended"
+              style: simple
+              explode: false
+              schema:
+                type: integer
+                description: "Delay in seconds, before the next re-try attempt to\
+                  \ the operation is recommended"
+                format: int32
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "500":
+          description: InternalServerException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "502":
+          description: Bad Gateway 502 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "503":
+          description: ServiceUnavailableException 503 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "504":
+          description: Gateway Timeout 504 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          $ref: '#/components/schemas/ErrorMessage'
+    ErrorCode:
+      type: string
+      description: Error code
+    ErrorMessage:
+      type: string
+      description: Human readable response message
+    IdentityListRetailersResponseContent:
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: token value allowing to navigate to the next response page
+        retailers:
+          maxItems: 200
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/Retailer'
+        totalResults:
+          type: integer
+          description: The total number of entities
+          format: int64
+      example:
+        retailers:
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        - domain: domain
+          name: name
+          retailerId: retailerId
+          status: ACTIVE
+        totalResults: 0
+        nextToken: nextToken
+    ListRetailersRequestContent:
+      type: object
+      properties:
+        maxResults:
+          maximum: 200
+          minimum: 1
+          type: integer
+          description: Number of records to include in the paginated response. Defaults
+            to max page size for given API
+          format: int32
+        nextToken:
+          type: string
+          description: token value allowing to navigate to the next response page
+        retailerIdFilter:
+          $ref: '#/components/schemas/RetailerIdFilter'
+    Retailer:
+      type: object
+      properties:
+        domain:
+          type: string
+          description: The domain of the Retailer.
+        name:
+          type: string
+          description: The name of the Retailer.
+        retailerId:
+          type: string
+          description: The identifier of the Retailer.
+        status:
+          type: string
+          description: Status of the Retailer.
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - RETIRED
+      example:
+        domain: domain
+        name: name
+        retailerId: retailerId
+        status: ACTIVE
+    RetailerIdFilter:
+      required:
+      - include
+      type: object
+      properties:
+        include:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            type: string
+            description: Retailer's ids to filter
+      description: Filter entities by the list of RetailerIds
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

@@ -1,0 +1,605 @@
+openapi: 3.0.1
+info:
+  title: Amazon Ads API Exports
+  description: Amazon Ads API to request and download exports across ad products.
+  version: "3.0"
+servers:
+- url: https://advertising-api.amazon.com
+  description: Production server for NA
+- url: https://advertising-api-eu.amazon.com
+  description: Production server for EU
+- url: https://advertising-api-fe.amazon.com
+  description: Production server for FE
+paths:
+  /adGroups/export:
+    post:
+      tags:
+      - Exports
+      summary: Creates a file-based export of Ad Groups.
+      description: |-
+        Creates a file-based export of Ad Groups in the account satisfying the filtering criteria.
+
+        To understand the call flow for asynchronous exports, see [Getting started with sponsored ads exports](/API/docs/en-us/guides/exports/get-started).
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_view"]
+      operationId: AdGroupExport
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.adgroupsexport.v1+json:
+            schema:
+              $ref: '#/components/schemas/BaseUniversalApiExportRequest'
+        required: true
+      responses:
+        "202":
+          description: Success.
+          content:
+            application/vnd.adgroupsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "401":
+          description: UniversalApiUnauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "406":
+          description: "Not Acceptable. Either client has provided unsupported accept\
+            \ header value, or in case of getting a export the Accept header differs\
+            \ from the one used to create the particular export."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+      security:
+      - OAuth2:
+        - advertising::campaign_management
+  /ads/export:
+    post:
+      tags:
+      - Exports
+      summary: Creates a file-based export of Ads.
+      description: |-
+        Creates a file-based export of Ads in the account satisfying the filtering criteria.
+
+        To understand the call flow for asynchronous exports, see [Getting started with sponsored ads exports](/API/docs/en-us/guides/exports/get-started).
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_view"]
+      operationId: AdExport
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.adsexport.v1+json:
+            schema:
+              $ref: '#/components/schemas/BaseUniversalApiExportRequest'
+        required: true
+      responses:
+        "202":
+          description: Success.
+          content:
+            application/vnd.adsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "401":
+          description: UniversalApiUnauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "406":
+          description: "Not Acceptable. Either client has provided unsupported accept\
+            \ header value, or in case of getting a export the Accept header differs\
+            \ from the one used to create the particular export."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+      security:
+      - OAuth2:
+        - advertising::campaign_management
+  /campaigns/export:
+    post:
+      tags:
+      - Exports
+      summary: Creates a file-based export of Campaigns.
+      description: |-
+        Creates a file-based export of Campaigns in the account satisfying the filtering criteria.
+
+        To understand the call flow for asynchronous exports, see [Getting started with sponsored ads exports](/API/docs/en-us/guides/exports/get-started).
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_view"]
+      operationId: CampaignExport
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.campaignsexport.v1+json:
+            schema:
+              $ref: '#/components/schemas/BaseUniversalApiExportRequest'
+        required: true
+      responses:
+        "202":
+          description: Success.
+          content:
+            application/vnd.campaignsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "401":
+          description: UniversalApiUnauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "406":
+          description: "Not Acceptable. Either client has provided unsupported accept\
+            \ header value, or in case of getting a export the Accept header differs\
+            \ from the one used to create the particular export."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+      security:
+      - OAuth2:
+        - advertising::campaign_management
+  /exports/{exportId}:
+    get:
+      tags:
+      - Exports
+      summary: Gets the status of a requested export and a link to download the export.
+      description: |-
+        This API will return a status of the specified export.
+
+        To understand the call flow for asynchronous exports, see [Getting started with sponsored ads exports](/API/docs/en-us/guides/exports/get-started).
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_view"]
+      operationId: GetExport
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: exportId
+        in: path
+        description: The export identifier.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/vnd.adgroupsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+            application/vnd.adsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+            application/vnd.campaignsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+            application/vnd.targetsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+        "401":
+          description: UniversalApiUnauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "404":
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "406":
+          description: "Not Acceptable. Either client has provided unsupported accept\
+            \ header value, or in case of getting a export the Accept header differs\
+            \ from the one used to create the particular export."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+      security:
+      - OAuth2:
+        - advertising::campaign_management
+  /targets/export:
+    post:
+      tags:
+      - Exports
+      summary: Creates a file-based export of Targets.
+      description: |-
+        Creates a file-based export of Targets in the account satisfying the filtering criteria.
+
+        To understand the call flow for asynchronous exports, see [Getting started with sponsored ads exports](/API/docs/en-us/guides/exports/get-started).
+
+        **Requires one of these permissions**:
+        ["advertiser_campaign_view"]
+      operationId: TargetExport
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.targetsexport.v1+json:
+            schema:
+              $ref: '#/components/schemas/TargetsUniversalApiExportRequest'
+        required: true
+      responses:
+        "202":
+          description: Success.
+          content:
+            application/vnd.targetsexport.v1+json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiExportResponse'
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "401":
+          description: UniversalApiUnauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+        "406":
+          description: "Not Acceptable. Either client has provided unsupported accept\
+            \ header value, or in case of getting a export the Accept header differs\
+            \ from the one used to create the particular export."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniversalApiError'
+      security:
+      - OAuth2:
+        - advertising::campaign_management
+components:
+  schemas:
+    BaseUniversalApiExportRequest:
+      type: object
+      properties:
+        adProductFilter:
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: "Filters the entities returned in export only to selected ad\
+            \ products. In case the filter is not provided, it returns entities from\
+            \ all ad products."
+          items:
+            type: string
+            enum:
+            - SPONSORED_BRANDS
+            - SPONSORED_DISPLAY
+            - SPONSORED_PRODUCTS
+          default:
+          - SPONSORED_BRANDS
+          - SPONSORED_DISPLAY
+          - SPONSORED_PRODUCTS
+        stateFilter:
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: "Filters the entities returned in export only to selected states.\
+            \ In case the filter is not provided, it returns only `ENABLED` or `PAUSED`\
+            \ entities."
+          items:
+            type: string
+            enum:
+            - ARCHIVED
+            - ENABLED
+            - PAUSED
+          default:
+          - ENABLED
+          - PAUSED
+    TargetsUniversalApiExportRequest:
+      allOf:
+      - $ref: '#/components/schemas/BaseUniversalApiExportRequest'
+      - type: object
+        properties:
+          negativeFilter:
+            maxItems: 2
+            minItems: 1
+            type: array
+            description: "Filters the targets returned in export to negative or positive\
+              \ targets. In case the filter is not provided, it returns both negative\
+              \ and positive targets."
+            items:
+              type: boolean
+            default:
+            - "false"
+            - "true"
+          targetLevelFilter:
+            maxItems: 2
+            minItems: 1
+            type: array
+            description: "Filters the targets returned in export only to selected\
+              \ levels. In case the filter is not provided, it returns both `CAMPAIGN`\
+              \ and `AD_GROUP` level targets."
+            items:
+              type: string
+              enum:
+              - AD_GROUP
+              - CAMPAIGN
+            default:
+            - AD_GROUP
+            - CAMPAIGN
+          targetTypeFilter:
+            maxItems: 8
+            minItems: 1
+            type: array
+            description: "Filters the targets returned in exports only to selected\
+              \ types. In case the filter is not provided, it returns targets with\
+              \ all target types. Target types are only supported by certain ad products\
+              \ - for instance, `THEME` targets are not available in `SPONSORED_BRANDS`.\
+              \ Please reference https://advertising.amazon.com/API/docs/en-us/reference/common-models/targets\
+              \ for more details."
+            items:
+              type: string
+              enum:
+              - AUDIENCE
+              - AUTO
+              - KEYWORD
+              - PRODUCT
+              - PRODUCT_AUDIENCE
+              - PRODUCT_CATEGORY
+              - PRODUCT_CATEGORY_AUDIENCE
+              - THEME
+            default:
+            - AUDIENCE
+            - AUTO
+            - KEYWORD
+            - PRODUCT
+            - PRODUCT_AUDIENCE
+            - PRODUCT_CATEGORY
+            - PRODUCT_CATEGORY_AUDIENCE
+            - THEME
+    UniversalApiError:
+      required:
+      - message
+      properties:
+        errorCode:
+          type: string
+          description: |
+            - INTERNAL_ERROR: The export has failed with an internal error. If the issue persists, please contact customer support.
+            - TIMED_OUT: The export request has timed out. For exports with millions of entities, try using filters to reduce the size of the export. If the issue persists, please contact customer support.
+          enum:
+          - INTERNAL_ERROR
+          - TIMED_OUT
+        message:
+          type: string
+          description: A human-readable description of the error.
+      example:
+        errorCode: INTERNAL_ERROR
+        message: message
+    UniversalApiExportResponse:
+      required:
+      - exportId
+      - status
+      properties:
+        createdAt:
+          type: string
+          description: Date of when the export request was created.
+          format: date-time
+        error:
+          $ref: '#/components/schemas/UniversalApiError'
+        exportId:
+          type: string
+          description: The export identifier.
+        fileSize:
+          type: number
+          description: Byte size of the generated file.
+        generatedAt:
+          type: string
+          description: Date of when the export was finished generating.
+          format: date-time
+        status:
+          type: string
+          description: |
+            The generation status of the export.
+            - PROCESSING: Export is currently in progress.
+            - COMPLETED: Export has completed successfully.
+            - FAILED: Export has failed. See the error message for more details.
+          enum:
+          - COMPLETED
+          - FAILED
+          - PROCESSING
+        url:
+          type: string
+          description: A URL for the export. It’s only available if status is COMPLETED.
+        urlExpiresAt:
+          type: string
+          description: Date at which the download URL for the generated export expires.
+          format: date-time
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        fileSize: 0.8008281904610115
+        urlExpiresAt: 2000-01-23T04:56:07.000+00:00
+        generatedAt: 2000-01-23T04:56:07.000+00:00
+        error:
+          errorCode: INTERNAL_ERROR
+          message: message
+        exportId: exportId
+        url: url
+        status: COMPLETED
+  responses:
+    UniversalApiBadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversalApiError'
+    UniversalApiNotAcceptable:
+      description: "Not Acceptable. Either client has provided unsupported accept\
+        \ header value, or in case of getting a export the Accept header differs from\
+        \ the one used to create the particular export."
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversalApiError'
+    UniversalApiNotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversalApiError'
+    UniversalApiUnauthorized:
+      description: UniversalApiUnauthorized.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UniversalApiError'
+  parameters:
+    UniversalApiAmazonAdsApiClientId:
+      name: Amazon-Advertising-API-ClientId
+      in: header
+      description: The identifier of a client associated with a "Login with Amazon"
+        account.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+    UniversalApiAmazonAdsScopeId:
+      name: Amazon-Advertising-API-Scope
+      in: header
+      description: The identifier of a profile associated with the advertiser account.
+        Use `GET` method on Profiles resource to list profiles associated with the
+        access token passed in the HTTP Authorization header.
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.amazon.com/ap/oa
+          tokenUrl: https://api.amazon.com/auth/o2/token
+          scopes:
+            advertising::audiences: Grants access to data provider APIs
+            advertising::campaign_management: Grants write access to campaign management.
+            advertising::test:create_account: Grants write access to create test accounts
+              functionality
+            cpc_advertising:campaign_management: Grants write access to campaign management.
+              Legacy name (no difference from advertising::campaign_management)
+  links: {}
+  callbacks: {}

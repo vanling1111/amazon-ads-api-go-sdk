@@ -1,0 +1,4487 @@
+openapi: 3.0.1
+info:
+  title: Reach Planning Service
+  description: "Reach Planning Service API provides insight for advertising media\
+    \ planning by forecasting for reach, incremental/deduplicated reach, and other\
+    \ performance metrics."
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /mediaPlan/v1/deduplicatedReachForecasts:
+    post:
+      tags:
+      - Forecast deduplication API
+      description: |-
+        Creates a list of De-duplicated Reach Forecasts.
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: CreateDeduplicatedReachForecastsV1
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account identifier you use to access the DSP. This is your Amazon
+          DSP Advertiser ID.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Account identifier you use to access the DSP. This is your
+            Amazon DSP Advertiser ID.
+      - name: Amazon-Ads-Manager-AccountId
+        in: header
+        description: The manager accounts associated to the ads accounts.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The manager accounts associated to the ads accounts.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          CreateDeduplicatedReachForecastsV1_example1:
+            summary: Example of creating Deduplicated Reach Forecasts.
+            description: This example is showing creation of two deduplicated reach
+              forecasts.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          CreateDeduplicatedReachForecastsV1_example1:
+            summary: Example of creating Deduplicated Reach Forecasts.
+            description: This example is showing creation of two deduplicated reach
+              forecasts.
+            value: "123123123123123"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1RequestContent'
+            examples:
+              CreateDeduplicatedReachForecastsV1_example1:
+                summary: Example of creating Deduplicated Reach Forecasts.
+                description: This example is showing creation of two deduplicated
+                  reach forecasts.
+                value:
+                  deduplicatedReachForecasts:
+                  - budgetAllocations:
+                    - reach: "100000"
+                      reachForecastId: 24281a60-387f-4f9f-abb2-66378a8712e4
+                    - reach: "100000"
+                      reachForecastId: 36e8f956-7126-4c12-3792-1ae1d372ef9c
+                  - budgetAllocations:
+                    - reach: "120000"
+                      reachForecastId: 24281a60-387f-4f9f-abb2-66378a8712e4
+                    - reach: "110000"
+                      reachForecastId: 36e8f956-7126-4c12-3792-1ae1d372ef9c
+        required: true
+      responses:
+        "207":
+          description: CreateDeduplicatedReachForecastsV1 207 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1ResponseContent'
+              examples:
+                CreateDeduplicatedReachForecastsV1_example1:
+                  summary: Example of creating Deduplicated Reach Forecasts.
+                  description: This example is showing creation of two deduplicated
+                    reach forecasts.
+                  value:
+                    error: []
+                    success:
+                    - deduplicatedReachForecast:
+                        deduplicatedReach: "26758483"
+                        deduplicatedReachForecastId: 122d5a10-3ffe-6dc5-6127-19a02cb23765
+                      index: "0"
+                    - deduplicatedReachForecast:
+                        deduplicatedReach: "28787878"
+                        deduplicatedReachForecastId: f76e39cd-36a2-3b04-e126-c9e37fe53c23
+                      index: "1"
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: ForbiddenException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionResponseContent'
+        "429":
+          description: TooManyRequestsException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+  /mediaPlan/v1/performanceForecasts:
+    post:
+      tags:
+      - Performance Forecasting API
+      description: |-
+        Generates forecast curve for the provided performance metric and targets.
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: GeneratePerformanceForecastsV1
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account identifier you use to access the DSP. This is your Amazon
+          DSP Advertiser ID.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Account identifier you use to access the DSP. This is your
+            Amazon DSP Advertiser ID.
+      - name: Amazon-Ads-Manager-AccountId
+        in: header
+        description: The manager accounts associated to the ads accounts.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The manager accounts associated to the ads accounts.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          GeneratePerformanceForecastsV1_example1:
+            summary: Example of generating an performance forecast.
+            description: This example shows generation of an performance forecast
+              for clicks and detail page views.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+          GeneratePerformanceForecastsV1_example2:
+            summary: Example with partial failure.
+            description: This example shows a response where one metric succeeded
+              and another failed.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          GeneratePerformanceForecastsV1_example1:
+            summary: Example of generating an performance forecast.
+            description: This example shows generation of an performance forecast
+              for clicks and detail page views.
+            value: "123123123123123"
+          GeneratePerformanceForecastsV1_example2:
+            summary: Example with partial failure.
+            description: This example shows a response where one metric succeeded
+              and another failed.
+            value: "123123123123123"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneratePerformanceForecastsV1RequestContent'
+            examples:
+              GeneratePerformanceForecastsV1_example1:
+                summary: Example of generating an performance forecast.
+                description: This example shows generation of an performance forecast
+                  for clicks and detail page views.
+                value:
+                  performanceForecasts:
+                  - advertisedProductCategoryIds:
+                    - "335417915575420049"
+                    audienceSize: "1000000"
+                    biddingInfo:
+                      maxAvgCpm: "25"
+                      maxCpc: "1.5"
+                      maxVCpm: "30"
+                    countryCode: US
+                    deliveryType: GUARANTEED
+                    endDate: 2025-12-20
+                    frequencyCap:
+                      maxImpressions: "3"
+                      timeUnit: DAYS
+                      timeUnitCount: "1"
+                      type: CUSTOM
+                    performanceMetric: CLICK
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-06
+                    supplyPackage:
+                    - DSP_TWITCH_VIDEO
+                    targets:
+                    - negative: "false"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "111"
+                          groupId: "1"
+                          targetType: AUDIENCE
+                    - negative: "false"
+                      targetDetails:
+                        locationTarget:
+                          geoLocation: "1234"
+                          targetType: LOCATION
+                  - countryCode: US
+                    deliveryType: NON_GUARANTEED
+                    endDate: 2025-12-20
+                    performanceMetric: DETAIL_PAGE_VIEW
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-06
+                    supplyPackage:
+                    - DSP_STREAMING_TV
+                  - countryCode: US
+                    deliveryType: GUARANTEED
+                    endDate: 2025-12-20
+                    performanceMetric: VIDEO_COMPLETION
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-06
+                    supplyPackage:
+                    - DSP_PRIME_VIDEO
+                    targets:
+                    - negative: "false"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "111"
+                          groupId: "1"
+                          targetType: AUDIENCE
+              GeneratePerformanceForecastsV1_example2:
+                summary: Example with partial failure.
+                description: This example shows a response where one metric succeeded
+                  and another failed.
+                value:
+                  performanceForecasts:
+                  - countryCode: US
+                    deliveryType: NON_GUARANTEED
+                    endDate: 2025-12-20
+                    performanceMetric: CLICK
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-06
+                    supplyPackage:
+                    - DSP_STREAMING_TV
+                  - countryCode: US
+                    deliveryType: GUARANTEED
+                    endDate: 2025-12-20
+                    performanceMetric: VIDEO_COMPLETION
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-06
+                    supplyPackage:
+                    - DSP_STREAMING_TV
+        required: true
+      responses:
+        "207":
+          description: GeneratePerformanceForecastsV1 207 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneratePerformanceForecastsV1ResponseContent'
+              examples:
+                GeneratePerformanceForecastsV1_example1:
+                  summary: Example of generating an performance forecast.
+                  description: This example shows generation of an performance forecast
+                    for clicks and detail page views.
+                  value:
+                    error: []
+                    success:
+                    - index: "0"
+                      performanceForecast:
+                        countryCode: US
+                        creationDateTime: 2025-09-02T23:36:12.103Z
+                        currencyCode: USD
+                        dataPoints:
+                        - cpc: "6.928674875740527"
+                          ctr: "0.004113340647543945"
+                          ecpm: "28.5"
+                          prediction: "7"
+                          spend: "54.15"
+                        - cpc: "6.928713977016345"
+                          ctr: "0.00411331743445307"
+                          ecpm: "28.5"
+                          prediction: "15"
+                          spend: "108.3"
+                        performanceMetric: CLICK
+                    - index: "1"
+                      performanceForecast:
+                        countryCode: US
+                        creationDateTime: 2025-09-02T23:36:12.103Z
+                        currencyCode: USD
+                        dataPoints:
+                        - cpdpv: "1"
+                          prediction: "0"
+                          spend: "88.11212292385102"
+                        - cpdpv: "174.40159131659834"
+                          prediction: "1"
+                          spend: "220.28562873268126"
+                        performanceMetric: DETAIL_PAGE_VIEW
+                    - index: "2"
+                      performanceForecast:
+                        countryCode: US
+                        creationDateTime: 2025-09-02T23:36:12.103Z
+                        currencyCode: USD
+                        dataPoints:
+                        - cpvc: "0.026002616574872007"
+                          prediction: "15925"
+                          spend: "414.098"
+                          vcr: "0.8651263973849037"
+                        - cpvc: "0.026000294298434187"
+                          prediction: "30405"
+                          spend: "790.56111365"
+                          vcr: "0.865203668150585"
+                        performanceMetric: VIDEO_COMPLETION
+                GeneratePerformanceForecastsV1_example2:
+                  summary: Example with partial failure.
+                  description: This example shows a response where one metric succeeded
+                    and another failed.
+                  value:
+                    error:
+                    - error:
+                        code: INTERNAL_SERVER_ERROR
+                        message: Curve could not be generated.
+                      index: "1"
+                    success:
+                    - index: "0"
+                      performanceForecast:
+                        countryCode: US
+                        creationDateTime: 2024-09-02T23:36:12.103Z
+                        currencyCode: USD
+                        dataPoints:
+                        - cpc: "1.25"
+                          ctr: "0.002"
+                          ecpm: "25"
+                          prediction: "8000"
+                          spend: "10000"
+                        performanceMetric: CLICK
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: ForbiddenException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionResponseContent'
+        "429":
+          description: TooManyRequestsException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+  /mediaPlan/v1/reachForecasts:
+    post:
+      tags:
+      - Reach Forecasting API
+      description: |-
+        Creates a list of new Reach Forecasts in bulk action.
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: CreateReachForecastsV1
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account identifier you use to access the DSP. This is your Amazon
+          DSP Advertiser ID.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Account identifier you use to access the DSP. This is your
+            Amazon DSP Advertiser ID.
+      - name: Amazon-Ads-Manager-AccountId
+        in: header
+        description: The manager accounts associated to the ads accounts.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The manager accounts associated to the ads accounts.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          CreateReachForecastsV1_example1:
+            summary: Example of creating Reach Forecasts.
+            description: Thie example is showing creation of two reach forecasts with
+              some common targeting parameters.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          CreateReachForecastsV1_example1:
+            summary: Example of creating Reach Forecasts.
+            description: Thie example is showing creation of two reach forecasts with
+              some common targeting parameters.
+            value: "123123123123123"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReachForecastsV1RequestContent'
+            examples:
+              CreateReachForecastsV1_example1:
+                summary: Example of creating Reach Forecasts.
+                description: Thie example is showing creation of two reach forecasts
+                  with some common targeting parameters.
+                value:
+                  commonTargets:
+                  - negative: "false"
+                    targetDetails:
+                      audienceTarget:
+                        audienceId: "111"
+                        groupId: "1"
+                        targetType: AUDIENCE
+                  - negative: "false"
+                    targetDetails:
+                      audienceTarget:
+                        audienceId: "112"
+                        groupId: "1"
+                        targetType: AUDIENCE
+                  - negative: "false"
+                    targetDetails:
+                      audienceTarget:
+                        audienceId: "122"
+                        groupId: "2"
+                        targetType: AUDIENCE
+                  - negative: "true"
+                    targetDetails:
+                      audienceTarget:
+                        audienceId: "21"
+                        targetType: AUDIENCE
+                  - negative: "true"
+                    targetDetails:
+                      audienceTarget:
+                        audienceId: "22"
+                        targetType: AUDIENCE
+                  reachForecasts:
+                  - advertisedProductCategoryIds:
+                    - "335417915575420049"
+                    countryCode: US
+                    deliveryType: GUARANTEED
+                    endDate: 2025-12-26
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-12
+                    supplyPackage:
+                    - DSP_STREAMING_TV
+                    targets:
+                    - negative: "true"
+                      targetDetails:
+                        contentRatingTarget:
+                          contentRatingDetails:
+                            dspContentRating: SUITABLE_FOR_ALL_AUDIENCES
+                          contentRatingType: DSP_CONTENT_RATING
+                          targetType: CONTENT_RATING
+                  - advertisedProductCategoryIds:
+                    - "335417915575420049"
+                    countryCode: US
+                    deliveryType: GUARANTEED
+                    endDate: 2025-12-26
+                    frequencyCap:
+                      maxImpressions: "1"
+                      timeUnit: DAYS
+                      timeUnitCount: "1"
+                      type: CUSTOM
+                    reachType: HOUSEHOLDS
+                    startDate: 2025-12-12
+                    supplyPackage:
+                    - DSP_TWITCH_VIDEO
+                    targets:
+                    - negative: "true"
+                      targetDetails:
+                        deviceTarget:
+                          deviceType: MOBILE
+                          targetType: DEVICE
+        required: true
+      responses:
+        "207":
+          description: CreateReachForecastsV1 207 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateReachForecastsV1ResponseContent'
+              examples:
+                CreateReachForecastsV1_example1:
+                  summary: Example of creating Reach Forecasts.
+                  description: Thie example is showing creation of two reach forecasts
+                    with some common targeting parameters.
+                  value:
+                    error: []
+                    success:
+                    - index: "0"
+                      reachForecast:
+                        avgCpm: "20"
+                        countryCode: US
+                        creationDateTime: 2024-06-01T23:36:09.973Z
+                        currencyCode: USD
+                        dataPoints:
+                        - impressions: "14000"
+                          reach: "11000"
+                          spend: "280000"
+                        - impressions: "16000"
+                          reach: "12000"
+                          spend: "320000"
+                        maxCpm: "40"
+                        reachForecastId: 24281a60-387f-4f9f-abb2-66378a8712e4
+                        status: SUCCESS
+                    - index: "1"
+                      reachForecast:
+                        avgCpm: "13"
+                        countryCode: US
+                        creationDateTime: 2024-06-01T23:36:12.103Z
+                        currencyCode: USD
+                        dataPoints:
+                        - impressions: "14000"
+                          reach: "10000"
+                          spend: "182000"
+                        - impressions: "16000"
+                          reach: "12000"
+                          spend: "208000"
+                        maxCpm: "30"
+                        reachForecastId: 36e8f956-7126-4c12-3792-1ae1d372ef9c
+                        status: SUCCESS
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: ForbiddenException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionResponseContent'
+        "429":
+          description: TooManyRequestsException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+  /mediaPlan/v1/reachForecasts/list:
+    post:
+      tags:
+      - Reach Forecasting API
+      description: |-
+        Gets a list of Reach Forecasts by IDs
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: ListReachForecastsV1
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account identifier you use to access the DSP. This is your Amazon
+          DSP Advertiser ID.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Account identifier you use to access the DSP. This is your
+            Amazon DSP Advertiser ID.
+      - name: Amazon-Ads-Manager-AccountId
+        in: header
+        description: The manager accounts associated to the ads accounts.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The manager accounts associated to the ads accounts.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          ListReachForecastsV1_example1:
+            summary: Example of getting a list of Reach Forecasts by IDs.
+            description: This example is showing retrival of two reach forecast by
+              their IDs.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          ListReachForecastsV1_example1:
+            summary: Example of getting a list of Reach Forecasts by IDs.
+            description: This example is showing retrival of two reach forecast by
+              their IDs.
+            value: "123123123123123"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListReachForecastsV1RequestContent'
+            examples:
+              ListReachForecastsV1_example1:
+                summary: Example of getting a list of Reach Forecasts by IDs.
+                description: This example is showing retrival of two reach forecast
+                  by their IDs.
+                value:
+                  reachForecastIds:
+                  - 24281a60-387f-4f9f-abb2-66378a8712e4
+                  - 36e8f956-7126-4c12-3792-1ae1d372ef9c
+        required: true
+      responses:
+        "200":
+          description: ListReachForecastsV1 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReachForecastsV1ResponseContent'
+              examples:
+                ListReachForecastsV1_example1:
+                  summary: Example of getting a list of Reach Forecasts by IDs.
+                  description: This example is showing retrival of two reach forecast
+                    by their IDs.
+                  value:
+                    reachForecasts:
+                    - advertisedProductCategoryIds:
+                      - "335417915575420049"
+                      avgCpm: "20"
+                      countryCode: US
+                      creationDateTime: 2024-06-01T23:36:09.973Z
+                      currencyCode: USD
+                      dataPoints:
+                      - impressions: "14000"
+                        reach: "11000"
+                        spend: "280000"
+                      - impressions: "16000"
+                        reach: "12000"
+                        spend: "320000"
+                      deliveryType: GUARANTEED
+                      endDate: 2025-12-26
+                      maxCpm: "40"
+                      reachForecastId: 24281a60-387f-4f9f-abb2-66378a8712e4
+                      reachType: HOUSEHOLDS
+                      startDate: 2025-12-12
+                      status: SUCCESS
+                      supplyPackage:
+                      - DSP_STREAMING_TV
+                    - advertisedProductCategoryIds:
+                      - "335417915575420049"
+                      avgCpm: "13"
+                      countryCode: US
+                      creationDateTime: 2024-06-01T23:36:12.103Z
+                      currencyCode: USD
+                      dataPoints:
+                      - impressions: "14000"
+                        reach: "10000"
+                        spend: "182000"
+                      - impressions: "16000"
+                        reach: "12000"
+                        spend: "208000"
+                      deliveryType: GUARANTEED
+                      endDate: 2025-12-26
+                      maxCpm: "30"
+                      reachForecastId: 36e8f956-7126-4c12-3792-1ae1d372ef9c
+                      reachType: HOUSEHOLDS
+                      startDate: 2025-12-12
+                      status: SUCCESS
+                      supplyPackage:
+                      - DSP_TWITCH_VIDEO
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: ForbiddenException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionResponseContent'
+        "404":
+          description: NotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionResponseContent'
+        "429":
+          description: TooManyRequestsException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+  /mediaPlan/v1/reachForecasts/targets/list:
+    post:
+      tags:
+      - Reach Forecasting API
+      description: |-
+        Gets a list of targets of a Reach Forecast
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: ListReachForecastTargetsV1
+      parameters:
+      - name: Amazon-Ads-AccountId
+        in: header
+        description: Account identifier you use to access the DSP. This is your Amazon
+          DSP Advertiser ID.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: Account identifier you use to access the DSP. This is your
+            Amazon DSP Advertiser ID.
+      - name: Amazon-Ads-Manager-AccountId
+        in: header
+        description: The manager accounts associated to the ads accounts.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The manager accounts associated to the ads accounts.
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a client associated with a "Login with Amazon"
+            account.
+        examples:
+          ListReachForecastTargetsV1_example1:
+            summary: Example of getting the list of targets of a Reach Forecast.
+            description: This example is showing retrival of the targeting parameters
+              of a Reach Forecast.
+            value: amzn1.application-oa2-client.fakeClient1234567890
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+          description: The identifier of a profile associated with the advertiser
+            account. Use `GET` method on Profiles resource to list profiles associated
+            with the access token passed in the HTTP Authorization header and choose
+            profile id `profileId` from the response to pass it as input.
+        examples:
+          ListReachForecastTargetsV1_example1:
+            summary: Example of getting the list of targets of a Reach Forecast.
+            description: This example is showing retrival of the targeting parameters
+              of a Reach Forecast.
+            value: "123123123123123"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListReachForecastTargetsV1RequestContent'
+            examples:
+              ListReachForecastTargetsV1_example1:
+                summary: Example of getting the list of targets of a Reach Forecast.
+                description: This example is showing retrival of the targeting parameters
+                  of a Reach Forecast.
+                value:
+                  maxResults: 10
+                  reachForecastId: 24281a60-387f-4f9f-abb2-66378a8712e4
+        required: true
+      responses:
+        "200":
+          description: ListReachForecastTargetsV1 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReachForecastTargetsV1ResponseContent'
+              examples:
+                ListReachForecastTargetsV1_example1:
+                  summary: Example of getting the list of targets of a Reach Forecast.
+                  description: This example is showing retrival of the targeting parameters
+                    of a Reach Forecast.
+                  value:
+                    targets:
+                    - negative: "false"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "111"
+                          groupId: "1"
+                          targetType: AUDIENCE
+                    - negative: "false"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "112"
+                          groupId: "1"
+                          targetType: AUDIENCE
+                    - negative: "false"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "122"
+                          groupId: "2"
+                          targetType: AUDIENCE
+                    - negative: "true"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "21"
+                          targetType: AUDIENCE
+                    - negative: "true"
+                      targetDetails:
+                        audienceTarget:
+                          audienceId: "22"
+                          targetType: AUDIENCE
+                    - negative: "true"
+                      targetDetails:
+                        deviceTarget:
+                          deviceType: MOBILE
+                          targetType: DEVICE
+        "400":
+          description: BadRequestException 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionResponseContent'
+        "401":
+          description: UnauthorizedException 401 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedExceptionResponseContent'
+        "403":
+          description: ForbiddenException 403 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionResponseContent'
+        "404":
+          description: NotFoundException 404 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionResponseContent'
+        "429":
+          description: TooManyRequestsException 429 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequestsExceptionResponseContent'
+        "500":
+          description: InternalServerErrorException 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionResponseContent'
+components:
+  schemas:
+    AudienceTargetTypeV1:
+      type: string
+      enum:
+      - AUDIENCE
+    AudienceTargetV1:
+      required:
+      - audienceId
+      - targetType
+      type: object
+      properties:
+        audienceId:
+          minLength: 1
+          type: string
+          description: |-
+            The unique identifier for the audience.
+            Use the [audiences](https://advertising.amazon.com/API/docs/en-us/audiences/#/Discovery/listAudiences) discovery resource to look up audience identifiers.
+            <li>Included groups are joined by an intersection. Users must be in all of the groups specified to be included.</li>
+            <li>Audiences within an inclusion group are joined by OR/ANY logic. Audiences within the exclusion group are joined by AND/ALL logic. This means that users can be in any of the audiences inside a group to be included or excluded.</li>
+            <li>All audiences within the same group must either be included or excluded.</li>
+            <li>You can specify up to 10 groups to be included, but only 1 group to be excluded.</li>
+            <li>Up to 500 audience IDs can be specified per group.</li>
+        groupId:
+          pattern: "^[0-9]+$"
+          type: string
+          description: |-
+            The string identifying a group of audiences. Only numbers formatted as strings are accepted (e.g., "1").
+            To add audiences to a new group, choose any string not currently being used on this forecast.
+            To add audiences to an existing group, use the existing groupId from this forecast. You may specify up to 10 include groups and 1 exclude group.
+        targetType:
+          $ref: '#/components/schemas/AudienceTargetTypeV1'
+    BadRequestExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Bad Request.
+    BiddingInfoV1:
+      type: object
+      properties:
+        maxAvgCpm:
+          minimum: 0
+          type: number
+          description: |-
+            Maximum average CPM rate (cost per thousand impressions).
+            If not provided, we will assume default value based on historical measurement.
+          format: double
+        maxCpc:
+          minimum: 0
+          type: number
+          description: |-
+            Maximum CPC (cost per click).
+            If not provided, we will assume default value based on historical measurement.
+          format: double
+        maxVCpm:
+          minimum: 0
+          type: number
+          description: |-
+            Maximum vCPM rate (cost per thousand viewable impressions).
+            If not provided, we will assume default value based on historical measurement.
+          format: double
+      description: The information about bidding cost.
+    BudgetAllocationV1:
+      required:
+      - reach
+      - reachForecastId
+      type: object
+      properties:
+        reach:
+          minimum: 0
+          type: integer
+          description: The reach number of the selected data point of the reach forecast.
+          format: int64
+        reachForecastId:
+          pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          type: string
+          description: The identifier of the Reach Forecast that the specified budget
+            is allocated to.
+    ContentGenreTargetTypeV1:
+      type: string
+      enum:
+      - CONTENT_GENRE
+    ContentGenreTargetV1:
+      required:
+      - contentGenre
+      - targetType
+      type: object
+      properties:
+        contentGenre:
+          $ref: '#/components/schemas/ContentGenreV1'
+        targetType:
+          $ref: '#/components/schemas/ContentGenreTargetTypeV1'
+    ContentGenreV1:
+      type: string
+      description: |-
+        Include/Exclude content based on genre.
+        Content with GENRE_NOT_AVAILABLE includes content where genre is unavailable or unknown.
+      enum:
+      - ACTION
+      - ADVENTURE
+      - ANIMATION
+      - BIOGRAPHY
+      - COMEDY
+      - CRIME
+      - DOCUMENTARY
+      - DRAMA
+      - FAMILY
+      - FANTASY
+      - FILM_NOIR
+      - GAME_SHOW
+      - GENRE_NOT_AVAILABLE
+      - HISTORY
+      - HORROR
+      - MUSICAL
+      - MYSTERY
+      - NEWS
+      - REALITY_TV
+      - ROMANCE
+      - SCIENCE_FICTION
+      - SHORT
+      - SPORT
+      - SUPER_HERO
+      - TALK_SHOW
+      - THRILLER
+      - WAR
+      - WESTERN
+    ContentRatingDetailsV1:
+      oneOf:
+      - title: dspContentRating
+        required:
+        - dspContentRating
+        type: object
+        properties:
+          dspContentRating:
+            $ref: '#/components/schemas/DspContentRatingV1'
+    ContentRatingTargetTypeV1:
+      type: string
+      enum:
+      - CONTENT_RATING
+    ContentRatingTargetV1:
+      required:
+      - contentRatingDetails
+      - contentRatingType
+      - targetType
+      type: object
+      properties:
+        contentRatingDetails:
+          $ref: '#/components/schemas/ContentRatingDetailsV1'
+        contentRatingType:
+          $ref: '#/components/schemas/ContentRatingTypeV1'
+        targetType:
+          $ref: '#/components/schemas/ContentRatingTargetTypeV1'
+    ContentRatingTypeV1:
+      type: string
+      enum:
+      - DSP_CONTENT_RATING
+    CountryCodeV1:
+      type: string
+      description: The code of the country for the forecast.
+      enum:
+      - AE
+      - AU
+      - BR
+      - CA
+      - DE
+      - ES
+      - FR
+      - GB
+      - IN
+      - IT
+      - JP
+      - MX
+      - NL
+      - SA
+      - SE
+      - TR
+      - US
+    CreateDeduplicatedReachForecastsV1RequestContent:
+      required:
+      - deduplicatedReachForecasts
+      type: object
+      properties:
+        deduplicatedReachForecasts:
+          maxItems: 100
+          minItems: 1
+          type: array
+          description: |-
+            A list of Deduplicate Reach Forecasts to create.
+            Maximum 100 unique Reach Forecasts can be involved in a single request.
+          items:
+            $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1RequestElement'
+    CreateDeduplicatedReachForecastsV1RequestElement:
+      required:
+      - budgetAllocations
+      type: object
+      properties:
+        budgetAllocations:
+          maxItems: 100
+          minItems: 1
+          type: array
+          description: |-
+            The list of budget allocations for the Reach Forecasts to have their reach deduplicated.
+            Total number of unique Reach Forecast IDs in budgetAllocations in the same request
+            must be less than 100.
+          items:
+            $ref: '#/components/schemas/BudgetAllocationV1'
+    CreateDeduplicatedReachForecastsV1ResponseContent:
+      required:
+      - error
+      - success
+      type: object
+      properties:
+        error:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1ResponseError'
+        success:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1ResponseSuccess'
+      example:
+        success:
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        - deduplicatedReachForecast:
+            deduplicatedReachForecastId: deduplicatedReachForecastId
+            deduplicatedReach: 0
+          index: 14
+        error:
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+    CreateDeduplicatedReachForecastsV1ResponseElement:
+      required:
+      - deduplicatedReach
+      - deduplicatedReachForecastId
+      type: object
+      properties:
+        deduplicatedReach:
+          minimum: 0
+          type: integer
+          description: Forecasted deduplicated reach.
+          format: int64
+        deduplicatedReachForecastId:
+          pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          type: string
+          description: This is the unique identifier of the Deduplicated Reach Forecast
+            resource.
+      example:
+        deduplicatedReachForecastId: deduplicatedReachForecastId
+        deduplicatedReach: 0
+    CreateDeduplicatedReachForecastsV1ResponseError:
+      required:
+      - error
+      - index
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ReachPlanningServiceError'
+        index:
+          maximum: 99
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+      example:
+        index: 7
+        error:
+          code: INTERNAL_SERVER_ERROR
+          message: message
+    CreateDeduplicatedReachForecastsV1ResponseSuccess:
+      required:
+      - deduplicatedReachForecast
+      - index
+      type: object
+      properties:
+        deduplicatedReachForecast:
+          $ref: '#/components/schemas/CreateDeduplicatedReachForecastsV1ResponseElement'
+        index:
+          maximum: 99
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+      example:
+        deduplicatedReachForecast:
+          deduplicatedReachForecastId: deduplicatedReachForecastId
+          deduplicatedReach: 0
+        index: 14
+    CreateReachForecastsV1RequestContent:
+      required:
+      - reachForecasts
+      type: object
+      properties:
+        commonTargets:
+          maxItems: 15000
+          minItems: 0
+          type: array
+          description: |-
+            The list of common targets to be applied to all reach forecasts to be created in this request.
+            The common targets will be added into each forecast specific targets to obtain the final targeting.
+            Targets of the same targetType and of the same negative boolean are combined using OR statements.
+            Targets of different types are associated using AND statements.
+            Note: Audience targets of the same group (as specified by groupId) are linked via an OR linkage.
+            Audience target groups are linked via an AND linkage.
+            Audience targets without groupId are consider as different group, thus are also linked via an AND linkage.
+          items:
+            $ref: '#/components/schemas/PlanningTargetV1'
+        reachForecasts:
+          maxItems: 100
+          minItems: 1
+          type: array
+          description: A list of reach forecast to be created.
+          items:
+            $ref: '#/components/schemas/CreateReachForecastsV1RequestElement'
+    CreateReachForecastsV1RequestElement:
+      required:
+      - countryCode
+      - deliveryType
+      - endDate
+      - reachType
+      - startDate
+      type: object
+      properties:
+        advertisedProductCategoryIds:
+          maxItems: 500
+          minItems: 0
+          type: array
+          description: |-
+            The identifiers of the advertised product categories for the forecast.
+            Use the DSP [ListAdvertisedProductCategories API](https://advertising.amazon.com/API/docs/en-us/dsp-discovery-advertised-product-categories#tag/Discovery-Advertised-Product-Categories/operation/DspListAdvertisedProductCategoriesV1) to look up advertised product category IDs.
+          items:
+            maxLength: 50
+            minLength: 1
+            type: string
+        countryCode:
+          $ref: '#/components/schemas/CountryCodeV1'
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryTypeV1'
+        endDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast end date in YYYY-MM-DD format.
+          format: date
+        frequencyCap:
+          $ref: '#/components/schemas/FrequencyCapV1'
+        reachType:
+          $ref: '#/components/schemas/ReachTypeV1'
+        startDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast start date in YYYY-MM-DD format.
+          format: date
+        supplyPackage:
+          maxItems: 10
+          minItems: 1
+          type: array
+          description: The combination of Ads supply.
+          items:
+            $ref: '#/components/schemas/SupplyV1'
+        targets:
+          maxItems: 15000
+          minItems: 0
+          type: array
+          description: |-
+            The list of targets for the forecast.
+            Targets of the same targetType and of the same negative boolean are combined using OR statements.
+            Targets of different types are associated using AND statements.
+            Note: Audience targets of the same group (as specified by groupId) are linked via an OR linkage.
+            Audience target groups are linked via an AND linkage.
+            Audience targets without groupId are consider as different group, thus are also linked via an AND linkage.
+          items:
+            $ref: '#/components/schemas/PlanningTargetV1'
+    CreateReachForecastsV1ResponseContent:
+      required:
+      - error
+      - success
+      type: object
+      properties:
+        error:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateReachForecastsV1ResponseError'
+        success:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateReachForecastsV1ResponseSuccess'
+      example:
+        success:
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        - reachForecast:
+            maxCpm: 0.20271230230023218
+            countryCode: AE
+            cpc: 0.5637376656633328
+            dataPoints:
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            - reach: 0
+              spend: 0.9301444243932576
+              impressions: 0
+            reachForecastId: reachForecastId
+            avgCpm: 0.5962133916683182
+            availableImpressions: 0
+            currencyCode: AED
+            matchingImpressions: 0
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+            status: EXPIRED
+          index: 59
+        error:
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 7
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+    CreateReachForecastsV1ResponseElement:
+      required:
+      - countryCode
+      - creationDateTime
+      - currencyCode
+      - dataPoints
+      - reachForecastId
+      - status
+      type: object
+      properties:
+        availableImpressions:
+          minimum: 0
+          type: integer
+          description: |-
+            The number of impressions available for you to purchase after considering contention
+            (G - booked demand) among the matchingImpressions
+          format: int64
+        avgCpm:
+          minimum: 0
+          type: number
+          description: The CPM rate (cost per thousand impressions).
+          format: double
+        countryCode:
+          $ref: '#/components/schemas/CountryCodeV1'
+        cpc:
+          minimum: 0
+          type: number
+          description: The CPC rate (cost per click).
+          format: double
+        creationDateTime:
+          type: string
+          description: The date time that the reach forecast was created.
+          format: date-time
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCodeV1'
+        dataPoints:
+          maxItems: 120
+          minItems: 0
+          type: array
+          description: The list of data points for the reach curve.
+          items:
+            $ref: '#/components/schemas/ReachCurveDataPointV1'
+        matchingImpressions:
+          minimum: 0
+          type: integer
+          description: The number of impressions that match your targeting
+          format: int64
+        maxCpm:
+          minimum: 0
+          type: number
+          description: The maximum CPM rate (cost per thousand impressions).
+          format: double
+        reachForecastId:
+          pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          type: string
+          description: This is the unique identifier of the Reach Forecast resource.
+        status:
+          $ref: '#/components/schemas/ReachForecastStatusV1'
+      example:
+        maxCpm: 0.20271230230023218
+        countryCode: AE
+        cpc: 0.5637376656633328
+        dataPoints:
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        reachForecastId: reachForecastId
+        avgCpm: 0.5962133916683182
+        availableImpressions: 0
+        currencyCode: AED
+        matchingImpressions: 0
+        creationDateTime: 2000-01-23T04:56:07.000+00:00
+        status: EXPIRED
+    CreateReachForecastsV1ResponseError:
+      required:
+      - error
+      - index
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ReachPlanningServiceError'
+        index:
+          maximum: 99
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+      example:
+        index: 7
+        error:
+          code: INTERNAL_SERVER_ERROR
+          message: message
+    CreateReachForecastsV1ResponseSuccess:
+      required:
+      - index
+      - reachForecast
+      type: object
+      properties:
+        index:
+          maximum: 99
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+        reachForecast:
+          $ref: '#/components/schemas/CreateReachForecastsV1ResponseElement'
+      example:
+        reachForecast:
+          maxCpm: 0.20271230230023218
+          countryCode: AE
+          cpc: 0.5637376656633328
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.5962133916683182
+          availableImpressions: 0
+          currencyCode: AED
+          matchingImpressions: 0
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        index: 59
+    CurrencyCodeV1:
+      type: string
+      description: The currency for an associated monetary value.
+      enum:
+      - AED
+      - AUD
+      - BRL
+      - CAD
+      - EUR
+      - GBP
+      - INR
+      - JPY
+      - MXN
+      - SAR
+      - SEK
+      - TRY
+      - USD
+    DeliveryTypeV1:
+      type: string
+      description: The delivery method of the envisioned campaign.
+      enum:
+      - GUARANTEED
+      - NON_GUARANTEED
+    DeviceTargetTypeV1:
+      type: string
+      enum:
+      - DEVICE
+    DeviceTargetV1:
+      required:
+      - deviceType
+      - targetType
+      type: object
+      properties:
+        deviceType:
+          $ref: '#/components/schemas/DeviceTypeV1'
+        targetType:
+          $ref: '#/components/schemas/DeviceTargetTypeV1'
+    DeviceTypeV1:
+      type: string
+      description: The type of device being targeted.
+      enum:
+      - CONNECTED_DEVICE
+      - CONNECTED_TV
+      - DESKTOP
+      - MOBILE
+    DspContentRatingV1:
+      type: string
+      description: |-
+        Exclude content based on available content rating options:
+        <li> SUITABLE_FOR_ALL_AUDIENCES: Equivalent to content that is rated G (film), TV-Y (TV), TV-Y7 (TV), TV-G (TV), EC (game), or E (game).</li>
+        <li> SUITABLE_FOR_MOST_AUDIENCES_WITH_PARENTAL_GUIDANCE: Equivalent to content that is rated PG (film), TV-PG (TV), or E-10+ (game).</li>
+        <li> SUITABLE_FOR_TEEN_AND_OLDER_AUDIENCES: Equivalent to content that is rated PG-13 (film), TV-14 (TV), or T (game).</li>
+        <li> SUITABLE_FOR_MATURE_AUDIENCES: Ages 17+. Equivalent to content that is rated R (film), TV-MA (TV), or M (game).</li>
+        <li> SUITABLE_FOR_ADULTS: Ages 18+. Equivalent to content that is rated NC-17 (film).</li>
+        <li> RATING_NOT_AVAILABLE: Content where rating isn't available from the publisher.</li>
+      enum:
+      - RATING_NOT_AVAILABLE
+      - SUITABLE_FOR_ADULTS
+      - SUITABLE_FOR_ALL_AUDIENCES
+      - SUITABLE_FOR_MATURE_AUDIENCES
+      - SUITABLE_FOR_MOST_AUDIENCES_WITH_PARENTAL_GUIDANCE
+      - SUITABLE_FOR_TEEN_AND_OLDER_AUDIENCES
+    ErrorCode:
+      type: string
+      description: Error code.
+      enum:
+      - INTERNAL_SERVER_ERROR
+      - MAX_CPC_TOO_LOW
+      - PERFORMANCE_CURVE_ERROR
+      - REACH_CURVE_DEDUPLICATION_ERROR
+      - REACH_CURVE_ERROR
+      - REACH_FORECAST_NOT_FOUND
+      - REQUEST_VALIDATION_ERROR
+      - TARGETING_TOO_NARROW
+      - UNAUTHORIZED_ERROR
+    ForbiddenExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Forbidden.
+    FrequencyCapTimeUnitV1:
+      type: string
+      description: The time unit.
+      enum:
+      - DAYS
+      - MONTHS
+      - WEEKS
+    FrequencyCapTypeV1:
+      type: string
+      description: "The type of advertising frequency cap. If UNCAPPED, no other fields\
+        \ are used."
+      enum:
+      - CUSTOM
+      - UNCAPPED
+    FrequencyCapV1:
+      type: object
+      properties:
+        maxImpressions:
+          maximum: 500
+          minimum: 1
+          type: integer
+          description: The maximum number of times an ad is displayed.
+          format: int32
+        timeUnit:
+          $ref: '#/components/schemas/FrequencyCapTimeUnitV1'
+        timeUnitCount:
+          maximum: 30
+          minimum: 1
+          type: integer
+          description: The count of time units.
+          format: int32
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FrequencyCapTypeV1'
+          - default: UNCAPPED
+      description: The limit of how many times ads appear to the same viewer.
+      example:
+        maxImpressions: 298
+        timeUnitCount: 17
+        type: ""
+        timeUnit: DAYS
+    GeneratePerformanceForecastV1ResponseElement:
+      required:
+      - countryCode
+      - creationDateTime
+      - currencyCode
+      - dataPoints
+      - performanceMetric
+      type: object
+      properties:
+        countryCode:
+          $ref: '#/components/schemas/CountryCodeV1'
+        creationDateTime:
+          type: string
+          description: The date time that the performance forecast was created.
+          format: date-time
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCodeV1'
+        dataPoints:
+          maxItems: 120
+          minItems: 0
+          type: array
+          description: List of data points for the curve
+          items:
+            $ref: '#/components/schemas/PerformanceCurveDataPointV1'
+        performanceMetric:
+          $ref: '#/components/schemas/PerformanceMetricV1'
+      description: Performance curve for a specific metric
+      example:
+        countryCode: AE
+        dataPoints:
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        - ctr: 0.23021358869347652
+          cpvc: 0.5637376656633328
+          ecpm: 0.7061401241503109
+          vcr: 0.20271230230023218
+          cpc: 0.14658129805029452
+          spend: 0.3616076749251911
+          prediction: 0.9301444243932576
+          cpdpv: 0.5962133916683182
+        currencyCode: AED
+        performanceMetric: CLICK
+        creationDateTime: 2000-01-23T04:56:07.000+00:00
+    GeneratePerformanceForecastsV1RequestContent:
+      required:
+      - performanceForecasts
+      type: object
+      properties:
+        performanceForecasts:
+          maxItems: 5
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/GeneratePerformanceForecastsV1RequestElement'
+    GeneratePerformanceForecastsV1RequestElement:
+      required:
+      - countryCode
+      - deliveryType
+      - endDate
+      - performanceMetric
+      - reachType
+      - startDate
+      type: object
+      properties:
+        advertisedProductCategoryIds:
+          maxItems: 500
+          minItems: 0
+          type: array
+          description: |-
+            The identifiers of the advertised product categories for the forecast.
+            Use the DSP [ListAdvertisedProductCategories API](https://advertising.amazon.com/API/docs/en-us/dsp-discovery-advertised-product-categories#tag/Discovery-Advertised-Product-Categories/operation/DspListAdvertisedProductCategoriesV1) to look up advertised product category IDs.
+          items:
+            maxLength: 50
+            minLength: 1
+            type: string
+        biddingInfo:
+          $ref: '#/components/schemas/BiddingInfoV1'
+        countryCode:
+          $ref: '#/components/schemas/CountryCodeV1'
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryTypeV1'
+        endDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast end date in YYYY-MM-DD format.
+          format: date
+        frequencyCap:
+          $ref: '#/components/schemas/FrequencyCapV1'
+        performanceMetric:
+          $ref: '#/components/schemas/PerformanceMetricV1'
+        reachType:
+          $ref: '#/components/schemas/ReachTypeV1'
+        startDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast start date in YYYY-MM-DD format.
+          format: date
+        supplyPackage:
+          maxItems: 10
+          minItems: 1
+          type: array
+          description: The combination of Ads supply.
+          items:
+            $ref: '#/components/schemas/SupplyV1'
+        targets:
+          maxItems: 15000
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanningTargetV1'
+    GeneratePerformanceForecastsV1ResponseContent:
+      required:
+      - error
+      - success
+      type: object
+      properties:
+        error:
+          maxItems: 5
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/GeneratePerformanceForecastsV1ResponseError'
+        success:
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: List of performance curves for each requested performance metric.
+          items:
+            $ref: '#/components/schemas/GeneratePerformanceForecastsV1ResponseSuccess'
+      example:
+        success:
+        - index: 2
+          performanceForecast:
+            countryCode: AE
+            dataPoints:
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            currencyCode: AED
+            performanceMetric: CLICK
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+        - index: 2
+          performanceForecast:
+            countryCode: AE
+            dataPoints:
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            currencyCode: AED
+            performanceMetric: CLICK
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+        - index: 2
+          performanceForecast:
+            countryCode: AE
+            dataPoints:
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            currencyCode: AED
+            performanceMetric: CLICK
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+        - index: 2
+          performanceForecast:
+            countryCode: AE
+            dataPoints:
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            currencyCode: AED
+            performanceMetric: CLICK
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+        - index: 2
+          performanceForecast:
+            countryCode: AE
+            dataPoints:
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            - ctr: 0.23021358869347652
+              cpvc: 0.5637376656633328
+              ecpm: 0.7061401241503109
+              vcr: 0.20271230230023218
+              cpc: 0.14658129805029452
+              spend: 0.3616076749251911
+              prediction: 0.9301444243932576
+              cpdpv: 0.5962133916683182
+            currencyCode: AED
+            performanceMetric: CLICK
+            creationDateTime: 2000-01-23T04:56:07.000+00:00
+        error:
+        - index: 0
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 0
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 0
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 0
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+        - index: 0
+          error:
+            code: INTERNAL_SERVER_ERROR
+            message: message
+    GeneratePerformanceForecastsV1ResponseError:
+      required:
+      - error
+      - index
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ReachPlanningServiceError'
+        index:
+          maximum: 4
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+      example:
+        index: 0
+        error:
+          code: INTERNAL_SERVER_ERROR
+          message: message
+    GeneratePerformanceForecastsV1ResponseSuccess:
+      required:
+      - index
+      - performanceForecast
+      type: object
+      properties:
+        index:
+          maximum: 4
+          minimum: 0
+          type: integer
+          description: This is the index of the corresponding request element in the
+            request payload.
+          format: int32
+        performanceForecast:
+          $ref: '#/components/schemas/GeneratePerformanceForecastV1ResponseElement'
+      example:
+        index: 2
+        performanceForecast:
+          countryCode: AE
+          dataPoints:
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          - ctr: 0.23021358869347652
+            cpvc: 0.5637376656633328
+            ecpm: 0.7061401241503109
+            vcr: 0.20271230230023218
+            cpc: 0.14658129805029452
+            spend: 0.3616076749251911
+            prediction: 0.9301444243932576
+            cpdpv: 0.5962133916683182
+          currencyCode: AED
+          performanceMetric: CLICK
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+    IABCategoryTargetTypeV1:
+      type: string
+      enum:
+      - IAB_CATEGORY
+    IABCategoryTargetV1:
+      required:
+      - iabContentCategory
+      - targetType
+      type: object
+      properties:
+        iabContentCategory:
+          minLength: 1
+          type: string
+          description: |-
+            The IAB content category to target.
+            To get the list of valid values, see https://advertising.amazon.com/API/docs/en-us/dsp-campaigns/#tag/Discovery/operation/getIabContentCategories
+        targetType:
+          $ref: '#/components/schemas/IABCategoryTargetTypeV1'
+    InternalServerErrorExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Internal Server Error.
+    InventorySourceTargetTypeV1:
+      type: string
+      enum:
+      - INVENTORY_SOURCE
+    InventorySourceTargetV1:
+      required:
+      - inventorySourceId
+      - inventorySourceType
+      - targetType
+      type: object
+      properties:
+        inventorySourceId:
+          minLength: 1
+          type: string
+          description: |-
+            The identifier of the inventory source.
+            These can be obtained from the inventory sources discovery endpoint.
+        inventorySourceType:
+          $ref: '#/components/schemas/InventorySourceTypeV1'
+        targetType:
+          $ref: '#/components/schemas/InventorySourceTargetTypeV1'
+    InventorySourceTypeV1:
+      type: string
+      description: |-
+        The type of inventory source to be targeted.
+        <li>DEAL: Deal inventory.
+      enum:
+      - DEAL
+    KeywordTargetMatchTypeV1:
+      type: string
+      enum:
+      - BROAD
+      - EXACT
+      - PHRASE
+    KeywordTargetTypeV1:
+      type: string
+      enum:
+      - KEYWORD
+    KeywordTargetV1:
+      required:
+      - keyword
+      - matchType
+      - targetType
+      type: object
+      properties:
+        keyword:
+          maxLength: 81
+          minLength: 1
+          type: string
+        matchType:
+          $ref: '#/components/schemas/KeywordTargetMatchTypeV1'
+        targetType:
+          $ref: '#/components/schemas/KeywordTargetTypeV1'
+    ListReachForecastTargetsV1RequestContent:
+      required:
+      - reachForecastId
+      type: object
+      properties:
+        maxResults:
+          maximum: 1000
+          minimum: 1
+          type: integer
+          description: Number of records to include in the paginated response.
+          format: int32
+        nextToken:
+          type: string
+          description: Token value for navigating to the next response page.
+        reachForecastId:
+          pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          type: string
+          description: This is the unique identifier of the Reach Forecast resource.
+    ListReachForecastTargetsV1ResponseContent:
+      required:
+      - targets
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: Token value for navigating to the next response page.
+        targets:
+          maxItems: 1000
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanningTargetV1'
+      example:
+        nextToken: nextToken
+        targets:
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+        - negative: false
+          targetDetails: ""
+    ListReachForecastsV1RequestContent:
+      required:
+      - reachForecastIds
+      type: object
+      properties:
+        maxResults:
+          maximum: 100
+          minimum: 1
+          type: integer
+          description: Number of records to include in the paginated response.
+          format: int32
+        nextToken:
+          type: string
+          description: Token value for navigating to the next response page.
+        reachForecastIds:
+          maxItems: 100
+          minItems: 1
+          type: array
+          description: The IDs of Reach Forecasts to be retrived.
+          items:
+            pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            type: string
+            description: This is the unique identifier of the Reach Forecast resource.
+    ListReachForecastsV1ResponseContent:
+      required:
+      - reachForecasts
+      type: object
+      properties:
+        nextToken:
+          type: string
+          description: Token value for navigating to the next response page.
+        reachForecasts:
+          maxItems: 100
+          minItems: 0
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReachForecastsV1ResponseElement'
+      example:
+        reachForecasts:
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        - endDate: 2000-01-23
+          deliveryType: GUARANTEED
+          availableImpressions: 0
+          advertisedProductCategoryIds:
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          - advertisedProductCategoryIds
+          matchingImpressions: 0
+          reachType: HOUSEHOLDS
+          supplyPackage:
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          - DSP_ALEXA_DISPLAY
+          maxCpm: 0.7061401241503109
+          countryCode: AE
+          cpc: 0.14658129805029452
+          dataPoints:
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          - reach: 0
+            spend: 0.9301444243932576
+            impressions: 0
+          reachForecastId: reachForecastId
+          avgCpm: 0.6027456183070403
+          frequencyCap:
+            maxImpressions: 298
+            timeUnitCount: 17
+            type: ""
+            timeUnit: DAYS
+          currencyCode: AED
+          startDate: 2000-01-23
+          creationDateTime: 2000-01-23T04:56:07.000+00:00
+          status: EXPIRED
+        nextToken: nextToken
+    ListReachForecastsV1ResponseElement:
+      required:
+      - countryCode
+      - creationDateTime
+      - currencyCode
+      - dataPoints
+      - deliveryType
+      - endDate
+      - reachForecastId
+      - reachType
+      - startDate
+      - status
+      type: object
+      properties:
+        advertisedProductCategoryIds:
+          maxItems: 500
+          minItems: 0
+          type: array
+          description: |-
+            The identifiers of the advertised product categories for the forecast.
+            Use the DSP [ListAdvertisedProductCategories API](https://advertising.amazon.com/API/docs/en-us/dsp-discovery-advertised-product-categories#tag/Discovery-Advertised-Product-Categories/operation/DspListAdvertisedProductCategoriesV1) to look up advertised product category IDs.
+          items:
+            maxLength: 50
+            minLength: 1
+            type: string
+        availableImpressions:
+          minimum: 0
+          type: integer
+          description: |-
+            The number of impressions available for you to purchase after considering contention
+            (G - booked demand) among the matchingImpressions
+          format: int64
+        avgCpm:
+          minimum: 0
+          type: number
+          description: The CPM rate (cost per thousand impressions).
+          format: double
+        countryCode:
+          $ref: '#/components/schemas/CountryCodeV1'
+        cpc:
+          minimum: 0
+          type: number
+          description: The CPC rate (cost per click).
+          format: double
+        creationDateTime:
+          type: string
+          description: The date time that the reach forecast was created.
+          format: date-time
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCodeV1'
+        dataPoints:
+          maxItems: 120
+          minItems: 0
+          type: array
+          description: The list of data points for the reach curve.
+          items:
+            $ref: '#/components/schemas/ReachCurveDataPointV1'
+        deliveryType:
+          $ref: '#/components/schemas/DeliveryTypeV1'
+        endDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast end date in YYYY-MM-DD format.
+          format: date
+        frequencyCap:
+          $ref: '#/components/schemas/FrequencyCapV1'
+        matchingImpressions:
+          minimum: 0
+          type: integer
+          description: The number of impressions that match your targeting
+          format: int64
+        maxCpm:
+          minimum: 0
+          type: number
+          description: The maximum CPM rate (cost per thousand impressions).
+          format: double
+        reachForecastId:
+          pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          type: string
+          description: This is the unique identifier of the Reach Forecast resource.
+        reachType:
+          $ref: '#/components/schemas/ReachTypeV1'
+        startDate:
+          pattern: "^(((19|20)([2468][048]|[13579][26]|0[48])|2000)-02-29|((19|20)[0-9]{2}-(0[469]|11)-(0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}-(0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}-02-(0[1-9]|1[0-9]|2[0-8])))$"
+          type: string
+          description: The forecast start date in YYYY-MM-DD format.
+          format: date
+        status:
+          $ref: '#/components/schemas/ReachForecastStatusV1'
+        supplyPackage:
+          maxItems: 10
+          minItems: 1
+          type: array
+          description: The combination of Ads supply.
+          items:
+            $ref: '#/components/schemas/SupplyV1'
+      example:
+        endDate: 2000-01-23
+        deliveryType: GUARANTEED
+        availableImpressions: 0
+        advertisedProductCategoryIds:
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        - advertisedProductCategoryIds
+        matchingImpressions: 0
+        reachType: HOUSEHOLDS
+        supplyPackage:
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        - DSP_ALEXA_DISPLAY
+        maxCpm: 0.7061401241503109
+        countryCode: AE
+        cpc: 0.14658129805029452
+        dataPoints:
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        - reach: 0
+          spend: 0.9301444243932576
+          impressions: 0
+        reachForecastId: reachForecastId
+        avgCpm: 0.6027456183070403
+        frequencyCap:
+          maxImpressions: 298
+          timeUnitCount: 17
+          type: ""
+          timeUnit: DAYS
+        currencyCode: AED
+        startDate: 2000-01-23
+        creationDateTime: 2000-01-23T04:56:07.000+00:00
+        status: EXPIRED
+    LocationTargetTypeV1:
+      type: string
+      enum:
+      - LOCATION
+    LocationTargetV1:
+      required:
+      - geoLocation
+      - targetType
+      type: object
+      properties:
+        geoLocation:
+          minLength: 1
+          type: string
+          description: |-
+            The location to target.
+            Use the [GeoLocation API](https://advertising.amazon.com/API/docs/en-us/dsp-campaigns#tag/Discovery/operation/getGeoLocations) to obtain targetable location IDs.
+            Supported location category are "COUNTRY" and "DMA".
+            Currently, only US DMA are supported. Search for "US DMAs" with textQuery to get only the DMAs in the US.
+        targetType:
+          $ref: '#/components/schemas/LocationTargetTypeV1'
+        userLocationSignal:
+          $ref: '#/components/schemas/UserLocationSignalV1'
+    NotFoundExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Not Found.
+    PerformanceCurveDataPointV1:
+      required:
+      - prediction
+      - spend
+      type: object
+      properties:
+        cpc:
+          minimum: 0
+          type: number
+          description: Cost Per Click
+          format: double
+        cpdpv:
+          minimum: 0
+          type: number
+          description: Cost Per Detail Page View
+          format: double
+        cpvc:
+          minimum: 0
+          type: number
+          description: Cost Per Video Completion
+          format: double
+        ctr:
+          maximum: 1
+          minimum: 0
+          type: number
+          description: Click-Through Rate
+          format: double
+        ecpm:
+          minimum: 0
+          type: number
+          description: Effective Cost Per Mille
+          format: double
+        prediction:
+          minimum: 0
+          type: number
+          description: Prediction for the performance metric requested in the input.
+          format: double
+        spend:
+          minimum: 0
+          type: number
+          description: The monetary spend to achieve the provided prediction (in the
+            currency specified).
+          format: double
+        vcr:
+          maximum: 1
+          minimum: 0
+          type: number
+          description: Video Completion Rate
+          format: double
+      example:
+        ctr: 0.23021358869347652
+        cpvc: 0.5637376656633328
+        ecpm: 0.7061401241503109
+        vcr: 0.20271230230023218
+        cpc: 0.14658129805029452
+        spend: 0.3616076749251911
+        prediction: 0.9301444243932576
+        cpdpv: 0.5962133916683182
+    PerformanceMetricV1:
+      type: string
+      description: The performance metric to be forecasted.
+      enum:
+      - CLICK
+      - DETAIL_PAGE_VIEW
+      - VIDEO_COMPLETION
+    PlanningTargetDetailsV1:
+      oneOf:
+      - title: audienceTarget
+        required:
+        - audienceTarget
+        type: object
+        properties:
+          audienceTarget:
+            $ref: '#/components/schemas/AudienceTargetV1'
+      - title: contentGenreTarget
+        required:
+        - contentGenreTarget
+        type: object
+        properties:
+          contentGenreTarget:
+            $ref: '#/components/schemas/ContentGenreTargetV1'
+      - title: contentRatingTarget
+        required:
+        - contentRatingTarget
+        type: object
+        properties:
+          contentRatingTarget:
+            $ref: '#/components/schemas/ContentRatingTargetV1'
+      - title: deviceTarget
+        required:
+        - deviceTarget
+        type: object
+        properties:
+          deviceTarget:
+            $ref: '#/components/schemas/DeviceTargetV1'
+      - title: iabContentCategoryTarget
+        required:
+        - iabContentCategoryTarget
+        type: object
+        properties:
+          iabContentCategoryTarget:
+            $ref: '#/components/schemas/IABCategoryTargetV1'
+      - title: inventorySourceTarget
+        required:
+        - inventorySourceTarget
+        type: object
+        properties:
+          inventorySourceTarget:
+            $ref: '#/components/schemas/InventorySourceTargetV1'
+      - title: keywordTarget
+        required:
+        - keywordTarget
+        type: object
+        properties:
+          keywordTarget:
+            $ref: '#/components/schemas/KeywordTargetV1'
+      - title: locationTarget
+        required:
+        - locationTarget
+        type: object
+        properties:
+          locationTarget:
+            $ref: '#/components/schemas/LocationTargetV1'
+      - title: productCategoryTarget
+        required:
+        - productCategoryTarget
+        type: object
+        properties:
+          productCategoryTarget:
+            $ref: '#/components/schemas/ProductCategoryTargetV1'
+      - title: productTarget
+        required:
+        - productTarget
+        type: object
+        properties:
+          productTarget:
+            $ref: '#/components/schemas/ProductTargetV1'
+      - title: themeTarget
+        required:
+        - themeTarget
+        type: object
+        properties:
+          themeTarget:
+            $ref: '#/components/schemas/ThemeTargetV1'
+    PlanningTargetV1:
+      required:
+      - negative
+      - targetDetails
+      type: object
+      properties:
+        negative:
+          type: boolean
+          description: Whether to target (false) or exclude (true) the given target.
+          default: false
+        targetDetails:
+          $ref: '#/components/schemas/PlanningTargetDetailsV1'
+      example:
+        negative: false
+        targetDetails: ""
+    ProductCategoryTargetTypeV1:
+      type: string
+      enum:
+      - PRODUCT_CATEGORY
+    ProductCategoryTargetV1:
+      required:
+      - asinCategory
+      - targetType
+      type: object
+      properties:
+        asinCategory:
+          pattern: "^[0-9]+$"
+          type: string
+          description: The product category to target.
+        targetType:
+          $ref: '#/components/schemas/ProductCategoryTargetTypeV1'
+    ProductTargetTypeV1:
+      type: string
+      enum:
+      - PRODUCT
+    ProductTargetV1:
+      required:
+      - asin
+      - targetType
+      type: object
+      properties:
+        asin:
+          minLength: 1
+          type: string
+          description: The product asin to target.
+        targetType:
+          $ref: '#/components/schemas/ProductTargetTypeV1'
+    ReachCurveDataPointV1:
+      required:
+      - impressions
+      - reach
+      - spend
+      type: object
+      properties:
+        impressions:
+          minimum: 0
+          type: integer
+          description: The number of on-target impressions.
+          format: int64
+        reach:
+          minimum: 0
+          type: integer
+          description: The forecasted on-target reached.
+          format: int64
+        spend:
+          minimum: 0
+          type: number
+          description: The forecasted spend in requested currency based on the estimated
+            average CPM.
+          format: double
+      example:
+        reach: 0
+        spend: 0.9301444243932576
+        impressions: 0
+    ReachForecastStatusV1:
+      type: string
+      description: |-
+        The status of the reach forecast.
+        SUCCESS: The forecast is run successful.
+        EXPIRED: The forecast data is no longer up-to-date. In order to access the forecast you will need to submit a new request.
+      enum:
+      - EXPIRED
+      - SUCCESS
+    ReachPlanningServiceError:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      example:
+        code: INTERNAL_SERVER_ERROR
+        message: message
+    ReachTypeV1:
+      type: string
+      description: The unit of reach represented in the data.
+      enum:
+      - HOUSEHOLDS
+    SupplyV1:
+      type: string
+      enum:
+      - DSP_ALEXA_DISPLAY
+      - DSP_AUDIO
+      - DSP_DISPLAY
+      - DSP_FIRE_TABLET
+      - DSP_FIRE_TV
+      - DSP_FIRE_TV_FIRE_TABLET_ALEXA_DISPLAY
+      - DSP_OLV
+      - DSP_PRIME_VIDEO
+      - DSP_STREAMING_TV
+      - DSP_TWITCH_DISPLAY
+      - DSP_TWITCH_VIDEO
+      - SPONSORED_BRANDS
+      - SPONSORED_BRANDS_VIDEO
+      - SPONSORED_DISPLAY
+      - SPONSORED_PRODUCTS
+    ThemeTargetMatchTypeV1:
+      type: string
+      enum:
+      - KEYWORDS_RELATED_TO_YOUR_BRAND
+      - KEYWORDS_RELATED_TO_YOUR_LANDING_PAGES
+    ThemeTargetTypeV1:
+      type: string
+      enum:
+      - THEME
+    ThemeTargetV1:
+      required:
+      - matchType
+      - targetType
+      type: object
+      properties:
+        matchType:
+          $ref: '#/components/schemas/ThemeTargetMatchTypeV1'
+        targetType:
+          $ref: '#/components/schemas/ThemeTargetTypeV1'
+    TooManyRequestsExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Too Many Requests.
+    UnauthorizedExceptionResponseContent:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human readable response message.
+      description: Unauthorized.
+    UserLocationSignalV1:
+      type: string
+      enum:
+      - CURRENT
+      - HOME
+      - MULTIPLE_SIGNALS
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

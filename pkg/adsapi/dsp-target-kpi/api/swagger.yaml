@@ -1,0 +1,213 @@
+openapi: 3.0.1
+info:
+  title: Goal Seeking Bidder Target KPI Recommendation
+  description: Creates a Target KPI recommendation for advertisers when they are in
+    the process of creating a new campaign (ADSP).
+  version: "3.0"
+servers:
+- url: /
+paths:
+  /dsp/campaigns/targetKpi/recommendations:
+    post:
+      description: |-
+        Creates a Target KPI recommendation for advertisers when they are in the process of creating a new campaign (ADSP).
+
+        **Authorized resource type**:
+        DSP Rodeo Entity ID, DSP Advertiser Account ID
+
+        **Parameter name**:
+        Amazon-Ads-AccountId
+
+        **Parameter in**:
+        header
+
+        **Requires one of these permissions**:
+        ["campaign_edit"]
+      operationId: getGsbTargetKpiRecommendation
+      parameters:
+      - name: Amazon-Advertising-API-ClientId
+        in: header
+        description: The identifier of a client associated with a "Login with Amazon"
+          account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Amazon-Advertising-API-Scope
+        in: header
+        description: The identifier of a profile associated with the advertiser account.
+          Use `GET` method on Profiles resource to list profiles associated with the
+          access token passed in the HTTP Authorization header and choose profile
+          id `profileId` from the response to pass it as input.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.gsbtargetkpirecommendation.v1+json:
+            schema:
+              $ref: '#/components/schemas/GsbTargetKpiRecommendationRequest'
+      responses:
+        "200":
+          description: 200 response.
+          content:
+            application/vnd.spinitialbudgetrecommendation.v3.4+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationResponse'
+        "400":
+          description: 400 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "401":
+          description: 401 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "403":
+          description: 403 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "404":
+          description: 404 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "422":
+          description: 422 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "429":
+          description: 429 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+        "500":
+          description: 500 response.
+          content:
+            application/vnd.gsbtargetkpirecommendation.v1+json:
+              schema:
+                $ref: '#/components/schemas/GsbTargetKpiRecommendationException'
+components:
+  schemas:
+    GsbTargetKpiRecommendationErrorMessage:
+      type: string
+    GsbTargetKpiRecommendationException:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/GsbTargetKpiRecommendationErrorMessage'
+    GsbTargetKpiRecommendationRequest:
+      required:
+      - advertiserId
+      - currencyCode
+      - entityId
+      - flightEndDate
+      - flightStartDate
+      - goalKpi
+      type: object
+      properties:
+        advertiserCountry:
+          type: string
+          description: The name of the country associated with the advertiser.
+          example: JP
+        advertiserId:
+          type: string
+          description: The identifier of the advertiser.
+          example: "2622920504"
+        advertiserIndustry:
+          type: string
+          description: The industry or sector of the advertiser.
+          example: Entertainment
+        budgetAmount:
+          type: number
+          description: Budget amount set by the user. Will be null in case of Pre-Budget
+            scenario.
+          example: 100000
+        currencyCode:
+          type: string
+          description: "The currency code (e.g., USD, EUR) used for the budget."
+          example: JPY
+        entityId:
+          type: string
+          description: The identifier of the entity.
+          example: ENTITY2W3MXDBG96VM7
+        flightEndDate:
+          type: string
+          description: The campaign flight end date in YYYY-MM-DD format.
+          format: date
+        flightStartDate:
+          type: string
+          description: The campaign flight start date in YYYY-MM-DD format.
+          format: date
+        goalKpi:
+          type: string
+          description: The key performance indicator (KPI) for the campaign.
+          example: CPC
+    GsbTargetKpiRecommendationResponse:
+      required:
+      - currencyCode
+      - goalKpi
+      - modelBasedRecommendation
+      - recommendedKpi
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: The currency code of the recommended KPI value.
+          example: JPY
+        goalKpi:
+          type: string
+          description: The key performance indicator (KPI) for the campaign.
+          example: CPC
+        modelBasedRecommendation:
+          type: boolean
+          description: Boolean value to signify if recommendation was generated by
+            the model or by a heuristic.
+          example: true
+        recommendedKpi:
+          $ref: '#/components/schemas/RecommendedKpi'
+      example:
+        modelBasedRecommendation: true
+        goalKpi: CPC
+        recommendedKpi:
+          upperBound: 3.75
+          lowerBound: 2.25
+        currencyCode: JPY
+    RecommendedKpi:
+      required:
+      - lowerBound
+      - upperBound
+      properties:
+        lowerBound:
+          type: number
+          description: Lower bound of recommendation range.
+          example: 2.25
+        upperBound:
+          type: number
+          description: Upper bound of recommendation range.
+          example: 3.75
+      description: Nested object that contains the lower and upper bound of the recommendation
+        range.
+      example:
+        upperBound: 3.75
+        lowerBound: 2.25
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
