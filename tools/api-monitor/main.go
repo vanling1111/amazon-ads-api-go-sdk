@@ -35,15 +35,80 @@ type MonitorConfig struct {
 }
 
 // 所有需要监控的 API 规范
-// 使用 CloudFront CDN 的直接 JSON 链接，确保内容稳定、无动态元素
+// 使用 CloudFront CDN 的直接 JSON/YAML 链接，确保内容稳定、无动态元素
+// 来源：https://advertising.amazon.com/API/docs/en-us/reference/openapi-download
 var apiSpecs = []struct {
 	Name string
 	URL  string
 }{
-	// ========== Amazon Ads 统一 API 规范 ==========
-	// 包含所有 Amazon Ads API 的完整 OpenAPI 3.0 规范
-	// 相比 advertising.amazon.com 的 HTML 页面，CDN 链接内容稳定，不包含动态 session ID
-	{"Amazon Ads API (Unified)", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALL_prod_3p.json"},
+	// ========== 账户管理 (7个) ==========
+	{"Profiles v3", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/profiles/3-0/openapi.yaml"},
+	{"Manager Accounts", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/ManagerAccount_prod_3p.json"},
+	{"Advertising Accounts", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AdvertisingAccounts_prod_3p.json"},
+	{"Portfolios", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Portfolios_prod_3p.json"},
+	{"Billing", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AdvertisingBilling_prod_3p.json"},
+	{"Account Budgets", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Advertisers_prod_3p.json"},
+	{"Test Accounts", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdvertisingTestAccount_prod_3p.json"},
+	
+	// ========== 广告产品 (5个) ==========
+	{"Sponsored Products v3", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredProducts_prod_3p.json"},
+	{"Sponsored Products v2", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-products/2-0/openapi.yaml"},
+	{"Sponsored Brands v4", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-brands/4-0/openapi.json"},
+	{"Sponsored Brands v3", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-brands/3-0/openapi.yaml"},
+	{"Sponsored Display v3", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/sponsored-display/3-0/openapi.yaml"},
+	
+	// ========== 报告和分析 (5个) ==========
+	{"Reporting v3", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/OfflineReport_prod_3p.json"},
+	{"Brand Metrics", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/BrandMetrics_prod_3p.json"},
+	{"Stores Analytics", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Stores_prod_3p.json"},
+	{"Marketing Mix Modeling", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/MarketingMixModeling_prod_3p.json"},
+	{"Reach Forecasting", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ReachPlanningService_prod_3p.json"},
+	
+	// ========== Amazon DSP (5个) ==========
+	{"DSP Measurement", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Measurement_prod_3p.json"},
+	{"DSP Advertisers", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/dsp/3-0/advertiser.yaml"},
+	{"DSP Audiences", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ADSPAudiences_prod_3p.json"},
+	{"DSP Conversions", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ConversionsAPI_prod_3p.json"},
+	{"DSP Target KPI", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/GoalSeekingBidderTargetKPIRecommendation_prod_3p.json"},
+	
+	// ========== 推荐和洞察 (5个) ==========
+	{"Amazon Attribution", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AmazonAttribution_prod_3p.json"},
+	{"Insights", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Insights_prod_3p.json"},
+	{"Partner Opportunities", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PartnerOpportunities_prod_3p.json"},
+	{"Tactical Recommendations", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/Recommendations_prod_3p.json"},
+	{"Persona Builder", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PersonaBuilderAPI_prod_3p.json"},
+	
+	// ========== 创意和内容 (3个) ==========
+	{"Creative Assets", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/creative-asset-library/creative-asset-library-openapi.yaml"},
+	{"Pre-Moderation", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/PreModeration_prod_3p.json"},
+	{"Moderation", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Moderation_prod_3p.json"},
+	
+	// ========== 数据管理 (6个) ==========
+	{"Audiences Discovery", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Audiences_prod_3p.json"},
+	{"Amazon Marketing Stream", "https://dtrnk0o2zy01c.cloudfront.net/openapi/en-us/dest/AmazonMarketingStream_prod_3p.json"},
+	{"Locations", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Locations_prod_3p.json"},
+	{"Exports", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIExports_prod_3p.json"},
+	{"Change History", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Changehistory_prod_3p.json"},
+	{"Data Provider", "https://d3a0d0y2hgofx6.cloudfront.net/openapi/en-us/data-provider/openapi.yaml"},
+	{"Hashed Records", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/HashedRecords_prod_3p.json"},
+	
+	// ========== 产品 (2个) ==========
+	{"Product Metadata", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/ProductSelector_prod_3p.json"},
+	{"Product Eligibility", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Eligibility_prod_3p.json"},
+	
+	// ========== 统一 API (1个) ==========
+	{"Amazon Ads API v1", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALL_prod_3p.json"},
+	
+	// ========== Retail Ad Service (2个) ==========
+	{"Retail Ad Service", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailAdService_prod_3p.json"},
+	{"Retail Ad Service Identity", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/RetailAdServiceRetailerIdentity_prod_3p.json"},
+	
+	// ========== Sponsored TV (1个) ==========
+	{"Sponsored TV", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/SponsoredTV_prod_3p.json"},
+	
+	// ========== 已弃用 (2个) ==========
+	{"Posts (Deprecated)", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Posts_prod_3p.json"},
+	{"Ad Library", "https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AdLibrary_prod_3p.json"},
 }
 
 func main() {
