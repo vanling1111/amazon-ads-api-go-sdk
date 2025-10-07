@@ -13,7 +13,7 @@ type PlanningEligibilityV1M3 struct {
 	// A list of issues will be provided if the status is INELIGIBLE or ELIGIBLE_WITH_WARNING.
 	Issues []EligibilityIssueV1M2 `json:"issues,omitempty"`
 	// The lower the number, the more recommended the vendor product is.
-	Rank float64 `json:"rank,omitempty"`
+	Rank   float64              `json:"rank,omitempty"`
 	Status *EligibilityStatusV1 `json:"status,omitempty"`
 	// Vendor product canonical identifier.
 	VendorProductId string `json:"vendorProductId,omitempty"`

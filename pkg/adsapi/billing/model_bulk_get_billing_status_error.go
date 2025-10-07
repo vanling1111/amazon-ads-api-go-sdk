@@ -9,8 +9,8 @@
 package billing
 
 type BulkGetBillingStatusError struct {
-	AdvertiserMarketplace *AdvertiserMarketplace `json:"advertiserMarketplace,omitempty"`
-	Description string `json:"description,omitempty"`
-	ErrorCode *BulkGetBillingStatusErrorCodes `json:"errorCode,omitempty"`
-	Index int32 `json:"index"`
+	AdvertiserMarketplace *AdvertiserMarketplace          `json:"advertiserMarketplace,omitempty"`
+	Description           string                          `json:"description,omitempty"`
+	ErrorCode             *BulkGetBillingStatusErrorCodes `json:"errorCode,omitempty"`
+	Index                 int32                           `json:"index"`
 }

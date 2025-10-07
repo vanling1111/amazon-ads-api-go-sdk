@@ -11,6 +11,6 @@ package sponsoreddisplayv3
 // The targeting clause
 type SdTargetingClauseV32 struct {
 	// Tactic T00020 ad groups only allow manual targeting.
-	ExpressionType string `json:"expressionType"`
-	Expression *[]SdTargetExpressionV32 `json:"expression"`
+	ExpressionType string                   `json:"expressionType"`
+	Expression     *[]SdTargetExpressionV32 `json:"expression"`
 }

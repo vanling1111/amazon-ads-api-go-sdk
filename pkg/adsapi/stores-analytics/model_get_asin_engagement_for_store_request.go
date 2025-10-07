@@ -14,7 +14,7 @@ type GetAsinEngagementForStoreRequest struct {
 	EndDate string `json:"endDate"`
 	// List of the engagement metrics to be fetched. At least one metric should be specified.
 	Metrics []AsinEngagementMetric `json:"metrics"`
-	OrderBy *SortOrder `json:"orderBy,omitempty"`
+	OrderBy *SortOrder             `json:"orderBy,omitempty"`
 	// Nullable metric to sort on. If a value is provided, it must also appear in the metrics list. If no value is provided, the result is not guaranteed to be sorted. This field is only valid when the dimension is ASIN.
 	SortBy *Object `json:"sortBy,omitempty"`
 	// The start date (inclusive) in YYYY-MM-DD format for the time period from when to fetch the insights.

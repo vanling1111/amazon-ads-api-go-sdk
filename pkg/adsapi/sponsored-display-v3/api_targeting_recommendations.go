@@ -1,4 +1,3 @@
-
 /*
  * Amazon Ads API for Sponsored Display
  *
@@ -11,11 +10,11 @@ package sponsoreddisplayv3
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -24,6 +23,7 @@ var (
 )
 
 type TargetingRecommendationsApiService service
+
 /*
 TargetingRecommendationsApiService Returns a set of recommended products and categories to target
 This API provides product, category and standard audience recommendations to target based on the list of input ASINs. Allow 1 week for our systems to process data for any new ASINs listed on Amazon before using this service. Note -  recommendations are only available for productAds with SKU or ASIN.  For API v3.0, the API returns up to 100 recommendations for contextual targeting.  For API v3.1, the API returns up to 100 recommendations for both product and category targeting.  For API v3.2, the API introduces contextual targeting themes in the request and returns product recommendations based on different targeting themes.  For API v3.3, the API introduces standard audience recommendations and translated category recommendations based on locale.  For API v3.4, the API includes the theme expression used in contextual targeting recommendations in the response.  [PREVIEW ONLY] For API v3.5, the API supports recommendations for landing pages for audience targeting with tactic T00030. The API also supports entertainment targeting recommendations. Both features are currently limited to US marketplace.  The currently available tactic identifiers are:  |Tactic Name|Type|Description| |-----------|----|-----------| |T00020&amp;nbsp;|Contextual Targeting|Products: Choose individual products to show your ads in placements related to those products.| |T00030&amp;nbsp;|Audiences or Contextual Targeting| Select individual products, categories, refined categories, or audiences to show your ads.|
@@ -31,22 +31,22 @@ This API provides product, category and standard audience recommendations to tar
  * @param amazonAdvertisingAPIClientId The identifier of a client associated with a \&quot;Login with Amazon\&quot; account.
  * @param amazonAdvertisingAPIScope The identifier of a profile associated with the advertiser account. Use &#x60;GET&#x60; method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
  * @param optional nil or *TargetingRecommendationsApiGetTargetRecommendationsOpts - Optional Parameters:
-     * @param "Body" (optional.Interface of SdTargetingRecommendationsRequestV35) - 
+     * @param "Body" (optional.Interface of SdTargetingRecommendationsRequestV35) -
      * @param "Locale" (optional.Interface of SdTargetingRecommendationsLocale) -  The requested locale from query parameter to return translated category recommendations.
 @return SdTargetingRecommendationsResponseV35
 */
 
 type TargetingRecommendationsApiGetTargetRecommendationsOpts struct {
-    Body optional.Interface
-    Locale optional.Interface
+	Body   optional.Interface
+	Locale optional.Interface
 }
 
 func (a *TargetingRecommendationsApiService) GetTargetRecommendations(ctx context.Context, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIScope string, localVarOptionals *TargetingRecommendationsApiGetTargetRecommendationsOpts) (SdTargetingRecommendationsResponseV35, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue SdTargetingRecommendationsResponseV35
 	)
 
@@ -81,8 +81,8 @@ func (a *TargetingRecommendationsApiService) GetTargetRecommendations(ctx contex
 	localVarHeaderParams["Amazon-Advertising-API-Scope"] = parameterToString(amazonAdvertisingAPIScope, "")
 	// body params
 	if localVarOptionals != nil && localVarOptionals.Body.IsSet() {
-		
-		localVarOptionalBody:= localVarOptionals.Body.Value()
+
+		localVarOptionalBody := localVarOptionals.Body.Value()
 		localVarPostBody = &localVarOptionalBody
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
@@ -103,86 +103,86 @@ func (a *TargetingRecommendationsApiService) GetTargetRecommendations(ctx contex
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v SdTargetingRecommendationsResponseV35
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 401 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 403 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 415 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 429 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

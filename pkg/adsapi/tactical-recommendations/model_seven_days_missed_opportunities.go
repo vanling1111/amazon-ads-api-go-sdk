@@ -26,6 +26,6 @@ type SevenDaysMissedOpportunities struct {
 	EstimatedMissedSalesUpper float64 `json:"estimatedMissedSalesUpper,omitempty"`
 	// Percentage of time the campaign is active with a budget.
 	PercentTimeInBudget float64 `json:"percentTimeInBudget,omitempty"`
-	// Start date of the date range in local time and YYYY-MM-DD format for which missed opportunity metrics are provided. 
+	// Start date of the date range in local time and YYYY-MM-DD format for which missed opportunity metrics are provided.
 	StartDate string `json:"startDate,omitempty"`
 }

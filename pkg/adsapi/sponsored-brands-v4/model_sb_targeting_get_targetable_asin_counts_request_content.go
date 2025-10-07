@@ -16,9 +16,9 @@ type SbTargetingGetTargetableAsinCountsRequestContent struct {
 	// List of Genre Refinement Ids.
 	Genres []string `json:"genres,omitempty"`
 	// Indicates if products have prime shipping. Leave empty to include both prime shipping and non-prime shipping products.
-	IsPrimeShipping bool `json:"isPrimeShipping,omitempty"`
-	RatingRange *SbTargetingRatingRange `json:"ratingRange,omitempty"`
+	IsPrimeShipping bool                    `json:"isPrimeShipping,omitempty"`
+	RatingRange     *SbTargetingRatingRange `json:"ratingRange,omitempty"`
 	// The category refinement id. Please use /sb/targets/categories or /sb/recommendations/targets/category to retrieve category IDs.
-	Category string `json:"category"`
+	Category   string                 `json:"category"`
 	PriceRange *SbTargetingPriceRange `json:"priceRange,omitempty"`
 }

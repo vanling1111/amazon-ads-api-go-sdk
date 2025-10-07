@@ -10,11 +10,11 @@ package sponsoredbrandsv4
 
 type ImageTask struct {
 	// The timestamp after which the imageUrl will be invalid. The number represents Unix epoch seconds with optional millisecond precision.
-	ImageUrlExpiration float64 `json:"imageUrlExpiration,omitempty"`
-	ImageResults []ImageResult `json:"imageResults,omitempty"`
+	ImageUrlExpiration float64       `json:"imageUrlExpiration,omitempty"`
+	ImageResults       []ImageResult `json:"imageResults,omitempty"`
 	// Image task status details.
 	Message string `json:"message,omitempty"`
-	TaskId string `json:"taskId,omitempty"`
+	TaskId  string `json:"taskId,omitempty"`
 	// Image task status. Valid values are PENDING, COMPLETED and FAILED
 	Status string `json:"status,omitempty"`
 }

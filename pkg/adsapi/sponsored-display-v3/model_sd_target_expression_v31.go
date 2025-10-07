@@ -9,6 +9,6 @@
 package sponsoreddisplayv3
 
 type SdTargetExpressionV31 struct {
-    SdTargetingPredicateV31
-    SdTargetingPredicateNestedV31
+	SdTargetingPredicateV31
+	SdTargetingPredicateNestedV31
 }

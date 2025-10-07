@@ -10,6 +10,6 @@ package audiencesdiscovery
 
 // Holds an array of successful items and an array of error items from the request.
 type DspAudienceDeleteResponse struct {
-	Failed []DspAudienceDeleteErrorItem `json:"failed"`
+	Failed  []DspAudienceDeleteErrorItem   `json:"failed"`
 	Success []DspAudienceDeleteSuccessItem `json:"success"`
 }

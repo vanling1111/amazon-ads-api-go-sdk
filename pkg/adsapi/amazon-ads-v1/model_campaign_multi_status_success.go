@@ -10,5 +10,5 @@ package amazonadsv1
 
 type CampaignMultiStatusSuccess struct {
 	Campaign *Campaign `json:"campaign"`
-	Index int32 `json:"index"`
+	Index    int32     `json:"index"`
 }

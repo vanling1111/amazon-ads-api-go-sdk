@@ -9,9 +9,9 @@
 package billing
 
 type BulkGetBillingNotificationsError struct {
-	AdvertiserMarketplace *AdvertiserMarketplace `json:"advertiserMarketplace,omitempty"`
-	AdvertiserMarketplaces []AdvertiserMarketplace `json:"advertiserMarketplaces,omitempty"`
-	Description string `json:"description"`
-	ErrorCode *BulkGetBillingNotificationsErrorCodes `json:"errorCode"`
-	Index int32 `json:"index"`
+	AdvertiserMarketplace  *AdvertiserMarketplace                 `json:"advertiserMarketplace,omitempty"`
+	AdvertiserMarketplaces []AdvertiserMarketplace                `json:"advertiserMarketplaces,omitempty"`
+	Description            string                                 `json:"description"`
+	ErrorCode              *BulkGetBillingNotificationsErrorCodes `json:"errorCode"`
+	Index                  int32                                  `json:"index"`
 }

@@ -13,5 +13,5 @@ type Association struct {
 	AmazonAuthor *AmazonAuthor `json:"amazonAuthor,omitempty"`
 	AmazonSeller *AmazonSeller `json:"amazonSeller,omitempty"`
 	AmazonVendor *AmazonVendor `json:"amazonVendor,omitempty"`
-	Business *Business `json:"business,omitempty"`
+	Business     *Business     `json:"business,omitempty"`
 }

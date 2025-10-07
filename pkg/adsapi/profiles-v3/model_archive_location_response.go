@@ -12,6 +12,6 @@ type ArchiveLocationResponse struct {
 	// Returns \"SUCCESS\" for a successful response, otherwise a HTTP error code
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response if there is an error
-	Description string `json:"description,omitempty"`
-	LocationExpressionId int64 `json:"locationExpressionId,omitempty"`
+	Description          string `json:"description,omitempty"`
+	LocationExpressionId int64  `json:"locationExpressionId,omitempty"`
 }

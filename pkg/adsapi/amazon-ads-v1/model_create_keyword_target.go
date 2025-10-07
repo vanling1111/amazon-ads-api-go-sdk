@@ -11,9 +11,9 @@ package amazonadsv1
 // Targets a specific customer search term.
 type CreateKeywordTarget struct {
 	// The customer search term or text to target
-	Keyword string `json:"keyword,omitempty"`
+	Keyword   string            `json:"keyword,omitempty"`
 	MatchType *KeywordMatchType `json:"matchType,omitempty"`
 	// The unlocalized keyword text in the preferred locale of the advertiser.
-	NativeLanguageKeyword string `json:"nativeLanguageKeyword,omitempty"`
-	NativeLanguageLocale *LanguageLocale `json:"nativeLanguageLocale,omitempty"`
+	NativeLanguageKeyword string          `json:"nativeLanguageKeyword,omitempty"`
+	NativeLanguageLocale  *LanguageLocale `json:"nativeLanguageLocale,omitempty"`
 }

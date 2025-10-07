@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type InvalidArgumentErrorResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *InvalidArgumentErrorCode `json:"code"`
+	RequestId string                    `json:"requestId"`
+	Message   string                    `json:"message"`
 }

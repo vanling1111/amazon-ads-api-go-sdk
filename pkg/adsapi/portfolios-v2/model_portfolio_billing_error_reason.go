@@ -12,9 +12,9 @@ type PortfolioBillingErrorReason string
 
 // List of PortfolioBillingErrorReason
 const (
-	ADVERTISER_SUSPENDED_PortfolioBillingErrorReason PortfolioBillingErrorReason = "ADVERTISER_SUSPENDED"
+	ADVERTISER_SUSPENDED_PortfolioBillingErrorReason      PortfolioBillingErrorReason = "ADVERTISER_SUSPENDED"
 	BILLING_ACCOUNT_NOT_FOUND_PortfolioBillingErrorReason PortfolioBillingErrorReason = "BILLING_ACCOUNT_NOT_FOUND"
-	EXPIRED_PAYMENT_METHOD_PortfolioBillingErrorReason PortfolioBillingErrorReason = "EXPIRED_PAYMENT_METHOD"
+	EXPIRED_PAYMENT_METHOD_PortfolioBillingErrorReason    PortfolioBillingErrorReason = "EXPIRED_PAYMENT_METHOD"
 	PAYMENT_PROFILE_NOT_FOUND_PortfolioBillingErrorReason PortfolioBillingErrorReason = "PAYMENT_PROFILE_NOT_FOUND"
-	VETTING_FAILURE_PortfolioBillingErrorReason PortfolioBillingErrorReason = "VETTING_FAILURE"
+	VETTING_FAILURE_PortfolioBillingErrorReason           PortfolioBillingErrorReason = "VETTING_FAILURE"
 )

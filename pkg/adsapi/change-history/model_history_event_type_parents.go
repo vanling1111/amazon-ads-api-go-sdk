@@ -9,7 +9,7 @@
 package changehistory
 
 type HistoryEventTypeParents struct {
-	AdGroupId string `json:"adGroupId,omitempty"`
+	AdGroupId  string `json:"adGroupId,omitempty"`
 	CampaignId string `json:"campaignId,omitempty"`
 	// If true, retrieves events which belong to the associated advertiser
 	UseProfileIdAdvertiser bool `json:"useProfileIdAdvertiser,omitempty"`

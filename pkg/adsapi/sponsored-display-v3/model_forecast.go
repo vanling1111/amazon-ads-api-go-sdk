@@ -11,6 +11,6 @@ package sponsoreddisplayv3
 // Forecast impressions, clicks, reach, or conversions.
 type Forecast struct {
 	// Describes which metric is forecasted. |Name|Description| |-----------|------------------------| |IMPRESSIONS| Available impressions| |REACH      | Delivered viewable impressions| |CLICKS     | Delivered page visits| |CONVERSIONS| [Preview only] Delivered conversions|
-	Metric string `json:"metric,omitempty"`
-	Value *ForecastRange `json:"value,omitempty"`
+	Metric string         `json:"metric,omitempty"`
+	Value  *ForecastRange `json:"value,omitempty"`
 }

@@ -9,6 +9,6 @@
 package reachforecasting
 
 type DeviceTargetV1 struct {
-	DeviceType *DeviceTypeV1 `json:"deviceType"`
+	DeviceType *DeviceTypeV1       `json:"deviceType"`
 	TargetType *DeviceTargetTypeV1 `json:"targetType"`
 }

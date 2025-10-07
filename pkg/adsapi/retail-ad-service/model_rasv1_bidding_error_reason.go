@@ -12,6 +12,6 @@ type Rasv1BiddingErrorReason string
 
 // List of RASv1BiddingErrorReason
 const (
-	GT_BUDGET_Rasv1BiddingErrorReason Rasv1BiddingErrorReason = "BID_GT_BUDGET"
+	GT_BUDGET_Rasv1BiddingErrorReason                 Rasv1BiddingErrorReason = "BID_GT_BUDGET"
 	OUT_OF_MARKET_PLACE_RANGE_Rasv1BiddingErrorReason Rasv1BiddingErrorReason = "BID_OUT_OF_MARKET_PLACE_RANGE"
 )

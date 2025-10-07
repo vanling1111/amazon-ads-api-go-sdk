@@ -11,14 +11,14 @@ package retailadservice
 // Errors related to range constraints violations
 type Rasv1RangeError struct {
 	// allowed values
-	Allowed []string `json:"allowed,omitempty"`
-	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
+	Allowed []string         `json:"allowed,omitempty"`
+	Cause   *Rasv1ErrorCause `json:"cause,omitempty"`
 	// optional lower limit
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	LowerLimit  string            `json:"lowerLimit,omitempty"`
 	Marketplace *Rasv1Marketplace `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1ValueLimitErrorReason `json:"reason"`
+	Message string                      `json:"message"`
+	Reason  *Rasv1ValueLimitErrorReason `json:"reason"`
 	// optional upper limit
 	UpperLimit string `json:"upperLimit,omitempty"`
 }

@@ -16,6 +16,6 @@ type CreateTargetingClause struct {
 	// The targeting expression.
 	Expression []CreateTargetingExpressionPredicate `json:"expression"`
 	// full funnel campaign id for child targeting clause
-	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
-	State *CreateOrUpdateEntityState `json:"state"`
+	FullFunnelCampaignId string                     `json:"fullFunnelCampaignId,omitempty"`
+	State                *CreateOrUpdateEntityState `json:"state"`
 }

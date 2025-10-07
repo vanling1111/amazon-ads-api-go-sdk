@@ -11,5 +11,5 @@ package billing
 // The properties needed to get the billing statuses for a set of advertisers.
 type BulkGetBillingStatusesRequestBody struct {
 	AdvertiserMarketplaces []AdvertiserMarketplace `json:"advertiserMarketplaces"`
-	Locale *Locale `json:"locale,omitempty"`
+	Locale                 *Locale                 `json:"locale,omitempty"`
 }

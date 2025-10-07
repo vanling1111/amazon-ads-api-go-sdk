@@ -14,13 +14,13 @@ type Campaign struct {
 	// The identifier of the campaign.
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The name of the campaign.
-	Name string `json:"name,omitempty"`
+	Name string             `json:"name,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
 	// The advertising product managed by this campaign.
 	CampaignType string `json:"campaignType,omitempty"`
 	// The type of targeting of the campaign.
 	TargetingType string `json:"targetingType,omitempty"`
-	State *State `json:"state,omitempty"`
+	State         *State `json:"state,omitempty"`
 	// The daily budget of the campaign.
 	DailyBudget float32 `json:"dailyBudget,omitempty"`
 	// The starting date of the campaign. The format of the date is YYYYMMDD.
@@ -28,6 +28,6 @@ type Campaign struct {
 	// The ending date of the campaign to stop running. The format of the date is YYYYMMDD.
 	EndDate string `json:"endDate,omitempty"`
 	// If set to true, Amazon increases the default bid for ads that are eligible to appear in this placement. See developer notes for more information.
-	PremiumBidAdjustment bool `json:"premiumBidAdjustment,omitempty"`
-	Bidding *Bidding `json:"bidding,omitempty"`
+	PremiumBidAdjustment bool     `json:"premiumBidAdjustment,omitempty"`
+	Bidding              *Bidding `json:"bidding,omitempty"`
 }

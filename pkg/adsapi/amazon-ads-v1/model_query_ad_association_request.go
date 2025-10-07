@@ -10,8 +10,8 @@ package amazonadsv1
 
 type QueryAdAssociationRequest struct {
 	AdAssociationIdFilter *AdAssociationAdAssociationIdFilter `json:"adAssociationIdFilter,omitempty"`
-	AdGroupIdFilter *AdAssociationAdGroupIdFilter `json:"adGroupIdFilter,omitempty"`
-	AdIdFilter *AdAssociationAdIdFilter `json:"adIdFilter,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	AdGroupIdFilter       *AdAssociationAdGroupIdFilter       `json:"adGroupIdFilter,omitempty"`
+	AdIdFilter            *AdAssociationAdIdFilter            `json:"adIdFilter,omitempty"`
+	MaxResults            int32                               `json:"maxResults,omitempty"`
+	NextToken             string                              `json:"nextToken,omitempty"`
 }

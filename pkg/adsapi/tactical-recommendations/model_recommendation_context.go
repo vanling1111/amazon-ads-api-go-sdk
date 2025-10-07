@@ -10,6 +10,6 @@ package tacticalrecommendations
 
 // Context of the recommendation.
 type RecommendationContext struct {
-	AsinContext *AsinContext `json:"asinContext,omitempty"`
+	AsinContext       *AsinContext       `json:"asinContext,omitempty"`
 	DiagnosticContext *DiagnosticContext `json:"diagnosticContext,omitempty"`
 }

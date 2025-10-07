@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type ForecastErrorItem struct {
-	ErrorType *ForecastErrorType `json:"errorType"`
+	ErrorType  *ForecastErrorType     `json:"errorType"`
 	ErrorValue *ForecastErrorSelector `json:"errorValue"`
 }

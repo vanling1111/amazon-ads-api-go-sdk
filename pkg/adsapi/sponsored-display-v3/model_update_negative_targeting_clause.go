@@ -9,6 +9,6 @@
 package sponsoreddisplayv3
 
 type UpdateNegativeTargetingClause struct {
-	TargetId int64 `json:"targetId"`
-	State string `json:"state,omitempty"`
+	TargetId int64  `json:"targetId"`
+	State    string `json:"state,omitempty"`
 }

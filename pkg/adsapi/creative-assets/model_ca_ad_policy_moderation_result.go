@@ -9,8 +9,8 @@
 package creativeassets
 
 type CaAdPolicyModerationResult struct {
-	MarketplaceId string `json:"marketplaceId,omitempty"`
-	PolicyName string `json:"policyName,omitempty"`
+	MarketplaceId    string              `json:"marketplaceId,omitempty"`
+	PolicyName       string              `json:"policyName,omitempty"`
 	ModerationStatus *CaModerationStatus `json:"moderationStatus,omitempty"`
-	Locale string `json:"locale,omitempty"`
+	Locale           string              `json:"locale,omitempty"`
 }

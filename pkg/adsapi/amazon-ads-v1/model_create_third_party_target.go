@@ -10,5 +10,5 @@ package amazonadsv1
 
 type CreateThirdPartyTarget struct {
 	ThirdPartyTargetDetails *CreateThirdPartyTargetDetails `json:"thirdPartyTargetDetails,omitempty"`
-	ThirdPartyTargetType *ThirdPartyTargetType `json:"thirdPartyTargetType,omitempty"`
+	ThirdPartyTargetType    *ThirdPartyTargetType          `json:"thirdPartyTargetType,omitempty"`
 }

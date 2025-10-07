@@ -9,8 +9,8 @@
 package amazonadsv1
 
 type CreateProductCollectionLandingPage struct {
-	LandingPageAsins *CreateLandingPageAsins `json:"landingPageAsins,omitempty"`
-	LandingPageType *ProductCollectionLandingPageType `json:"landingPageType,omitempty"`
+	LandingPageAsins *CreateLandingPageAsins           `json:"landingPageAsins,omitempty"`
+	LandingPageType  *ProductCollectionLandingPageType `json:"landingPageType,omitempty"`
 	// The URL associated to the landing page. Read only if landingPageType is ASIN_LIST
 	LandingPageUrl string `json:"landingPageUrl,omitempty"`
 }

@@ -9,14 +9,14 @@
 package portfoliosv2
 
 type PortfolioMutationErrorSelector struct {
-	BillingError *PortfolioBillingError `json:"billingError,omitempty"`
-	BudgetError *PortfolioBudgetError `json:"budgetError,omitempty"`
-	DateError *PortfolioDateError `json:"dateError,omitempty"`
+	BillingError        *PortfolioBillingError        `json:"billingError,omitempty"`
+	BudgetError         *PortfolioBudgetError         `json:"budgetError,omitempty"`
+	DateError           *PortfolioDateError           `json:"dateError,omitempty"`
 	DuplicateValueError *PortfolioDuplicateValueError `json:"duplicateValueError,omitempty"`
 	EntityNotFoundError *PortfolioEntityNotFoundError `json:"entityNotFoundError,omitempty"`
-	EntityQuotaError *PortfolioEntityQuotaError `json:"entityQuotaError,omitempty"`
+	EntityQuotaError    *PortfolioEntityQuotaError    `json:"entityQuotaError,omitempty"`
 	MalformedValueError *PortfolioMalformedValueError `json:"malformedValueError,omitempty"`
-	MissingValueError *PortfolioMissingValueError `json:"missingValueError,omitempty"`
-	OtherError *PortfolioOtherError `json:"otherError,omitempty"`
-	RangeError *PortfolioRangeError `json:"rangeError,omitempty"`
+	MissingValueError   *PortfolioMissingValueError   `json:"missingValueError,omitempty"`
+	OtherError          *PortfolioOtherError          `json:"otherError,omitempty"`
+	RangeError          *PortfolioRangeError          `json:"rangeError,omitempty"`
 }

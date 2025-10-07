@@ -9,9 +9,9 @@
 package dataprovider
 
 type InlineResponse200AudienceMetadata struct {
-	Type_ *MetadataType `json:"type,omitempty"`
-	ExternalAudienceId string `json:"externalAudienceId,omitempty"`
-	Ttl int32 `json:"ttl,omitempty"`
-	AudienceFees *[]AudienceFeesInner `json:"audienceFees,omitempty"`
-	DataSourceCountry *[]string `json:"dataSourceCountry,omitempty"`
+	Type_              *MetadataType        `json:"type,omitempty"`
+	ExternalAudienceId string               `json:"externalAudienceId,omitempty"`
+	Ttl                int32                `json:"ttl,omitempty"`
+	AudienceFees       *[]AudienceFeesInner `json:"audienceFees,omitempty"`
+	DataSourceCountry  *[]string            `json:"dataSourceCountry,omitempty"`
 }

@@ -9,11 +9,11 @@
 package billing
 
 type Adjustment struct {
-	AccountingDate string `json:"accountingDate"`
-	Amount *CurrencyAmount `json:"amount"`
-	Comments string `json:"comments,omitempty"`
-	// Charges can include different fees (see feeType below). 
+	AccountingDate string          `json:"accountingDate"`
+	Amount         *CurrencyAmount `json:"amount"`
+	Comments       string          `json:"comments,omitempty"`
+	// Charges can include different fees (see feeType below).
 	Fees []Fee `json:"fees,omitempty"`
-	// Sponsored Ads only. This identifier maps to one of the portfolios listed in the portfolios section. 
+	// Sponsored Ads only. This identifier maps to one of the portfolios listed in the portfolios section.
 	PortfolioId int64 `json:"portfolioId,omitempty"`
 }

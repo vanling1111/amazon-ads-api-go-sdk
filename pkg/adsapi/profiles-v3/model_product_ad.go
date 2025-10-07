@@ -9,12 +9,12 @@
 package profilesv3
 
 type ProductAd struct {
-	AdId int64 `json:"adId,omitempty"`
-	AdGroupId int64 `json:"adGroupId,omitempty"`
-	CampaignId int64 `json:"campaignId,omitempty"`
-	LandingPageURL string `json:"landingPageURL,omitempty"`
+	AdId            int64            `json:"adId,omitempty"`
+	AdGroupId       int64            `json:"adGroupId,omitempty"`
+	CampaignId      int64            `json:"campaignId,omitempty"`
+	LandingPageURL  string           `json:"landingPageURL,omitempty"`
 	LandingPageType *LandingPageType `json:"landingPageType,omitempty"`
-	AdName string `json:"adName,omitempty"`
+	AdName          string           `json:"adName,omitempty"`
 	// The Amazon ASIN of the product advertised by the product ad. This parameter is included in the response for sellers and vendors.
 	Asin string `json:"asin,omitempty"`
 	// The Amazon SKU of the product advertised by the product ad. This parameter is included in the response for sellers.

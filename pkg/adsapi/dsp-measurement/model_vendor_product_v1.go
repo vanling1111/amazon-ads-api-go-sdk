@@ -10,12 +10,12 @@ package dspmeasurement
 
 // The measurement vendor product.
 type VendorProductV1 struct {
-	AdType *AdTypeV1 `json:"adType,omitempty"`
+	AdType      *AdTypeV1      `json:"adType,omitempty"`
 	FundingType *FundingTypeV1 `json:"fundingType,omitempty"`
 	// The vendor product identifier.
-	Id string `json:"id,omitempty"`
-	Objective *StudyObjectiveV1 `json:"objective,omitempty"`
-	StudyType *StudyTypeV1 `json:"studyType,omitempty"`
+	Id                string               `json:"id,omitempty"`
+	Objective         *StudyObjectiveV1    `json:"objective,omitempty"`
+	StudyType         *StudyTypeV1         `json:"studyType,omitempty"`
 	VendorProductType *VendorProductTypeV1 `json:"vendorProductType,omitempty"`
-	VendorType *VendorTypeV1 `json:"vendorType,omitempty"`
+	VendorType        *VendorTypeV1        `json:"vendorType,omitempty"`
 }

@@ -10,10 +10,10 @@ package sponsoreddisplayv3
 
 // Request for targeting recommendations for API version 3.5.
 type SdTargetingRecommendationsRequestV35 struct {
-	Tactic *SdTacticV31 `json:"tactic"`
-	Products *[]SdAdvertisedProduct `json:"products"`
-	TypeFilter *[]SdRecommendationTypeV33 `json:"typeFilter"`
-	Themes *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
+	Tactic     *SdTacticV31                      `json:"tactic"`
+	Products   *[]SdAdvertisedProduct            `json:"products"`
+	TypeFilter *[]SdRecommendationTypeV33        `json:"typeFilter"`
+	Themes     *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
 	// This field is optional unless the field locationExpression is present in the request. It is used for category audience targeting to specify if the audience is for views (re-marketing) or purchases (re-purchasing). The specified categories will be returned accordingly.
 	CategoryType string `json:"categoryType,omitempty"`
 	// This optional field is used to specify the locations used in SD location targeting for non-Amazon sellers only at the moment. Therefore it's only supported if the product is a landing page url.

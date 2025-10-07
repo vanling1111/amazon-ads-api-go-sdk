@@ -31,7 +31,7 @@ type ProductMetadataRequest struct {
 	SearchStr string `json:"searchStr,omitempty"`
 	// Specific SKUs to search for in the advertiser's inventory. Currently only support SP program type for sellers. Cannot use together with asins or searchStr input types.
 	Skus []string `json:"skus,omitempty"`
-	// Sort option for the result. Currently only support SP program type for sellers:   * SUGGESTED - Suggested products are those most likely to engage customers, and have a higher chance of generating clicks if advertised.   * CREATED_DATE - Date the item listing was created 
+	// Sort option for the result. Currently only support SP program type for sellers:   * SUGGESTED - Suggested products are those most likely to engage customers, and have a higher chance of generating clicks if advertised.   * CREATED_DATE - Date the item listing was created
 	SortBy string `json:"sortBy,omitempty"`
 	// Sort order (has to be DESC for the suggested sort type):   * ASC - Ascending, from A to Z   * DESC - Descending, from Z to A
 	SortOrder string `json:"sortOrder,omitempty"`

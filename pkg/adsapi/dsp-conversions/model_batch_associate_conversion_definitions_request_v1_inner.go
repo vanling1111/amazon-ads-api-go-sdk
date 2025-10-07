@@ -10,5 +10,5 @@ package dspconversions
 
 type BatchAssociateConversionDefinitionsRequestV1Inner struct {
 	ConversionDefinitionId string `json:"conversionDefinitionId"`
-	Operation string `json:"operation"`
+	Operation              string `json:"operation"`
 }

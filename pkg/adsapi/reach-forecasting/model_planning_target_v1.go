@@ -10,6 +10,6 @@ package reachforecasting
 
 type PlanningTargetV1 struct {
 	// Whether to target (false) or exclude (true) the given target.
-	Negative bool `json:"negative"`
+	Negative      bool                     `json:"negative"`
 	TargetDetails *PlanningTargetDetailsV1 `json:"targetDetails"`
 }

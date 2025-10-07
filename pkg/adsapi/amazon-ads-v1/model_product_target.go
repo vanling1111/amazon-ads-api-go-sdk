@@ -10,7 +10,7 @@ package amazonadsv1
 
 // Targets a specific product.
 type ProductTarget struct {
-	MatchType *ProductMatchType `json:"matchType,omitempty"`
-	Product *ProductValue `json:"product,omitempty"`
-	ProductIdType *ProductIdType `json:"productIdType,omitempty"`
+	MatchType     *ProductMatchType `json:"matchType,omitempty"`
+	Product       *ProductValue     `json:"product,omitempty"`
+	ProductIdType *ProductIdType    `json:"productIdType,omitempty"`
 }

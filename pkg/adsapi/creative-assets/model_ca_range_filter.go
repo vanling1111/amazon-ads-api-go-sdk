@@ -8,8 +8,8 @@
  */
 package creativeassets
 
-// Filter assets which have certain ranges of asset attributes.  For example, filter assets which have file size in the range of [10,20] or [40,50]. 
+// Filter assets which have certain ranges of asset attributes.  For example, filter assets which have file size in the range of [10,20] or [40,50].
 type CaRangeFilter struct {
 	RangeField *CaValueRangeFilterOptions `json:"rangeField,omitempty"`
-	Ranges []CaRange `json:"ranges,omitempty"`
+	Ranges     []CaRange                  `json:"ranges,omitempty"`
 }

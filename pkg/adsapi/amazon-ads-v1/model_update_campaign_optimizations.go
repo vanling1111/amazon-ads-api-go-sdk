@@ -9,9 +9,9 @@
 package amazonadsv1
 
 type UpdateCampaignOptimizations struct {
-	BidSettings *UpdateBidSettings `json:"bidSettings,omitempty"`
+	BidSettings    *UpdateBidSettings    `json:"bidSettings,omitempty"`
 	BudgetSettings *UpdateBudgetSettings `json:"budgetSettings,omitempty"`
-	GoalSettings *UpdateGoalSettings `json:"goalSettings,omitempty"`
+	GoalSettings   *UpdateGoalSettings   `json:"goalSettings,omitempty"`
 	// Primary inventory type of the campaign for filtering KPIs and recommending tactics.
 	PrimaryInventoryTypes []PrimaryInventoryType `json:"primaryInventoryTypes,omitempty"`
 }

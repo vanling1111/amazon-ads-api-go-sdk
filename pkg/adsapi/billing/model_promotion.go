@@ -9,7 +9,7 @@
 package billing
 
 type Promotion struct {
-	Amount *CurrencyAmount `json:"amount"`
-	Description string `json:"description"`
-	LastConsumedDate string `json:"lastConsumedDate"`
+	Amount           *CurrencyAmount `json:"amount"`
+	Description      string          `json:"description"`
+	LastConsumedDate string          `json:"lastConsumedDate"`
 }

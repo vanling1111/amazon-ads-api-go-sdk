@@ -11,6 +11,6 @@ package dspconversions
 type ListConversionDefinitionsResponseV1 struct {
 	// Array of conversion definitions given filters.
 	ConversionDefinitions []ConversionDefinitionV1 `json:"conversionDefinitions,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	MaxResults            int32                    `json:"maxResults,omitempty"`
+	NextToken             string                   `json:"nextToken,omitempty"`
 }

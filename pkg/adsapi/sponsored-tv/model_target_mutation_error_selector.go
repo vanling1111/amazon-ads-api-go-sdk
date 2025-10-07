@@ -11,6 +11,6 @@ package sponsoredtv
 type TargetMutationErrorSelector struct {
 	BiddingError *BiddingError `json:"biddingError,omitempty"`
 	BillingError *BillingError `json:"billingError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
-	RangeError *RangeError `json:"rangeError,omitempty"`
+	OtherError   *OtherError   `json:"otherError,omitempty"`
+	RangeError   *RangeError   `json:"rangeError,omitempty"`
 }

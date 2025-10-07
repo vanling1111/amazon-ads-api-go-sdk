@@ -15,12 +15,12 @@ type Keyword struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which this keyword is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The keyword text.
 	KeywordText string `json:"keywordText,omitempty"`
 	// The unlocalized keyword text in the preferred locale of the advertiser.
-	NativeLanguageKeyword string `json:"nativeLanguageKeyword,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	NativeLanguageKeyword string     `json:"nativeLanguageKeyword,omitempty"`
+	MatchType             *MatchType `json:"matchType,omitempty"`
 	// Bid associated with this keyword. Applicable to biddable match types only.
 	Bid float32 `json:"bid,omitempty"`
 }

@@ -12,8 +12,8 @@ package sponsoredbrandsv4
 type SbInsightsKeywordInsight struct {
 	Alerts []SbInsightsKeywordAlertType `json:"alerts,omitempty"`
 	// The account-level ad-attributed impression share for the search-term / keyword. Provides percentage share of all ad impressions the advertiser has for the keyword in the last 7 days. This metric helps advertisers identify potential opportunities based on their share of relevant keywords. This information is only available for keywords the advertiser targeted with ad impressions. Only available in the following marketplaces: US, CA, MX, UK, DE, FR, ES, IT, IN, JP.
-	SearchTermImpressionShare float64 `json:"searchTermImpressionShare,omitempty"`
-	MatchType *SbInsightsMatchType `json:"matchType,omitempty"`
+	SearchTermImpressionShare float64              `json:"searchTermImpressionShare,omitempty"`
+	MatchType                 *SbInsightsMatchType `json:"matchType,omitempty"`
 	// Correlates the ad group to the ad group array index specified in the request. Zero-based.
 	AdGroupIndex int32 `json:"adGroupIndex,omitempty"`
 	// The account-level ad-attributed impression rank for the search-term / keyword. Provides the [1:N] place the advertiser ranks among all advertisers for the keyword by ad impressions in a marketplace in the last 7 days. It tells an advertiser how many advertisers had higher share of ad impressions. This information is only available for keywords the advertiser targeted with ad impressions. Only available in the following marketplaces: US, CA, MX, UK, DE, FR, ES, IT, IN, JP.

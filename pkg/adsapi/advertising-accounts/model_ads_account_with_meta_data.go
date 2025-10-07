@@ -8,14 +8,14 @@
  */
 package advertisingaccounts
 
-// Ads Account structure response consists of the GlobalAccountID (advertisingAccountId) and other account metadata. 
+// Ads Account structure response consists of the GlobalAccountID (advertisingAccountId) and other account metadata.
 type AdsAccountWithMetaData struct {
 	AccountName string `json:"accountName,omitempty"`
 	// This is the global advertising account Id from the client.
-	AdsAccountId string `json:"adsAccountId"`
+	AdsAccountId string        `json:"adsAccountId"`
 	AlternateIds []AlternateId `json:"alternateIds,omitempty"`
-	// Amazon Ads is available in many but not all countries where Amazon sells goods. For vendors, Global accounts come stock with all countries where Amazon Ads is available. For sellers, Global Accounts will contain only countries where the seller is registered to sell. For non-endemic, Global Accounts only support US now 
-	CountryCodes []string `json:"countryCodes,omitempty"`
-	Errors *map[string][]ModelError `json:"errors,omitempty"`
-	Status *Status `json:"status,omitempty"`
+	// Amazon Ads is available in many but not all countries where Amazon sells goods. For vendors, Global accounts come stock with all countries where Amazon Ads is available. For sellers, Global Accounts will contain only countries where the seller is registered to sell. For non-endemic, Global Accounts only support US now
+	CountryCodes []string                 `json:"countryCodes,omitempty"`
+	Errors       *map[string][]ModelError `json:"errors,omitempty"`
+	Status       *Status                  `json:"status,omitempty"`
 }

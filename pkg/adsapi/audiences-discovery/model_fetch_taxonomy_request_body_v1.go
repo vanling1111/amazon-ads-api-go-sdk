@@ -10,7 +10,7 @@ package audiencesdiscovery
 
 // The response data will have the categories that are under the given path, and main categories will be returned if no path is specified. The response data also depends on the adType specified here since ad programs may support targeting audiences in certain categories.
 type FetchTaxonomyRequestBodyV1 struct {
-	AdType string `json:"adType,omitempty"`
+	AdType       string   `json:"adType,omitempty"`
 	CategoryPath []string `json:"categoryPath,omitempty"`
 	// The ISO Alpha-2 country codes to search audiences from. This field must be specified if the advertiser does not have an associated country. Currently, it is only supported to specify a single country per request.
 	Countries []string `json:"countries,omitempty"`

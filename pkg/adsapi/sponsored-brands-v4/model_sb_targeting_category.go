@@ -14,8 +14,8 @@ type SbTargetingCategory struct {
 	// If the category is targetable or not.
 	IsTargetable bool `json:"isTargetable,omitempty"`
 	// The category refinement id of the parent category. Missing parentCategoryRefinementId signifies this is a root category.
-	ParentCategoryRefinementId string `json:"parentCategoryRefinementId,omitempty"`
-	EstimatedReach *SbTargetingEstimatedReachRange `json:"estimatedReach,omitempty"`
+	ParentCategoryRefinementId string                          `json:"parentCategoryRefinementId,omitempty"`
+	EstimatedReach             *SbTargetingEstimatedReachRange `json:"estimatedReach,omitempty"`
 	// Name of category.
 	Name string `json:"name,omitempty"`
 	// Translated name of the category.

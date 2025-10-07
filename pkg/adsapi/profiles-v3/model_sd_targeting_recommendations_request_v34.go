@@ -10,8 +10,8 @@ package profilesv3
 
 // Request for targeting recommendations for API version 3.4.
 type SdTargetingRecommendationsRequestV34 struct {
-	Tactic *SdTacticV31 `json:"tactic"`
-	Products *[]SdGoalProduct `json:"products"`
-	TypeFilter *[]SdRecommendationTypeV32 `json:"typeFilter"`
-	Themes *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
+	Tactic     *SdTacticV31                      `json:"tactic"`
+	Products   *[]SdGoalProduct                  `json:"products"`
+	TypeFilter *[]SdRecommendationTypeV32        `json:"typeFilter"`
+	Themes     *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
 }

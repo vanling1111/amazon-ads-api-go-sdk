@@ -12,7 +12,7 @@ type CreateStandardAudioExperienceSettings struct {
 	Audio *CreateAudio `json:"audio,omitempty"`
 	// The third party urls to trigger when an impression is recorded. Urls cannot exceed 2048 characters.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language               *LanguageLocale             `json:"language,omitempty"`
 	// The product(s) being advertised.
 	Products []CreateAdvertisedProducts `json:"products,omitempty"`
 }

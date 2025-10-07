@@ -10,8 +10,8 @@ package retailadservice
 
 type Rasv1ListTargetsResponseContent struct {
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
-	Targets []Rasv1TargetOutput `json:"targets,omitempty"`
+	NextToken string              `json:"nextToken,omitempty"`
+	Targets   []Rasv1TargetOutput `json:"targets,omitempty"`
 	// The total number of entities
 	TotalResults int64 `json:"totalResults,omitempty"`
 }

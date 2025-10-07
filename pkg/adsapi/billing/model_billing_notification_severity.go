@@ -12,7 +12,7 @@ type BillingNotificationSeverity string
 
 // List of billingNotificationSeverity
 const (
-	ALERT_BillingNotificationSeverity BillingNotificationSeverity = "ALERT"
-	INFO_BillingNotificationSeverity BillingNotificationSeverity = "INFO"
+	ALERT_BillingNotificationSeverity   BillingNotificationSeverity = "ALERT"
+	INFO_BillingNotificationSeverity    BillingNotificationSeverity = "INFO"
 	WARNING_BillingNotificationSeverity BillingNotificationSeverity = "WARNING"
 )

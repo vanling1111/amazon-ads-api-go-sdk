@@ -10,6 +10,6 @@ package sponsoredtv
 
 type BudgetValue struct {
 	// The budget amount of the campaign
-	Amount float64 `json:"amount,omitempty"`
+	Amount             float64             `json:"amount,omitempty"`
 	BudgetCurrencyCode *BudgetCurrencyCode `json:"budgetCurrencyCode,omitempty"`
 }

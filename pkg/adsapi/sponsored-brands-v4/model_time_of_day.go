@@ -9,8 +9,8 @@
 package sponsoredbrandsv4
 
 type TimeOfDay struct {
-	// The start time of intra-day budget rule window in the format 'hh:mm:ss' 
+	// The start time of intra-day budget rule window in the format 'hh:mm:ss'
 	StartTime string `json:"startTime,omitempty"`
-	// The end time of intra-day budget rule window in the format 'hh:mm:ss'. Required to be greater than start-time. 
+	// The end time of intra-day budget rule window in the format 'hh:mm:ss'. Required to be greater than start-time.
 	EndTime string `json:"endTime,omitempty"`
 }

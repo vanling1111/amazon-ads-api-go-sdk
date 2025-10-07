@@ -9,14 +9,14 @@
 package creativeassets
 
 type AssetsRegisterBody struct {
-	Url string `json:"url,omitempty"`
-	Name string `json:"name,omitempty"`
-	AsinList *[]string `json:"asinList,omitempty"`
-	AssetType *CaAssetType `json:"assetType,omitempty"`
-	AssetSubTypeList *[]CaAssetSubType `json:"assetSubTypeList,omitempty"`
-	VersionInfo *CaVersionInfo `json:"versionInfo,omitempty"`
-	Tags []string `json:"tags,omitempty"`
-	RegistrationContext *CaRegistrationContext `json:"registrationContext,omitempty"`
+	Url                     string                   `json:"url,omitempty"`
+	Name                    string                   `json:"name,omitempty"`
+	AsinList                *[]string                `json:"asinList,omitempty"`
+	AssetType               *CaAssetType             `json:"assetType,omitempty"`
+	AssetSubTypeList        *[]CaAssetSubType        `json:"assetSubTypeList,omitempty"`
+	VersionInfo             *CaVersionInfo           `json:"versionInfo,omitempty"`
+	Tags                    []string                 `json:"tags,omitempty"`
+	RegistrationContext     *CaRegistrationContext   `json:"registrationContext,omitempty"`
 	AssociatedSubEntityList *[]CaAssociatedSubEntity `json:"associatedSubEntityList,omitempty"`
 	// Select true if you want to set an asset to a specific assetSubType, if this is not included the system may reclassify your asset based on specifications.
 	SkipAssetSubTypesDetection bool `json:"skipAssetSubTypesDetection,omitempty"`

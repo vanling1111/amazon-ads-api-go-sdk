@@ -13,7 +13,7 @@ type VideoComponentResponse struct {
 	// Type of the video component.
 	ComponentType string `json:"componentType,omitempty"`
 	// Id of the component. This is the same id sent as part of the request. This can be used to uniquely identify the component.
-	Id string `json:"id,omitempty"`
+	Id          string       `json:"id,omitempty"`
 	LandingPage *LandingPage `json:"landingPage,omitempty"`
 	// A list of policy violations for the component that were detected during pre moderation. Note that this field is present in the response only when preModerationStatus is set to REJECTED.
 	PolicyViolations []VideoPolicyViolation `json:"policyViolations,omitempty"`

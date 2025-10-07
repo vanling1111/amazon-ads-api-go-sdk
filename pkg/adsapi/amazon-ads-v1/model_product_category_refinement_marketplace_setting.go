@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type ProductCategoryRefinementMarketplaceSetting struct {
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	Marketplace               *Marketplace               `json:"marketplace,omitempty"`
 	ProductCategoryRefinement *ProductCategoryRefinement `json:"productCategoryRefinement,omitempty"`
 }

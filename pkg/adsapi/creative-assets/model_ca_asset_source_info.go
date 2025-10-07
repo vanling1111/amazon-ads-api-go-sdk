@@ -10,6 +10,6 @@ package creativeassets
 
 // Details on the source of this asset and any source specific metadata to be associated against it.
 type CaAssetSourceInfo struct {
-	AssetSourceId *CaAssetSourceId `json:"assetSourceId,omitempty"`
+	AssetSourceId       *CaAssetSourceId   `json:"assetSourceId,omitempty"`
 	AssetSourceMetadata *map[string]string `json:"assetSourceMetadata,omitempty"`
 }

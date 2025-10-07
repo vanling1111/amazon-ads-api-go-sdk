@@ -10,6 +10,6 @@ package personabuilder
 
 type DirectorInsight struct {
 	// The director's name.
-	Director string `json:"director"`
-	Insight *InsightMetric `json:"insight"`
+	Director string         `json:"director"`
+	Insight  *InsightMetric `json:"insight"`
 }

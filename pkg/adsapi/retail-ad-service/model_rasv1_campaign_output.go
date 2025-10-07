@@ -11,19 +11,19 @@ package retailadservice
 type Rasv1CampaignOutput struct {
 	Budget *Rasv1BudgetOutput `json:"budget"`
 	// The identifier of the Campaign.
-	CampaignId string `json:"campaignId"`
+	CampaignId     string                       `json:"campaignId"`
 	DynamicBidding *Rasv1RequiredDynamicBidding `json:"dynamicBidding"`
 	// Campaign end date
-	EndDate string `json:"endDate,omitempty"`
+	EndDate      string                     `json:"endDate,omitempty"`
 	ExtendedData *Rasv1CampaignExtendedData `json:"extendedData,omitempty"`
 	// The name of the campaign.
 	Name string `json:"name"`
 	// The identifier of an existing portfolio to which the campaign is associated.
 	PortfolioId string `json:"portfolioId,omitempty"`
 	// Campaign start date. Default: today&#39;s date. The format of the date is YYYY-MM-DD.
-	StartDate string `json:"startDate"`
-	State *Rasv1EntityState `json:"state"`
+	StartDate string            `json:"startDate"`
+	State     *Rasv1EntityState `json:"state"`
 	// A list of advertiser-specified custom identifiers for the campaign. Each customer identifier is a key-value pair. You can specify a maximum of 50 identifiers.
-	Tags []Rasv1Tag `json:"tags,omitempty"`
+	Tags          []Rasv1Tag          `json:"tags,omitempty"`
 	TargetingType *Rasv1TargetingType `json:"targetingType"`
 }

@@ -10,6 +10,6 @@ package tacticalrecommendations
 
 // Data for a group of recommendations.
 type ConsolidatedRecommendation struct {
-	RecommendationReasons *[]RecommendationReason `json:"recommendationReasons,omitempty"`
+	RecommendationReasons           *[]RecommendationReason          `json:"recommendationReasons,omitempty"`
 	SevenDaysEstimatedOpportunities *SevenDaysEstimatedOpportunities `json:"sevenDaysEstimatedOpportunities,omitempty"`
 }

@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type Subpage struct {
 	PageTitle string `json:"pageTitle,omitempty"`
-	Asin string `json:"asin,omitempty"`
-	Url string `json:"url,omitempty"`
+	Asin      string `json:"asin,omitempty"`
+	Url       string `json:"url,omitempty"`
 }

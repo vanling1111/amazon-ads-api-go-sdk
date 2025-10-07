@@ -10,9 +10,9 @@ package tacticalrecommendations
 
 type ApplyRecommendationSuccess struct {
 	// Index of the recommendation in the array from the request body.
-	Index float64 `json:"index"`
+	Index          float64         `json:"index"`
 	Recommendation *Recommendation `json:"recommendation"`
 	// Recommendation identifier.
-	RecommendationId string `json:"recommendationId"`
-	Success *ApiSuccess `json:"success"`
+	RecommendationId string      `json:"recommendationId"`
+	Success          *ApiSuccess `json:"success"`
 }

@@ -9,8 +9,8 @@
 package amazonadsv1
 
 type CreateMarketplaceTargetConfigurations struct {
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
-	Overrides *CreateMarketplaceTargetFieldOverrides `json:"overrides,omitempty"`
+	Marketplace *Marketplace                           `json:"marketplace,omitempty"`
+	Overrides   *CreateMarketplaceTargetFieldOverrides `json:"overrides,omitempty"`
 	// Represents marketplace target id (Ex: targetId-US) associated to global target (Ex: targetId-Global)
 	TargetId string `json:"targetId,omitempty"`
 }

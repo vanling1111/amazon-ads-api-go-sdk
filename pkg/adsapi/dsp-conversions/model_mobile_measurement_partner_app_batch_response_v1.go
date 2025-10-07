@@ -9,6 +9,6 @@
 package dspconversions
 
 type MobileMeasurementPartnerAppBatchResponseV1 struct {
-	Error_ []MobileMeasurementPartnerErrorResponseV1 `json:"error,omitempty"`
+	Error_  []MobileMeasurementPartnerErrorResponseV1   `json:"error,omitempty"`
 	Success []MobileMeasurementPartnerSuccessResponseV1 `json:"success,omitempty"`
 }

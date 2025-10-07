@@ -12,13 +12,13 @@ type Rasv1DateErrorReason string
 
 // List of RASv1DateErrorReason
 const (
-	END_DATE_EARLIER_THAN_TODAY_Rasv1DateErrorReason Rasv1DateErrorReason = "END_DATE_EARLIER_THAN_TODAY"
-	END_DATE_LATER_THAN_MAXIMUM_Rasv1DateErrorReason Rasv1DateErrorReason = "END_DATE_LATER_THAN_MAXIMUM"
-	INVALID_DATE_Rasv1DateErrorReason Rasv1DateErrorReason = "INVALID_DATE"
-	START_DATE_AFTER_END_DATE_Rasv1DateErrorReason Rasv1DateErrorReason = "START_DATE_AFTER_END_DATE"
-	START_DATE_EARLIER_THAN_TODAY_Rasv1DateErrorReason Rasv1DateErrorReason = "START_DATE_EARLIER_THAN_TODAY"
-	START_DATE_LATER_THAN_MAXIMUM_Rasv1DateErrorReason Rasv1DateErrorReason = "START_DATE_LATER_THAN_MAXIMUM"
+	END_DATE_EARLIER_THAN_TODAY_Rasv1DateErrorReason               Rasv1DateErrorReason = "END_DATE_EARLIER_THAN_TODAY"
+	END_DATE_LATER_THAN_MAXIMUM_Rasv1DateErrorReason               Rasv1DateErrorReason = "END_DATE_LATER_THAN_MAXIMUM"
+	INVALID_DATE_Rasv1DateErrorReason                              Rasv1DateErrorReason = "INVALID_DATE"
+	START_DATE_AFTER_END_DATE_Rasv1DateErrorReason                 Rasv1DateErrorReason = "START_DATE_AFTER_END_DATE"
+	START_DATE_EARLIER_THAN_TODAY_Rasv1DateErrorReason             Rasv1DateErrorReason = "START_DATE_EARLIER_THAN_TODAY"
+	START_DATE_LATER_THAN_MAXIMUM_Rasv1DateErrorReason             Rasv1DateErrorReason = "START_DATE_LATER_THAN_MAXIMUM"
 	UPDATING_ENDED_CAMPAIGN_WITHOUT_EXTENSION_Rasv1DateErrorReason Rasv1DateErrorReason = "UPDATING_ENDED_CAMPAIGN_WITHOUT_EXTENSION"
-	UPDATING_READ_ONLY_END_DATE_Rasv1DateErrorReason Rasv1DateErrorReason = "UPDATING_READ_ONLY_END_DATE"
-	UPDATING_READ_ONLY_START_DATE_Rasv1DateErrorReason Rasv1DateErrorReason = "UPDATING_READ_ONLY_START_DATE"
+	UPDATING_READ_ONLY_END_DATE_Rasv1DateErrorReason               Rasv1DateErrorReason = "UPDATING_READ_ONLY_END_DATE"
+	UPDATING_READ_ONLY_START_DATE_Rasv1DateErrorReason             Rasv1DateErrorReason = "UPDATING_READ_ONLY_START_DATE"
 )

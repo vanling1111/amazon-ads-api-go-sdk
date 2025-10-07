@@ -10,11 +10,11 @@ package retailadservice
 
 // Errors related to bids
 type Rasv1BiddingError struct {
-	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	Cause       *Rasv1ErrorCause  `json:"cause,omitempty"`
+	LowerLimit  string            `json:"lowerLimit,omitempty"`
 	Marketplace *Rasv1Marketplace `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1BiddingErrorReason `json:"reason"`
-	UpperLimit string `json:"upperLimit,omitempty"`
+	Message    string                   `json:"message"`
+	Reason     *Rasv1BiddingErrorReason `json:"reason"`
+	UpperLimit string                   `json:"upperLimit,omitempty"`
 }

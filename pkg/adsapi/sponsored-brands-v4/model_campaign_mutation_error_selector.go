@@ -9,10 +9,10 @@
 package sponsoredbrandsv4
 
 type CampaignMutationErrorSelector struct {
-	DateError *DateError `json:"dateError,omitempty"`
+	DateError    *DateError    `json:"dateError,omitempty"`
 	BiddingError *BiddingError `json:"biddingError,omitempty"`
-	BudgetError *BudgetError `json:"budgetError,omitempty"`
+	BudgetError  *BudgetError  `json:"budgetError,omitempty"`
 	BillingError *BillingError `json:"billingError,omitempty"`
-	RangeError *RangeError `json:"rangeError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
+	RangeError   *RangeError   `json:"rangeError,omitempty"`
+	OtherError   *OtherError   `json:"otherError,omitempty"`
 }

@@ -10,10 +10,10 @@ package sponsoreddisplayv3
 
 type Location struct {
 	LocationExpressionId int64 `json:"locationExpressionId,omitempty"`
-	AdGroupId int64 `json:"adGroupId,omitempty"`
+	AdGroupId            int64 `json:"adGroupId,omitempty"`
 	// The Location definition.
 	Expression []LocationExpression `json:"expression,omitempty"`
 	// The human-readable location definition.
 	ResolvedExpression []ResolvedLocationExpression `json:"resolvedExpression,omitempty"`
-	State string `json:"state,omitempty"`
+	State              string                       `json:"state,omitempty"`
 }

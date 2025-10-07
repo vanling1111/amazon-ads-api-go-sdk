@@ -12,6 +12,6 @@ type BatchGetConversionDefinitionsAssociatedForOrdersRequestV1 struct {
 	// Sets the maximum number of conversions in the returned array. Use in conjunction with the `nextToken` parameter to control pagination. The range for maxResults is [1,100] with default as 10. For example, supplying maxResults=20 with a previously returned token will fetch up to the next 20 items. In some cases, fewer items may be returned.
 	MaxResults int32 `json:"maxResults,omitempty"`
 	// Token from a previous request. Use in conjunction with the `maxResults` parameter to control pagination of the returned array.
-	NextToken string `json:"nextToken,omitempty"`
-	OrderIds []string `json:"orderIds,omitempty"`
+	NextToken string   `json:"nextToken,omitempty"`
+	OrderIds  []string `json:"orderIds,omitempty"`
 }

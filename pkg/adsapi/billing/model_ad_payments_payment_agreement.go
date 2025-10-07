@@ -11,7 +11,7 @@ package billing
 // Represents an agreement between two parties indicating what profile to use during payment execution.
 type AdPaymentsPaymentAgreement struct {
 	// The ID associated to this payment agreement.
-	PaymentAgreementId string `json:"paymentAgreementId,omitempty"`
-	PaymentProfile *AdPaymentsPaymentProfile `json:"paymentProfile"`
-	Target *AdPaymentsTarget `json:"target"`
+	PaymentAgreementId string                    `json:"paymentAgreementId,omitempty"`
+	PaymentProfile     *AdPaymentsPaymentProfile `json:"paymentProfile"`
+	Target             *AdPaymentsTarget         `json:"target"`
 }

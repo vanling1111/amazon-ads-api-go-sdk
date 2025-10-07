@@ -9,6 +9,6 @@
 package reachforecasting
 
 type ThemeTargetV1 struct {
-	MatchType *ThemeTargetMatchTypeV1 `json:"matchType"`
-	TargetType *ThemeTargetTypeV1 `json:"targetType"`
+	MatchType  *ThemeTargetMatchTypeV1 `json:"matchType"`
+	TargetType *ThemeTargetTypeV1      `json:"targetType"`
 }

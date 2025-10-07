@@ -10,16 +10,16 @@ package reportingv3
 
 type AsyncReportConfiguration struct {
 	AdProduct *AsyncReportAdProduct `json:"adProduct"`
-	// The list of columns to be used for report. The availability of columns depends on the selection of reportTypeId. This list cannot be null or empty. 
+	// The list of columns to be used for report. The availability of columns depends on the selection of reportTypeId. This list cannot be null or empty.
 	Columns []string `json:"columns"`
 	// The list of filters supported by a report type. The availability of filters fields depends on the selection of reportTypeId.
 	Filters []AsyncReportFilter `json:"filters,omitempty"`
 	// The report file format.
 	Format string `json:"format"`
-	// This field determines the aggregation level of the report data and also makes additional fields available for selection. This field cannot be null or empty. 
+	// This field determines the aggregation level of the report data and also makes additional fields available for selection. This field cannot be null or empty.
 	GroupBy []string `json:"groupBy"`
 	// The identifier of the Report Type to be generated.
 	ReportTypeId string `json:"reportTypeId"`
-	// The aggregation level of report data. If the timeUnit is set to `SUMMARY`, the report data is aggregated at the time period specified. The availability of time unit breakdowns depends on the selection of reportTypeId. 
+	// The aggregation level of report data. If the timeUnit is set to `SUMMARY`, the report data is aggregated at the time period specified. The availability of time unit breakdowns depends on the selection of reportTypeId.
 	TimeUnit string `json:"timeUnit"`
 }

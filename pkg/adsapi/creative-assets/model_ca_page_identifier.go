@@ -9,6 +9,6 @@
 package creativeassets
 
 type CaPageIdentifier struct {
-	PageNumber int32 `json:"pageNumber,omitempty"`
-	Token string `json:"token,omitempty"`
+	PageNumber int32  `json:"pageNumber,omitempty"`
+	Token      string `json:"token,omitempty"`
 }

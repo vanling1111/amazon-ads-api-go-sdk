@@ -9,6 +9,6 @@
 package sponsoreddisplayv3
 
 type RuleDuration struct {
-	EventTypeRuleDuration *EventTypeRuleDuration `json:"eventTypeRuleDuration,omitempty"`
+	EventTypeRuleDuration     *EventTypeRuleDuration     `json:"eventTypeRuleDuration,omitempty"`
 	DateRangeTypeRuleDuration *DateRangeTypeRuleDuration `json:"dateRangeTypeRuleDuration,omitempty"`
 }

@@ -10,5 +10,5 @@ package creativeassets
 
 type CaStorageLocationUrls struct {
 	ProcessedUrls *map[string]interface{} `json:"processedUrls,omitempty"`
-	DefaultUrl string `json:"defaultUrl,omitempty"`
+	DefaultUrl    string                  `json:"defaultUrl,omitempty"`
 }

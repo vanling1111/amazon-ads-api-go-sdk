@@ -11,7 +11,7 @@ package tacticalrecommendations
 type ListRecommendationsFilter struct {
 	Field *FilterField `json:"field"`
 	// Flag to specify if the filter should be included or excluded.
-	Include bool `json:"include,omitempty"`
+	Include  bool            `json:"include,omitempty"`
 	Operator *FilterOperator `json:"operator"`
-	Values []string `json:"values"`
+	Values   []string        `json:"values"`
 }

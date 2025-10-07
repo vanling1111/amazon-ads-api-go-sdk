@@ -9,6 +9,6 @@
 package dataprovider
 
 type InlineResponse400 struct {
-	RequestId string `json:"requestId,omitempty"`
-	Error_ *InlineResponse400Error `json:"error,omitempty"`
+	RequestId string                  `json:"requestId,omitempty"`
+	Error_    *InlineResponse400Error `json:"error,omitempty"`
 }

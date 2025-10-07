@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 type SubmitImageTasksResponseContent struct {
 	Submitted []Submitted `json:"submitted,omitempty"`
 	// As per API First guidance, batch API should return a separate list for success and errors in the response. The success/submitted and error fields will indicate the status of submission, they don't mean the status of image generation task. Status code will be 207 for partial successful requests and all successful requests. A batchId that is used to track status multiple tasks if they are submitted in one batch request If none of the request is submitted successfully, batchId will be null
-	BatchId string `json:"batchId,omitempty"`
-	Error_ []ErrorDetails `json:"error,omitempty"`
+	BatchId string         `json:"batchId,omitempty"`
+	Error_  []ErrorDetails `json:"error,omitempty"`
 }

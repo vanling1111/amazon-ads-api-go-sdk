@@ -11,6 +11,6 @@ package amazonadsv1
 type AdGroupBidMarketplaceSetting struct {
 	CurrencyCode *CurrencyCode `json:"currencyCode,omitempty"`
 	// The default maximum bid for ads and targets in the ad group. This is used in sponsored ads as the maximum bid during the auction.
-	DefaultBid float64 `json:"defaultBid,omitempty"`
+	DefaultBid  float64      `json:"defaultBid,omitempty"`
 	Marketplace *Marketplace `json:"marketplace,omitempty"`
 }

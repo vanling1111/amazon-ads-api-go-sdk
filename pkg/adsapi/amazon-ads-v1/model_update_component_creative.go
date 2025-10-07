@@ -9,11 +9,11 @@
 package amazonadsv1
 
 type UpdateComponentCreative struct {
-	AssetBasedCreativeSettings *UpdateAssetBasedCreativeSettings `json:"assetBasedCreativeSettings,omitempty"`
-	BrandStoreSettings *UpdateBrandStoreSettings `json:"brandStoreSettings,omitempty"`
-	DynamicCollectionSettings *UpdateDynamicCollectionSettings `json:"dynamicCollectionSettings,omitempty"`
-	ProductCollectionSettings *UpdateProductCollectionSettings `json:"productCollectionSettings,omitempty"`
-	ProductVideoSettings *UpdateProductVideoSettings `json:"productVideoSettings,omitempty"`
+	AssetBasedCreativeSettings  *UpdateAssetBasedCreativeSettings  `json:"assetBasedCreativeSettings,omitempty"`
+	BrandStoreSettings          *UpdateBrandStoreSettings          `json:"brandStoreSettings,omitempty"`
+	DynamicCollectionSettings   *UpdateDynamicCollectionSettings   `json:"dynamicCollectionSettings,omitempty"`
+	ProductCollectionSettings   *UpdateProductCollectionSettings   `json:"productCollectionSettings,omitempty"`
+	ProductVideoSettings        *UpdateProductVideoSettings        `json:"productVideoSettings,omitempty"`
 	ResponsiveEcommerceSettings *UpdateResponsiveEcommerceSettings `json:"responsiveEcommerceSettings,omitempty"`
-	StoreSpotlightSettings *UpdateStoreSpotlightSettings `json:"storeSpotlightSettings,omitempty"`
+	StoreSpotlightSettings      *UpdateStoreSpotlightSettings      `json:"storeSpotlightSettings,omitempty"`
 }

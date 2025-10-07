@@ -11,8 +11,8 @@ package sponsoredbrandsv4
 // Errors related to billing.
 type BillingError struct {
 	// Exact error reason.
-	Reason string `json:"reason"`
-	Cause *ErrorCause `json:"cause"`
+	Reason string      `json:"reason"`
+	Cause  *ErrorCause `json:"cause"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

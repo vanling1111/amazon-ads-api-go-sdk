@@ -12,8 +12,8 @@ type BulkGetBillingNotificationsErrorCodes string
 
 // List of bulkGetBillingNotificationsErrorCodes
 const (
-	BAD_REQUEST_BulkGetBillingNotificationsErrorCodes BulkGetBillingNotificationsErrorCodes = "BAD_REQUEST"
+	BAD_REQUEST_BulkGetBillingNotificationsErrorCodes    BulkGetBillingNotificationsErrorCodes = "BAD_REQUEST"
 	INTERNAL_ERROR_BulkGetBillingNotificationsErrorCodes BulkGetBillingNotificationsErrorCodes = "INTERNAL_ERROR"
 	NOT_AUTHORIZED_BulkGetBillingNotificationsErrorCodes BulkGetBillingNotificationsErrorCodes = "NOT_AUTHORIZED"
-	NOT_FOUND_BulkGetBillingNotificationsErrorCodes BulkGetBillingNotificationsErrorCodes = "NOT_FOUND"
+	NOT_FOUND_BulkGetBillingNotificationsErrorCodes      BulkGetBillingNotificationsErrorCodes = "NOT_FOUND"
 )

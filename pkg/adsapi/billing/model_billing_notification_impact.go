@@ -13,5 +13,5 @@ type BillingNotificationImpact string
 // List of billingNotificationImpact
 const (
 	CAMPAIGNS_SUSPENDED_BillingNotificationImpact BillingNotificationImpact = "CAMPAIGNS_SUSPENDED"
-	NO_IMPACT_BillingNotificationImpact BillingNotificationImpact = "NO_IMPACT"
+	NO_IMPACT_BillingNotificationImpact           BillingNotificationImpact = "NO_IMPACT"
 )

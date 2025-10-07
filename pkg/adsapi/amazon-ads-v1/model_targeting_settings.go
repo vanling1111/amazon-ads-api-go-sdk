@@ -9,16 +9,16 @@
 package amazonadsv1
 
 type TargetingSettings struct {
-	AmazonViewability *AmazonViewability `json:"amazonViewability,omitempty"`
-	AutomatedTargetingTactic *AutomatedTargetingTactic `json:"automatedTargetingTactic,omitempty"`
+	AmazonViewability                 *AmazonViewability                 `json:"amazonViewability,omitempty"`
+	AutomatedTargetingTactic          *AutomatedTargetingTactic          `json:"automatedTargetingTactic,omitempty"`
 	DefaultAudienceTargetingMatchType *DefaultAudienceTargetingMatchType `json:"defaultAudienceTargetingMatchType,omitempty"`
 	// If set to true, creatives will only target supply where the content language matches the creative language.
-	EnableLanguageTargeting bool `json:"enableLanguageTargeting,omitempty"`
-	SiteLanguage *SiteLanguage `json:"siteLanguage,omitempty"`
+	EnableLanguageTargeting        bool                            `json:"enableLanguageTargeting,omitempty"`
+	SiteLanguage                   *SiteLanguage                   `json:"siteLanguage,omitempty"`
 	TacticsConvertersExclusionType *TacticsConvertersExclusionType `json:"tacticsConvertersExclusionType,omitempty"`
 	// DealId to be targeted by the Ad Group being created. If you are creating an ad group targeting a programmatic guaranteed deal, the deal can be provided here.
-	TargetedPGDealId string `json:"targetedPGDealId,omitempty"`
-	TimeZoneType *TimeZoneType `json:"timeZoneType,omitempty"`
-	UserLocationSignal *UserLocationSignal `json:"userLocationSignal,omitempty"`
+	TargetedPGDealId    string               `json:"targetedPGDealId,omitempty"`
+	TimeZoneType        *TimeZoneType        `json:"timeZoneType,omitempty"`
+	UserLocationSignal  *UserLocationSignal  `json:"userLocationSignal,omitempty"`
 	VideoCompletionTier *VideoCompletionTier `json:"videoCompletionTier,omitempty"`
 }

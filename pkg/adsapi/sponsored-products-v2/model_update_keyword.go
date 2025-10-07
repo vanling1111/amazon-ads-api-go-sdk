@@ -11,7 +11,7 @@ package sponsoredproductsv2
 type UpdateKeyword struct {
 	// The identifier of the keyword.
 	KeywordId float64 `json:"keywordId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// Bid associated with this keyword. Applicable to biddable match types only.
 	Bid float32 `json:"bid,omitempty"`
 }

@@ -10,7 +10,7 @@ package dspmeasurement
 
 // The planning eligibility response object.
 type PlanningEligibilityResponseV1M3 struct {
-	Metadata *EligibilityMetadataV1 `json:"metadata,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	Metadata                   *EligibilityMetadataV1    `json:"metadata,omitempty"`
+	NextToken                  string                    `json:"nextToken,omitempty"`
 	VendorProductEligibilities []PlanningEligibilityV1M3 `json:"vendorProductEligibilities,omitempty"`
 }

@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type ModelError struct {
-	Code *ErrorCode `json:"code"`
-	FieldLocation string `json:"fieldLocation,omitempty"`
-	Message string `json:"message"`
+	Code          *ErrorCode `json:"code"`
+	FieldLocation string     `json:"fieldLocation,omitempty"`
+	Message       string     `json:"message"`
 }

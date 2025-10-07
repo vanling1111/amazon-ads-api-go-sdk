@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type UpdateBudgetSettings struct {
-	BudgetAllocation *BudgetAllocation `json:"budgetAllocation,omitempty"`
-	FlightBudgetRolloverStrategy *RolloverStrategy `json:"flightBudgetRolloverStrategy,omitempty"`
+	BudgetAllocation               *BudgetAllocation               `json:"budgetAllocation,omitempty"`
+	FlightBudgetRolloverStrategy   *RolloverStrategy               `json:"flightBudgetRolloverStrategy,omitempty"`
 	OffAmazonBudgetControlStrategy *OffAmazonBudgetControlStrategy `json:"offAmazonBudgetControlStrategy,omitempty"`
 }

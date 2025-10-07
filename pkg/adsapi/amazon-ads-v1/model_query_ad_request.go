@@ -9,13 +9,13 @@
 package amazonadsv1
 
 type QueryAdRequest struct {
-	AdGroupIdFilter *AdAdGroupIdFilter `json:"adGroupIdFilter,omitempty"`
-	AdIdFilter *AdAdIdFilter `json:"adIdFilter,omitempty"`
-	AdProductFilter *AdAdProductFilter `json:"adProductFilter"`
-	CampaignIdFilter *AdCampaignIdFilter `json:"campaignIdFilter,omitempty"`
+	AdGroupIdFilter        *AdAdGroupIdFilter        `json:"adGroupIdFilter,omitempty"`
+	AdIdFilter             *AdAdIdFilter             `json:"adIdFilter,omitempty"`
+	AdProductFilter        *AdAdProductFilter        `json:"adProductFilter"`
+	CampaignIdFilter       *AdCampaignIdFilter       `json:"campaignIdFilter,omitempty"`
 	MarketplaceScopeFilter *AdMarketplaceScopeFilter `json:"marketplaceScopeFilter,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NameFilter *AdNameFilter `json:"nameFilter,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
-	StateFilter *AdStateFilter `json:"stateFilter,omitempty"`
+	MaxResults             int32                     `json:"maxResults,omitempty"`
+	NameFilter             *AdNameFilter             `json:"nameFilter,omitempty"`
+	NextToken              string                    `json:"nextToken,omitempty"`
+	StateFilter            *AdStateFilter            `json:"stateFilter,omitempty"`
 }

@@ -26,18 +26,18 @@ type ResponsiveEcommerceSettings struct {
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
 	// The inventory types this creative should serve on.
-	InventoryTypes []ComponentInventoryType `json:"inventoryTypes,omitempty"`
-	LandingPage *ResponsiveEcommerceLandingPage `json:"landingPage,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
-	Logos *Image `json:"logos,omitempty"`
-	ModerationStatus *CreativeStatus `json:"moderationStatus,omitempty"`
-	OptimizationGoalKpi *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
+	InventoryTypes      []ComponentInventoryType        `json:"inventoryTypes,omitempty"`
+	LandingPage         *ResponsiveEcommerceLandingPage `json:"landingPage,omitempty"`
+	Language            *LanguageLocale                 `json:"language,omitempty"`
+	Logos               *Image                          `json:"logos,omitempty"`
+	ModerationStatus    *CreativeStatus                 `json:"moderationStatus,omitempty"`
+	OptimizationGoalKpi *CreativeOptimizationGoalKpi    `json:"optimizationGoalKpi,omitempty"`
 	// The products advertised for the Responsive eCommerce experience.
 	Products []AdvertisedProducts `json:"products,omitempty"`
 	// The rendering variations selected for the Responsive eCommerce experience.
-	RecAdVariations []ResponsiveEcommerceAdVariations `json:"recAdVariations,omitempty"`
-	ResponsiveSizingBehavior *ResponsiveSizingBehavior `json:"responsiveSizingBehavior,omitempty"`
-	SupportedThirdPartySellers *SupportedThirdPartySellers `json:"supportedThirdPartySellers,omitempty"`
+	RecAdVariations            []ResponsiveEcommerceAdVariations `json:"recAdVariations,omitempty"`
+	ResponsiveSizingBehavior   *ResponsiveSizingBehavior         `json:"responsiveSizingBehavior,omitempty"`
+	SupportedThirdPartySellers *SupportedThirdPartySellers       `json:"supportedThirdPartySellers,omitempty"`
 	// The headline entered by the advertiser.
 	UntranslatedHeadlines string `json:"untranslatedHeadlines,omitempty"`
 }

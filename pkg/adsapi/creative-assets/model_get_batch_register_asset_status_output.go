@@ -9,8 +9,8 @@
 package creativeassets
 
 type GetBatchRegisterAssetStatusOutput struct {
-	RegistrationStatus *CaRegistrationStatus `json:"registrationStatus,omitempty"`
+	RegistrationStatus           *CaRegistrationStatus              `json:"registrationStatus,omitempty"`
 	SuccessfullyRegisteredAssets *[]CaSuccessfulRegistrationDetails `json:"successfullyRegisteredAssets,omitempty"`
-	InProgressAssetDetails *[]CaInProgressRegistrationDetails `json:"inProgressAssetDetails,omitempty"`
-	FailedAssetDetails *[]CaFailedRegistrationDetails `json:"failedAssetDetails,omitempty"`
+	InProgressAssetDetails       *[]CaInProgressRegistrationDetails `json:"inProgressAssetDetails,omitempty"`
+	FailedAssetDetails           *[]CaFailedRegistrationDetails     `json:"failedAssetDetails,omitempty"`
 }

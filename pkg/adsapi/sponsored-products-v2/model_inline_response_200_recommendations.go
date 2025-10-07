@@ -9,8 +9,8 @@
 package sponsoredproductsv2
 
 type InlineResponse200Recommendations struct {
-	SuggestedBid *SuggestedBid `json:"suggestedBid,omitempty"`
-	Expression *TargetingExpressionPredicate `json:"expression,omitempty"`
+	SuggestedBid *SuggestedBid                 `json:"suggestedBid,omitempty"`
+	Expression   *TargetingExpressionPredicate `json:"expression,omitempty"`
 	// The response code.
 	Code string `json:"code,omitempty"`
 }

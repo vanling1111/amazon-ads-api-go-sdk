@@ -11,9 +11,9 @@ package dspmeasurement
 // The list of eligibility issues.
 type EligibilityIssueV1 struct {
 	// An enumerated issue code for machine use.
-	Code string `json:"code,omitempty"`
+	Code  string              `json:"code,omitempty"`
 	Field *EligibilityFieldV1 `json:"field,omitempty"`
 	// A human-readable description of the issue with suggestions on how to resolve the issue.
-	Message string `json:"message,omitempty"`
+	Message  string                      `json:"message,omitempty"`
 	Severity *EligibilityIssueSeverityV1 `json:"severity,omitempty"`
 }

@@ -12,10 +12,10 @@ type Rasv1MalformedValueErrorReason string
 
 // List of RASv1MalformedValueErrorReason
 const (
-	BLANK_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "BLANK"
-	FORBIDDEN_CHARS_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "FORBIDDEN_CHARS"
+	BLANK_Rasv1MalformedValueErrorReason                          Rasv1MalformedValueErrorReason = "BLANK"
+	FORBIDDEN_CHARS_Rasv1MalformedValueErrorReason                Rasv1MalformedValueErrorReason = "FORBIDDEN_CHARS"
 	LEADING_OR_TRAILING_WHITESPACE_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "LEADING_OR_TRAILING_WHITESPACE"
-	PATTERN_NOT_MATCHED_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "PATTERN_NOT_MATCHED"
-	TOO_LONG_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "TOO_LONG"
-	TOO_SHORT_Rasv1MalformedValueErrorReason Rasv1MalformedValueErrorReason = "TOO_SHORT"
+	PATTERN_NOT_MATCHED_Rasv1MalformedValueErrorReason            Rasv1MalformedValueErrorReason = "PATTERN_NOT_MATCHED"
+	TOO_LONG_Rasv1MalformedValueErrorReason                       Rasv1MalformedValueErrorReason = "TOO_LONG"
+	TOO_SHORT_Rasv1MalformedValueErrorReason                      Rasv1MalformedValueErrorReason = "TOO_SHORT"
 )

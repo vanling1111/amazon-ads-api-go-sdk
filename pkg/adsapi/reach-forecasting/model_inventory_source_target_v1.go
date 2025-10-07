@@ -10,7 +10,7 @@ package reachforecasting
 
 type InventorySourceTargetV1 struct {
 	// The identifier of the inventory source. These can be obtained from the inventory sources discovery endpoint.
-	InventorySourceId string `json:"inventorySourceId"`
-	InventorySourceType *InventorySourceTypeV1 `json:"inventorySourceType"`
-	TargetType *InventorySourceTargetTypeV1 `json:"targetType"`
+	InventorySourceId   string                       `json:"inventorySourceId"`
+	InventorySourceType *InventorySourceTypeV1       `json:"inventorySourceType"`
+	TargetType          *InventorySourceTargetTypeV1 `json:"targetType"`
 }

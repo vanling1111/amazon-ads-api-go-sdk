@@ -10,11 +10,11 @@ package sponsoredbrandsv4
 
 // Object representing details of a budget rule for SP campaign
 type SpBudgetRuleDetails struct {
-	Duration *RuleDuration `json:"duration,omitempty"`
-	Recurrence *Recurrence `json:"recurrence,omitempty"`
-	RuleType *SpRuleType `json:"ruleType,omitempty"`
+	Duration         *RuleDuration     `json:"duration,omitempty"`
+	Recurrence       *Recurrence       `json:"recurrence,omitempty"`
+	RuleType         *SpRuleType       `json:"ruleType,omitempty"`
 	BudgetIncreaseBy *BudgetIncreaseBy `json:"budgetIncreaseBy,omitempty"`
 	// The budget rule name. Required to be unique within a campaign.
-	Name string `json:"name,omitempty"`
+	Name                        string                       `json:"name,omitempty"`
 	PerformanceMeasureCondition *PerformanceMeasureCondition `json:"performanceMeasureCondition,omitempty"`
 }

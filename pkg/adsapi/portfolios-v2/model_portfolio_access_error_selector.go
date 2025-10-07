@@ -9,10 +9,10 @@
 package portfoliosv2
 
 type PortfolioAccessErrorSelector struct {
-	DateError *PortfolioDateError `json:"dateError,omitempty"`
+	DateError           *PortfolioDateError           `json:"dateError,omitempty"`
 	EntityNotFoundError *PortfolioEntityNotFoundError `json:"entityNotFoundError,omitempty"`
 	MalformedValueError *PortfolioMalformedValueError `json:"malformedValueError,omitempty"`
-	MissingValueError *PortfolioMissingValueError `json:"missingValueError,omitempty"`
-	OtherError *PortfolioOtherError `json:"otherError,omitempty"`
-	RangeError *PortfolioRangeError `json:"rangeError,omitempty"`
+	MissingValueError   *PortfolioMissingValueError   `json:"missingValueError,omitempty"`
+	OtherError          *PortfolioOtherError          `json:"otherError,omitempty"`
+	RangeError          *PortfolioRangeError          `json:"rangeError,omitempty"`
 }

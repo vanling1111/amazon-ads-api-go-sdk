@@ -10,12 +10,12 @@ package dspmeasurement
 
 type OmnichannelMetricsBrandV1M2 struct {
 	// The brand name.
-	Brand string `json:"brand,omitempty"`
+	Brand    string `json:"brand,omitempty"`
 	Category string `json:"category,omitempty"`
-	Company string `json:"company,omitempty"`
+	Company  string `json:"company,omitempty"`
 	// The brand canonical Id
-	Id string `json:"id,omitempty"`
-	MajorBrand string `json:"majorBrand,omitempty"`
+	Id           string `json:"id,omitempty"`
+	MajorBrand   string `json:"majorBrand,omitempty"`
 	Manufacturer string `json:"manufacturer,omitempty"`
-	Subcategory string `json:"subcategory,omitempty"`
+	Subcategory  string `json:"subcategory,omitempty"`
 }

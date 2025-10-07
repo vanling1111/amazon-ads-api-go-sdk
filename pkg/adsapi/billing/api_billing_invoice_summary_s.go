@@ -1,4 +1,3 @@
-
 /*
  * Advertising Billing
  *
@@ -11,11 +10,11 @@ package billing
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -24,6 +23,7 @@ var (
 )
 
 type BillingInvoiceSummarySApiService service
+
 /*
 BillingInvoiceSummarySApiService Lists the billing invoice summary(s) in a global ads account as per the search and aggregation parameters passed in the request
 Lists the billing invoice summary(s) in a global ads account. You can further narrow down the search by providing filter(s) over country, status, paymentMethod with &#x27;exact&#x27; and &#x27;broad&#x27; match, search over invoice number &amp; ro number and aggregation query(s) over the billing invoice summary(s)  **Authorized resource type**: Global Ad Account ID, Profile ID  **Parameter name**: Amazon-Ads-AccountId  **Parameter in**: header  **Requires one of these permissions**: [\&quot;nemo_transactions_edit\&quot;,\&quot;nemo_transactions_view\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;MasterAccount_Manager\&quot;]  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;nemo_transactions_edit\&quot;,\&quot;nemo_transactions_view\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;MasterAccount_Manager\&quot;]  **Authorized resource type**: DSP Rodeo Entity ID, DSP Advertiser Account ID  **Parameter name**: Amazon-Ads-AccountId  **Parameter in**: header  **Requires one of these permissions**: []
@@ -37,16 +37,16 @@ Lists the billing invoice summary(s) in a global ads account. You can further na
 */
 
 type BillingInvoiceSummarySApiGetBillingInvoiceSummariesOpts struct {
-    AmazonAdsAccountId optional.String
-    AmazonAdvertisingAPIManagerAccount optional.String
+	AmazonAdsAccountId                 optional.String
+	AmazonAdvertisingAPIManagerAccount optional.String
 }
 
 func (a *BillingInvoiceSummarySApiService) GetBillingInvoiceSummaries(ctx context.Context, body BillingInvoiceSummariesRequest, amazonAdvertisingAPIClientId string, localVarOptionals *BillingInvoiceSummarySApiGetBillingInvoiceSummariesOpts) (BillingInvoiceSummariesResponse, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue BillingInvoiceSummariesResponse
 	)
 
@@ -101,56 +101,56 @@ func (a *BillingInvoiceSummarySApiService) GetBillingInvoiceSummaries(ctx contex
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v BillingInvoiceSummariesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v BillingProfileErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 401 {
 			var v BillingProfileErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v BillingProfileErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

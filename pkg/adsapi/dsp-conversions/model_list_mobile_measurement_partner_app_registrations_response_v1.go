@@ -11,6 +11,6 @@ package dspconversions
 type ListMobileMeasurementPartnerAppRegistrationsResponseV1 struct {
 	// Array of Mobile Measurement Partner app registrations given filters.
 	AppRegistrations []MobileMeasurementPartnerAppRegistrationV1 `json:"appRegistrations,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	MaxResults       int32                                       `json:"maxResults,omitempty"`
+	NextToken        string                                      `json:"nextToken,omitempty"`
 }

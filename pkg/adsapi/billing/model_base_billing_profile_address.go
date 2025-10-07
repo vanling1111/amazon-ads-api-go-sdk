@@ -15,14 +15,14 @@ type BaseBillingProfileAddress struct {
 	AddressLine3 string `json:"addressLine3,omitempty"`
 	// The name of the person or organization who is going to recieve the invoice
 	BillingName string `json:"billingName"`
-	City string `json:"city"`
+	City        string `json:"city"`
 	// Contact name for the billing profile which will also be printed on the invoice.
-	ContactName string `json:"contactName"`
-	CountryCode string `json:"countryCode"`
-	FaxNumber string `json:"faxNumber,omitempty"`
-	PhoneNumber string `json:"phoneNumber,omitempty"`
-	PostalCode string `json:"postalCode,omitempty"`
-	PrimaryEmail string `json:"primaryEmail"`
+	ContactName     string   `json:"contactName"`
+	CountryCode     string   `json:"countryCode"`
+	FaxNumber       string   `json:"faxNumber,omitempty"`
+	PhoneNumber     string   `json:"phoneNumber,omitempty"`
+	PostalCode      string   `json:"postalCode,omitempty"`
+	PrimaryEmail    string   `json:"primaryEmail"`
 	SecondaryEmails []string `json:"secondaryEmails,omitempty"`
-	StateOrRegion string `json:"stateOrRegion,omitempty"`
+	StateOrRegion   string   `json:"stateOrRegion,omitempty"`
 }

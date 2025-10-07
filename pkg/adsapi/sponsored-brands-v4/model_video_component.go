@@ -11,8 +11,8 @@ package sponsoredbrandsv4
 // Video component which needs to be pre moderated. A publicly accessible videoUrl must be sent.
 type VideoComponent struct {
 	// Type of the video component.
-	ComponentType string `json:"componentType"`
-	LandingPage *LandingPage `json:"landingPage,omitempty"`
+	ComponentType string       `json:"componentType"`
+	LandingPage   *LandingPage `json:"landingPage,omitempty"`
 	// Id of the component. The same will be returned as part of the response as well. This can be used to uniquely identify the component from the pre moderation response.
 	Id string `json:"id"`
 	// Url of the video to be pre moderated. The url must be publicly accessible.

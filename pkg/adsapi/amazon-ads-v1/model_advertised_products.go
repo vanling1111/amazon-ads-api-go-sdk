@@ -13,9 +13,9 @@ type AdvertisedProducts struct {
 	// List of advertised product selectively applied at the given marketplace level
 	MarketplaceSettings []AdvertisedProductMarketplaceSetting `json:"marketplaceSettings,omitempty"`
 	// The identifier of the advertised product.
-	ProductId string `json:"productId,omitempty"`
+	ProductId     string         `json:"productId,omitempty"`
 	ProductIdType *ProductIdType `json:"productIdType"`
 	// The identifier of product associated with the advertised product. It's a read-only field.
-	ResolvedProductId string `json:"resolvedProductId,omitempty"`
+	ResolvedProductId     string         `json:"resolvedProductId,omitempty"`
 	ResolvedProductIdType *ProductIdType `json:"resolvedProductIdType,omitempty"`
 }

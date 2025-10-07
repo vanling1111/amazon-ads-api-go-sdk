@@ -10,14 +10,14 @@ package tacticalrecommendations
 
 // Benchmark Context for the recommendation.   | Benchmark | Description | |---|---| | Impressions | Impressions received by the campaign over the specified time period | | Roas | Return on ad spend (RoAS) for the campaign over the specified time period | | AdSpend | The ad spend incurrend by the campaign over the specified time period | | ClickthroughRate | The clickthrough rate of the campaign over the specified time period | | BudgetUtilization | Average budget used by the campaign as a percent of total budget allocated, over the specified time period | | BrandedSearches | The branded searches of the campaign over the specified time period | | DetailPageViews | The detail page views of the campaign over the specified time period | | AttributedOrders | The attributed orders of the campaign over the specified time period | | CostPerBrandedSearch | The cost per branded search of the campaign over the specified time period | | CostPerDetailPageView | The cost per detail page view of the campaign over the specified time period |
 type BenchmarkContext struct {
-	AdSpend *Benchmark `json:"adSpend,omitempty"`
-	AttributedOrders *Benchmark `json:"attributedOrders,omitempty"`
-	BrandedSearches *Benchmark `json:"brandedSearches,omitempty"`
-	BudgetUtilization *Benchmark `json:"budgetUtilization,omitempty"`
-	ClickthroughRate *Benchmark `json:"clickthroughRate,omitempty"`
-	CostPerBrandedSearch *Benchmark `json:"costPerBrandedSearch,omitempty"`
+	AdSpend               *Benchmark `json:"adSpend,omitempty"`
+	AttributedOrders      *Benchmark `json:"attributedOrders,omitempty"`
+	BrandedSearches       *Benchmark `json:"brandedSearches,omitempty"`
+	BudgetUtilization     *Benchmark `json:"budgetUtilization,omitempty"`
+	ClickthroughRate      *Benchmark `json:"clickthroughRate,omitempty"`
+	CostPerBrandedSearch  *Benchmark `json:"costPerBrandedSearch,omitempty"`
 	CostPerDetailPageView *Benchmark `json:"costPerDetailPageView,omitempty"`
-	DetailPageViews *Benchmark `json:"detailPageViews,omitempty"`
-	Impressions *Benchmark `json:"impressions,omitempty"`
-	Roas *Benchmark `json:"roas,omitempty"`
+	DetailPageViews       *Benchmark `json:"detailPageViews,omitempty"`
+	Impressions           *Benchmark `json:"impressions,omitempty"`
+	Roas                  *Benchmark `json:"roas,omitempty"`
 }

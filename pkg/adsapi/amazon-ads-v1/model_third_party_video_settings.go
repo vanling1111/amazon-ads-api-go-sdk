@@ -11,7 +11,7 @@ package amazonadsv1
 type ThirdPartyVideoSettings struct {
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language               *LanguageLocale       `json:"language,omitempty"`
 	// The url to use to fetch the VAST XML for this video creative.
 	VastUrl string `json:"vastUrl,omitempty"`
 }

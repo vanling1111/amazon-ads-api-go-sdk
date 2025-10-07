@@ -10,6 +10,6 @@ package amazonadsv1
 
 type PlacementBidAdjustment struct {
 	// The selection of the percentage change associated with a given placement and bid adjustment settings.
-	Percentage int32 `json:"percentage,omitempty"`
-	Placement *Placement `json:"placement,omitempty"`
+	Percentage int32      `json:"percentage,omitempty"`
+	Placement  *Placement `json:"placement,omitempty"`
 }

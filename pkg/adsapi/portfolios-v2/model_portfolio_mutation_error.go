@@ -10,6 +10,6 @@ package portfoliosv2
 
 type PortfolioMutationError struct {
 	// The type of the error
-	ErrorType string `json:"errorType"`
+	ErrorType  string                          `json:"errorType"`
 	ErrorValue *PortfolioMutationErrorSelector `json:"errorValue"`
 }

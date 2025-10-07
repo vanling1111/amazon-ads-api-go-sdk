@@ -9,7 +9,7 @@
 package sponsoredtv
 
 type ForecastErrorSelector struct {
-	ForecastOtherError *ForecastOtherError `json:"forecastOtherError,omitempty"`
-	ForecastRulesError *ForecastRulesError `json:"forecastRulesError,omitempty"`
+	ForecastOtherError      *ForecastOtherError      `json:"forecastOtherError,omitempty"`
+	ForecastRulesError      *ForecastRulesError      `json:"forecastRulesError,omitempty"`
 	ForecastValidationError *ForecastValidationError `json:"forecastValidationError,omitempty"`
 }

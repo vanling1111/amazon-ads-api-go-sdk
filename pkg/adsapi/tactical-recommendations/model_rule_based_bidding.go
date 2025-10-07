@@ -11,10 +11,10 @@ package tacticalrecommendations
 // Rule based bidding for the campaign to which this recommendation is associated.
 type RuleBasedBidding struct {
 	// Identifier of the campaign optimization.
-	CampaignOptimizationId string `json:"campaignOptimizationId,omitempty"`
+	CampaignOptimizationId string           `json:"campaignOptimizationId,omitempty"`
 	CurrentBiddingStrategy *BiddingStrategy `json:"currentBiddingStrategy,omitempty"`
 	// Current threshold of the RoAS performance metric.
-	CurrentRuleRoas float64 `json:"currentRuleRoas,omitempty"`
+	CurrentRuleRoas            float64          `json:"currentRuleRoas,omitempty"`
 	RecommendedBiddingStrategy *BiddingStrategy `json:"recommendedBiddingStrategy"`
 	// Recommended threshold of the RoAS performance metric.
 	RecommendedRuleRoas float64 `json:"recommendedRuleRoas"`

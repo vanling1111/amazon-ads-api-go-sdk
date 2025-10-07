@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type ServiceUnavailableErrorResponseContent struct {
-	Code string `json:"code"`
+	Code    string `json:"code"`
 	Message string `json:"message"`
 }

@@ -9,6 +9,6 @@
 package billing
 
 type GetDocumentResponseContent struct {
-	AvailableDocuments []AvailableDocumentResponse `json:"availableDocuments,omitempty"`
+	AvailableDocuments   []AvailableDocumentResponse   `json:"availableDocuments,omitempty"`
 	UnavailableDocuments []UnavailableDocumentResponse `json:"unavailableDocuments,omitempty"`
 }

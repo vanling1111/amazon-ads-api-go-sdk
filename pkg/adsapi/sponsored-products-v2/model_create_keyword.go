@@ -13,14 +13,14 @@ type CreateKeyword struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which this keyword is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The keyword text.
 	KeywordText string `json:"keywordText,omitempty"`
 	// The unlocalized keyword text in the preferred locale of the advertiser.
 	NativeLanguageKeyword string `json:"nativeLanguageKeyword,omitempty"`
 	// The locale preference of the advertiser. For example, if the advertiser’s preferred language is Simplified Chinese, set the locale to `zh_CN`. Supported locales include: Simplified Chinese (locale: zh_CN) for US, UK and CA. English (locale: en_GB) for DE, FR, IT and ES.
-	NativeLanguageLocale string `json:"nativeLanguageLocale,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	NativeLanguageLocale string     `json:"nativeLanguageLocale,omitempty"`
+	MatchType            *MatchType `json:"matchType,omitempty"`
 	// Bid associated with this keyword. Applicable to biddable match types only.
 	Bid float32 `json:"bid,omitempty"`
 }

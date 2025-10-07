@@ -10,5 +10,5 @@ package dspconversions
 
 type ConversionDefinitionAssociatedAdTagEventV1 struct {
 	AdTagEventName string `json:"adTagEventName,omitempty"`
-	AdTagId string `json:"adTagId,omitempty"`
+	AdTagId        string `json:"adTagId,omitempty"`
 }

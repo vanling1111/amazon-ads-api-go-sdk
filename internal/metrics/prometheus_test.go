@@ -345,4 +345,3 @@ func BenchmarkStatusCodeToString(b *testing.B) {
 		_ = statusCodeToString(200)
 	}
 }
-

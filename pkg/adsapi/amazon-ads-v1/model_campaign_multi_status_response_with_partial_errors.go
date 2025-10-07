@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type CampaignMultiStatusResponseWithPartialErrors struct {
-	Error_ []ErrorsIndex `json:"error,omitempty"`
-	PartialSuccess []CampaignPartialIndex `json:"partialSuccess,omitempty"`
-	Success []CampaignMultiStatusSuccess `json:"success,omitempty"`
+	Error_         []ErrorsIndex                `json:"error,omitempty"`
+	PartialSuccess []CampaignPartialIndex       `json:"partialSuccess,omitempty"`
+	Success        []CampaignMultiStatusSuccess `json:"success,omitempty"`
 }

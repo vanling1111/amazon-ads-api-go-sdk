@@ -11,7 +11,7 @@ package posts
 // Set of aggregated metric for a given date range.
 type AggregateProfileMetrics struct {
 	ClicksToDetailPage float64 `json:"clicksToDetailPage,omitempty"`
-	Engagements float64 `json:"engagements,omitempty"`
-	Impressions float64 `json:"impressions,omitempty"`
-	Reach float64 `json:"reach,omitempty"`
+	Engagements        float64 `json:"engagements,omitempty"`
+	Impressions        float64 `json:"impressions,omitempty"`
+	Reach              float64 `json:"reach,omitempty"`
 }

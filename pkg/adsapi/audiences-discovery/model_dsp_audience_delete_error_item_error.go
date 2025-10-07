@@ -9,8 +9,8 @@
 package audiencesdiscovery
 
 type DspAudienceDeleteErrorItemError struct {
-	ErrorCode *ErrorType `json:"errorCode"`
-	ErrorId int32 `json:"errorId"`
-	ErrorMessage string `json:"errorMessage"`
-	FieldName string `json:"fieldName,omitempty"`
+	ErrorCode    *ErrorType `json:"errorCode"`
+	ErrorId      int32      `json:"errorId"`
+	ErrorMessage string     `json:"errorMessage"`
+	FieldName    string     `json:"fieldName,omitempty"`
 }

@@ -44,6 +44,15 @@ issues:
       linters:
         - errcheck
         - gosec
+        - bodyclose
+        - noctx
+    # 自动生成的代码允许更宽松的规则
+    - path: pkg/adsapi/.*/(api_|model_|client\.go|response\.go)
+      linters:
+        - errcheck
+        - gosec
+        - bodyclose
+        - noctx
   
   max-issues-per-linter: 0
   max-same-issues: 0

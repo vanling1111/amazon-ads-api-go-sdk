@@ -11,8 +11,8 @@ package dataprovider
 // An object that contains user consent. Only one type of consent(TCF, GPP, amazonConsent) should be provided.
 type V2dpaudienceConsent struct {
 	// The type of consent provided.
-	ConsentType string `json:"consentType,omitempty"`
-	Tcf string `json:"tcf,omitempty"`
-	Gpp string `json:"gpp,omitempty"`
+	ConsentType   string         `json:"consentType,omitempty"`
+	Tcf           string         `json:"tcf,omitempty"`
+	Gpp           string         `json:"gpp,omitempty"`
 	AmazonConsent *AmazonConsent `json:"amazonConsent,omitempty"`
 }

@@ -10,6 +10,6 @@ package amazonadsv1
 
 // Target based on the source of the inventory.
 type InventorySourceTarget struct {
-	InventorySourceId *MarketplaceStringValue `json:"inventorySourceId,omitempty"`
-	InventorySourceType *InventorySourceType `json:"inventorySourceType,omitempty"`
+	InventorySourceId   *MarketplaceStringValue `json:"inventorySourceId,omitempty"`
+	InventorySourceType *InventorySourceType    `json:"inventorySourceType,omitempty"`
 }

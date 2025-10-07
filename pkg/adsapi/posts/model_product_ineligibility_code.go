@@ -12,7 +12,7 @@ type ProductIneligibilityCode string
 
 // List of ProductIneligibilityCode
 const (
-	INVALID_ProductIneligibilityCode ProductIneligibilityCode = "INVALID"
-	PROHIBITED_ProductIneligibilityCode ProductIneligibilityCode = "PROHIBITED"
+	INVALID_ProductIneligibilityCode      ProductIneligibilityCode = "INVALID"
+	PROHIBITED_ProductIneligibilityCode   ProductIneligibilityCode = "PROHIBITED"
 	UNAUTHORIZED_ProductIneligibilityCode ProductIneligibilityCode = "UNAUTHORIZED"
 )

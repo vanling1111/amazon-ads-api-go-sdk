@@ -18,5 +18,5 @@ type SdTargetingRecommendationsV35 struct {
 	Audiences []SdAudienceCategoryRecommendations `json:"audiences,omitempty"`
 	// List of recommended entertainment targets
 	ContentCategories []SdContentCategoryRecommendations `json:"contentCategories,omitempty"`
-	Themes *SdThemeRecommendationsV34 `json:"themes,omitempty"`
+	Themes            *SdThemeRecommendationsV34         `json:"themes,omitempty"`
 }

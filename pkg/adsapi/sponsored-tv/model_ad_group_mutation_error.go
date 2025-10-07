@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type AdGroupMutationError struct {
-	ErrorType *AdGroupErrorType `json:"errorType"`
+	ErrorType  *AdGroupErrorType             `json:"errorType"`
 	ErrorValue *AdGroupMutationErrorSelector `json:"errorValue"`
 }

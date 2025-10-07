@@ -11,7 +11,7 @@ package sponsoredtv
 type SponsoredTvForecastsRequestContent struct {
 	AdGroup *ForecastAdGroup `json:"adGroup"`
 	// list of product Ads specified in ST forecast.
-	Ads []ForecastAd `json:"ads"`
+	Ads      []ForecastAd      `json:"ads"`
 	Campaign *ForecastCampaign `json:"campaign"`
 	Creative *ForecastCreative `json:"creative,omitempty"`
 	// list of location targeting clauses specified in ST forecast

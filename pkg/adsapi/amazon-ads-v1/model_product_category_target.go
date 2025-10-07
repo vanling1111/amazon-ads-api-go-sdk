@@ -11,5 +11,5 @@ package amazonadsv1
 // Targets a specific customer search term.
 type ProductCategoryTarget struct {
 	ProductCategoryRefinement *ProductCategoryRefinementValue `json:"productCategoryRefinement,omitempty"`
-	ProductGenreRefinement *ProductGenreRefinement `json:"productGenreRefinement,omitempty"`
+	ProductGenreRefinement    *ProductGenreRefinement         `json:"productGenreRefinement,omitempty"`
 }

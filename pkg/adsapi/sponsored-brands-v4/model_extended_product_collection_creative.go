@@ -10,10 +10,10 @@ package sponsoredbrandsv4
 
 type ExtendedProductCollectionCreative struct {
 	// An array of ASINs associated with the creative.
-	Asins []string `json:"asins"`
+	Asins         []string   `json:"asins"`
 	BrandLogoCrop *AssetCrop `json:"brandLogoCrop,omitempty"`
 	// The displayed brand name in the ad headline. Maximum length is 30 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
-	BrandName string `json:"brandName"`
+	BrandName   string                 `json:"brandName"`
 	LandingPage *CreativeLandingPageV2 `json:"landingPage,omitempty"`
 	// An array of customImages associated with the creative.
 	CustomImages []CustomImage `json:"customImages,omitempty"`

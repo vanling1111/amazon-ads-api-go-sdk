@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 // Creative Recommendation Result.
 type CreativeRecommendationResultEntry struct {
 	// Supported are PRODUCT_COLLECTION, STORE_SPOTLIGHT, VIDEO, BRAND_VIDEO. More could be added in future.
-	CreativeType string `json:"creativeType,omitempty"`
+	CreativeType       string                            `json:"creativeType,omitempty"`
 	CreativeProperties *CreativeRecommendationProperties `json:"creativeProperties,omitempty"`
 }

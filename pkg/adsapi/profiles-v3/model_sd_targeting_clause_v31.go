@@ -11,6 +11,6 @@ package profilesv3
 // The targeting clause
 type SdTargetingClauseV31 struct {
 	// Tactic T00020 ad groups only allow manual targeting.
-	ExpressionType string `json:"expressionType"`
-	Expression *[]SdTargetExpressionV31 `json:"expression"`
+	ExpressionType string                   `json:"expressionType"`
+	Expression     *[]SdTargetExpressionV31 `json:"expression"`
 }

@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 // The forecast metric.
 type SbForecastingMetric struct {
 	// The forecast metric name. Currently supported metrics are IMPRESSION and CLICK.
-	Metric string `json:"metric,omitempty"`
-	Value *SbForecastingMetricValue `json:"value,omitempty"`
+	Metric string                    `json:"metric,omitempty"`
+	Value  *SbForecastingMetricValue `json:"value,omitempty"`
 }

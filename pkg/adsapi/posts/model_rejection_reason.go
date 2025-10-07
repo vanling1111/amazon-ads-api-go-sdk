@@ -10,7 +10,7 @@ package posts
 
 // Reason for rejecting a post or profile.
 type RejectionReason struct {
-	Code string `json:"code,omitempty"`
-	Detail string `json:"detail,omitempty"`
+	Code      string              `json:"code,omitempty"`
+	Detail    string              `json:"detail,omitempty"`
 	Evidences []RejectionEvidence `json:"evidences,omitempty"`
 }

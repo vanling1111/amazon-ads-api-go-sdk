@@ -12,9 +12,9 @@ package retailadservice
 type Rasv1MalformedValueError struct {
 	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
 	// fragment of the value which is wrong
-	Fragment string `json:"fragment,omitempty"`
+	Fragment    string            `json:"fragment,omitempty"`
 	Marketplace *Rasv1Marketplace `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1MalformedValueErrorReason `json:"reason"`
+	Message string                          `json:"message"`
+	Reason  *Rasv1MalformedValueErrorReason `json:"reason"`
 }

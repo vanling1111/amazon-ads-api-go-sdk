@@ -12,15 +12,15 @@ type CampaignEx struct {
 	// The identifier of an existing portfolio to which the campaign is associated.
 	PortfolioId float64 `json:"portfolioId,omitempty"`
 	// The identifier of the campaign.
-	CampaignId float64 `json:"campaignId,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	CampaignId float64            `json:"campaignId,omitempty"`
+	Tags       *map[string]string `json:"tags,omitempty"`
 	// The name of the campaign.
 	Name string `json:"name,omitempty"`
 	// The advertising product managed by this campaign.
 	CampaignType string `json:"campaignType,omitempty"`
 	// The type of targeting of the campaign.
 	TargetingType string `json:"targetingType,omitempty"`
-	State *State `json:"state,omitempty"`
+	State         *State `json:"state,omitempty"`
 	// The daily budget of the campaign.
 	DailyBudget float32 `json:"dailyBudget,omitempty"`
 	// The starting date of the campaign. The format of the date is YYYYMMDD.
@@ -28,8 +28,8 @@ type CampaignEx struct {
 	// The ending date of the campaign to stop running. The format of the date is YYYYMMDD.
 	EndDate string `json:"endDate,omitempty"`
 	// If set to true, Amazon increases the default bid for ads that are eligible to appear in this placement. See developer notes for more information.
-	PremiumBidAdjustment bool `json:"premiumBidAdjustment,omitempty"`
-	Bidding *Bidding `json:"bidding,omitempty"`
+	PremiumBidAdjustment bool     `json:"premiumBidAdjustment,omitempty"`
+	Bidding              *Bidding `json:"bidding,omitempty"`
 	// The creation date of the campaign, in epoch time.
 	CreationDate float64 `json:"creationDate,omitempty"`
 	// The date that any value associated with the campaign was last changed, in epoch time.

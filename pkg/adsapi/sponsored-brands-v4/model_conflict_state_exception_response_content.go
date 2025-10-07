@@ -9,6 +9,6 @@
 package sponsoredbrandsv4
 
 type ConflictStateExceptionResponseContent struct {
-	Code *ConflictStateErrorCode `json:"code"`
-	Message string `json:"message"`
+	Code    *ConflictStateErrorCode `json:"code"`
+	Message string                  `json:"message"`
 }

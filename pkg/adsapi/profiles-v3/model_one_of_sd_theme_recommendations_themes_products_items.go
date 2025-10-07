@@ -9,5 +9,5 @@
 package profilesv3
 
 type OneOfSdThemeRecommendationsThemesProductsItems struct {
-    SdProductTargetingRecommendationsSuccess
+	SdProductTargetingRecommendationsSuccess
 }

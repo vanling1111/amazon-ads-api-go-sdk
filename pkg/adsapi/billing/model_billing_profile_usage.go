@@ -12,8 +12,8 @@ package billing
 type BillingProfileUsage struct {
 	Advertiser *MarketplaceAdvertiser `json:"advertiser,omitempty"`
 	// Billing profile usage unique identifier.
-	BillingProfileUsageId string `json:"billingProfileUsageId,omitempty"`
-	BillingProfiles []BillingProfile `json:"billingProfiles,omitempty"`
-	FallbackBillingProfiles []BillingProfile `json:"fallbackBillingProfiles,omitempty"`
-	Status *BillingProfileStatus `json:"status,omitempty"`
+	BillingProfileUsageId   string                `json:"billingProfileUsageId,omitempty"`
+	BillingProfiles         []BillingProfile      `json:"billingProfiles,omitempty"`
+	FallbackBillingProfiles []BillingProfile      `json:"fallbackBillingProfiles,omitempty"`
+	Status                  *BillingProfileStatus `json:"status,omitempty"`
 }

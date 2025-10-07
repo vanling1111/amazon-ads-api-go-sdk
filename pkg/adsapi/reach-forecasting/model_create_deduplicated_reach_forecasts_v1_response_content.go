@@ -9,6 +9,6 @@
 package reachforecasting
 
 type CreateDeduplicatedReachForecastsV1ResponseContent struct {
-	Error_ []CreateDeduplicatedReachForecastsV1ResponseError `json:"error"`
+	Error_  []CreateDeduplicatedReachForecastsV1ResponseError   `json:"error"`
 	Success []CreateDeduplicatedReachForecastsV1ResponseSuccess `json:"success"`
 }

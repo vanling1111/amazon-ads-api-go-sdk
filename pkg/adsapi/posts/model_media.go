@@ -10,9 +10,9 @@ package posts
 
 // A media for a post.
 type Media struct {
-	MediaId string `json:"mediaId,omitempty"`
+	MediaId       string             `json:"mediaId,omitempty"`
 	MediaMetadata *map[string]string `json:"mediaMetadata,omitempty"`
 	// One of the following: video, image
 	MediaType string `json:"mediaType,omitempty"`
-	MediaUrl string `json:"mediaUrl,omitempty"`
+	MediaUrl  string `json:"mediaUrl,omitempty"`
 }

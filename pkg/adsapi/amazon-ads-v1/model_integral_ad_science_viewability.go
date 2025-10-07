@@ -10,6 +10,6 @@ package amazonadsv1
 
 // The IAS viewability standard.
 type IntegralAdScienceViewability struct {
-	Standard *IasViewabilityStandardType `json:"standard,omitempty"`
-	ViewabilityTargeting *ViewabilityTierType `json:"viewabilityTargeting,omitempty"`
+	Standard             *IasViewabilityStandardType `json:"standard,omitempty"`
+	ViewabilityTargeting *ViewabilityTierType        `json:"viewabilityTargeting,omitempty"`
 }

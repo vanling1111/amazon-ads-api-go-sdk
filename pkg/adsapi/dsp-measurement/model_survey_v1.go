@@ -13,7 +13,7 @@ type SurveyV1 struct {
 	// A list of custom survey questions.
 	CustomQuestions []CustomSurveyQuestionV1 `json:"customQuestions,omitempty"`
 	// The survey canonical identifier. Immutable field. This is required for update.
-	Id string `json:"id,omitempty"`
+	Id     string          `json:"id,omitempty"`
 	Status *SurveyStatusV1 `json:"status,omitempty"`
 	// The associated study identifier. Survey needs to be created prior to the study creation.
 	StudyId string `json:"studyId,omitempty"`

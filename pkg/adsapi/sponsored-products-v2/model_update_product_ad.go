@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type UpdateProductAd struct {
 	// The product ad identifier.
-	AdId float64 `json:"adId,omitempty"`
-	State *State `json:"state,omitempty"`
+	AdId  float64 `json:"adId,omitempty"`
+	State *State  `json:"state,omitempty"`
 }

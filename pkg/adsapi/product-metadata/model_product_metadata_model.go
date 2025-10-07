@@ -12,8 +12,8 @@ type ProductMetadataModel struct {
 	// ASIN of the item
 	Asin string `json:"asin,omitempty"`
 	// Stock availability:   * IN_STOCK - The item is in stock.   * IN_STOCK_SCARCE - The item is in stock, but stock levels are limited.   * OUT_OF_STOCK - The item is currently out of stock.   * PREORDER - The item is not yet available, but can be pre-ordered.   * LEADTIME - The item is only available after some amount of lead time.   * AVAILABLE_DATE - The item is not available, but will be available on a future date.
-	Availability string `json:"availability,omitempty"`
-	BasisPrice *BasisPrice `json:"basisPrice,omitempty"`
+	Availability string      `json:"availability,omitempty"`
+	BasisPrice   *BasisPrice `json:"basisPrice,omitempty"`
 	// Best seller rank position in the category
 	BestSellerRank string `json:"bestSellerRank,omitempty"`
 	// Brand name of the item
@@ -23,15 +23,15 @@ type ProductMetadataModel struct {
 	// Date the item was first available on Amazon
 	CreatedDate string `json:"createdDate,omitempty"`
 	// Eligibility status for advertising:   * ELIGIBLE - Eligible for advertising   * INELIGIBLE - Ineligible for advertising
-	EligibilityStatus string `json:"eligibilityStatus,omitempty"`
+	EligibilityStatus  string                                  `json:"eligibilityStatus,omitempty"`
 	GlobalStoreSetting *ProductMetadataModelGlobalStoreSetting `json:"globalStoreSetting,omitempty"`
 	// Url to the product image
 	ImageUrl string `json:"imageUrl,omitempty"`
 	// List of ineligible status identifier
 	IneligibilityCodes []string `json:"ineligibilityCodes,omitempty"`
 	// List of reasons that made this item ineligible to be advertised
-	IneligibilityReasons []string `json:"ineligibilityReasons,omitempty"`
-	PriceToPay *PriceToPay `json:"priceToPay,omitempty"`
+	IneligibilityReasons []string    `json:"ineligibilityReasons,omitempty"`
+	PriceToPay           *PriceToPay `json:"priceToPay,omitempty"`
 	// sku of the item
 	Sku string `json:"sku,omitempty"`
 	// Product title of the item

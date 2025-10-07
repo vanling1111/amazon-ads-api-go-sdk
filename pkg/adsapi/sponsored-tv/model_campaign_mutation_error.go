@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type CampaignMutationError struct {
-	ErrorType *CampaignErrorType `json:"errorType"`
+	ErrorType  *CampaignErrorType             `json:"errorType"`
 	ErrorValue *CampaignMutationErrorSelector `json:"errorValue"`
 }

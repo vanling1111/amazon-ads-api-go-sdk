@@ -9,8 +9,8 @@
 package creativeassets
 
 type CaSearchRequestCommon struct {
-	Text string `json:"text,omitempty"`
-	FilterCriteria *CaFilterCriteria `json:"filterCriteria,omitempty"`
-	SortCriteria *CaAssetSortCriteria `json:"sortCriteria,omitempty"`
-	PageCriteria *CaPageCriteria `json:"pageCriteria,omitempty"`
+	Text           string               `json:"text,omitempty"`
+	FilterCriteria *CaFilterCriteria    `json:"filterCriteria,omitempty"`
+	SortCriteria   *CaAssetSortCriteria `json:"sortCriteria,omitempty"`
+	PageCriteria   *CaPageCriteria      `json:"pageCriteria,omitempty"`
 }

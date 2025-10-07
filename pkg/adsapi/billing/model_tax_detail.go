@@ -9,9 +9,9 @@
 package billing
 
 type TaxDetail struct {
-	// **IN only** field that represents the tax account number of the billed entity entered on AMS portal. 
+	// **IN only** field that represents the tax account number of the billed entity entered on AMS portal.
 	PermanentAccountNumber string `json:"permanentAccountNumber,omitempty"`
 	// List of taxes applied on the transaction for this invoice.
-	TaxBreakups []TaxBreakup `json:"taxBreakups"`
-	TaxCalculationDate string `json:"taxCalculationDate"`
+	TaxBreakups        []TaxBreakup `json:"taxBreakups"`
+	TaxCalculationDate string       `json:"taxCalculationDate"`
 }

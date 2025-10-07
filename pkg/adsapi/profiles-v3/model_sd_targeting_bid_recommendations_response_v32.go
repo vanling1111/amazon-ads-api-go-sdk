@@ -10,7 +10,7 @@ package profilesv3
 
 // Response to a request for targeting bid recommendations.
 type SdTargetingBidRecommendationsResponseV32 struct {
-	BidOptimization *SdBidOptimizationV32 `json:"bidOptimization"`
-	CostType *SdCostTypeV31 `json:"costType"`
+	BidOptimization    *SdBidOptimizationV32                                                  `json:"bidOptimization"`
+	CostType           *SdCostTypeV31                                                         `json:"costType"`
 	BidRecommendations []OneOfSdTargetingBidRecommendationsResponseV32BidRecommendationsItems `json:"bidRecommendations"`
 }

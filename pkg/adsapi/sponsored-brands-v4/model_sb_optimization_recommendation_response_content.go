@@ -10,7 +10,7 @@ package sponsoredbrandsv4
 
 type SbOptimizationRecommendationResponseContent struct {
 	// Minimum accepted value for cost control metric.
-	MinimumValue float64 `json:"minimumValue"`
+	MinimumValue      float64            `json:"minimumValue"`
 	CostControlMetric *CostControlMetric `json:"costControlMetric"`
 	// Recommended value for cost control metric.
 	RecommendedValue float64 `json:"recommendedValue"`

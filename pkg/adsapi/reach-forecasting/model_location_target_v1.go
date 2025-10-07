@@ -10,7 +10,7 @@ package reachforecasting
 
 type LocationTargetV1 struct {
 	// The location to target. Use the [GeoLocation API](https://advertising.amazon.com/API/docs/en-us/dsp-campaigns#tag/Discovery/operation/getGeoLocations) to obtain targetable location IDs. Supported location category are \"COUNTRY\" and \"DMA\". Currently, only US DMA are supported. Search for \"US DMAs\" with textQuery to get only the DMAs in the US.
-	GeoLocation string `json:"geoLocation"`
-	TargetType *LocationTargetTypeV1 `json:"targetType"`
+	GeoLocation        string                `json:"geoLocation"`
+	TargetType         *LocationTargetTypeV1 `json:"targetType"`
 	UserLocationSignal *UserLocationSignalV1 `json:"userLocationSignal,omitempty"`
 }

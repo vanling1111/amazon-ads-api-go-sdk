@@ -10,7 +10,7 @@ package posts
 
 // Resource Not Found Exception - The request references a resource that does not exist.
 type ResourceNotFoundExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

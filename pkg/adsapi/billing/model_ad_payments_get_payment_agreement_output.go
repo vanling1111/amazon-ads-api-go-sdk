@@ -10,6 +10,6 @@ package billing
 
 // Represent the output of the get payment agreements API.
 type AdPaymentsGetPaymentAgreementOutput struct {
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken         string                        `json:"nextToken,omitempty"`
 	PaymentAgreements *[]AdPaymentsPaymentAgreement `json:"paymentAgreements"`
 }

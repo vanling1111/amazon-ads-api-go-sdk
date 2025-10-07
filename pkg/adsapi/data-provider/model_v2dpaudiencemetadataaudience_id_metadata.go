@@ -9,7 +9,7 @@
 package dataprovider
 
 type V2dpaudiencemetadataaudienceIdMetadata struct {
-	Ttl int32 `json:"ttl,omitempty"`
-	AudienceFees *[]AudienceFeesInner `json:"audienceFees,omitempty"`
-	DataSourceCountry *[]string `json:"dataSourceCountry,omitempty"`
+	Ttl               int32                `json:"ttl,omitempty"`
+	AudienceFees      *[]AudienceFeesInner `json:"audienceFees,omitempty"`
+	DataSourceCountry *[]string            `json:"dataSourceCountry,omitempty"`
 }

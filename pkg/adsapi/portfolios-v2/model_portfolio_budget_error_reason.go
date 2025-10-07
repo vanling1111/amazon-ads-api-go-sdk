@@ -12,15 +12,15 @@ type PortfolioBudgetErrorReason string
 
 // List of PortfolioBudgetErrorReason
 const (
-	BUDGETING_POLICY_INVALID_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGETING_POLICY_INVALID"
-	BUDGET_AMOUNT_INVALID_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_AMOUNT_INVALID"
+	BUDGETING_POLICY_INVALID_PortfolioBudgetErrorReason                            PortfolioBudgetErrorReason = "BUDGETING_POLICY_INVALID"
+	BUDGET_AMOUNT_INVALID_PortfolioBudgetErrorReason                               PortfolioBudgetErrorReason = "BUDGET_AMOUNT_INVALID"
 	BUDGET_CURRENCY_DOES_NOT_MATCH_MARKETPLACE_SETTINGS_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_CURRENCY_DOES_NOT_MATCH_MARKETPLACE_SETTINGS"
-	BUDGET_LT_DEFAULT_BIDS_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_LT_DEFAULT_BIDS"
-	BUDGET_LT_KEYWORD_BIDS_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_LT_KEYWORD_BIDS"
-	BUDGET_LT_PREDEFINED_TARGET_BIDS_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_LT_PREDEFINED_TARGET_BIDS"
-	BUDGET_OUT_OF_MARKET_PLACE_RANGE_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_OUT_OF_MARKET_PLACE_RANGE"
-	BUDGET_TOO_HIGH_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_TOO_HIGH"
-	BUDGET_TOO_LOW_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "BUDGET_TOO_LOW"
-	MISSING_BUDGETING_POLICY_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "MISSING_BUDGETING_POLICY"
-	MISSING_IN_BUDGET_FLAG_PortfolioBudgetErrorReason PortfolioBudgetErrorReason = "MISSING_IN_BUDGET_FLAG"
+	BUDGET_LT_DEFAULT_BIDS_PortfolioBudgetErrorReason                              PortfolioBudgetErrorReason = "BUDGET_LT_DEFAULT_BIDS"
+	BUDGET_LT_KEYWORD_BIDS_PortfolioBudgetErrorReason                              PortfolioBudgetErrorReason = "BUDGET_LT_KEYWORD_BIDS"
+	BUDGET_LT_PREDEFINED_TARGET_BIDS_PortfolioBudgetErrorReason                    PortfolioBudgetErrorReason = "BUDGET_LT_PREDEFINED_TARGET_BIDS"
+	BUDGET_OUT_OF_MARKET_PLACE_RANGE_PortfolioBudgetErrorReason                    PortfolioBudgetErrorReason = "BUDGET_OUT_OF_MARKET_PLACE_RANGE"
+	BUDGET_TOO_HIGH_PortfolioBudgetErrorReason                                     PortfolioBudgetErrorReason = "BUDGET_TOO_HIGH"
+	BUDGET_TOO_LOW_PortfolioBudgetErrorReason                                      PortfolioBudgetErrorReason = "BUDGET_TOO_LOW"
+	MISSING_BUDGETING_POLICY_PortfolioBudgetErrorReason                            PortfolioBudgetErrorReason = "MISSING_BUDGETING_POLICY"
+	MISSING_IN_BUDGET_FLAG_PortfolioBudgetErrorReason                              PortfolioBudgetErrorReason = "MISSING_IN_BUDGET_FLAG"
 )

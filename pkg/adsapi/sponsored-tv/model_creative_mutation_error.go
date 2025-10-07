@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type CreativeMutationError struct {
-	ErrorType *CreativeErrorType `json:"errorType"`
+	ErrorType  *CreativeErrorType             `json:"errorType"`
 	ErrorValue *CreativeMutationErrorSelector `json:"errorValue"`
 }

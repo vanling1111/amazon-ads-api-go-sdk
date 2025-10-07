@@ -12,10 +12,10 @@ type CaAssetSubType string
 
 // List of caAssetSubType
 const (
-	LOGO_CaAssetSubType CaAssetSubType = "LOGO"
-	PRODUCT_IMAGE_CaAssetSubType CaAssetSubType = "PRODUCT_IMAGE"
-	AUTHOR_IMAGE_CaAssetSubType CaAssetSubType = "AUTHOR_IMAGE"
-	LIFESTYLE_IMAGE_CaAssetSubType CaAssetSubType = "LIFESTYLE_IMAGE"
-	OTHER_IMAGE_CaAssetSubType CaAssetSubType = "OTHER_IMAGE"
+	LOGO_CaAssetSubType             CaAssetSubType = "LOGO"
+	PRODUCT_IMAGE_CaAssetSubType    CaAssetSubType = "PRODUCT_IMAGE"
+	AUTHOR_IMAGE_CaAssetSubType     CaAssetSubType = "AUTHOR_IMAGE"
+	LIFESTYLE_IMAGE_CaAssetSubType  CaAssetSubType = "LIFESTYLE_IMAGE"
+	OTHER_IMAGE_CaAssetSubType      CaAssetSubType = "OTHER_IMAGE"
 	BACKGROUND_VIDEO_CaAssetSubType CaAssetSubType = "BACKGROUND_VIDEO"
 )

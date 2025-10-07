@@ -10,5 +10,5 @@ package tacticalrecommendations
 
 type BudgetRuleDuration struct {
 	DateRangeTypeDuration *BudgetRuleDateRangeTypeDuration `json:"dateRangeTypeDuration,omitempty"`
-	EventTypeDuration *BudgetRuleEventTypeDuration `json:"eventTypeDuration,omitempty"`
+	EventTypeDuration     *BudgetRuleEventTypeDuration     `json:"eventTypeDuration,omitempty"`
 }

@@ -10,6 +10,6 @@ package amazonadsv1
 
 type TargetPartialIndex struct {
 	Errors []ModelError `json:"errors"`
-	Index int32 `json:"index"`
-	Target *Target `json:"target"`
+	Index  int32        `json:"index"`
+	Target *Target      `json:"target"`
 }

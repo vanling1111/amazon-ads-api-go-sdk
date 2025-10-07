@@ -10,6 +10,6 @@ package amazonadsv1
 
 type ShopperSegmentBidAdjustment struct {
 	// The selection of the percentage change associated with a given shopper segment and bid adjustment settings.
-	Percentage int32 `json:"percentage,omitempty"`
+	Percentage     int32           `json:"percentage,omitempty"`
 	ShopperSegment *ShopperSegment `json:"shopperSegment,omitempty"`
 }

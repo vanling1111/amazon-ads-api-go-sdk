@@ -10,6 +10,6 @@ package sponsoredtv
 
 type LocationSuccessResponseItem struct {
 	// The index of the location in the array from the request body.
-	Index int32 `json:"index"`
+	Index    int32     `json:"index"`
 	Location *Location `json:"location,omitempty"`
 }

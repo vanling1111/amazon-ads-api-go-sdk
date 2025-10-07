@@ -11,6 +11,6 @@ package posts
 // A product that is not eligible to be added to a post, along with the reason code.
 type IneligibleProduct struct {
 	// Identifier for a product on Amazon.
-	Asin string `json:"asin,omitempty"`
+	Asin              string                    `json:"asin,omitempty"`
 	IneligibilityCode *ProductIneligibilityCode `json:"ineligibilityCode,omitempty"`
 }

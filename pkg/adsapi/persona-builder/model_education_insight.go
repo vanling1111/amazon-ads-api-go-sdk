@@ -9,7 +9,7 @@
 package personabuilder
 
 type EducationInsight struct {
-	Attribute *Education `json:"attribute"`
+	Attribute      *Education     `json:"attribute"`
 	InsightMetrics *InsightMetric `json:"insightMetrics"`
 	// Canonical ID of the segment the demographic insight attribute maps to.
 	SegmentId string `json:"segmentId"`

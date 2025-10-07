@@ -25,6 +25,6 @@ type SurveyQuestionPlaceholderCandidateV1 struct {
 	// The maximum allowed character length for each individual placeholder value.
 	MaximumValueLength int32 `json:"maximumValueLength,omitempty"`
 	// The minimum allowed character length for each individual placeholder value.
-	MinimumValueLength int32 `json:"minimumValueLength,omitempty"`
-	ValueType *PlaceholderValueTypeV1 `json:"valueType,omitempty"`
+	MinimumValueLength int32                   `json:"minimumValueLength,omitempty"`
+	ValueType          *PlaceholderValueTypeV1 `json:"valueType,omitempty"`
 }

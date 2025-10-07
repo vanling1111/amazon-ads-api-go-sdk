@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type UnauthorizedErrorResponseContent struct {
-	Code *UnauthorizedErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *UnauthorizedErrorCode `json:"code"`
+	RequestId string                 `json:"requestId"`
+	Message   string                 `json:"message"`
 }

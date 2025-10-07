@@ -11,6 +11,6 @@ package dspconversions
 type BatchGetConversionDefinitionsForOrdersResponseV1 struct {
 	// List of associated ConversionDefinitions.
 	ConversionDefinitions []BatchOrdersAssociatedConversionDefinitionsV1 `json:"conversionDefinitions,omitempty"`
-	MaxResults string `json:"maxResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	MaxResults            string                                         `json:"maxResults,omitempty"`
+	NextToken             string                                         `json:"nextToken,omitempty"`
 }

@@ -12,8 +12,8 @@ type Gender string
 
 // List of Gender
 const (
-	BOTH_Gender Gender = "BOTH"
-	FEMALE_Gender Gender = "FEMALE"
-	MALE_Gender Gender = "MALE"
+	BOTH_Gender    Gender = "BOTH"
+	FEMALE_Gender  Gender = "FEMALE"
+	MALE_Gender    Gender = "MALE"
 	UNKNOWN_Gender Gender = "UNKNOWN"
 )

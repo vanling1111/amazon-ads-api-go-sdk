@@ -11,7 +11,7 @@ package sponsoredbrandsv4
 // Landing page.
 type CreativeLandingPage struct {
 	// The list of asins on the landingPage If type is PRODUCT_LIST.
-	Asins []string `json:"asins,omitempty"`
+	Asins []string                 `json:"asins,omitempty"`
 	Type_ *CreativeLandingPageType `json:"type,omitempty"`
 	// The url of the landingPage.
 	Value string `json:"value,omitempty"`

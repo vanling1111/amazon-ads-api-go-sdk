@@ -10,6 +10,6 @@ package dataprovider
 
 type InlineResponse500 struct {
 	// Identifier associated with the request.
-	RequestId string `json:"requestId,omitempty"`
-	Error_ *InlineResponse500Error `json:"error,omitempty"`
+	RequestId string                  `json:"requestId,omitempty"`
+	Error_    *InlineResponse500Error `json:"error,omitempty"`
 }

@@ -164,13 +164,13 @@ func NewClient(opts ...ClientOption) (*Client, error) {
 func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Response, error) {
 	startTime := time.Now()
 	logger := c.config.Logger
-	
+
 	// 记录请求开始
 	logger.Debug("starting API request",
 		zap.String("method", req.Method),
 		zap.String("url", req.URL.String()),
 	)
-	
+
 	// Prometheus: 增加活跃请求数
 	if c.config.Metrics != nil {
 		c.config.Metrics.IncActiveRequests()
@@ -208,7 +208,7 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 	// 4. 执行请求
 	resp, err := c.httpClient.Do(req)
 	duration := time.Since(startTime)
-	
+
 	if err != nil {
 		logger.Error("HTTP request failed",
 			zap.Error(err),
@@ -225,7 +225,7 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 		zap.Int("status_code", resp.StatusCode),
 		zap.Duration("duration", duration),
 	)
-	
+
 	// Prometheus: 记录请求指标
 	if c.config.Metrics != nil {
 		c.config.Metrics.RecordRequest("ads_api", req.Method, resp.StatusCode, duration)
@@ -258,4 +258,3 @@ func parseAPIError(resp *http.Response) error {
 		Message:    resp.Status,
 	}
 }
-

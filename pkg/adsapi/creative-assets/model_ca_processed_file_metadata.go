@@ -12,6 +12,6 @@ package creativeassets
 type CaProcessedFileMetadata struct {
 	VideoStreams []CaVideoStreamMetadata `json:"videoStreams,omitempty"`
 	AudioStreams []CaAudioStreamMetadata `json:"audioStreams,omitempty"`
-	ContentType string `json:"contentType,omitempty"`
-	ContentHash string `json:"contentHash,omitempty"`
+	ContentType  string                  `json:"contentType,omitempty"`
+	ContentHash  string                  `json:"contentHash,omitempty"`
 }

@@ -11,10 +11,10 @@ package sponsoreddisplayv3
 // Creative model.
 type Creative struct {
 	// Unique identifier of the creative.
-	CreativeId float64 `json:"creativeId"`
-	AdGroupId int64 `json:"adGroupId"`
+	CreativeId   float64                         `json:"creativeId"`
+	AdGroupId    int64                           `json:"adGroupId"`
 	CreativeType *CreativeTypeInCreativeResponse `json:"creativeType"`
-	Properties *CreativeProperties `json:"properties"`
+	Properties   *CreativeProperties             `json:"properties"`
 	// The moderation status of the creative
 	ModerationStatus string `json:"moderationStatus"`
 }

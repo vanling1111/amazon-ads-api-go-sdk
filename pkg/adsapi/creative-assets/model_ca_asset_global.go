@@ -9,8 +9,8 @@
 package creativeassets
 
 type CaAssetGlobal struct {
-	AssetId string `json:"assetId,omitempty"`
-	AssetType *CaAssetType `json:"assetType,omitempty"`
-	AccountIds *[]string `json:"accountIds,omitempty"`
-	MarketplaceId *[]string `json:"marketplaceId,omitempty"`
+	AssetId       string       `json:"assetId,omitempty"`
+	AssetType     *CaAssetType `json:"assetType,omitempty"`
+	AccountIds    *[]string    `json:"accountIds,omitempty"`
+	MarketplaceId *[]string    `json:"marketplaceId,omitempty"`
 }

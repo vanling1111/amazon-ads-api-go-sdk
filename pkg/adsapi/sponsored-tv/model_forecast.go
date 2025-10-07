@@ -10,5 +10,5 @@ package sponsoredtv
 
 type Forecast struct {
 	Metric *ForecastMetricType `json:"metric,omitempty"`
-	Value *ForecastValue `json:"value,omitempty"`
+	Value  *ForecastValue      `json:"value,omitempty"`
 }

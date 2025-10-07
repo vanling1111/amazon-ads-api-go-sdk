@@ -531,4 +531,3 @@ type oauth2Token struct {
 func (t *oauth2Token) SetAuthHeader(r *http.Request) {
 	r.Header.Set("Authorization", t.TokenType+" "+t.AccessToken)
 }
-

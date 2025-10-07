@@ -13,5 +13,5 @@ type AdGroupResponse struct {
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response.
 	Description string `json:"description,omitempty"`
-	AdGroupId int64 `json:"adGroupId,omitempty"`
+	AdGroupId   int64  `json:"adGroupId,omitempty"`
 }

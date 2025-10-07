@@ -9,8 +9,8 @@
 package locations
 
 type LocationV1 struct {
-	Category *LocationCategoryV1 `json:"category,omitempty"`
-	LocationId string `json:"locationId,omitempty"`
+	Category   *LocationCategoryV1 `json:"category,omitempty"`
+	LocationId string              `json:"locationId,omitempty"`
 	// The location name.
 	Name string `json:"name,omitempty"`
 }

@@ -10,11 +10,11 @@ package profilesv3
 
 // Object representing details of a budget rule for SD campaign
 type SdBudgetRuleDetails struct {
-	Duration *RuleDuration `json:"duration,omitempty"`
-	Recurrence *Recurrence `json:"recurrence,omitempty"`
-	RuleType *SdRuleType `json:"ruleType,omitempty"`
+	Duration         *RuleDuration     `json:"duration,omitempty"`
+	Recurrence       *Recurrence       `json:"recurrence,omitempty"`
+	RuleType         *SdRuleType       `json:"ruleType,omitempty"`
 	BudgetIncreaseBy *BudgetIncreaseBy `json:"budgetIncreaseBy,omitempty"`
 	// The budget rule name. Required to be unique within a campaign.
-	Name string `json:"name,omitempty"`
+	Name                        string                       `json:"name,omitempty"`
 	PerformanceMeasureCondition *PerformanceMeasureCondition `json:"performanceMeasureCondition,omitempty"`
 }

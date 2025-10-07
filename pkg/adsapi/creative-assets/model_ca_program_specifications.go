@@ -11,5 +11,5 @@ package creativeassets
 // Specification Check for program, This contains program name and specifications
 type CaProgramSpecifications struct {
 	SpecProgramName *CaSpecificationProgram `json:"specProgramName,omitempty"`
-	Specifications *[]CaSpecification `json:"specifications,omitempty"`
+	Specifications  *[]CaSpecification      `json:"specifications,omitempty"`
 }

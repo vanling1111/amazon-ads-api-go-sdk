@@ -8,7 +8,7 @@
  */
 package advertisingaccounts
 
-// Request failed because invalid parameters were provided. Ensure that all required parameters are provided. 
+// Request failed because invalid parameters were provided. Ensure that all required parameters are provided.
 type V2InvalidInputExceptionResponseContent struct {
 	Errors []ModelError `json:"errors,omitempty"`
 }

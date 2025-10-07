@@ -12,5 +12,5 @@ type CreateLocation struct {
 	AdGroupId int64 `json:"adGroupId"`
 	// The location definition.
 	Expression []LocationExpression `json:"expression"`
-	State string `json:"state"`
+	State      string               `json:"state"`
 }

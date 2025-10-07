@@ -23,4 +23,3 @@ package profilesv3
 // Object is a generic map for unstructured data.
 // This type is referenced by swagger-codegen but not generated.
 type Object map[string]interface{}
-

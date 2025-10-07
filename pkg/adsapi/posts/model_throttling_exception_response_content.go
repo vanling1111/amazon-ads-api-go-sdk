@@ -10,7 +10,7 @@ package posts
 
 // Throttling Exception - Request was throttled.
 type ThrottlingExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

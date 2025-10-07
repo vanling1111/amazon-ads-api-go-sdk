@@ -10,5 +10,5 @@ package amazonadsv1
 
 type AdGroupMultiStatusSuccess struct {
 	AdGroup *AdGroup `json:"adGroup"`
-	Index int32 `json:"index"`
+	Index   int32    `json:"index"`
 }

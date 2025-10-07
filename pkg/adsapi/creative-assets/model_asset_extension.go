@@ -12,7 +12,7 @@ type AssetExtension string
 
 // List of ASSET_EXTENSION
 const (
-	JPG_AssetExtension AssetExtension = "JPG"
+	JPG_AssetExtension  AssetExtension = "JPG"
 	JPEG_AssetExtension AssetExtension = "JPEG"
-	PNG_AssetExtension AssetExtension = "PNG"
+	PNG_AssetExtension  AssetExtension = "PNG"
 )

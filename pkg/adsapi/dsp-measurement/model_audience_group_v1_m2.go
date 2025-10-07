@@ -11,7 +11,7 @@ package dspmeasurement
 // The model for holding Audiece selection within a group. The expression within an audience group will be evaluated using the IntraGroupOperator. The InterGroupOperator will be applied on the output of one audience group with another audience group.
 type AudienceGroupV1M2 struct {
 	// List of audience segments in this group.
-	AudienceSegments []AudienceSegmentV1M2 `json:"audienceSegments,omitempty"`
+	AudienceSegments   []AudienceSegmentV1M2          `json:"audienceSegments,omitempty"`
 	InterGroupOperator *AudienceSelectionOperatorV1M2 `json:"interGroupOperator,omitempty"`
 	IntraGroupOperator *AudienceSelectionOperatorV1M2 `json:"intraGroupOperator,omitempty"`
 }

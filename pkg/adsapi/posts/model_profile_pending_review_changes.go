@@ -11,6 +11,6 @@ package posts
 // Values for a profile that are pending review.
 type ProfilePendingReviewChanges struct {
 	LogoUrl string `json:"logoUrl,omitempty"`
-	Name string `json:"name,omitempty"`
-	Status string `json:"status,omitempty"`
+	Name    string `json:"name,omitempty"`
+	Status  string `json:"status,omitempty"`
 }

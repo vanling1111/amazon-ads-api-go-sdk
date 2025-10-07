@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type LocationMutationError struct {
-	ErrorType *LocationErrorType `json:"errorType"`
+	ErrorType  *LocationErrorType     `json:"errorType"`
 	ErrorValue *LocationErrorSelector `json:"errorValue"`
 }

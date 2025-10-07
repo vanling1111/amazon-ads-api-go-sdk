@@ -10,13 +10,13 @@ package sponsoredbrandsv4
 
 type ModerationResultsRequest struct {
 	// Filter by specific version id of the ad. The API will return the ad's all versions moderation status if this field is empty.
-	VersionIdFilter []string `json:"versionIdFilter,omitempty"`
-	IdType *IdType `json:"idType"`
-	AdProgramType *ModerationResultsAdProgramType `json:"adProgramType"`
-	NextToken string `json:"nextToken,omitempty"`
+	VersionIdFilter []string                        `json:"versionIdFilter,omitempty"`
+	IdType          *IdType                         `json:"idType"`
+	AdProgramType   *ModerationResultsAdProgramType `json:"adProgramType"`
+	NextToken       string                          `json:"nextToken,omitempty"`
 	// Sets a limit on the number of results returned by an operation.
 	MaxResults int32 `json:"maxResults"`
 	// Filter by specific moderation status.
 	ModerationStatusFilter []ModerationStatus `json:"moderationStatusFilter,omitempty"`
-	Id string `json:"id"`
+	Id                     string             `json:"id"`
 }

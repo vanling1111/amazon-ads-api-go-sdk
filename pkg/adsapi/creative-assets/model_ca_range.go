@@ -10,5 +10,5 @@ package creativeassets
 
 type CaRange struct {
 	Start string `json:"start,omitempty"`
-	End string `json:"end,omitempty"`
+	End   string `json:"end,omitempty"`
 }

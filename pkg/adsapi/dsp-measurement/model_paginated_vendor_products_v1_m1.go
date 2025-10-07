@@ -12,6 +12,6 @@ package dspmeasurement
 type PaginatedVendorProductsV1M1 struct {
 	NextToken string `json:"nextToken,omitempty"`
 	// The total number of vendor products.
-	TotalResults int32 `json:"totalResults,omitempty"`
+	TotalResults   int32               `json:"totalResults,omitempty"`
 	VendorProducts []VendorProductV1M1 `json:"vendorProducts,omitempty"`
 }

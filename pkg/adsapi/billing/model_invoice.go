@@ -9,15 +9,15 @@
 package billing
 
 type Invoice struct {
-	Adjustments *[]Adjustment `json:"adjustments"`
+	Adjustments                  *[]Adjustment                 `json:"adjustments"`
 	GovernmentInvoiceInformation *GovernmentInvoiceInformation `json:"governmentInvoiceInformation,omitempty"`
-	InvoiceLines *[]InvoiceLine `json:"invoiceLines"`
-	InvoiceSummary *InvoiceSummary `json:"invoiceSummary"`
-	IssuerContactInfo *ContactInfo `json:"issuerContactInfo"`
-	PayerContactInfo *ContactInfo `json:"payerContactInfo"`
-	Payments *[]Payment `json:"payments"`
-	Portfolios *[]Portfolio `json:"portfolios"`
-	Promotions *[]Promotion `json:"promotions"`
-	TaxDetail *TaxDetail `json:"taxDetail"`
-	ThirdPartyContactInfo *[]ContactInfo `json:"thirdPartyContactInfo"`
+	InvoiceLines                 *[]InvoiceLine                `json:"invoiceLines"`
+	InvoiceSummary               *InvoiceSummary               `json:"invoiceSummary"`
+	IssuerContactInfo            *ContactInfo                  `json:"issuerContactInfo"`
+	PayerContactInfo             *ContactInfo                  `json:"payerContactInfo"`
+	Payments                     *[]Payment                    `json:"payments"`
+	Portfolios                   *[]Portfolio                  `json:"portfolios"`
+	Promotions                   *[]Promotion                  `json:"promotions"`
+	TaxDetail                    *TaxDetail                    `json:"taxDetail"`
+	ThirdPartyContactInfo        *[]ContactInfo                `json:"thirdPartyContactInfo"`
 }

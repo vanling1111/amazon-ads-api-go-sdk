@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type BulkAdOperationResponse struct {
 	Success []AdSuccessResponseItem `json:"success,omitempty"`
-	Error_ []AdFailureResponseItem `json:"error,omitempty"`
+	Error_  []AdFailureResponseItem `json:"error,omitempty"`
 }

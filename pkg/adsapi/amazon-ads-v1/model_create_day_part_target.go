@@ -10,6 +10,6 @@ package amazonadsv1
 
 // Target based on time of day.
 type CreateDayPartTarget struct {
-	DayOfWeek *DayOfWeek `json:"dayOfWeek,omitempty"`
+	DayOfWeek *DayOfWeek       `json:"dayOfWeek,omitempty"`
 	TimeOfDay *CreateTimeOfDay `json:"timeOfDay,omitempty"`
 }

@@ -10,5 +10,5 @@ package insights
 
 type InsightsAudiencesOverlapAudienceMetadataV2AudienceForecast struct {
 	DailyImpressions *InsightsAudiencesOverlapAudienceMetadataV2AudienceForecastDailyImpressions `json:"dailyImpressions,omitempty"`
-	DailyReach *InsightsAudiencesOverlapAudienceMetadataV2AudienceForecastDailyReach `json:"dailyReach,omitempty"`
+	DailyReach       *InsightsAudiencesOverlapAudienceMetadataV2AudienceForecastDailyReach       `json:"dailyReach,omitempty"`
 }

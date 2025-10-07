@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type CreateVideoCreativeRequestContent struct {
 	// The unique ID of a Sponsored Brands ad.
-	AdId string `json:"adId"`
+	AdId     string         `json:"adId"`
 	Creative *VideoCreative `json:"creative"`
 }

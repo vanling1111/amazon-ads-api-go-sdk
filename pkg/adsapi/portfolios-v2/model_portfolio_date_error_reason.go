@@ -12,10 +12,10 @@ type PortfolioDateErrorReason string
 
 // List of PortfolioDateErrorReason
 const (
-	END_DATE_EARLIER_THAN_TODAY_PortfolioDateErrorReason PortfolioDateErrorReason = "END_DATE_EARLIER_THAN_TODAY"
-	INVALID_DATE_PortfolioDateErrorReason PortfolioDateErrorReason = "INVALID_DATE"
-	START_DATE_AFTER_END_DATE_PortfolioDateErrorReason PortfolioDateErrorReason = "START_DATE_AFTER_END_DATE"
+	END_DATE_EARLIER_THAN_TODAY_PortfolioDateErrorReason   PortfolioDateErrorReason = "END_DATE_EARLIER_THAN_TODAY"
+	INVALID_DATE_PortfolioDateErrorReason                  PortfolioDateErrorReason = "INVALID_DATE"
+	START_DATE_AFTER_END_DATE_PortfolioDateErrorReason     PortfolioDateErrorReason = "START_DATE_AFTER_END_DATE"
 	START_DATE_EARLIER_THAN_TODAY_PortfolioDateErrorReason PortfolioDateErrorReason = "START_DATE_EARLIER_THAN_TODAY"
-	START_DATE_EQUAL_END_DATE_PortfolioDateErrorReason PortfolioDateErrorReason = "START_DATE_EQUAL_END_DATE"
-	START_DATE_NOT_NULL_PortfolioDateErrorReason PortfolioDateErrorReason = "START_DATE_NOT_NULL"
+	START_DATE_EQUAL_END_DATE_PortfolioDateErrorReason     PortfolioDateErrorReason = "START_DATE_EQUAL_END_DATE"
+	START_DATE_NOT_NULL_PortfolioDateErrorReason           PortfolioDateErrorReason = "START_DATE_NOT_NULL"
 )

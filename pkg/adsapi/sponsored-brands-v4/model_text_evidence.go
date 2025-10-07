@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 // Structure of a text evidence
 type TextEvidence struct {
 	// The specific text determined to violate the specified policy in reviewedText.
-	ViolatingText string `json:"violatingText,omitempty"`
-	Position *TextEvidencePosition `json:"position,omitempty"`
+	ViolatingText string                `json:"violatingText,omitempty"`
+	Position      *TextEvidencePosition `json:"position,omitempty"`
 }

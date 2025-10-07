@@ -11,5 +11,5 @@ package sponsoredbrandsv4
 // Structure for theme details
 type Theme struct {
 	ThemeForDisplay string `json:"themeForDisplay"`
-	ThemeId string `json:"themeId"`
+	ThemeId         string `json:"themeId"`
 }

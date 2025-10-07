@@ -14,6 +14,6 @@ type CreateCampaignNegativeKeyword struct {
 	// The campaign negative keyword state.
 	State string `json:"state,omitempty"`
 	// The text of the expression to match against a search query.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *NegativeMatchType `json:"matchType,omitempty"`
+	KeywordText string             `json:"keywordText,omitempty"`
+	MatchType   *NegativeMatchType `json:"matchType,omitempty"`
 }

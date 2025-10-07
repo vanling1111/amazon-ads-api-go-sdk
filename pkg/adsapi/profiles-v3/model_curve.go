@@ -13,6 +13,6 @@ type Curve struct {
 	// True if the budget utilization is good to show the curve.
 	MeetThreshold bool `json:"meetThreshold,omitempty"`
 	// Type of Graph.
-	Graph string `json:"graph,omitempty"`
+	Graph  string       `json:"graph,omitempty"`
 	Points []CurvePoint `json:"points,omitempty"`
 }

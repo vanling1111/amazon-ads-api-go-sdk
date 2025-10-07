@@ -9,9 +9,9 @@
 package sponsoredtv
 
 type ListSponsoredTvCreativesModerationsRequestContent struct {
-	AdGroupIdFilter *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
+	AdGroupIdFilter  *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
 	CreativeIdFilter *ObjectIdFilter `json:"creativeIdFilter,omitempty"`
-	Locale *Locale `json:"locale,omitempty"`
+	Locale           *Locale         `json:"locale,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
 	MaxResults int32 `json:"maxResults,omitempty"`
 	// Token value allowing to navigate to the next response page.

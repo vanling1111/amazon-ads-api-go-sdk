@@ -18,7 +18,7 @@ type CreateThirdPartyDisplaySettings struct {
 	CreativeSizes []CreateSize `json:"creativeSizes,omitempty"`
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language               *LanguageLocale             `json:"language,omitempty"`
 	// The html tag to use to fetch this creative from the 3p ad server.
 	ThirdPartyTagHostingSource string `json:"thirdPartyTagHostingSource,omitempty"`
 }

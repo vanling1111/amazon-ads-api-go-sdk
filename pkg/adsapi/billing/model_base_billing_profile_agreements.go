@@ -13,5 +13,5 @@ type BaseBillingProfileAgreements struct {
 	Consent bool `json:"consent"`
 	// Agreement document name against which consent needs to be provided. The content of the agreement can be checked by providing agreement name in `POST /billingProfileAgreementContents/{billingProfileAgreementContentId}` API. Check following table for supported values: <br/><br/><table border=1><caption> **Supported Agreement Document Names** </caption><tr>    <th>Agreement document name</th><th>Description</th></tr><tr>    <td>BILLING_PROFILE_TAX_AGREEMENT</td>    <td>Global tax agreement. Advertiser needs to consent to this if they provide taxes in the billing profile</td></tr><tr>    <td>BILLING_PROFILE_CANADIAN_NON_RESIDENCY_AGREEMENT</td>    <td>If advetiser is non-resident of canada and wants to advertise in canada without providing canada GST, they need to consent to this agreement</td></tr> <tr><td>BILLING_PROFILE_DSA_AGREEMENT</td><td>Relevant for Authors, If you choose to display your BILLING_NAME or any name other than “Author” then you must provide consent for BILLING_PROFILE_DSA_AGREEMENT.</td></tr> </table>
 	DocumentName string `json:"documentName"`
-	Locale string `json:"locale,omitempty"`
+	Locale       string `json:"locale,omitempty"`
 }

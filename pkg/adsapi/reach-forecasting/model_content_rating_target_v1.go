@@ -9,7 +9,7 @@
 package reachforecasting
 
 type ContentRatingTargetV1 struct {
-	ContentRatingDetails *ContentRatingDetailsV1 `json:"contentRatingDetails"`
-	ContentRatingType *ContentRatingTypeV1 `json:"contentRatingType"`
-	TargetType *ContentRatingTargetTypeV1 `json:"targetType"`
+	ContentRatingDetails *ContentRatingDetailsV1    `json:"contentRatingDetails"`
+	ContentRatingType    *ContentRatingTypeV1       `json:"contentRatingType"`
+	TargetType           *ContentRatingTargetTypeV1 `json:"targetType"`
 }

@@ -10,8 +10,8 @@ package amazonattribution
 
 type ReportResponse struct {
 	// The identifier of the pagination cursor.
-	CursorId string `json:"cursorId,omitempty"`
-	Reports []ReportEntry `json:"reports,omitempty"`
+	CursorId string        `json:"cursorId,omitempty"`
+	Reports  []ReportEntry `json:"reports,omitempty"`
 	// The size of the report.
 	Size int32 `json:"size,omitempty"`
 }

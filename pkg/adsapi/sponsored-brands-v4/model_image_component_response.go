@@ -13,8 +13,8 @@ type ImageComponentResponse struct {
 	// The pre moderation status of the component.
 	PreModerationStatus string `json:"preModerationStatus,omitempty"`
 	// Type of the image component.
-	ComponentType string `json:"componentType,omitempty"`
-	LandingPage *LandingPage `json:"landingPage,omitempty"`
+	ComponentType string       `json:"componentType,omitempty"`
+	LandingPage   *LandingPage `json:"landingPage,omitempty"`
 	// A list of policy violations for the component that were detected during pre moderation. Note that this field is present in the response only when preModerationStatus is set to REJECTED.
 	PolicyViolations []ImagePolicyViolation `json:"policyViolations,omitempty"`
 	// Id of the component. This is the same id sent as part of the request. This can be used to uniquely identify the component.

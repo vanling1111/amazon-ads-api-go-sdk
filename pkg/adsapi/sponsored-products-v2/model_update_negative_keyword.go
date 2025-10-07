@@ -11,5 +11,5 @@ package sponsoredproductsv2
 type UpdateNegativeKeyword struct {
 	// The identifer of the keyword.
 	KeywordId float64 `json:"keywordId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 }

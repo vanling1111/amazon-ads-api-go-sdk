@@ -9,7 +9,7 @@
 package creativeassets
 
 type InlineResponse2003 struct {
-	TotalRecords int64 `json:"totalRecords,omitempty"`
-	AssetList []CaAsset `json:"assetList,omitempty"`
-	Token string `json:"token,omitempty"`
+	TotalRecords int64     `json:"totalRecords,omitempty"`
+	AssetList    []CaAsset `json:"assetList,omitempty"`
+	Token        string    `json:"token,omitempty"`
 }

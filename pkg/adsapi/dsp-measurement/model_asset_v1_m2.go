@@ -11,7 +11,7 @@ package dspmeasurement
 // The Amazon Creative Asset Library asset identifier. Refer https://advertising.amazon.com/API/docs/en-us/creative-asset-library
 type AssetV1M2 struct {
 	// The assetId.
-	AssetId string `json:"assetId,omitempty"`
+	AssetId   string         `json:"assetId,omitempty"`
 	AssetType *AssetTypeV1M2 `json:"assetType,omitempty"`
 	// The version of the asset.
 	Version string `json:"version,omitempty"`

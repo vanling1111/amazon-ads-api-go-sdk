@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 type ListImageTasksResponseContent struct {
 	// Operations that return paginated results include a pagination token in this field. To retrieve the next page of results, call the same operation and specify this token in the request. If the `NextToken` field is empty, there are no further results.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken     string      `json:"nextToken,omitempty"`
 	ImageTaskList []ImageTask `json:"imageTaskList,omitempty"`
-	BatchId string `json:"batchId,omitempty"`
-	TotalCount float64 `json:"totalCount,omitempty"`
+	BatchId       string      `json:"batchId,omitempty"`
+	TotalCount    float64     `json:"totalCount,omitempty"`
 }

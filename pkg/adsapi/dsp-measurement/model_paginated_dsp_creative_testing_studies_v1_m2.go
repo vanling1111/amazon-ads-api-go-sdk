@@ -11,5 +11,5 @@ package dspmeasurement
 // A list of creative testing studies.
 type PaginatedDspCreativeTestingStudiesV1M2 struct {
 	Measurements []DspCreativeTestingStudyV1M2 `json:"measurements,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken    string                        `json:"nextToken,omitempty"`
 }

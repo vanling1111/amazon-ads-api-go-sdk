@@ -11,7 +11,7 @@ package sponsoredbrandsv4
 // Information about the specific text that violates the specified policy in the campaign.
 type ViolatingTextContent struct {
 	// The actual text on which the moderation was done.
-	ReviewedText string `json:"reviewedText,omitempty"`
+	ReviewedText           string                  `json:"reviewedText,omitempty"`
 	ViolatingTextEvidences []ViolatingTextEvidence `json:"violatingTextEvidences,omitempty"`
 	// Moderation component which marked the policy violation.
 	ModeratedComponent string `json:"moderatedComponent,omitempty"`

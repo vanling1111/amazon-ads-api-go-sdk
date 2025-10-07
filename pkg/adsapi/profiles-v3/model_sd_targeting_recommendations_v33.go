@@ -14,7 +14,7 @@ type SdTargetingRecommendationsV33 struct {
 	Categories []SdCategoryRecommendationV33 `json:"categories,omitempty"`
 	// List of recommended audience targets, broken down by audience category
 	Audiences []SdAudienceCategoryRecommendations `json:"audiences,omitempty"`
-	Themes *SdThemeRecommendationsThemes `json:"themes,omitempty"`
+	Themes    *SdThemeRecommendationsThemes       `json:"themes,omitempty"`
 	// List of recommended product targets
 	Products []SdProductRecommendationV32 `json:"products,omitempty"`
 }

@@ -9,7 +9,7 @@
 package sponsoreddisplayv3
 
 type CreativePreviewRequest struct {
-	Creative *PreviewCreativeModel `json:"creative"`
-	PreviewConfiguration *CreativePreviewConfiguration `json:"previewConfiguration"`
+	Creative              *PreviewCreativeModel           `json:"creative"`
+	PreviewConfiguration  *CreativePreviewConfiguration   `json:"previewConfiguration"`
 	PreviewConfigurations *[]CreativePreviewConfiguration `json:"previewConfigurations,omitempty"`
 }

@@ -9,14 +9,14 @@
 package portfoliosv2
 
 type Portfolio struct {
-	Budget *PortfolioBudget `json:"budget,omitempty"`
-	BudgetControls *BudgetControls `json:"budgetControls,omitempty"`
-	ExtendedData *PortfolioExtendedData `json:"extendedData,omitempty"`
+	Budget         *PortfolioBudget       `json:"budget,omitempty"`
+	BudgetControls *BudgetControls        `json:"budgetControls,omitempty"`
+	ExtendedData   *PortfolioExtendedData `json:"extendedData,omitempty"`
 	// States if the portfolio is still within budget.
 	InBudget bool `json:"inBudget,omitempty"`
 	// The name of the portfolio.
 	Name string `json:"name"`
 	// The ID of the portfolio.
-	PortfolioId string `json:"portfolioId"`
-	State *EntityState `json:"state"`
+	PortfolioId string       `json:"portfolioId"`
+	State       *EntityState `json:"state"`
 }

@@ -11,5 +11,5 @@ package dspmeasurement
 // A list of studies.
 type PaginatedDspBrandLiftStudiesV1M1 struct {
 	Measurements []DspBrandLiftStudyV1M1 `json:"measurements,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken    string                  `json:"nextToken,omitempty"`
 }

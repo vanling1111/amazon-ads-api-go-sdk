@@ -9,11 +9,11 @@
 package sponsoredbrandsv4
 
 type SbBudgetRuleDetails struct {
-	Duration *RuleDuration `json:"duration,omitempty"`
-	Recurrence *Recurrence `json:"recurrence,omitempty"`
-	RuleType *SbRuleType `json:"ruleType,omitempty"`
+	Duration         *RuleDuration     `json:"duration,omitempty"`
+	Recurrence       *Recurrence       `json:"recurrence,omitempty"`
+	RuleType         *SbRuleType       `json:"ruleType,omitempty"`
 	BudgetIncreaseBy *BudgetIncreaseBy `json:"budgetIncreaseBy,omitempty"`
 	// The budget rule name. Required to be unique within a campaign.
-	Name string `json:"name,omitempty"`
+	Name                        string                            `json:"name,omitempty"`
 	PerformanceMeasureCondition *PerformanceMeasureConditionForSb `json:"performanceMeasureCondition,omitempty"`
 }

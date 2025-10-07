@@ -10,6 +10,6 @@ package retailadservice
 
 type Rasv1CampaignAccessError struct {
 	// The type of the error
-	ErrorType string `json:"errorType"`
+	ErrorType  string                            `json:"errorType"`
 	ErrorValue *Rasv1CampaignAccessErrorSelector `json:"errorValue"`
 }

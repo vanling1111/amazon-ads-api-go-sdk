@@ -10,9 +10,9 @@ package sponsoreddisplayv3
 
 // Select customizations on your creative from any combination of headline, logo, custom image and backgrounds.
 type CreativeProperties struct {
-    HeadlineCreativeProperties
-    LogoCreativeProperties
-    CustomImageCreativeProperties
-    VideoCreativeProperties
-    BackgroundCreativeProperties
+	HeadlineCreativeProperties
+	LogoCreativeProperties
+	CustomImageCreativeProperties
+	VideoCreativeProperties
+	BackgroundCreativeProperties
 }

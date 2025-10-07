@@ -9,8 +9,8 @@
 package billing
 
 type AvailableDocumentResponse struct {
-	ContentType string `json:"contentType,omitempty"`
-	DocType *DocType `json:"docType,omitempty"`
-	FileName string `json:"fileName,omitempty"`
-	StoragePath string `json:"storagePath,omitempty"`
+	ContentType string   `json:"contentType,omitempty"`
+	DocType     *DocType `json:"docType,omitempty"`
+	FileName    string   `json:"fileName,omitempty"`
+	StoragePath string   `json:"storagePath,omitempty"`
 }

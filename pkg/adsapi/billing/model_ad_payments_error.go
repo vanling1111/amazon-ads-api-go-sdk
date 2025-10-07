@@ -9,6 +9,6 @@
 package billing
 
 type AdPaymentsError struct {
-	Code string `json:"code"`
+	Code    string `json:"code"`
 	Details string `json:"details"`
 }

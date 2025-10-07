@@ -13,6 +13,6 @@ type ViolatingTextContent struct {
 	// Moderation component which marked the policy violation.
 	ModeratedComponent string `json:"moderatedComponent,omitempty"`
 	// The actual text on which the moderation was done.
-	ReviewedText string `json:"reviewedText,omitempty"`
+	ReviewedText           string                  `json:"reviewedText,omitempty"`
 	ViolatingTextEvidences []ViolatingTextEvidence `json:"violatingTextEvidences,omitempty"`
 }

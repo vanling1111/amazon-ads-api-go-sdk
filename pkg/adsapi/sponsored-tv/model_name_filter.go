@@ -8,8 +8,8 @@
  */
 package sponsoredtv
 
-// Filter entities by name  Note: Names including single quotes must be escaped. For example, to filter for `Campaign 'A'`, provide the following filter array: `[\"Campaign '\\''A'\\''\"]`
+// Filter entities by name  Note: Names including single quotes must be escaped. For example, to filter for `Campaign 'A'`, provide the following filter array: `[\"Campaign '\\”A'\\”\"]`
 type NameFilter struct {
-	Include []string `json:"include"`
+	Include            []string            `json:"include"`
 	QueryTermMatchType *QueryTermMatchType `json:"queryTermMatchType,omitempty"`
 }

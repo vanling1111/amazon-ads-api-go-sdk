@@ -10,6 +10,6 @@ package moderation
 
 type ViolatingAsinContent struct {
 	// Moderation component which marked the policy violation.
-	ModeratedComponent string `json:"moderatedComponent,omitempty"`
+	ModeratedComponent     string                  `json:"moderatedComponent,omitempty"`
 	ViolatingAsinEvidences []ViolatingAsinEvidence `json:"violatingAsinEvidences,omitempty"`
 }

@@ -9,30 +9,30 @@
 package sponsoredbrandsv4
 
 type Creative struct {
-	BrandLogoCrop *BrandLogoCrop `json:"brandLogoCrop,omitempty"`
-	BrandName string `json:"brandName,omitempty"`
-	CustomImageAssetId string `json:"customImageAssetId,omitempty"`
+	BrandLogoCrop      *BrandLogoCrop `json:"brandLogoCrop,omitempty"`
+	BrandName          string         `json:"brandName,omitempty"`
+	CustomImageAssetId string         `json:"customImageAssetId,omitempty"`
 	// If set to true and the headline and/or video asset are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch. See developer notes for more information.
 	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`
 	// Requires minimum one custom image. You can add an optional collection of custom images that can be displayed on the ad as slideshow. Learn more about slideshow here https://advertising.amazon.com/resources/whats-new/slideshow-ads-creative-for-sponsored-brands/
-	CustomImages []CustomImage `json:"customImages,omitempty"`
+	CustomImages    []CustomImage    `json:"customImages,omitempty"`
 	CustomImageCrop *CustomImageCrop `json:"customImageCrop,omitempty"`
-	CustomImageUrl string `json:"customImageUrl,omitempty"`
-	Type_ *CreativeType `json:"type,omitempty"`
+	CustomImageUrl  string           `json:"customImageUrl,omitempty"`
+	Type_           *CreativeType    `json:"type,omitempty"`
 	// The assetIds of the original videos submitted by the advertiser. If 'consentToTranslate' is set to true and translation is SUCCESSFUL then `originalVideoAssetIds` will return the original video assetId whereas `videoAssetIds` will return translated video assetId. In all other cases, 'originalVideoAssetIds' and `videoAssetIds` both will return original video assetId.
-	OriginalVideoAssetIds []string `json:"originalVideoAssetIds,omitempty"`
-	Asins []string `json:"asins,omitempty"`
-	BrandLogoUrl string `json:"brandLogoUrl,omitempty"`
-	Subpages []Subpage `json:"subpages,omitempty"`
+	OriginalVideoAssetIds []string  `json:"originalVideoAssetIds,omitempty"`
+	Asins                 []string  `json:"asins,omitempty"`
+	BrandLogoUrl          string    `json:"brandLogoUrl,omitempty"`
+	Subpages              []Subpage `json:"subpages,omitempty"`
 	// If this property is enabled, Sponsored Brands will dynamically optimize by enhancing or generating creative properties based on shopper search intent.
 	CreativePropertiesToOptimize []CreativePropertyToOptimize `json:"creativePropertiesToOptimize,omitempty"`
 	// The original headline submitted by the advertiser.
 	OriginalHeadline string `json:"originalHeadline,omitempty"`
 	// In SB API V4, `videoMediaIds` is replaced by `videoAssetIds`. `videoAssetIds` will only allow Asset Library identifiers for ad creation, but responses can include mediaIds for v1 campaigns and API V3 operations. At a future state, existing mediaIds will be added to Asset library for use in SB campaigns.
-	VideoAssetIds []string `json:"videoAssetIds,omitempty"`
-	BrandLogoAssetID string `json:"brandLogoAssetID,omitempty"`
+	VideoAssetIds    []string `json:"videoAssetIds,omitempty"`
+	BrandLogoAssetID string   `json:"brandLogoAssetID,omitempty"`
 	// The headline text. Maximum length of the string is 50 characters for all marketplaces other than Japan, which has a maximum length of 35 characters.
-	Headline string `json:"headline,omitempty"`
+	Headline       string          `json:"headline,omitempty"`
 	CreativeStatus *CreativeStatus `json:"creativeStatus,omitempty"`
 	// The version identifier that helps you keep track of multiple versions of a submitted (non-draft) Sponsored Brands creative.
 	CreativeVersion string `json:"creativeVersion,omitempty"`

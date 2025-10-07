@@ -247,4 +247,3 @@ func BenchmarkAllRegions(b *testing.B) {
 		_ = AllRegions()
 	}
 }
-

@@ -10,6 +10,6 @@ package sponsoreddisplayv3
 
 // Response to a request for targeting bid recommendations.
 type SdTargetingBidRecommendationsResponseV31 struct {
-	CostType *SdCostTypeV31 `json:"costType"`
+	CostType           *SdCostTypeV31                                                         `json:"costType"`
 	BidRecommendations []OneOfSdTargetingBidRecommendationsResponseV31BidRecommendationsItems `json:"bidRecommendations"`
 }

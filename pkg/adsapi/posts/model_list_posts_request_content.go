@@ -23,6 +23,6 @@ type ListPostsRequestContent struct {
 	// Identifier for a profile.
 	ProfileId string `json:"profileId"`
 	// A list of metrics to return for each post.
-	SelectedMetrics []MetricName `json:"selectedMetrics,omitempty"`
-	SortCriterion *PostListSortCriterion `json:"sortCriterion,omitempty"`
+	SelectedMetrics []MetricName           `json:"selectedMetrics,omitempty"`
+	SortCriterion   *PostListSortCriterion `json:"sortCriterion,omitempty"`
 }

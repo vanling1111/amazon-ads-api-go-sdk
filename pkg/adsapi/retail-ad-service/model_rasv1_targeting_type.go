@@ -12,6 +12,6 @@ type Rasv1TargetingType string
 
 // List of RASv1TargetingType
 const (
-	AUTO_Rasv1TargetingType Rasv1TargetingType = "AUTO"
+	AUTO_Rasv1TargetingType   Rasv1TargetingType = "AUTO"
 	MANUAL_Rasv1TargetingType Rasv1TargetingType = "MANUAL"
 )

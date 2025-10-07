@@ -10,8 +10,8 @@ package billing
 
 // Represents the input to the pay invoices API.
 type AdPaymentsPayInvoicesInput struct {
-	IdempotenceId string `json:"idempotenceId"`
-	Mode *AdPayInvoicesMode `json:"mode,omitempty"`
-	PaymentAgreementId string `json:"paymentAgreementId,omitempty"`
-	ReasonLocale *AdPaymentsLocale `json:"reasonLocale,omitempty"`
+	IdempotenceId      string             `json:"idempotenceId"`
+	Mode               *AdPayInvoicesMode `json:"mode,omitempty"`
+	PaymentAgreementId string             `json:"paymentAgreementId,omitempty"`
+	ReasonLocale       *AdPaymentsLocale  `json:"reasonLocale,omitempty"`
 }

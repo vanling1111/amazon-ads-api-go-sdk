@@ -11,6 +11,6 @@ package dspmeasurement
 // Studies response.
 type StudyResponsesV1 struct {
 	// Request Id that uniquely identifies your request.
-	RequestId string `json:"requestId,omitempty"`
+	RequestId string            `json:"requestId,omitempty"`
 	Responses []StudyResponseV1 `json:"responses,omitempty"`
 }

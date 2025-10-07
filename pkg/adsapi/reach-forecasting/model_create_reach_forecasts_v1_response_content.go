@@ -9,6 +9,6 @@
 package reachforecasting
 
 type CreateReachForecastsV1ResponseContent struct {
-	Error_ []CreateReachForecastsV1ResponseError `json:"error"`
+	Error_  []CreateReachForecastsV1ResponseError   `json:"error"`
 	Success []CreateReachForecastsV1ResponseSuccess `json:"success"`
 }

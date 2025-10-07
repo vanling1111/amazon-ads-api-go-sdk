@@ -10,8 +10,8 @@ package audiencesdiscovery
 
 type DspAudienceErrorItem struct {
 	// Identifier of audience for which edit was attempted.
-	AudienceId string `json:"audienceId"`
-	Errors []DspAudienceErrorItemError `json:"errors"`
+	AudienceId string                      `json:"audienceId"`
+	Errors     []DspAudienceErrorItemError `json:"errors"`
 	// unique request token for this request.
 	IdempotencyKey string `json:"idempotencyKey"`
 	// Index of the DspAudienceEditRequestItem from the request. e.g. 1st item in the request will correspond to index 0 in the response.

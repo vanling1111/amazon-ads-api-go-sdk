@@ -12,7 +12,7 @@ type BidRecommendationsResponseRecommendations struct {
 	// The resulting status code for retrieving the bid.
 	Code string `json:"code,omitempty"`
 	// The keyword text.
-	Keyword string `json:"keyword,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	Keyword      string        `json:"keyword,omitempty"`
+	MatchType    *MatchType    `json:"matchType,omitempty"`
 	SuggestedBid *SuggestedBid `json:"suggestedBid,omitempty"`
 }

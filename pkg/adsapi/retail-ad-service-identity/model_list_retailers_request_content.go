@@ -12,6 +12,6 @@ type ListRetailersRequestContent struct {
 	// Number of records to include in the paginated response. Defaults to max page size for given API
 	MaxResults int32 `json:"maxResults,omitempty"`
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken        string            `json:"nextToken,omitempty"`
 	RetailerIdFilter *RetailerIdFilter `json:"retailerIdFilter,omitempty"`
 }

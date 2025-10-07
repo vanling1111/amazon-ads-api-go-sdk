@@ -11,6 +11,6 @@ package amazonadsv1
 // Target based on user application.
 type CreateAppTarget struct {
 	// The app identifier being targeted.
-	AppId string `json:"appId,omitempty"`
+	AppId   string   `json:"appId,omitempty"`
 	AppType *AppType `json:"appType,omitempty"`
 }

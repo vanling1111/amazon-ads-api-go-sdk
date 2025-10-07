@@ -1,4 +1,3 @@
-
 /*
  * Advertising Billing
  *
@@ -11,12 +10,12 @@ package billing
 
 import (
 	"context"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,12 +24,13 @@ var (
 )
 
 type InvoiceApiService service
+
 /*
 InvoiceApiService Get invoices for advertiser
   **Requires one of these permissions**: [\&quot;nemo_transactions_view\&quot;,\&quot;nemo_transactions_edit\&quot;]
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *InvoiceApiGetAdvertiserInvoicesOpts - Optional Parameters:
-     * @param "InvoiceStatuses" (optional.Interface of []string) -  * &#x60;ISSUED&#x60;: An invoice is issued when its charges are finalized and tax is computed on the total amount.  * &#x60;PAID_IN_PART&#x60;: When a partial payment is received, the invoice status will change to paid in part. * &#x60;PAID_IN_PART&#x60;: One full payment has been received, the invoice will be paid in full. * &#x60;WRITTEN_OFF&#x60;: If an invoice is written off because of an error, the status will be updated to written off. 
+     * @param "InvoiceStatuses" (optional.Interface of []string) -  * &#x60;ISSUED&#x60;: An invoice is issued when its charges are finalized and tax is computed on the total amount.  * &#x60;PAID_IN_PART&#x60;: When a partial payment is received, the invoice status will change to paid in part. * &#x60;PAID_IN_PART&#x60;: One full payment has been received, the invoice will be paid in full. * &#x60;WRITTEN_OFF&#x60;: If an invoice is written off because of an error, the status will be updated to written off.
      * @param "StartDate" (optional.Interface of Object) -  The starting date (inclusive) of the date range for filtering invoices. Please provide the date in ISO-8601 format, representing a UTC date with only the date portion (no time).
      * @param "EndDate" (optional.Interface of Object) -  The ending date (inclusive) of the date range for filtering invoices. Please provide the date in ISO-8601 format, representing a UTC date with only the date portion (no time).
      * @param "Count" (optional.Int32) -  Number of records to include in the paged response. Defaults to 100. Cannot be combined with the cursor parameter.
@@ -39,19 +39,19 @@ InvoiceApiService Get invoices for advertiser
 */
 
 type InvoiceApiGetAdvertiserInvoicesOpts struct {
-    InvoiceStatuses optional.Interface
-    StartDate optional.Interface
-    EndDate optional.Interface
-    Count optional.Int32
-    Cursor optional.String
+	InvoiceStatuses optional.Interface
+	StartDate       optional.Interface
+	EndDate         optional.Interface
+	Count           optional.Int32
+	Cursor          optional.String
 }
 
 func (a *InvoiceApiService) GetAdvertiserInvoices(ctx context.Context, localVarOptionals *InvoiceApiGetAdvertiserInvoicesOpts) (InlineResponse200, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Get")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue InlineResponse200
 	)
 
@@ -112,45 +112,48 @@ func (a *InvoiceApiService) GetAdvertiserInvoices(ctx context.Context, localVarO
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v InlineResponse200
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
 }
+
 /*
 InvoiceApiService Get invoice data by invoice ID
-  **Requires one of these permissions**: [\&quot;nemo_transactions_view\&quot;,\&quot;nemo_transactions_edit\&quot;]
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param invoiceId ID of invoice to fetch
+
+	 **Requires one of these permissions**: [\&quot;nemo_transactions_view\&quot;,\&quot;nemo_transactions_edit\&quot;]
+	* @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	* @param invoiceId ID of invoice to fetch
+
 @return Invoice
 */
 func (a *InvoiceApiService) GetInvoice(ctx context.Context, invoiceId string) (Invoice, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Get")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue Invoice
 	)
 
@@ -197,26 +200,26 @@ func (a *InvoiceApiService) GetInvoice(ctx context.Context, invoiceId string) (I
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v Invoice
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

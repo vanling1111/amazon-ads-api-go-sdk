@@ -10,11 +10,11 @@ package creativeassets
 
 // Structure containing metadata of Video Stream.  profile: This is the profile of the stream.  duration: This is the duration of the stream in secs.  codecName: This tells the codec of the media stream.  codecType: This is the codec type of stream.  bitRate: This tells the bit rate of the stream.  channelLayout: This tells the channel of the stream  sampleRate: This is the sample rate of the stream
 type CaAudioStreamMetadata struct {
-	Duration float64 `json:"duration,omitempty"`
-	ChannelLayout string `json:"channelLayout,omitempty"`
-	BitRate int64 `json:"bitRate,omitempty"`
-	Profile string `json:"profile,omitempty"`
-	CodecName string `json:"codecName,omitempty"`
-	CodecType string `json:"codecType,omitempty"`
-	SampleRate int64 `json:"sampleRate,omitempty"`
+	Duration      float64 `json:"duration,omitempty"`
+	ChannelLayout string  `json:"channelLayout,omitempty"`
+	BitRate       int64   `json:"bitRate,omitempty"`
+	Profile       string  `json:"profile,omitempty"`
+	CodecName     string  `json:"codecName,omitempty"`
+	CodecType     string  `json:"codecType,omitempty"`
+	SampleRate    int64   `json:"sampleRate,omitempty"`
 }

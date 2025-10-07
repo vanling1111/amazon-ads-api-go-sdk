@@ -12,14 +12,14 @@ type Rasv1BudgetErrorReason string
 
 // List of RASv1BudgetErrorReason
 const (
-	BUDGETING_POLICY_INVALID_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGETING_POLICY_INVALID"
+	BUDGETING_POLICY_INVALID_Rasv1BudgetErrorReason                            Rasv1BudgetErrorReason = "BUDGETING_POLICY_INVALID"
 	BUDGET_CURRENCY_DOES_NOT_MATCH_MARKETPLACE_SETTINGS_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_CURRENCY_DOES_NOT_MATCH_MARKETPLACE_SETTINGS"
-	BUDGET_LT_DEFAULT_BIDS_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_LT_DEFAULT_BIDS"
-	BUDGET_LT_KEYWORD_BIDS_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_LT_KEYWORD_BIDS"
-	BUDGET_LT_PREDEFINED_TARGET_BIDS_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_LT_PREDEFINED_TARGET_BIDS"
-	BUDGET_OUT_OF_MARKET_PLACE_RANGE_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_OUT_OF_MARKET_PLACE_RANGE"
-	BUDGET_TOO_HIGH_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_TOO_HIGH"
-	BUDGET_TOO_LOW_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "BUDGET_TOO_LOW"
-	MISSING_BUDGETING_POLICY_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "MISSING_BUDGETING_POLICY"
-	MISSING_IN_BUDGET_FLAG_Rasv1BudgetErrorReason Rasv1BudgetErrorReason = "MISSING_IN_BUDGET_FLAG"
+	BUDGET_LT_DEFAULT_BIDS_Rasv1BudgetErrorReason                              Rasv1BudgetErrorReason = "BUDGET_LT_DEFAULT_BIDS"
+	BUDGET_LT_KEYWORD_BIDS_Rasv1BudgetErrorReason                              Rasv1BudgetErrorReason = "BUDGET_LT_KEYWORD_BIDS"
+	BUDGET_LT_PREDEFINED_TARGET_BIDS_Rasv1BudgetErrorReason                    Rasv1BudgetErrorReason = "BUDGET_LT_PREDEFINED_TARGET_BIDS"
+	BUDGET_OUT_OF_MARKET_PLACE_RANGE_Rasv1BudgetErrorReason                    Rasv1BudgetErrorReason = "BUDGET_OUT_OF_MARKET_PLACE_RANGE"
+	BUDGET_TOO_HIGH_Rasv1BudgetErrorReason                                     Rasv1BudgetErrorReason = "BUDGET_TOO_HIGH"
+	BUDGET_TOO_LOW_Rasv1BudgetErrorReason                                      Rasv1BudgetErrorReason = "BUDGET_TOO_LOW"
+	MISSING_BUDGETING_POLICY_Rasv1BudgetErrorReason                            Rasv1BudgetErrorReason = "MISSING_BUDGETING_POLICY"
+	MISSING_IN_BUDGET_FLAG_Rasv1BudgetErrorReason                              Rasv1BudgetErrorReason = "MISSING_IN_BUDGET_FLAG"
 )

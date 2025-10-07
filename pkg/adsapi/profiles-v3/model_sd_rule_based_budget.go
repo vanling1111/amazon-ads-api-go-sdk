@@ -10,11 +10,11 @@ package profilesv3
 
 type SdRuleBasedBudget struct {
 	// Epoch time of budget rule execution.
-	ExecutionTime float64 `json:"executionTime,omitempty"`
-	AppliedRule *SdBudgetRule `json:"appliedRule,omitempty"`
+	ExecutionTime float64       `json:"executionTime,omitempty"`
+	AppliedRule   *SdBudgetRule `json:"appliedRule,omitempty"`
 	// The budget value.
 	RuleBasedBudgetValue float64 `json:"ruleBasedBudgetValue,omitempty"`
 	// The daily budget value.
-	DailyBudgetValue float64 `json:"dailyBudgetValue,omitempty"`
+	DailyBudgetValue  float64                 `json:"dailyBudgetValue,omitempty"`
 	PerformanceMetric *PerformanceMetricValue `json:"performanceMetric,omitempty"`
 }

@@ -9,7 +9,7 @@
 package audiencesdiscovery
 
 type FetchTaxonomyResponseV1 struct {
-	Categories []FetchTaxonomyNodeV1 `json:"categories,omitempty"`
-	CategoryPath []string `json:"categoryPath,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	Categories   []FetchTaxonomyNodeV1 `json:"categories,omitempty"`
+	CategoryPath []string              `json:"categoryPath,omitempty"`
+	NextToken    string                `json:"nextToken,omitempty"`
 }

@@ -11,8 +11,8 @@ package tacticalrecommendations
 type ListRecommendationsRequest struct {
 	Filters []ListRecommendationsFilter `json:"filters,omitempty"`
 	// This will control the language of preference returned for the summary field.
-	Locale *AllOfListRecommendationsRequestLocale `json:"locale,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
+	Locale     *AllOfListRecommendationsRequestLocale `json:"locale,omitempty"`
+	MaxResults int32                                  `json:"maxResults,omitempty"`
 	// Token to retrieve the next page of results.
 	NextToken string `json:"nextToken,omitempty"`
 }

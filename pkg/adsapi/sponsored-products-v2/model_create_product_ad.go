@@ -16,6 +16,6 @@ type CreateProductAd struct {
 	// The SKU associated with the product. Defined for seller accounts only.
 	Sku string `json:"sku,omitempty"`
 	// The ASIN associated with the product. Defined for vendors only.
-	Asin string `json:"asin,omitempty"`
+	Asin  string `json:"asin,omitempty"`
 	State *State `json:"state,omitempty"`
 }

@@ -12,7 +12,7 @@ package dspmeasurement
 type VendorProductEligibilityV1M2 struct {
 	// A list of issues will be provided if the status is INELIGIBLE or ELIGIBLE_WITH_WARNING.
 	Issues []EligibilityIssueV1M2 `json:"issues,omitempty"`
-	Status *EligibilityStatusV1 `json:"status,omitempty"`
+	Status *EligibilityStatusV1   `json:"status,omitempty"`
 	// vendor product canonical identifier.
 	VendorProductId string `json:"vendorProductId,omitempty"`
 }

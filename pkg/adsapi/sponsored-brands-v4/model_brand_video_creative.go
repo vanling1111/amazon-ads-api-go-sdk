@@ -10,10 +10,10 @@ package sponsoredbrandsv4
 
 type BrandVideoCreative struct {
 	// An array of ASINs associated with the creative.
-	Asins []string `json:"asins"`
+	Asins         []string   `json:"asins"`
 	BrandLogoCrop *AssetCrop `json:"brandLogoCrop,omitempty"`
 	// The displayed brand name in the ad headline. Maximum length is 30 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
-	BrandName string `json:"brandName"`
+	BrandName   string                 `json:"brandName"`
 	LandingPage *CreativeLandingPageV2 `json:"landingPage,omitempty"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch. See developer notes for more information.
 	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`

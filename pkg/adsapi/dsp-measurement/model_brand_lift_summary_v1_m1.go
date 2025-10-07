@@ -17,8 +17,8 @@ type BrandLiftSummaryV1M1 struct {
 	// Control group response rate.
 	ControlGroupRate float64 `json:"controlGroupRate,omitempty"`
 	// Qualifying responses aggregated to measure the Brand Lift.
-	QualifyingResponses []string `json:"qualifyingResponses,omitempty"`
-	QuestionObjective *SurveyQuestionObjectiveTypeV1M1 `json:"questionObjective,omitempty"`
+	QualifyingResponses []string                         `json:"qualifyingResponses,omitempty"`
+	QuestionObjective   *SurveyQuestionObjectiveTypeV1M1 `json:"questionObjective,omitempty"`
 	// Text of the Survey question.
 	QuestionText string `json:"questionText,omitempty"`
 	// The significance percentage of achieved Brand Lift.

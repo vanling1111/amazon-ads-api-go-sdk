@@ -9,6 +9,6 @@
 package profilesv3
 
 type OneOfSdTargetingBidRecommendationsResponseV31BidRecommendationsItems struct {
-    SdTargetingBidRecommendationsResponseItemSuccessV31
-    SdTargetingBidRecommendationsResponseItemFailureV31
+	SdTargetingBidRecommendationsResponseItemSuccessV31
+	SdTargetingBidRecommendationsResponseItemFailureV31
 }

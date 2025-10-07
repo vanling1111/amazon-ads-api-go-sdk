@@ -10,7 +10,7 @@ package amazonadsv1
 
 type MarketplaceAdGroupConfigurations struct {
 	// Represents marketplace adGroup id (Ex: adGroupId-US) associated to global adGroup (Ex: adGroupId-Global)
-	AdGroupId string `json:"adGroupId,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
-	Overrides *MarketplaceAdGroupFieldOverrides `json:"overrides,omitempty"`
+	AdGroupId   string                            `json:"adGroupId,omitempty"`
+	Marketplace *Marketplace                      `json:"marketplace,omitempty"`
+	Overrides   *MarketplaceAdGroupFieldOverrides `json:"overrides,omitempty"`
 }

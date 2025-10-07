@@ -11,13 +11,13 @@ package billing
 // Represents Credit Card payment method structure.
 type AdPaymentsCreditCardPaymentMethod struct {
 	// The processor used to execute payments on the card, such as Visa, MasterCard, etc. Only valued for credit card payment methods.
-	Brand string `json:"brand"`
-	EligibleCountries *[]AdPaymentsCountryCode `json:"eligibleCountries"`
-	ExpiryDetails *AdPaymentsExpiryDetails `json:"expiryDetails"`
-	ForeignExchange *AdPaymentsForeignExchange `json:"foreignExchange,omitempty"`
+	Brand             string                     `json:"brand"`
+	EligibleCountries *[]AdPaymentsCountryCode   `json:"eligibleCountries"`
+	ExpiryDetails     *AdPaymentsExpiryDetails   `json:"expiryDetails"`
+	ForeignExchange   *AdPaymentsForeignExchange `json:"foreignExchange,omitempty"`
 	// Identifies a credit card payment method.
 	InstrumentId string `json:"instrumentId"`
 	// The last four digits of the credit card number.
-	Tail string `json:"tail"`
+	Tail  string                       `json:"tail"`
 	Type_ *AdPaymentsPaymentMethodType `json:"type"`
 }

@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1KeywordTarget struct {
-	Keyword string `json:"keyword"`
+	Keyword   string                 `json:"keyword"`
 	MatchType *Rasv1KeywordMatchType `json:"matchType"`
 }

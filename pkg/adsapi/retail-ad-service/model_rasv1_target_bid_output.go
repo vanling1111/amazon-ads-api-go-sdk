@@ -10,6 +10,6 @@ package retailadservice
 
 type Rasv1TargetBidOutput struct {
 	// The maximum bid for a target.
-	Bid float64 `json:"bid"`
+	Bid          float64            `json:"bid"`
 	CurrencyCode *Rasv1CurrencyCode `json:"currencyCode"`
 }

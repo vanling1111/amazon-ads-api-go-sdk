@@ -15,10 +15,10 @@ type NegativeTargetingClauseEx struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which this negative target is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The negative targeting expression.
-	Expression []NegativeTargetingExpressionPredicate `json:"expression,omitempty"`
-	ExpressionType *NegativeExpressionType `json:"expressionType,omitempty"`
+	Expression     []NegativeTargetingExpressionPredicate `json:"expression,omitempty"`
+	ExpressionType *NegativeExpressionType                `json:"expressionType,omitempty"`
 	// The epoch time that the negative targeting clause was created.
 	CreationDate float64 `json:"creationDate,omitempty"`
 	// The epoch time that the negative targeting clause was updated.

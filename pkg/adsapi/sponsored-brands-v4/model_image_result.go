@@ -11,5 +11,5 @@ package sponsoredbrandsv4
 type ImageResult struct {
 	// Alt text for this image
 	ImageAltText string `json:"imageAltText,omitempty"`
-	ImageUrl string `json:"imageUrl,omitempty"`
+	ImageUrl     string `json:"imageUrl,omitempty"`
 }

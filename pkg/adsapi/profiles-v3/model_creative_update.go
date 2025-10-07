@@ -11,7 +11,7 @@ package profilesv3
 // Creative update model.
 type CreativeUpdate struct {
 	// Unique identifier of the creative.
-	CreativeId float64 `json:"creativeId"`
+	CreativeId   float64                        `json:"creativeId"`
 	CreativeType *CreativeTypeInCreativeRequest `json:"creativeType,omitempty"`
-	Properties *CreativeProperties `json:"properties"`
+	Properties   *CreativeProperties            `json:"properties"`
 }

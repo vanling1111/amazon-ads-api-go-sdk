@@ -11,10 +11,10 @@ package sponsoreddisplayv3
 // Request for targeting bid recommendations.
 type SdTargetingBidRecommendationsRequestV34 struct {
 	// A list of products to tailor bid recommendations for category and audience based targeting clauses. This array must contain consistent fields of either asins or landing pages (when linking to other pages), these cannot be mixed for any given request. If landingPageUrl is used, only one item is allowed for the list.
-	Products []SdGoalProduct `json:"products,omitempty"`
+	Products        []SdGoalProduct       `json:"products,omitempty"`
 	BidOptimization *SdBidOptimizationV32 `json:"bidOptimization"`
-	CostType *SdCostTypeV31 `json:"costType"`
-	CreativeType *SdCreativeType `json:"creativeType,omitempty"`
+	CostType        *SdCostTypeV31        `json:"costType"`
+	CreativeType    *SdCreativeType       `json:"creativeType,omitempty"`
 	// A list of targeting clauses to receive bid recommendations for.
 	TargetingClauses []SdTargetingBidRecommendationsRequestV34TargetingClauses `json:"targetingClauses"`
 }

@@ -10,5 +10,5 @@ package amazonadsv1
 
 type CreateThirdPartyCreative struct {
 	ThirdPartyDisplaySettings *CreateThirdPartyDisplaySettings `json:"thirdPartyDisplaySettings,omitempty"`
-	ThirdPartyVideoSettings *CreateThirdPartyVideoSettings `json:"thirdPartyVideoSettings,omitempty"`
+	ThirdPartyVideoSettings   *CreateThirdPartyVideoSettings   `json:"thirdPartyVideoSettings,omitempty"`
 }

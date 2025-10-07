@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type ModerationResultsResponse struct {
 	ModerationResults []ModerationResult `json:"moderationResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken         string             `json:"nextToken,omitempty"`
 }

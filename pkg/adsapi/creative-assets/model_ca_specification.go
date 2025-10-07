@@ -10,9 +10,9 @@ package creativeassets
 
 // Structure containing specification  stringId: This is the translated string Id, client will be retrieving the translation corresponding to this string.  failureReason: This specifies the failure reason of specification.   arguments: Arguments required for translation string.  isPassed: Whether spec got passed or failed.  actualValue: If spec got failed then this attribute represent the actual value of the spec parameter in the file.
 type CaSpecification struct {
-	StringId string `json:"stringId,omitempty"`
-	IsPassed bool `json:"isPassed,omitempty"`
-	FailureReason string `json:"failureReason,omitempty"`
-	ActualValue string `json:"actualValue,omitempty"`
-	Arguments *[]string `json:"arguments,omitempty"`
+	StringId      string    `json:"stringId,omitempty"`
+	IsPassed      bool      `json:"isPassed,omitempty"`
+	FailureReason string    `json:"failureReason,omitempty"`
+	ActualValue   string    `json:"actualValue,omitempty"`
+	Arguments     *[]string `json:"arguments,omitempty"`
 }

@@ -9,11 +9,11 @@
 package sponsoreddisplayv3
 
 type CreateProductAd struct {
-	AdGroupId int64 `json:"adGroupId"`
-	CampaignId int64 `json:"campaignId"`
-	LandingPageURL string `json:"landingPageURL,omitempty"`
+	AdGroupId       int64            `json:"adGroupId"`
+	CampaignId      int64            `json:"campaignId"`
+	LandingPageURL  string           `json:"landingPageURL,omitempty"`
 	LandingPageType *LandingPageType `json:"landingPageType,omitempty"`
-	AdName string `json:"adName,omitempty"`
+	AdName          string           `json:"adName,omitempty"`
 	// The ASIN of the product advertised by the product ad. Defined for vendors only.
 	Asin string `json:"asin,omitempty"`
 	// The SKU of the product advertised by the product ad. Defined for seller accounts only.

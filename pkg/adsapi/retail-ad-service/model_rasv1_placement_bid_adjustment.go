@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1PlacementBidAdjustment struct {
-	Percentage int32 `json:"percentage"`
-	Placement *Rasv1Placement `json:"placement"`
+	Percentage int32           `json:"percentage"`
+	Placement  *Rasv1Placement `json:"placement"`
 }

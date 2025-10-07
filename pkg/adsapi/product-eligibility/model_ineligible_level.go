@@ -12,6 +12,6 @@ type IneligibleLevel string
 
 // List of IneligibleLevel
 const (
-	INELIGIBLE_IneligibleLevel IneligibleLevel = "INELIGIBLE"
+	INELIGIBLE_IneligibleLevel                 IneligibleLevel = "INELIGIBLE"
 	INELIGIBLE_WITH_RESOLUTION_IneligibleLevel IneligibleLevel = "INELIGIBLE_WITH_RESOLUTION"
 )

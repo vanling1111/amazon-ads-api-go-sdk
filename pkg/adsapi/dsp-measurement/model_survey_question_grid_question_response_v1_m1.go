@@ -11,5 +11,5 @@ package dspmeasurement
 // The grid question response object. Only applicable for SINGLE_SELECT_GRID type question.
 type SurveyQuestionGridQuestionResponseV1M1 struct {
 	Columns *SurveyQuestionPlaceholderCandidateV1 `json:"columns,omitempty"`
-	Rows *SurveyQuestionPlaceholderCandidateV1 `json:"rows,omitempty"`
+	Rows    *SurveyQuestionPlaceholderCandidateV1 `json:"rows,omitempty"`
 }

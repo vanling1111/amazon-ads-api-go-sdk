@@ -1,4 +1,3 @@
-
 /*
  * Advertising Billing
  *
@@ -11,11 +10,11 @@ package billing
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -24,6 +23,7 @@ var (
 )
 
 type GetPaymentAgreementsApiService service
+
 /*
 GetPaymentAgreementsApiService
 Gets current payment agreement for a customer.  **Authorized resource type**: Global Ad Account ID, Profile ID  **Parameter name**: Amazon-Ads-AccountId  **Parameter in**: header  **Requires one of these permissions**: [\&quot;adv_billing_view\&quot;,\&quot;adv_billing_edit\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;MasterAccount_Manager\&quot;,\&quot;ManagerAccount_Dev\&quot;]  **Authorized resource type**: Global Manager Account ID, Profile ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;adv_billing_view\&quot;,\&quot;adv_billing_edit\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;MasterAccount_Manager\&quot;,\&quot;ManagerAccount_Dev\&quot;]
@@ -39,18 +39,18 @@ Gets current payment agreement for a customer.  **Authorized resource type**: Gl
 */
 
 type GetPaymentAgreementsApiGetPaymentAgreementsOpts struct {
-    AmazonAdsAccountId optional.String
-    AmazonAdvertisingAPIScope optional.String
-    AmazonAdvertisingAPIManagerAccount optional.String
-    NextToken optional.String
+	AmazonAdsAccountId                 optional.String
+	AmazonAdvertisingAPIScope          optional.String
+	AmazonAdvertisingAPIManagerAccount optional.String
+	NextToken                          optional.String
 }
 
 func (a *GetPaymentAgreementsApiService) GetPaymentAgreements(ctx context.Context, amazonAdvertisingAPIClientId string, agreementType AdPaymentsPaymentAgreementType, localVarOptionals *GetPaymentAgreementsApiGetPaymentAgreementsOpts) (AdPaymentsGetPaymentAgreementOutput, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue AdPaymentsGetPaymentAgreementOutput
 	)
 
@@ -110,56 +110,56 @@ func (a *GetPaymentAgreementsApiService) GetPaymentAgreements(ctx context.Contex
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v AdPaymentsGetPaymentAgreementOutput
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v AdPaymentsError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 429 {
 			var v AdPaymentsError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v AdPaymentsError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

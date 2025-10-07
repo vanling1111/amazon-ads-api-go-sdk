@@ -9,9 +9,9 @@
 package personabuilder
 
 type IncomeDemographicInsight struct {
-	Currency *Currency `json:"currency"`
+	Currency       *Currency      `json:"currency"`
 	InsightMetrics *InsightMetric `json:"insightMetrics"`
-	Range_ *ModelRange `json:"range"`
+	Range_         *ModelRange    `json:"range"`
 	// Canonical ID of the segment the demographic insight attribute maps to.
 	SegmentId string `json:"segmentId"`
 }

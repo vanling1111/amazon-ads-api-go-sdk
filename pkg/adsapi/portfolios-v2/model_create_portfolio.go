@@ -9,9 +9,9 @@
 package portfoliosv2
 
 type CreatePortfolio struct {
-	Budget *PortfolioBudget `json:"budget,omitempty"`
-	BudgetControls *BudgetControls `json:"budgetControls,omitempty"`
+	Budget         *PortfolioBudget `json:"budget,omitempty"`
+	BudgetControls *BudgetControls  `json:"budgetControls,omitempty"`
 	// The name of the portfolio.
-	Name string `json:"name"`
+	Name  string       `json:"name"`
 	State *EntityState `json:"state"`
 }

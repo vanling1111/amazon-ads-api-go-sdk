@@ -16,13 +16,13 @@ type AssetBasedCreativeSettings struct {
 	// The body text to use for the Asset Based Creative experience.
 	BodyText []string `json:"bodyText,omitempty"`
 	// The brand of the product(s) being advertised.
-	Brand string `json:"brand,omitempty"`
+	Brand         string                          `json:"brand,omitempty"`
 	CallToActions *AssetBasedCreativeCallToAction `json:"callToActions,omitempty"`
 	// The third party urls to trigger when an click is recorded.
 	ClickTrackingUrls []CreativeTrackingUrl `json:"clickTrackingUrls,omitempty"`
 	// The placement sizes this creative should serve on.
 	CreativeSizes []Size `json:"creativeSizes,omitempty"`
-	CustomVideos *Video `json:"customVideos,omitempty"`
+	CustomVideos  *Video `json:"customVideos,omitempty"`
 	// The disclaimers to use for the Asset Based Creative experience.
 	Disclaimers string `json:"disclaimers,omitempty"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation.
@@ -37,13 +37,13 @@ type AssetBasedCreativeSettings struct {
 	ImpressionTrackingUrls []CreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
 	// The inventory types this creative should serve on.
 	InventoryTypes []ComponentInventoryType `json:"inventoryTypes,omitempty"`
-	LandingPage *ComponentLandingPage `json:"landingPage,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	LandingPage    *ComponentLandingPage    `json:"landingPage,omitempty"`
+	Language       *LanguageLocale          `json:"language,omitempty"`
 	// The logos to use for the Asset Based Creative experience.
-	Logos []Image `json:"logos,omitempty"`
-	ModerationStatus *CreativeStatus `json:"moderationStatus,omitempty"`
-	OptimizationGoalKpi *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
-	ResponsiveSizingBehavior *ResponsiveSizingBehavior `json:"responsiveSizingBehavior,omitempty"`
+	Logos                    []Image                      `json:"logos,omitempty"`
+	ModerationStatus         *CreativeStatus              `json:"moderationStatus,omitempty"`
+	OptimizationGoalKpi      *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
+	ResponsiveSizingBehavior *ResponsiveSizingBehavior    `json:"responsiveSizingBehavior,omitempty"`
 	// The square image(s) to use.
 	SquareImages []Image `json:"squareImages,omitempty"`
 	// The tall image(s) to use.

@@ -11,9 +11,9 @@ package billing
 // Represents a payment method.
 type AdPaymentsPaymentMethod struct {
 	// The processor used to execute payments on the card, such as Visa, MasterCard, etc. Only valued for credit card payment methods.
-	Brand string `json:"brand,omitempty"`
-	CountryCode *AdPaymentsCountryCode `json:"countryCode,omitempty"`
-	ExpiryDetails *AdPaymentsExpiryDetails `json:"expiryDetails,omitempty"`
+	Brand           string                     `json:"brand,omitempty"`
+	CountryCode     *AdPaymentsCountryCode     `json:"countryCode,omitempty"`
+	ExpiryDetails   *AdPaymentsExpiryDetails   `json:"expiryDetails,omitempty"`
 	ForeignExchange *AdPaymentsForeignExchange `json:"foreignExchange,omitempty"`
 	// Identifies a credit card or direct debit payment method.
 	InstrumentId string `json:"instrumentId,omitempty"`
@@ -22,10 +22,10 @@ type AdPaymentsPaymentMethod struct {
 	// The seller account ID associated to this payment method, only valued for seller payable payment methods.
 	SellerAccountId string `json:"sellerAccountId,omitempty"`
 	// The last four digits of a credit card or bank account number.
-	Tail string `json:"tail,omitempty"`
+	Tail  string                       `json:"tail,omitempty"`
 	Type_ *AdPaymentsPaymentMethodType `json:"type"`
 	// The vendor code associated to this payment method, only valued for deduct from payment payment methods.
-	VendorCode string `json:"vendorCode,omitempty"`
+	VendorCode        string                    `json:"vendorCode,omitempty"`
 	VendorCodeBalance *AdPaymentsCurrencyAmount `json:"vendorCodeBalance,omitempty"`
 	// The name of the vendor code this payment method represents.
 	VendorCodeName string `json:"vendorCodeName,omitempty"`

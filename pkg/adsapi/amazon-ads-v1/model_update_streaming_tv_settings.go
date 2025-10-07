@@ -13,8 +13,8 @@ type UpdateStreamingTvSettings struct {
 	CallToActions []CreateVideoCallToAction `json:"callToActions,omitempty"`
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language               *LanguageLocale             `json:"language,omitempty"`
 	// The product advertised on this video creative.
 	Products []CreateAdvertisedProducts `json:"products,omitempty"`
-	Videos *UpdateVideo `json:"videos,omitempty"`
+	Videos   *UpdateVideo               `json:"videos,omitempty"`
 }

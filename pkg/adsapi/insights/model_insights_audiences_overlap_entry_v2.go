@@ -11,6 +11,6 @@ package insights
 // Contains information about the overlapping audiences and their affinity with the provided audience.
 type InsightsAudiencesOverlapEntryV2 struct {
 	// Affinity is a measure of how similar the overlapping audience is to the audience selected to generate the audience overlap insights. An affinity of 2 indicates that the overlapping audience is twice as likely to fall into the audience selected than the average audience on Amazon.
-	Affinity float64 `json:"affinity,omitempty"`
+	Affinity         float64                                     `json:"affinity,omitempty"`
 	AudienceMetadata *InsightsAudiencesOverlapAudienceMetadataV2 `json:"audienceMetadata,omitempty"`
 }

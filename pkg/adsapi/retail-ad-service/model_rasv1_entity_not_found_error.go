@@ -11,9 +11,9 @@ package retailadservice
 type Rasv1EntityNotFoundError struct {
 	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
 	// The entity id in the request
-	EntityId string `json:"entityId"`
+	EntityId   string           `json:"entityId"`
 	EntityType *Rasv1EntityType `json:"entityType"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1EntityNotFoundErrorReason `json:"reason"`
+	Message string                          `json:"message"`
+	Reason  *Rasv1EntityNotFoundErrorReason `json:"reason"`
 }

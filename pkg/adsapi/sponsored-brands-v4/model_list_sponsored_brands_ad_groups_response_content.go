@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 type ListSponsoredBrandsAdGroupsResponseContent struct {
 	// The total number of entities.
-	TotalResults float64 `json:"totalResults,omitempty"`
-	AdGroups []AdGroup `json:"adGroups,omitempty"`
+	TotalResults float64   `json:"totalResults,omitempty"`
+	AdGroups     []AdGroup `json:"adGroups,omitempty"`
 	// Token value allowing to navigate to the next response page.
 	NextToken string `json:"nextToken,omitempty"`
 }

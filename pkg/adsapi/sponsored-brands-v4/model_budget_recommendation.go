@@ -15,6 +15,6 @@ type BudgetRecommendation struct {
 	// Recommended budget for the campaign.
 	SuggestedBudget float64 `json:"suggestedBudget"`
 	// Correlate the recommendation to the campaign index in the request. Zero-based.
-	Index float64 `json:"index"`
+	Index                        float64                       `json:"index"`
 	SevenDaysMissedOpportunities *SevenDaysMissedOpportunities `json:"sevenDaysMissedOpportunities"`
 }

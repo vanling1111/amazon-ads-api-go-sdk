@@ -9,8 +9,8 @@
 package dspmeasurement
 
 type PaginatedOmnichannelMetricsBrandsV1M2 struct {
-	Brands []OmnichannelMetricsBrandV1M2 `json:"brands,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	Brands    []OmnichannelMetricsBrandV1M2 `json:"brands,omitempty"`
+	NextToken string                        `json:"nextToken,omitempty"`
 	// The total number of matched brands.
 	TotalResults int32 `json:"totalResults,omitempty"`
 }

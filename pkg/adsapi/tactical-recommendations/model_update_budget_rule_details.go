@@ -9,8 +9,8 @@
 package tacticalrecommendations
 
 type UpdateBudgetRuleDetails struct {
-	BudgetIncreaseBy *BudgetRuleIncreaseBy `json:"budgetIncreaseBy,omitempty"`
-	Duration *UpdateBudgetRuleDuration `json:"duration,omitempty"`
+	BudgetIncreaseBy            *BudgetRuleIncreaseBy                  `json:"budgetIncreaseBy,omitempty"`
+	Duration                    *UpdateBudgetRuleDuration              `json:"duration,omitempty"`
 	PerformanceMeasureCondition *BudgetRulePerformanceMeasureCondition `json:"performanceMeasureCondition,omitempty"`
 	// Name of the budget rule. Required to be unique within a campaign.
 	RuleName string `json:"ruleName,omitempty"`

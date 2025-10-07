@@ -11,8 +11,8 @@ package profilesv3
 // For v3.2 the service will continue to return the recommendations returned for v3.1 in products field, and return recommendations for contextual targeting themes in themes field.
 type SdTargetingRecommendationsV32 struct {
 	// List of recommended category targets
-	Categories []SdCategoryRecommendation `json:"categories,omitempty"`
-	Themes *SdThemeRecommendationsThemes `json:"themes,omitempty"`
+	Categories []SdCategoryRecommendation    `json:"categories,omitempty"`
+	Themes     *SdThemeRecommendationsThemes `json:"themes,omitempty"`
 	// List of recommended product targets
 	Products []SdProductRecommendationV32 `json:"products,omitempty"`
 }

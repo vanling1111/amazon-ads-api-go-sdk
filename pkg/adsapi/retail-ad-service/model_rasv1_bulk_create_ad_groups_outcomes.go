@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1BulkCreateAdGroupsOutcomes struct {
-	Error_ []Rasv1MutateAdGroupFailureItem `json:"error,omitempty"`
+	Error_  []Rasv1MutateAdGroupFailureItem `json:"error,omitempty"`
 	Success []Rasv1CreateAdGroupSuccessItem `json:"success,omitempty"`
 }

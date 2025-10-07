@@ -9,6 +9,6 @@
 package dspconversions
 
 type MobileMeasurementPartnerAppRegistrationFilterV1 struct {
-	Field string `json:"field"`
+	Field  string   `json:"field"`
 	Values []string `json:"values"`
 }

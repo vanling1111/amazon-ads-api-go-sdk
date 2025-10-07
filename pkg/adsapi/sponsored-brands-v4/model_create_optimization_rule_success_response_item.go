@@ -10,7 +10,7 @@ package sponsoredbrandsv4
 
 type CreateOptimizationRuleSuccessResponseItem struct {
 	OptimizationRule *OptimizationRule `json:"optimizationRule"`
-	EntityType string `json:"entityType"`
+	EntityType       string            `json:"entityType"`
 	// The index of the entityId in the array from the request body.
 	Index float64 `json:"index"`
 	// Entity object identifier.

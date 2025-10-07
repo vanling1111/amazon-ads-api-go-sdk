@@ -9,6 +9,6 @@
 package marketingstream
 
 type ResourceNotFoundErrorResponseContent struct {
-	Code string `json:"code,omitempty"`
+	Code    string `json:"code,omitempty"`
 	Message string `json:"message"`
 }

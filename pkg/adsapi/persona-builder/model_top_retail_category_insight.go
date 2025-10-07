@@ -10,7 +10,7 @@ package personabuilder
 
 type TopRetailCategoryInsight struct {
 	// Identifier of retail category.
-	Id string `json:"id"`
+	Id             string         `json:"id"`
 	InsightMetrics *InsightMetric `json:"insightMetrics"`
 	// Name of retail category.
 	Name string `json:"name"`

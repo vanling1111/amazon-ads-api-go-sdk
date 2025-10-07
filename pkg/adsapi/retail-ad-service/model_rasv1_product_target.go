@@ -11,7 +11,7 @@ package retailadservice
 type Rasv1ProductTarget struct {
 	MatchType *Rasv1ProductMatchType `json:"matchType"`
 	// Resource identifier
-	ProductId string `json:"productId"`
+	ProductId     string              `json:"productId"`
 	ProductIdType *Rasv1ProductIdType `json:"productIdType"`
 	// Resource identifier
 	RetailerId string `json:"retailerId,omitempty"`

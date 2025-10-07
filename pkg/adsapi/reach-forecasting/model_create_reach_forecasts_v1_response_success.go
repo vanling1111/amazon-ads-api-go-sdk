@@ -10,6 +10,6 @@ package reachforecasting
 
 type CreateReachForecastsV1ResponseSuccess struct {
 	// This is the index of the corresponding request element in the request payload.
-	Index int32 `json:"index"`
+	Index         int32                                  `json:"index"`
 	ReachForecast *CreateReachForecastsV1ResponseElement `json:"reachForecast"`
 }

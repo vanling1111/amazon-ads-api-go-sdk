@@ -10,6 +10,6 @@ package reachforecasting
 
 type ProductTargetV1 struct {
 	// The product asin to target.
-	Asin string `json:"asin"`
+	Asin       string               `json:"asin"`
 	TargetType *ProductTargetTypeV1 `json:"targetType"`
 }

@@ -11,5 +11,5 @@ package manageraccounts
 // Object representation of an Amazon Advertising account or [DSP advertiser](https://advertising.amazon.com/API/docs/en-us/dsp-advertiser/#/) that failed to update.
 type AccountToUpdateFailure struct {
 	Account *AccountToUpdate `json:"account,omitempty"`
-	Error_ *ErrorDetail `json:"error,omitempty"`
+	Error_  *ErrorDetail     `json:"error,omitempty"`
 }

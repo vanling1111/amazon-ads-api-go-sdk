@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type BulkCampaignOperationResponse struct {
 	Success []CampaignMutationSuccessResponseItem `json:"success,omitempty"`
-	Error_ []CampaignMutationFailureResponseItem `json:"error,omitempty"`
+	Error_  []CampaignMutationFailureResponseItem `json:"error,omitempty"`
 }

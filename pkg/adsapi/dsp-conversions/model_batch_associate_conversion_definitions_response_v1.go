@@ -9,6 +9,6 @@
 package dspconversions
 
 type BatchAssociateConversionDefinitionsResponseV1 struct {
-	Error_ []ConversionDefinitionErrorResponseV1 `json:"error,omitempty"`
+	Error_  []ConversionDefinitionErrorResponseV1   `json:"error,omitempty"`
 	Success []ConversionDefinitionSuccessResponseV1 `json:"success,omitempty"`
 }

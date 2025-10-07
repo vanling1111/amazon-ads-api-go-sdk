@@ -13,5 +13,5 @@ type OptimizationRuleResponse struct {
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response.
 	Description string `json:"description,omitempty"`
-	RuleId string `json:"ruleId,omitempty"`
+	RuleId      string `json:"ruleId,omitempty"`
 }

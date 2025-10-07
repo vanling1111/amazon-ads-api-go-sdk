@@ -10,7 +10,7 @@ package posts
 
 // Service Limit Exceeded Exception - A service limit has been exceeded in this request.
 type ServiceLimitExceededExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

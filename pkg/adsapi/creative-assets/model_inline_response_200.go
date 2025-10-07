@@ -10,5 +10,5 @@ package creativeassets
 
 type InlineResponse200 struct {
 	AssetVersionList *[]CaAssetVersion `json:"assetVersionList,omitempty"`
-	AssetGlobal *CaAssetGlobal `json:"assetGlobal,omitempty"`
+	AssetGlobal      *CaAssetGlobal    `json:"assetGlobal,omitempty"`
 }

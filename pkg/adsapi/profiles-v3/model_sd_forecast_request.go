@@ -11,10 +11,10 @@ package profilesv3
 // Request payload for SD forecasting. Below are required and optional fields. Fields not listed will not impact forecast results. |Field              |Object            |Required| |-------------------|------------------|--------| |startDate          |Campaign          |required| |endDate            |Campaign          |optional| |costType           |Campaign          |optional| |bidOptimization    |AdGroup           |required| |creativeType       |AdGroup           |optional| |defaultBid         |AdGroup           |optional| |asin               |ProductAds        |required for vendors| |sku                |ProductAds        |required for sellers| |bid                |TargetingClauses  |required when defaultBid is not set| |expression         |TargetingClauses  |required| |ruleConditions     |OptimizationRules |optional|
 type SdForecastRequest struct {
 	Campaign *Campaign `json:"campaign"`
-	AdGroup *AdGroup `json:"adGroup"`
+	AdGroup  *AdGroup  `json:"adGroup"`
 	// A list of SD optimization rules. Forecast will be affected by the optimization strategy rules.  Currently, supported rule metrics by forecast are `COST_PER_CLICK`, `COST_PER_THOUSAND_VIEWABLE_IMPRESSIONS` and `COST_PER_ORDER`.
 	OptimizationRules []OptimizationRule `json:"optimizationRules,omitempty"`
-	ProductAds []ProductAd `json:"productAds"`
+	ProductAds        []ProductAd        `json:"productAds"`
 	// A list of SD targeting clauses.
 	TargetingClauses []SdForecastRequestTargetingClause `json:"targetingClauses"`
 	// A list of SD negative targeting clauses.

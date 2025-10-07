@@ -12,6 +12,6 @@ type UpdateAd struct {
 	// The Ad identifier.
 	AdId string `json:"adId"`
 	// The name of the Ad.
-	AdName string `json:"adName,omitempty"`
-	State *CreateOrUpdateEntityState `json:"state,omitempty"`
+	AdName string                     `json:"adName,omitempty"`
+	State  *CreateOrUpdateEntityState `json:"state,omitempty"`
 }

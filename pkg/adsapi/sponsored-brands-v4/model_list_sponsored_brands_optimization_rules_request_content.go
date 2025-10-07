@@ -13,6 +13,6 @@ type ListSponsoredBrandsOptimizationRulesRequestContent struct {
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
 	MaxResults float64 `json:"maxResults,omitempty"`
 	// Token value allowing to navigate to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken                string                    `json:"nextToken,omitempty"`
 	OptimizationRuleIdFilter *OptimizationRuleIdFilter `json:"optimizationRuleIdFilter,omitempty"`
 }

@@ -11,6 +11,6 @@ package posts
 // Brand level performance metrics for posts.
 type GetProfileMetricsResponseContent struct {
 	AggregateMetrics *AggregateProfileMetrics `json:"aggregateMetrics,omitempty"`
-	AggregateType *AggregateType `json:"aggregateType,omitempty"`
-	Metrics []ProfileMetric `json:"metrics,omitempty"`
+	AggregateType    *AggregateType           `json:"aggregateType,omitempty"`
+	Metrics          []ProfileMetric          `json:"metrics,omitempty"`
 }

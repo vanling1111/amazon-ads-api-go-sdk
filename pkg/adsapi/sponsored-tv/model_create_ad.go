@@ -18,6 +18,6 @@ type CreateAd struct {
 	// The type of landing page for the Ad. You can specify one of these values: | Type | Description | | --- | ------- | | ASIN_DP | The detail page of the asin. Please specify the ASIN in the `landingPageValue` field | | SKU_DP | The detail page of the sku. Please specify the SKU in the `landingPageValue` field | | OFF_AMAZON_LINK | Landing page URL. Please specify an HTTPS URL value in the `landingPageValue` field | | STORE | The Amazon brand store URL. Please specify an HTTPS URL value in the `landingPageValue` field |
 	LandingPageType string `json:"landingPageType,omitempty"`
 	// The landing page for the Ad.
-	LandingPageValue string `json:"landingPageValue,omitempty"`
-	State *CreateOrUpdateEntityState `json:"state"`
+	LandingPageValue string                     `json:"landingPageValue,omitempty"`
+	State            *CreateOrUpdateEntityState `json:"state"`
 }

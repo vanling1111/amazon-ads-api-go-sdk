@@ -12,6 +12,6 @@ type TargetingClauseSuccessResponseItem struct {
 	// the index of the targetingClause in the array from the request body
 	Index int32 `json:"index"`
 	// the targetingClause ID
-	TargetId string `json:"targetId,omitempty"`
+	TargetId        string           `json:"targetId,omitempty"`
 	TargetingClause *TargetingClause `json:"targetingClause,omitempty"`
 }

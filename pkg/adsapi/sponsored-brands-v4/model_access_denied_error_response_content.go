@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type AccessDeniedErrorResponseContent struct {
-	Code *AccessDeniedErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *AccessDeniedErrorCode `json:"code"`
+	RequestId string                 `json:"requestId"`
+	Message   string                 `json:"message"`
 }

@@ -10,6 +10,6 @@ package billing
 
 type BulkGetBillingNotificationsSuccess struct {
 	AdvertiserMarketplace *AdvertiserMarketplace `json:"advertiserMarketplace,omitempty"`
-	BillingNotifications []BillingNotification `json:"billingNotifications"`
-	Index int32 `json:"index"`
+	BillingNotifications  []BillingNotification  `json:"billingNotifications"`
+	Index                 int32                  `json:"index"`
 }

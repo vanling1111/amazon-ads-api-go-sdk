@@ -11,5 +11,5 @@ package profilesv3
 // Creative model for preview.
 type PreviewCreativeModel struct {
 	CreativeType *CreativeTypeInCreativeRequest `json:"creativeType,omitempty"`
-	Properties *CreativeProperties `json:"properties,omitempty"`
+	Properties   *CreativeProperties            `json:"properties,omitempty"`
 }

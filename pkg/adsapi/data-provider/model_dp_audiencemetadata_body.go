@@ -9,8 +9,8 @@
 package dataprovider
 
 type DpAudiencemetadataBody struct {
-	Name string `json:"name"`
-	Description string `json:"description"`
-	AdvertiserId int64 `json:"advertiserId"`
-	Metadata *V2dpaudiencemetadataMetadata `json:"metadata"`
+	Name         string                        `json:"name"`
+	Description  string                        `json:"description"`
+	AdvertiserId int64                         `json:"advertiserId"`
+	Metadata     *V2dpaudiencemetadataMetadata `json:"metadata"`
 }

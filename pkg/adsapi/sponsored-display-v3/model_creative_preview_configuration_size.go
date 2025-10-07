@@ -10,6 +10,6 @@ package sponsoreddisplayv3
 
 // The slot dimension to render the creative. Sponsored Display creatives are responsive to a limited list of width and height pairs, including 300x250, 650x130, 245x250, 414x125, 600x160, 600x300, 728x90, 980x55, 320x50, 970x250 and 270x150.
 type CreativePreviewConfigurationSize struct {
-	Width int32 `json:"width,omitempty"`
+	Width  int32 `json:"width,omitempty"`
 	Height int32 `json:"height,omitempty"`
 }

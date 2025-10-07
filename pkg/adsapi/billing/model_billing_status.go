@@ -10,5 +10,5 @@ package billing
 
 type BillingStatus struct {
 	BillingStatusCode *BillingStatusCode `json:"billingStatusCode"`
-	Message string `json:"message"`
+	Message           string             `json:"message"`
 }

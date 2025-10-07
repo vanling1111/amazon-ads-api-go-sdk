@@ -10,8 +10,8 @@ package retailadservice
 
 // Exception resulting in accessing ad group entities
 type Rasv1CampaignAccessExceptionResponseContent struct {
-	Code *Rasv1InvalidArgumentErrorCode `json:"code"`
-	Errors []Rasv1CampaignAccessError `json:"errors,omitempty"`
+	Code   *Rasv1InvalidArgumentErrorCode `json:"code"`
+	Errors []Rasv1CampaignAccessError     `json:"errors,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 }

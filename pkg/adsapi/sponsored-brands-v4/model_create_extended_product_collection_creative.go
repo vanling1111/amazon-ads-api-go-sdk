@@ -10,14 +10,14 @@ package sponsoredbrandsv4
 
 type CreateExtendedProductCollectionCreative struct {
 	BrandLogoCrop *BrandLogoCrop `json:"brandLogoCrop,omitempty"`
-	Asins []string `json:"asins,omitempty"`
-	BrandName string `json:"brandName,omitempty"`
+	Asins         []string       `json:"asins,omitempty"`
+	BrandName     string         `json:"brandName,omitempty"`
 	// Requires minimum one custom image. You can add an optional collection of custom images that can be displayed on the ad as slideshow. Learn more about slideshow here https://advertising.amazon.com/resources/whats-new/slideshow-ads-creative-for-sponsored-brands/
 	CustomImages []CustomImage `json:"customImages,omitempty"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch. See developer notes for more information.
 	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`
 	// If this property is enabled, Sponsored Brands will dynamically optimize by enhancing or generating creative properties based on shopper search intent.
 	CreativePropertiesToOptimize []CreativePropertyToOptimize `json:"creativePropertiesToOptimize,omitempty"`
-	BrandLogoAssetID string `json:"brandLogoAssetID,omitempty"`
-	Headline string `json:"headline,omitempty"`
+	BrandLogoAssetID             string                       `json:"brandLogoAssetID,omitempty"`
+	Headline                     string                       `json:"headline,omitempty"`
 }

@@ -10,6 +10,6 @@ package profilesv3
 
 // JSONPatch request request object.
 type PatchRequest struct {
-	Id string `json:"id"`
+	Id      string          `json:"id"`
 	Request []PatchDocument `json:"request"`
 }

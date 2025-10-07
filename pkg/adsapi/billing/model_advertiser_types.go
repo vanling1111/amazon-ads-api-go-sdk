@@ -12,8 +12,8 @@ type AdvertiserTypes string
 
 // List of advertiserTypes
 const (
-	AGENCY_AdvertiserTypes AdvertiserTypes = "AGENCY"
+	AGENCY_AdvertiserTypes                  AdvertiserTypes = "AGENCY"
 	DSP_ADVERTISING_ACCOUNT_AdvertiserTypes AdvertiserTypes = "DSP_ADVERTISING_ACCOUNT"
-	SELLER_AdvertiserTypes AdvertiserTypes = "SELLER"
-	VENDOR_AdvertiserTypes AdvertiserTypes = "VENDOR"
+	SELLER_AdvertiserTypes                  AdvertiserTypes = "SELLER"
+	VENDOR_AdvertiserTypes                  AdvertiserTypes = "VENDOR"
 )

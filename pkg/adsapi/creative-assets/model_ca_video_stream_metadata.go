@@ -10,13 +10,13 @@ package creativeassets
 
 // Structure containing metadata of Video Stream.  profile: This is the profile of the stream.  width: This is the resolution width of stream.  height: This is the resolution height of stream.  duration: This is the duration of the stream in secs.  codecName: This tells the codec of the media stream.  codecType: This is the codec type of stream.  displayAspectRatio: This tells the aspect ratio of the stream.  bitRate: This tells the bit rate of the stream.  frameRate: This is the frame rate of video stream per sec.
 type CaVideoStreamMetadata struct {
-	Duration float64 `json:"duration,omitempty"`
-	FrameRate float64 `json:"frameRate,omitempty"`
-	BitRate int64 `json:"bitRate,omitempty"`
-	Profile string `json:"profile,omitempty"`
-	Width int32 `json:"width,omitempty"`
-	CodecName string `json:"codecName,omitempty"`
-	CodecType string `json:"codecType,omitempty"`
-	Height int32 `json:"height,omitempty"`
-	DisplayAspectRatio string `json:"displayAspectRatio,omitempty"`
+	Duration           float64 `json:"duration,omitempty"`
+	FrameRate          float64 `json:"frameRate,omitempty"`
+	BitRate            int64   `json:"bitRate,omitempty"`
+	Profile            string  `json:"profile,omitempty"`
+	Width              int32   `json:"width,omitempty"`
+	CodecName          string  `json:"codecName,omitempty"`
+	CodecType          string  `json:"codecType,omitempty"`
+	Height             int32   `json:"height,omitempty"`
+	DisplayAspectRatio string  `json:"displayAspectRatio,omitempty"`
 }

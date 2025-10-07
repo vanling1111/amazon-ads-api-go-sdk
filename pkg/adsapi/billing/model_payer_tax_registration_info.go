@@ -9,6 +9,6 @@
 package billing
 
 type PayerTaxRegistrationInfo struct {
-	// Tax registration with government (Ex: VAT ID, GST ID) 
+	// Tax registration with government (Ex: VAT ID, GST ID)
 	TaxId string `json:"taxId,omitempty"`
 }

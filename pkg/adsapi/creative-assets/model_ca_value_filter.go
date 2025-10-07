@@ -10,6 +10,6 @@ package creativeassets
 
 // Filter for certain values of asset attributes
 type CaValueFilter struct {
-	Values []string `json:"values,omitempty"`
-	ValueField string `json:"valueField,omitempty"`
+	Values     []string `json:"values,omitempty"`
+	ValueField string   `json:"valueField,omitempty"`
 }

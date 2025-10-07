@@ -10,5 +10,5 @@ package advertisingaccounts
 
 type GetTermsTokenResponseContent struct {
 	TermsTokenStatus *TermsTokenStatus `json:"termsTokenStatus"`
-	TermsType *TermsType `json:"termsType,omitempty"`
+	TermsType        *TermsType        `json:"termsType,omitempty"`
 }

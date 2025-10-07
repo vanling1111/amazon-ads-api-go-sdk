@@ -9,8 +9,8 @@
 package profilesv3
 
 type RuleBasedBudget struct {
-	IsProcessing bool `json:"isProcessing,omitempty"`
-	ApplicableRuleName string `json:"applicableRuleName,omitempty"`
-	Value float64 `json:"value,omitempty"`
-	ApplicableRuleId string `json:"applicableRuleId,omitempty"`
+	IsProcessing       bool    `json:"isProcessing,omitempty"`
+	ApplicableRuleName string  `json:"applicableRuleName,omitempty"`
+	Value              float64 `json:"value,omitempty"`
+	ApplicableRuleId   string  `json:"applicableRuleId,omitempty"`
 }

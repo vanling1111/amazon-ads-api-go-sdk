@@ -13,7 +13,7 @@ type ImageComponent struct {
 	// Type of the image component.
 	ComponentType string `json:"componentType"`
 	// Id of the component. The same will be returned as part of the response as well. This can be used to uniquely identify the component from the pre moderation response.
-	Id string `json:"id"`
+	Id          string       `json:"id"`
 	LandingPage *LandingPage `json:"landingPage,omitempty"`
 	// Url of the image to be pre moderated. The url must be publicly accessible.
 	Url string `json:"url"`

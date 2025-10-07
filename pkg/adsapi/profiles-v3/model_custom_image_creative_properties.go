@@ -10,7 +10,7 @@ package profilesv3
 
 // User-customizable properties of a custom image creative.
 type CustomImageCreativeProperties struct {
-	RectCustomImage *Image `json:"rectCustomImage,omitempty"`
+	RectCustomImage   *Image `json:"rectCustomImage,omitempty"`
 	SquareCustomImage *Image `json:"squareCustomImage,omitempty"`
 	// An optional collection of 1:1 square images which are displayed on the ad.
 	SquareImages []Image `json:"squareImages,omitempty"`

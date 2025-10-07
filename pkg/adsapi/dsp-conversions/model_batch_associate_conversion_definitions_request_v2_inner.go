@@ -11,6 +11,6 @@ package dspconversions
 type BatchAssociateConversionDefinitionsRequestV2Inner struct {
 	ConversionDefinitionId string `json:"conversionDefinitionId"`
 	// Denotes the association should be considered as optimized.
-	IsOptimized bool `json:"isOptimized"`
-	Operation string `json:"operation"`
+	IsOptimized bool   `json:"isOptimized"`
+	Operation   string `json:"operation"`
 }

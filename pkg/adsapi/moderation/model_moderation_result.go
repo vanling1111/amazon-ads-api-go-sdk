@@ -10,11 +10,11 @@ package moderation
 
 type ModerationResult struct {
 	// Expected date and time by which moderation will be complete. The format is ISO 8601 in UTC time zone. Note that this field is present in the response only when moderationStatus is set to IN_PROGRESS.
-	EtaForModeration string `json:"etaForModeration,omitempty"`
-	Id string `json:"id,omitempty"`
-	IdType *IdType `json:"idType,omitempty"`
+	EtaForModeration string            `json:"etaForModeration,omitempty"`
+	Id               string            `json:"id,omitempty"`
+	IdType           *IdType           `json:"idType,omitempty"`
 	ModerationStatus *ModerationStatus `json:"moderationStatus,omitempty"`
 	// A list of policy violations for a campaign that has failed moderation. Note that this field is present in the response only when moderationStatus is set to REJECTED.
 	PolicyViolations []PolicyViolation `json:"policyViolations,omitempty"`
-	VersionId string `json:"versionId,omitempty"`
+	VersionId        string            `json:"versionId,omitempty"`
 }

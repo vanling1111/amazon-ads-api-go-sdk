@@ -10,5 +10,5 @@ package amazonadsv1
 
 type AdAssociationSuccessResponse struct {
 	AdAssociations []AdAssociation `json:"adAssociations,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken      string          `json:"nextToken,omitempty"`
 }

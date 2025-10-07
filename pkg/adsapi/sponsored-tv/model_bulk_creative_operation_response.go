@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type BulkCreativeOperationResponse struct {
-	Error_ []CreativeFailureResponseItem `json:"error,omitempty"`
+	Error_  []CreativeFailureResponseItem `json:"error,omitempty"`
 	Success []CreativeSuccessResponseItem `json:"success,omitempty"`
 }

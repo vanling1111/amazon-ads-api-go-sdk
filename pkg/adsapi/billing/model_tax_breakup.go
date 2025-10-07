@@ -9,16 +9,16 @@
 package billing
 
 type TaxBreakup struct {
-	// Tax jurisdiction of issuer (Amazon billing entity) 
-	IssuerJurisdiction string `json:"issuerJurisdiction"`
+	// Tax jurisdiction of issuer (Amazon billing entity)
+	IssuerJurisdiction   string                     `json:"issuerJurisdiction"`
 	IssuerTaxInformation *IssuerTaxRegistrationInfo `json:"issuerTaxInformation"`
-	// Tax jurisdiction of payer (billed customer) 
-	PayerJurisdiction string `json:"payerJurisdiction,omitempty"`
+	// Tax jurisdiction of payer (billed customer)
+	PayerJurisdiction   string                    `json:"payerJurisdiction,omitempty"`
 	PayerTaxInformation *PayerTaxRegistrationInfo `json:"payerTaxInformation"`
-	TaxAmount *CurrencyAmount `json:"taxAmount"`
-	TaxName string `json:"taxName"`
-	TaxRate float64 `json:"taxRate"`
-	// Tax jurisdiction for which tax applies, this can be at the country, state or local level. 
-	TaxedJurisdictionName string `json:"taxedJurisdictionName"`
+	TaxAmount           *CurrencyAmount           `json:"taxAmount"`
+	TaxName             string                    `json:"taxName"`
+	TaxRate             float64                   `json:"taxRate"`
+	// Tax jurisdiction for which tax applies, this can be at the country, state or local level.
+	TaxedJurisdictionName    string                         `json:"taxedJurisdictionName"`
 	ThirdPartyTaxInformation *ThirdPartyTaxRegistrationInfo `json:"thirdPartyTaxInformation,omitempty"`
 }

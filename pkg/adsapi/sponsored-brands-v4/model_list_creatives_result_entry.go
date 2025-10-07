@@ -11,12 +11,12 @@ package sponsoredbrandsv4
 // ----------------------------------------------- Structure types ----------------------------------------------- Creative
 type ListCreativesResultEntry struct {
 	// The unique ID of a Sponsored Brands ad.
-	AdId string `json:"adId,omitempty"`
-	CreationTime float64 `json:"creationTime,omitempty"`
+	AdId         string        `json:"adId,omitempty"`
+	CreationTime float64       `json:"creationTime,omitempty"`
 	CreativeType *CreativeType `json:"creativeType,omitempty"`
 	// The version identifier that helps you keep track of multiple versions of a submitted (non-draft) Sponsored Brands creative.
-	CreativeVersion string `json:"creativeVersion,omitempty"`
-	CreativeStatus *CreativeStatus `json:"creativeStatus,omitempty"`
+	CreativeVersion    string              `json:"creativeVersion,omitempty"`
+	CreativeStatus     *CreativeStatus     `json:"creativeStatus,omitempty"`
 	CreativeProperties *CreativeProperties `json:"creativeProperties,omitempty"`
-	LastUpdateTime float64 `json:"lastUpdateTime,omitempty"`
+	LastUpdateTime     float64             `json:"lastUpdateTime,omitempty"`
 }

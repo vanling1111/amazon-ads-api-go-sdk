@@ -9,12 +9,12 @@
 package sponsoredbrandsv4
 
 type CreateProductCollectionCreative struct {
-	BrandLogoCrop *BrandLogoCrop `json:"brandLogoCrop,omitempty"`
-	Asins []string `json:"asins,omitempty"`
-	BrandName string `json:"brandName,omitempty"`
-	CustomImageAssetId string `json:"customImageAssetId,omitempty"`
-	CustomImageCrop *CustomImageCrop `json:"customImageCrop,omitempty"`
-	BrandLogoAssetID string `json:"brandLogoAssetID,omitempty"`
+	BrandLogoCrop      *BrandLogoCrop   `json:"brandLogoCrop,omitempty"`
+	Asins              []string         `json:"asins,omitempty"`
+	BrandName          string           `json:"brandName,omitempty"`
+	CustomImageAssetId string           `json:"customImageAssetId,omitempty"`
+	CustomImageCrop    *CustomImageCrop `json:"customImageCrop,omitempty"`
+	BrandLogoAssetID   string           `json:"brandLogoAssetID,omitempty"`
 	// The headline text. Maximum length of the string is 50 characters for all marketplaces other than Japan, which has a maximum length of 35 characters.
 	Headline string `json:"headline,omitempty"`
 }

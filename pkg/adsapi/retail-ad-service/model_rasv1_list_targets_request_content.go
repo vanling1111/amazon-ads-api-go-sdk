@@ -9,19 +9,19 @@
 package retailadservice
 
 type Rasv1ListTargetsRequestContent struct {
-	AdGroupIdFilter *Rasv1ReducedEntityIdFilter `json:"adGroupIdFilter,omitempty"`
+	AdGroupIdFilter  *Rasv1ReducedEntityIdFilter `json:"adGroupIdFilter,omitempty"`
 	CampaignIdFilter *Rasv1ReducedEntityIdFilter `json:"campaignIdFilter,omitempty"`
-	KeywordFilter *Rasv1KeywordFilter `json:"keywordFilter,omitempty"`
+	KeywordFilter    *Rasv1KeywordFilter         `json:"keywordFilter,omitempty"`
 	// Only keywords with match type that is in this list will be listed
 	MatchTypeFilter []Rasv1KeywordMatchType `json:"matchTypeFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API
-	MaxResults int32 `json:"maxResults,omitempty"`
+	MaxResults     int32                      `json:"maxResults,omitempty"`
 	NegativeFilter *Rasv1NegativeTargetFilter `json:"negativeFilter,omitempty"`
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
-	ProductIdFilter *Rasv1ProductIdFilter `json:"productIdFilter,omitempty"`
-	StateFilter *Rasv1StateFilter `json:"stateFilter,omitempty"`
-	TargetIdFilter *Rasv1EntityIdFilter `json:"targetIdFilter,omitempty"`
+	NextToken         string                  `json:"nextToken,omitempty"`
+	ProductIdFilter   *Rasv1ProductIdFilter   `json:"productIdFilter,omitempty"`
+	StateFilter       *Rasv1StateFilter       `json:"stateFilter,omitempty"`
+	TargetIdFilter    *Rasv1EntityIdFilter    `json:"targetIdFilter,omitempty"`
 	TargetLevelFilter *Rasv1TargetLevelFilter `json:"targetLevelFilter,omitempty"`
 	// Only targets of specified types will be listed
 	TargetTypeFilter []Rasv1TargetType `json:"targetTypeFilter,omitempty"`

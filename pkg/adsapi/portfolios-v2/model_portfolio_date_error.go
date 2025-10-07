@@ -9,9 +9,9 @@
 package portfoliosv2
 
 type PortfolioDateError struct {
-	Cause *ErrorCause `json:"cause"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause `json:"cause"`
+	Marketplace string      `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioDateErrorReason `json:"reason"`
+	Message string                    `json:"message"`
+	Reason  *PortfolioDateErrorReason `json:"reason"`
 }

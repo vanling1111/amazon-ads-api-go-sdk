@@ -10,10 +10,10 @@ package dspmeasurement
 
 // Survey question template for vendor product.
 type SurveyQuestionTemplateV1M1 struct {
-	Category *SurveyQuestionCategoryV1M1 `json:"category,omitempty"`
+	Category             *SurveyQuestionCategoryV1M1             `json:"category,omitempty"`
 	GridQuestionResponse *SurveyQuestionGridQuestionResponseV1M1 `json:"gridQuestionResponse,omitempty"`
 	// The survey question template canonical Id.
-	Id string `json:"id,omitempty"`
+	Id     string               `json:"id,omitempty"`
 	Locale *MeasurementLocaleV1 `json:"locale,omitempty"`
 	// The maximum number of qualifying responses allowed for the question. This will be available if the qualifying responses are not pre-defined/inferred.
 	MaximumQualifyingResponses int32 `json:"maximumQualifyingResponses,omitempty"`
@@ -22,9 +22,9 @@ type SurveyQuestionTemplateV1M1 struct {
 	// The minimum number of qualifying responses required for the question. This will be available if the qualifying responses are not pre-defined/inferred.
 	MinimumQualifyingResponses int32 `json:"minimumQualifyingResponses,omitempty"`
 	// The minimum number of responses required for the question. This will be available if the question responses are not pre-defined/inferred.
-	MinimumQuestionResponses int32 `json:"minimumQuestionResponses,omitempty"`
-	ObjectiveType *SurveyQuestionObjectiveTypeV1M1 `json:"objectiveType,omitempty"`
-	PlaceholderCandidates []SurveyQuestionPlaceholderCandidateV1 `json:"placeholderCandidates,omitempty"`
+	MinimumQuestionResponses int32                                  `json:"minimumQuestionResponses,omitempty"`
+	ObjectiveType            *SurveyQuestionObjectiveTypeV1M1       `json:"objectiveType,omitempty"`
+	PlaceholderCandidates    []SurveyQuestionPlaceholderCandidateV1 `json:"placeholderCandidates,omitempty"`
 	// The priority of the question. If present this will determine the ordering of questions in a survey. The check will be enforced when a survey is created/updated. Lower number indicates higher priority.
 	Priority int32 `json:"priority,omitempty"`
 	// The pre-defined qualifying survey question responses with placeholders, this will help to define which responses will be counted as positive ones in the study report.
@@ -32,9 +32,9 @@ type SurveyQuestionTemplateV1M1 struct {
 	// The pre-defined survey question responses with placeholders.
 	QuestionResponses []string `json:"questionResponses,omitempty"`
 	// The survey question text with placeholders.
-	QuestionText string `json:"questionText,omitempty"`
-	SubCategory *SurveyQuestionSubCategoryV1M1 `json:"subCategory,omitempty"`
-	Type_ *SurveyQuestionTypeV1M1 `json:"type,omitempty"`
+	QuestionText string                         `json:"questionText,omitempty"`
+	SubCategory  *SurveyQuestionSubCategoryV1M1 `json:"subCategory,omitempty"`
+	Type_        *SurveyQuestionTypeV1M1        `json:"type,omitempty"`
 	// The associated vendor product id.
 	VendorProductId string `json:"vendorProductId,omitempty"`
 }

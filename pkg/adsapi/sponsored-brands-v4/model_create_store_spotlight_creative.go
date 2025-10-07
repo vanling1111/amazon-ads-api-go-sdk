@@ -10,13 +10,13 @@ package sponsoredbrandsv4
 
 type CreateStoreSpotlightCreative struct {
 	BrandLogoCrop *BrandLogoCrop `json:"brandLogoCrop,omitempty"`
-	BrandName string `json:"brandName,omitempty"`
-	Subpages []Subpage `json:"subpages,omitempty"`
+	BrandName     string         `json:"brandName,omitempty"`
+	Subpages      []Subpage      `json:"subpages,omitempty"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch. See developer notes for more information.
 	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`
 	// If this property is enabled, Sponsored Brands will dynamically optimize by enhancing or generating creative properties based on shopper search intent.
 	CreativePropertiesToOptimize []CreativePropertyToOptimize `json:"creativePropertiesToOptimize,omitempty"`
-	BrandLogoAssetID string `json:"brandLogoAssetID,omitempty"`
+	BrandLogoAssetID             string                       `json:"brandLogoAssetID,omitempty"`
 	// The headline text. Maximum length of the string is 50 characters for all marketplaces other than Japan, which has a maximum length of 35 characters.
 	Headline string `json:"headline,omitempty"`
 }

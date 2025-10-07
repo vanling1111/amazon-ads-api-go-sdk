@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type AdGroupPartialIndex struct {
-	AdGroup *AdGroup `json:"adGroup"`
-	Errors []ModelError `json:"errors"`
-	Index int32 `json:"index"`
+	AdGroup *AdGroup     `json:"adGroup"`
+	Errors  []ModelError `json:"errors"`
+	Index   int32        `json:"index"`
 }

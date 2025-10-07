@@ -10,7 +10,7 @@ package retailadservice
 
 type Rasv1MutateProductAdSuccessItem struct {
 	// The index of the ProductAd in the array from the request body
-	Index int32 `json:"index"`
+	Index     int32                 `json:"index"`
 	ProductAd *Rasv1ProductAdOutput `json:"productAd,omitempty"`
 	// The identifier of the ProductAd.
 	ProductAdId string `json:"productAdId,omitempty"`

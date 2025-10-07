@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type CreateMarketplaceAdGroupConfigurations struct {
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
-	Overrides *CreateMarketplaceAdGroupFieldOverrides `json:"overrides,omitempty"`
+	Marketplace *Marketplace                            `json:"marketplace,omitempty"`
+	Overrides   *CreateMarketplaceAdGroupFieldOverrides `json:"overrides,omitempty"`
 }

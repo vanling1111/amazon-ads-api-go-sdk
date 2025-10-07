@@ -10,9 +10,9 @@ package portfoliosv2
 
 // Errors related to bids
 type PortfolioBillingError struct {
-	Cause *ErrorCause `json:"cause"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause `json:"cause"`
+	Marketplace string      `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioBillingErrorReason `json:"reason"`
+	Message string                       `json:"message"`
+	Reason  *PortfolioBillingErrorReason `json:"reason"`
 }

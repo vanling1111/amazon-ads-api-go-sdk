@@ -40,11 +40,11 @@ type Client struct {
 	refreshToken string
 	endpoint     string
 	httpClient   *http.Client
-	
+
 	// 令牌缓存
-	mu           sync.RWMutex
-	cachedToken  string
-	tokenExpiry  time.Time
+	mu          sync.RWMutex
+	cachedToken string
+	tokenExpiry time.Time
 }
 
 // NewClient 创建 LWA 认证客户端。
@@ -159,4 +159,3 @@ func (c *Client) ClearCache() {
 	c.cachedToken = ""
 	c.tokenExpiry = time.Time{}
 }
-

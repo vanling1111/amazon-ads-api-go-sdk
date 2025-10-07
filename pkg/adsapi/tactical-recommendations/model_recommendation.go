@@ -12,44 +12,44 @@ type Recommendation struct {
 	// Identifier of the ad group to which this recommendation is associated.
 	AdGroupId string `json:"adGroupId,omitempty"`
 	// Identifier of the product ad to which this recommendation is associated.
-	AdId string `json:"adId,omitempty"`
+	AdId      string     `json:"adId,omitempty"`
 	AdProduct *AdProduct `json:"adProduct"`
 	// A human-readable description of why the recommendation failed to apply.
 	ApplyFailureReason string `json:"applyFailureReason,omitempty"`
 	// ASIN associated with the product. Defined for vendors only.
 	Asin string `json:"asin,omitempty"`
 	// Identifier of the asin group template to which this recommendation is associated.
-	AsinGroupTemplateId string `json:"asinGroupTemplateId,omitempty"`
+	AsinGroupTemplateId  string                `json:"asinGroupTemplateId,omitempty"`
 	BudgetRecommendation *BudgetRecommendation `json:"budgetRecommendation,omitempty"`
-	BudgetRule *BudgetRule `json:"budgetRule,omitempty"`
+	BudgetRule           *BudgetRule           `json:"budgetRule,omitempty"`
 	// Identifier of the campaign to which this recommendation is associated.
 	CampaignId string `json:"campaignId,omitempty"`
 	// Identifier of the campaign template to which this recommendation is associated.
-	CampaignTemplateId string `json:"campaignTemplateId,omitempty"`
+	CampaignTemplateId         string                      `json:"campaignTemplateId,omitempty"`
 	ConsolidatedRecommendation *ConsolidatedRecommendation `json:"consolidatedRecommendation,omitempty"`
 	// Current value of the campaign entity to which this recommendation is associated. Will be null if the recommendation is for a new campaign entity.
-	CurrentValue string `json:"currentValue,omitempty"`
-	EstimatedImpact *EstimatedImpact `json:"estimatedImpact,omitempty"`
-	GroupingType *GroupingType `json:"groupingType,omitempty"`
+	CurrentValue            string                   `json:"currentValue,omitempty"`
+	EstimatedImpact         *EstimatedImpact         `json:"estimatedImpact,omitempty"`
+	GroupingType            *GroupingType            `json:"groupingType,omitempty"`
 	KeywordSortingDimension *KeywordSortingDimension `json:"keywordSortingDimension,omitempty"`
 	// Sorting rank for new keyword recommendations.
-	KeywordSortingRank int32 `json:"keywordSortingRank,omitempty"`
-	PublishMetadata *PublishMetadata `json:"publishMetadata,omitempty"`
+	KeywordSortingRank    int32                  `json:"keywordSortingRank,omitempty"`
+	PublishMetadata       *PublishMetadata       `json:"publishMetadata,omitempty"`
 	RecommendationContext *RecommendationContext `json:"recommendationContext,omitempty"`
 	// Recommendation identifier.
-	RecommendationId string `json:"recommendationId"`
+	RecommendationId   string              `json:"recommendationId"`
 	RecommendationType *RecommendationType `json:"recommendationType"`
 	// Recommended value of the campaign entity to which this recommendation is associated.
 	RecommendedValue string `json:"recommendedValue,omitempty"`
 	// Resolved targeting expression to which this recommendation is associated.
-	ResolvedTargeting string `json:"resolvedTargeting,omitempty"`
-	RuleBasedBidding *RuleBasedBidding `json:"ruleBasedBidding,omitempty"`
+	ResolvedTargeting string            `json:"resolvedTargeting,omitempty"`
+	RuleBasedBidding  *RuleBasedBidding `json:"ruleBasedBidding,omitempty"`
 	// SKU associated with the product. Defined for seller accounts only.
-	Sku string `json:"sku,omitempty"`
+	Sku    string                `json:"sku,omitempty"`
 	Status *RecommendationStatus `json:"status"`
 	// Identifier of the target to which this recommendation is associated.
 	TargetId string `json:"targetId,omitempty"`
 	// Targeting expression to which this recommendation is associated.
-	Targeting string `json:"targeting,omitempty"`
+	Targeting          string              `json:"targeting,omitempty"`
 	TargetingMatchType *TargetingMatchType `json:"targetingMatchType,omitempty"`
 }

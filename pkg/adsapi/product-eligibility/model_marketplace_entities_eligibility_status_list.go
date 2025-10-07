@@ -11,5 +11,5 @@ package producteligibility
 type MarketplaceEntitiesEligibilityStatusList struct {
 	// This is a map that will be key'd on the ad program (SB/SD/DTC/MAAS/SPOT); the value will be an eligibility object.
 	EligibilityStatusList []EligibilityStatusDetailV2 `json:"eligibilityStatusList,omitempty"`
-	MarketplaceId string `json:"marketplaceId,omitempty"`
+	MarketplaceId         string                      `json:"marketplaceId,omitempty"`
 }

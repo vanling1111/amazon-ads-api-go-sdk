@@ -14,7 +14,7 @@ type SdCategoryRecommendation struct {
 	// The category name
 	Name string `json:"name,omitempty"`
 	// The path of the category within the category catalogue.
-	Path []string `json:"path,omitempty"`
+	Path                     []string                                          `json:"path,omitempty"`
 	TargetableAsinCountRange *SdCategoryRecommendationTargetableAsinCountRange `json:"targetableAsinCountRange,omitempty"`
 	// A rank to signify which recommendations are weighed more heavily, with a lower rank signifying a stronger recommendation
 	Rank int32 `json:"rank,omitempty"`

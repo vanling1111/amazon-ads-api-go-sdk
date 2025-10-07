@@ -14,11 +14,11 @@ type Rasv1AdGroupOutput struct {
 	// The identifier of the campaign.
 	CampaignId string `json:"campaignId"`
 	// A bid value for use when no bid is specified for keywords in the ad group. For more information about bid constraints by marketplace, see [bid limits](https://advertising.amazon.com/API/docs/en-us/concepts/limits#bid-constraints-by-marketplace).
-	DefaultBid float64 `json:"defaultBid"`
+	DefaultBid   float64                   `json:"defaultBid"`
 	ExtendedData *Rasv1AdGroupExtendedData `json:"extendedData,omitempty"`
 	// The name of the ad group.
 	Name string `json:"name"`
 	// Id of retailer targeted by the ad group
-	RetailerId string `json:"retailerId"`
-	State *Rasv1EntityState `json:"state"`
+	RetailerId string            `json:"retailerId"`
+	State      *Rasv1EntityState `json:"state"`
 }

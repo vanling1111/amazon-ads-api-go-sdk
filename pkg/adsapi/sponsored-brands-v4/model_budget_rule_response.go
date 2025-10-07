@@ -14,6 +14,6 @@ type BudgetRuleResponse struct {
 	// A human-readable description of the error, if unsuccessful
 	Details string `json:"details,omitempty"`
 	// The rule identifier.
-	RuleId string `json:"ruleId,omitempty"`
+	RuleId                string   `json:"ruleId,omitempty"`
 	AssociatedCampaignIds []string `json:"associatedCampaignIds,omitempty"`
 }

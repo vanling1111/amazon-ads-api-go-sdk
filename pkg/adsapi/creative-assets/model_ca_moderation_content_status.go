@@ -13,6 +13,6 @@ type CaModerationContentStatus string
 // List of caModerationContentStatus
 const (
 	IN_PROGRESS_CaModerationContentStatus CaModerationContentStatus = "IN_PROGRESS"
-	COMPLETED_CaModerationContentStatus CaModerationContentStatus = "COMPLETED"
-	FAILED_CaModerationContentStatus CaModerationContentStatus = "FAILED"
+	COMPLETED_CaModerationContentStatus   CaModerationContentStatus = "COMPLETED"
+	FAILED_CaModerationContentStatus      CaModerationContentStatus = "FAILED"
 )

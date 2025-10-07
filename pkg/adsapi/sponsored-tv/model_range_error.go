@@ -11,13 +11,13 @@ package sponsoredtv
 // Errors related to range constraints and violations
 type RangeError struct {
 	// Allowed values
-	Allowed []string `json:"allowed,omitempty"`
-	Cause *ErrorCause `json:"cause"`
+	Allowed []string    `json:"allowed,omitempty"`
+	Cause   *ErrorCause `json:"cause"`
 	// Optional lower limit.
 	LowerLimit string `json:"lowerLimit,omitempty"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Reason *RangeErrorReason `json:"reason"`
+	Message string            `json:"message"`
+	Reason  *RangeErrorReason `json:"reason"`
 	// Optional upper limit.
 	UpperLimit string `json:"upperLimit,omitempty"`
 }

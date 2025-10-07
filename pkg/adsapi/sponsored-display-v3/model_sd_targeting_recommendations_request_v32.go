@@ -10,8 +10,8 @@ package sponsoreddisplayv3
 
 // Request for targeting recommendations for API version 3.2.
 type SdTargetingRecommendationsRequestV32 struct {
-	Tactic *SdTacticV31 `json:"tactic"`
-	Products *[]SdGoalProduct `json:"products"`
-	TypeFilter *[]SdRecommendationTypeV31 `json:"typeFilter"`
-	Themes *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
+	Tactic     *SdTacticV31                      `json:"tactic"`
+	Products   *[]SdGoalProduct                  `json:"products"`
+	TypeFilter *[]SdRecommendationTypeV31        `json:"typeFilter"`
+	Themes     *SdTargetingRecommendationsThemes `json:"themes,omitempty"`
 }

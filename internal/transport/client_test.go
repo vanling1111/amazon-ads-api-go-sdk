@@ -32,7 +32,7 @@ import (
 
 func TestNewClient(t *testing.T) {
 	client := NewClient(30*time.Second, 3, "test-user-agent")
-	
+
 	assert.NotNil(t, client)
 	assert.NotNil(t, client.httpClient)
 	assert.Equal(t, "test-user-agent", client.userAgent)
@@ -49,10 +49,10 @@ func TestDo_Success(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient(30*time.Second, 3, "test-user-agent")
-	
+
 	req, err := http.NewRequest(http.MethodGet, server.URL, nil)
 	require.NoError(t, err)
-	
+
 	resp, err := client.Do(req)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
@@ -67,13 +67,13 @@ func TestDo_UserAgentOverride(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient(30*time.Second, 3, "test-user-agent")
-	
+
 	req, err := http.NewRequest(http.MethodGet, server.URL, nil)
 	require.NoError(t, err)
-	
+
 	// 手动设置 User-Agent
 	req.Header.Set("User-Agent", "custom-user-agent")
-	
+
 	resp, err := client.Do(req)
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
@@ -81,9 +81,8 @@ func TestDo_UserAgentOverride(t *testing.T) {
 
 func TestGetHTTPClient(t *testing.T) {
 	client := NewClient(30*time.Second, 3, "test-user-agent")
-	
+
 	httpClient := client.GetHTTPClient()
 	assert.NotNil(t, httpClient)
 	assert.Equal(t, 30*time.Second, httpClient.Timeout)
 }
-

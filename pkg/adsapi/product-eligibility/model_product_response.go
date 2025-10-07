@@ -12,6 +12,6 @@ package producteligibility
 type ProductResponse struct {
 	EligibilityStatusList []EligibilityStatus `json:"eligibilityStatusList"`
 	// A human-readable description of the product's advertising eligibility status. Inherits highest severity from eligibilityStatusList.
-	OverallStatus string `json:"overallStatus"`
+	OverallStatus  string          `json:"overallStatus"`
 	ProductDetails *ProductDetails `json:"productDetails"`
 }

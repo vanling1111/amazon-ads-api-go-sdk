@@ -9,14 +9,14 @@
 package billing
 
 type Payment struct {
-	Amount *CurrencyAmount `json:"amount"`
-	CurrentPaymentAttemptDate string `json:"currentPaymentAttemptDate,omitempty"`
-	Id int64 `json:"id"`
-	LastPaymentAttemptDate string `json:"lastPaymentAttemptDate,omitempty"`
-	NextPaymentAttemptDate string `json:"nextPaymentAttemptDate,omitempty"`
-	PaymentMethod *PaymentMethod `json:"paymentMethod"`
+	Amount                    *CurrencyAmount `json:"amount"`
+	CurrentPaymentAttemptDate string          `json:"currentPaymentAttemptDate,omitempty"`
+	Id                        int64           `json:"id"`
+	LastPaymentAttemptDate    string          `json:"lastPaymentAttemptDate,omitempty"`
+	NextPaymentAttemptDate    string          `json:"nextPaymentAttemptDate,omitempty"`
+	PaymentMethod             *PaymentMethod  `json:"paymentMethod"`
 	// Provides additional details and reason for the payment status
-	Reason string `json:"reason,omitempty"`
+	Reason         string          `json:"reason,omitempty"`
 	RefundedAmount *CurrencyAmount `json:"refundedAmount,omitempty"`
-	Status string `json:"status"`
+	Status         string          `json:"status"`
 }

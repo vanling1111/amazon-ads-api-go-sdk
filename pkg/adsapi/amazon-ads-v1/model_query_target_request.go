@@ -9,18 +9,18 @@
 package amazonadsv1
 
 type QueryTargetRequest struct {
-	AdGroupIdFilter *TargetAdGroupIdFilter `json:"adGroupIdFilter,omitempty"`
-	AdProductFilter *TargetAdProductFilter `json:"adProductFilter"`
-	CampaignIdFilter *TargetCampaignIdFilter `json:"campaignIdFilter,omitempty"`
-	KeywordFilter *TargetKeywordFilter `json:"keywordFilter,omitempty"`
-	MarketplaceScopeFilter *TargetMarketplaceScopeFilter `json:"marketplaceScopeFilter,omitempty"`
-	MatchTypeFilter *TargetMatchTypeFilter `json:"matchTypeFilter,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NativeLanguageLocaleFilter *TargetLanguageLocaleFilter `json:"nativeLanguageLocaleFilter,omitempty"`
-	NegativeFilter *TargetNegativeFilter `json:"negativeFilter,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
-	ProductIdFilter *TargetProductIdFilter `json:"productIdFilter,omitempty"`
-	StateFilter *TargetStateFilter `json:"stateFilter,omitempty"`
-	TargetIdFilter *TargetTargetIdFilter `json:"targetIdFilter,omitempty"`
-	TargetTypeFilter *TargetTargetTypeFilter `json:"targetTypeFilter,omitempty"`
+	AdGroupIdFilter            *TargetAdGroupIdFilter        `json:"adGroupIdFilter,omitempty"`
+	AdProductFilter            *TargetAdProductFilter        `json:"adProductFilter"`
+	CampaignIdFilter           *TargetCampaignIdFilter       `json:"campaignIdFilter,omitempty"`
+	KeywordFilter              *TargetKeywordFilter          `json:"keywordFilter,omitempty"`
+	MarketplaceScopeFilter     *TargetMarketplaceScopeFilter `json:"marketplaceScopeFilter,omitempty"`
+	MatchTypeFilter            *TargetMatchTypeFilter        `json:"matchTypeFilter,omitempty"`
+	MaxResults                 int32                         `json:"maxResults,omitempty"`
+	NativeLanguageLocaleFilter *TargetLanguageLocaleFilter   `json:"nativeLanguageLocaleFilter,omitempty"`
+	NegativeFilter             *TargetNegativeFilter         `json:"negativeFilter,omitempty"`
+	NextToken                  string                        `json:"nextToken,omitempty"`
+	ProductIdFilter            *TargetProductIdFilter        `json:"productIdFilter,omitempty"`
+	StateFilter                *TargetStateFilter            `json:"stateFilter,omitempty"`
+	TargetIdFilter             *TargetTargetIdFilter         `json:"targetIdFilter,omitempty"`
+	TargetTypeFilter           *TargetTargetTypeFilter       `json:"targetTypeFilter,omitempty"`
 }

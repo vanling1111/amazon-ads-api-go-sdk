@@ -10,6 +10,6 @@ package moderation
 
 type ViolatingTextEvidence struct {
 	// The specific text determined to violate the specified policy in reviewedText.
-	ViolatingText string `json:"violatingText,omitempty"`
+	ViolatingText         string        `json:"violatingText,omitempty"`
 	ViolatingTextPosition *TextPosition `json:"violatingTextPosition,omitempty"`
 }

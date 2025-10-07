@@ -1,4 +1,3 @@
-
 /*
  * Amazon Ads API for Sponsored Display
  *
@@ -11,11 +10,11 @@ package sponsoreddisplayv3
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -24,6 +23,7 @@ var (
 )
 
 type BidRecommendationsApiService service
+
 /*
 BidRecommendationsApiService Returns a set of bid recommendations for targeting clauses
 Provides a list of bid recommendations based on the list of input advertised ASINs and targeting clauses in the same format as the targeting API. For each targeting clause in the request a corresponding bid recommendation will be returned in the response. Currently the API will accept up to 100 targeting clauses. Note - these recommendations are only available when productAds have ASIN or SKU fields. This API provides a corresponding bid recommendation for each targeting clause in a request. Currently the API will accept up to 100 targeting clauses.  For API v3.1, the API provides a list of bid recommendations based on the list of input advertised ASINs and targeting clauses in the same format as the targeting API. Note - these recommendations are only available when productAds have ASIN or SKU fields.  For API v3.2, the API accepts optimizationType and costType and returns bid recommendations accordingly.  For API v3.3, the API accepts creativeType and returns bid recommendations accordingly.  [PREVIEW ONLY] For API v3.4, the API supports entertainment targeting bid recommendations which is currently limited to US marketplace.  The recommended bids are derived from the last 7 days of winning auction bids for the related targeting clause.   Receive bid recommendations using the following: Contextual targeting clause|Description| |-----------|----| |asinSameAs&#x3D;B0123456789|Receive a bid recommendation for this target product |asinCategorySameAs&#x3D;12345|Receive a bid recommendation for this target category |similarProduct|Receive a bid recommendation for targets that are similar to the advertised asins.   Audience targeting clause|Description| |-----------|----| |views(asinCategorySameAs&#x3D;12345 lookback&#x3D;30)|Receive a bid recommendation for a target audience that has viewed products in the given category |views(similarProduct lookback&#x3D;30)|Receive a bid recommendation for a target audience that has viewed similar products to the advertised asins |views(exactProduct lookback&#x3D;30)|Receive a bid recommendation for a target audience that has viewed the advertised asins |purchases(asinCategorySameAs&#x3D;12345 lookback&#x3D;30)|Receive a bid recommendation for a target audience that has purchased products in the given category |purchases(exactProduct lookback&#x3D;30)|Receive a bid recommendation for a target audience that has purchased the advertised asins |purchases(relatedProduct lookback&#x3D;30)|Receive a bid recommendation for a target audience that has purchased related products to the advertised asins |audience(audienceSameAs&#x3D;12345)|Receive a bid recommendation for the given target audience  | Content targeting clause | Description | |------------------|-------------| | [PREVIEW ONLY] contentCategorySameAs&#x3D;amzn1.iab-content.325 | Receive a bid recommendation for the given content target |   #### Notes: - Refinements are currently not supported and if included will not impact the bid recommendation for the target.   #### Advertised ASIN Notes: - For asinSameAs targets the advertised asins will not impact the bid recommendation - For asinCategorySameAs targets the advertised asins are optional, but including them will provide a more refined bid recommendation - For similarProduct, exactProduct, and relatedProduct targets the advertised asins are required
@@ -31,20 +31,20 @@ Provides a list of bid recommendations based on the list of input advertised ASI
  * @param amazonAdvertisingAPIClientId The identifier of a client associated with a \&quot;Login with Amazon\&quot; account.
  * @param amazonAdvertisingAPIScope The identifier of a profile associated with the advertiser account. Use &#x60;GET&#x60; method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
  * @param optional nil or *BidRecommendationsApiGetTargetBidRecommendationsOpts - Optional Parameters:
-     * @param "Body" (optional.Interface of SdTargetingBidRecommendationsRequestV34) - 
+     * @param "Body" (optional.Interface of SdTargetingBidRecommendationsRequestV34) -
 @return SdTargetingBidRecommendationsResponseV32
 */
 
 type BidRecommendationsApiGetTargetBidRecommendationsOpts struct {
-    Body optional.Interface
+	Body optional.Interface
 }
 
 func (a *BidRecommendationsApiService) GetTargetBidRecommendations(ctx context.Context, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIScope string, localVarOptionals *BidRecommendationsApiGetTargetBidRecommendationsOpts) (SdTargetingBidRecommendationsResponseV32, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue SdTargetingBidRecommendationsResponseV32
 	)
 
@@ -76,8 +76,8 @@ func (a *BidRecommendationsApiService) GetTargetBidRecommendations(ctx context.C
 	localVarHeaderParams["Amazon-Advertising-API-Scope"] = parameterToString(amazonAdvertisingAPIScope, "")
 	// body params
 	if localVarOptionals != nil && localVarOptionals.Body.IsSet() {
-		
-		localVarOptionalBody:= localVarOptionals.Body.Value()
+
+		localVarOptionalBody := localVarOptionals.Body.Value()
 		localVarPostBody = &localVarOptionalBody
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
@@ -98,86 +98,86 @@ func (a *BidRecommendationsApiService) GetTargetBidRecommendations(ctx context.C
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 207 {
 			var v SdTargetingBidRecommendationsResponseV32
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 401 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 403 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 415 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 429 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v SdErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

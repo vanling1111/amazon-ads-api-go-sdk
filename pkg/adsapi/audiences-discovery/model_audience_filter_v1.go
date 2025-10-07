@@ -12,6 +12,6 @@ type AudienceFilterV1 struct {
 	// Field to filter by. Supported enums are 'audienceName', 'category', 'categoryPath', 'audienceId' and 'status'. The 'audienceName' is a broad match filter but not an exact match. The 'category' enum returns all audiences under a high-level category, whereas the 'categoryPath' enum expects a path of nodes in the taxonomy tree and returns audiences attached directly to the node at the specified path.
 	Field string `json:"field,omitempty"`
 	// Operator to apply to the specified filter.
-	Operator string `json:"operator,omitempty"`
-	Values []string `json:"values,omitempty"`
+	Operator string   `json:"operator,omitempty"`
+	Values   []string `json:"values,omitempty"`
 }

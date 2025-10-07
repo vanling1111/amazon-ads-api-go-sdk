@@ -12,14 +12,14 @@ type ConversionMatchKeyTypeV1 string
 
 // List of ConversionMatchKeyTypeV1
 const (
-	ADDRESS_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "ADDRESS"
-	CITY_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "CITY"
-	EMAIL_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "EMAIL"
+	ADDRESS_ConversionMatchKeyTypeV1    ConversionMatchKeyTypeV1 = "ADDRESS"
+	CITY_ConversionMatchKeyTypeV1       ConversionMatchKeyTypeV1 = "CITY"
+	EMAIL_ConversionMatchKeyTypeV1      ConversionMatchKeyTypeV1 = "EMAIL"
 	FIRST_NAME_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "FIRST_NAME"
-	LAST_NAME_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "LAST_NAME"
-	MAID_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "MAID"
-	PHONE_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "PHONE"
-	POSTAL_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "POSTAL"
-	RAMP_ID_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "RAMP_ID"
-	STATE_ConversionMatchKeyTypeV1 ConversionMatchKeyTypeV1 = "STATE"
+	LAST_NAME_ConversionMatchKeyTypeV1  ConversionMatchKeyTypeV1 = "LAST_NAME"
+	MAID_ConversionMatchKeyTypeV1       ConversionMatchKeyTypeV1 = "MAID"
+	PHONE_ConversionMatchKeyTypeV1      ConversionMatchKeyTypeV1 = "PHONE"
+	POSTAL_ConversionMatchKeyTypeV1     ConversionMatchKeyTypeV1 = "POSTAL"
+	RAMP_ID_ConversionMatchKeyTypeV1    ConversionMatchKeyTypeV1 = "RAMP_ID"
+	STATE_ConversionMatchKeyTypeV1      ConversionMatchKeyTypeV1 = "STATE"
 )

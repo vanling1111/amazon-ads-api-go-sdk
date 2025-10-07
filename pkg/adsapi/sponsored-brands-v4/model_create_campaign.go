@@ -13,12 +13,12 @@ type CreateCampaign struct {
 	// Please note that brandEntityId is only required for sellers. You can get the brandEntityId by calling the [GET /brands](https://advertising.amazon.com/API/docs/en-us/sponsored-brands/3-0/openapi#tag/Brands/operation/getBrands) endpoint.
 	BrandEntityId string `json:"brandEntityId,omitempty"`
 	// Goal will allow you to set goal type to help drive your campaign performance. If no goal is selected then it will default to PAGE_VISIT. The goal type of the campaign. - BRAND_IMPRESSION_SHARE - This goal will allow you grown your brand impression share on top of search placement - PAGE_VISIT [DEFAULT] - This goal drives traffic to your landing and detail pages through all placements.
-	Goal string `json:"goal,omitempty"`
+	Goal    string   `json:"goal,omitempty"`
 	Bidding *Bidding `json:"bidding,omitempty"`
 	// endDate is optional. If endDate is specified, startDate must be specified as well.
-	EndDate string `json:"endDate,omitempty"`
-	ProductLocation *ProductLocation `json:"productLocation,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	EndDate         string             `json:"endDate,omitempty"`
+	ProductLocation *ProductLocation   `json:"productLocation,omitempty"`
+	Tags            *map[string]string `json:"tags,omitempty"`
 	// The identifier of an existing portfolio to which the campaign is associated.
 	PortfolioId string `json:"portfolioId,omitempty"`
 	// The costType can be set to determines how the campaign will bid and charge. To view the bid maximums and minimums by geography and costType, see https://advertising.amazon.com/API/docs/en-us/concepts/limits#bid-constraints-by-marketplace - CPC [Default] - Cost per click. The performance of this campaign is measured by the clicks triggered by the ad. - VCPM - Cost per 1000 viewable impressions. The performance of this campaign is measured by the viewable impressions triggered by the ad.
@@ -26,7 +26,7 @@ type CreateCampaign struct {
 	// The smartDefault specifies a list of the smart default options for the campaign.  `smartDefault` is optional for create campaign requests. `smartDefault` are applicable to all applicable child entities of the campaign and are not editable once the campaign is created. When using [\"TARGETING\"], targets will be automatically added based on the goal selected.  When [\"MANUAL\"] is selected, you will still be required to manually add targets.  If you don't specify `smartDefault`, default value will be applied based on `goal` . If campaign's `goal` is selected, `smartDefault` will be set to [\"TARGETING\"].  Otherwise, a campaign's `smartDefault` will be set to [\"MANUAL\"].  Each element in smartDefault can be set to determines which default strategy to be used - MANUAL - Manual settings, no smart default be applied to the campaign, if MANUAL is added in the list, no other items are allowed in the list (the list must contains only one item) - TARGETING - Smart Default Targeting creation, will automatically creating targetings when create ad group  Example: [\"TARGETING\"]
 	SmartDefault []string `json:"smartDefault,omitempty"`
 	// The name of the campaign.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 	// startDate is optional. If startDate is not specified, current date will be used.
 	StartDate string `json:"startDate,omitempty"`

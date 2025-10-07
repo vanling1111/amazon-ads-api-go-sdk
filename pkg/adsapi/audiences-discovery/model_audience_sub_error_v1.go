@@ -12,5 +12,5 @@ package audiencesdiscovery
 type AudienceSubErrorV1 struct {
 	ErrorType string `json:"errorType"`
 	FieldName string `json:"fieldName,omitempty"`
-	Message string `json:"message"`
+	Message   string `json:"message"`
 }

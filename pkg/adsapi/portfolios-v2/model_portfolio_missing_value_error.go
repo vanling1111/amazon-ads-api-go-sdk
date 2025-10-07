@@ -10,9 +10,9 @@ package portfoliosv2
 
 // Error describing missing values in API payloads
 type PortfolioMissingValueError struct {
-	Cause *ErrorCause `json:"cause"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause `json:"cause"`
+	Marketplace string      `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioMissingValueErrorReason `json:"reason"`
+	Message string                            `json:"message"`
+	Reason  *PortfolioMissingValueErrorReason `json:"reason"`
 }

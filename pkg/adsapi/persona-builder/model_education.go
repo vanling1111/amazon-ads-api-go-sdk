@@ -12,9 +12,9 @@ type Education string
 
 // List of Education
 const (
-	BACHELORS_DEGREE_Education Education = "BACHELORS_DEGREE"
+	BACHELORS_DEGREE_Education        Education = "BACHELORS_DEGREE"
 	BACHELOR_DEGREE_OR_MORE_Education Education = "BACHELOR_DEGREE_OR_MORE"
-	GRADUATE_DEGREE_Education Education = "GRADUATE_DEGREE"
-	HIGH_SCHOOL_Education Education = "HIGH_SCHOOL"
-	SOME_COLLEGE_Education Education = "SOME_COLLEGE"
+	GRADUATE_DEGREE_Education         Education = "GRADUATE_DEGREE"
+	HIGH_SCHOOL_Education             Education = "HIGH_SCHOOL"
+	SOME_COLLEGE_Education            Education = "SOME_COLLEGE"
 )

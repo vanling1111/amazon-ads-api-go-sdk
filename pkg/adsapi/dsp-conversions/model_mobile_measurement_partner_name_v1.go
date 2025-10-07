@@ -12,11 +12,11 @@ type MobileMeasurementPartnerNameV1 string
 
 // List of MobileMeasurementPartnerNameV1
 const (
-	ADJUST_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "ADJUST"
+	ADJUST_MobileMeasurementPartnerNameV1    MobileMeasurementPartnerNameV1 = "ADJUST"
 	AIRBRIDGE_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "AIRBRIDGE"
 	APPSFLYER_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "APPSFLYER"
-	BRANCH_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "BRANCH"
-	KOCHAVA_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "KOCHAVA"
-	SINGULAR_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "SINGULAR"
-	TENJIN_MobileMeasurementPartnerNameV1 MobileMeasurementPartnerNameV1 = "TENJIN"
+	BRANCH_MobileMeasurementPartnerNameV1    MobileMeasurementPartnerNameV1 = "BRANCH"
+	KOCHAVA_MobileMeasurementPartnerNameV1   MobileMeasurementPartnerNameV1 = "KOCHAVA"
+	SINGULAR_MobileMeasurementPartnerNameV1  MobileMeasurementPartnerNameV1 = "SINGULAR"
+	TENJIN_MobileMeasurementPartnerNameV1    MobileMeasurementPartnerNameV1 = "TENJIN"
 )

@@ -10,5 +10,5 @@ package billing
 
 type ContactInfo struct {
 	Address *Address `json:"address"`
-	Email *Email `json:"email"`
+	Email   *Email   `json:"email"`
 }

@@ -16,13 +16,13 @@ type TargetingClause struct {
 	// The identifier of the Campaign associated with the Ad.
 	CampaignId string `json:"campaignId"`
 	// The targeting expression.
-	Expression []TargetingExpressionPredicate `json:"expression"`
-	ExtendedData *TargetingClauseExtendedData `json:"extendedData,omitempty"`
+	Expression   []TargetingExpressionPredicate `json:"expression"`
+	ExtendedData *TargetingClauseExtendedData   `json:"extendedData,omitempty"`
 	// full funnel campaign id for child targeting clause
 	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
 	// A human-readable target text.
 	ResolvedExpression []TargetingResolvedExpressionPredicate `json:"resolvedExpression,omitempty"`
-	State *EntityState `json:"state"`
+	State              *EntityState                           `json:"state"`
 	// The Targeting Clause ID.
 	TargetId string `json:"targetId"`
 }

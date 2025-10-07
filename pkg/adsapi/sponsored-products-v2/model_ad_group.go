@@ -17,5 +17,5 @@ type AdGroup struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The bid value used when no bid is specified for keywords in the ad group.
 	DefaultBid float32 `json:"defaultBid,omitempty"`
-	State *State `json:"state,omitempty"`
+	State      *State  `json:"state,omitempty"`
 }

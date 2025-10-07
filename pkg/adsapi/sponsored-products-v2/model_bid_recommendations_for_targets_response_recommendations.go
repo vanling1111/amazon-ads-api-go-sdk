@@ -9,6 +9,6 @@
 package sponsoredproductsv2
 
 type BidRecommendationsForTargetsResponseRecommendations struct {
-	SuggestedBid *SuggestedBid `json:"suggestedBid,omitempty"`
-	Expressions *TargetingExpression `json:"expressions,omitempty"`
+	SuggestedBid *SuggestedBid        `json:"suggestedBid,omitempty"`
+	Expressions  *TargetingExpression `json:"expressions,omitempty"`
 }

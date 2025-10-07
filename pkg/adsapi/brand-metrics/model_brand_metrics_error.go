@@ -15,6 +15,6 @@ type BrandMetricsError struct {
 	// high level human readable message.
 	Details string `json:"details,omitempty"`
 	// A list of the errors encountered.
-	Errors []BrandMetricsErrorErrors `json:"errors,omitempty"`
-	RequestId string `json:"requestId,omitempty"`
+	Errors    []BrandMetricsErrorErrors `json:"errors,omitempty"`
+	RequestId string                    `json:"requestId,omitempty"`
 }

@@ -10,6 +10,6 @@ package billing
 
 // Represent the output of the create payment agreement API.
 type AdPaymentsCreatePaymentAgreementsOutput struct {
-	Error_ []AdPaymentsBulkCreationResult `json:"error"`
+	Error_  []AdPaymentsBulkCreationResult `json:"error"`
 	Success []AdPaymentsBulkCreationResult `json:"success"`
 }

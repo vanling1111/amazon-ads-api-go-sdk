@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type CampaignNameFilter struct {
-	Include []string `json:"include"`
+	Include            []string                `json:"include"`
 	QueryTermMatchType *CampaignNameFilterType `json:"queryTermMatchType"`
 }

@@ -10,10 +10,10 @@ package billing
 
 // Represents the output of the get payment methods API.
 type AdPaymentsGetCustomerPaymentMethodsOutput struct {
-	CreditCardPaymentMethods *[]AdPaymentsCreditCardPaymentMethod `json:"creditCardPaymentMethods,omitempty"`
+	CreditCardPaymentMethods        *[]AdPaymentsCreditCardPaymentMethod        `json:"creditCardPaymentMethods,omitempty"`
 	DeductFromPaymentPaymentMethods *[]AdPaymentsDeductFromPaymentPaymentMethod `json:"deductFromPaymentPaymentMethods,omitempty"`
-	DirectDebitPaymentMethods *[]AdPaymentsDirectDebitPaymentMethod `json:"directDebitPaymentMethods,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
-	PayByInvoicePaymentMethods *[]AdPaymentsPayByInvoicePaymentMethod `json:"payByInvoicePaymentMethods,omitempty"`
-	SellerPayablePaymentMethods *[]AdPaymentsSellerPayablePaymentMethod `json:"sellerPayablePaymentMethods,omitempty"`
+	DirectDebitPaymentMethods       *[]AdPaymentsDirectDebitPaymentMethod       `json:"directDebitPaymentMethods,omitempty"`
+	NextToken                       string                                      `json:"nextToken,omitempty"`
+	PayByInvoicePaymentMethods      *[]AdPaymentsPayByInvoicePaymentMethod      `json:"payByInvoicePaymentMethods,omitempty"`
+	SellerPayablePaymentMethods     *[]AdPaymentsSellerPayablePaymentMethod     `json:"sellerPayablePaymentMethods,omitempty"`
 }

@@ -11,7 +11,7 @@ package dspmeasurement
 // Survey response.
 type SurveyResponseV1 struct {
 	// An enumerated success or error code for machine use.
-	Code string `json:"code,omitempty"`
+	Code   string          `json:"code,omitempty"`
 	Errors []SurveyErrorV1 `json:"errors,omitempty"`
 	// The index of the object in the request, starting from 1.
 	Index int32 `json:"index,omitempty"`

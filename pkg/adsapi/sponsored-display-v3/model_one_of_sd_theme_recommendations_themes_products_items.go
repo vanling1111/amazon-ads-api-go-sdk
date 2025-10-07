@@ -9,5 +9,5 @@
 package sponsoreddisplayv3
 
 type OneOfSdThemeRecommendationsThemesProductsItems struct {
-    SdProductTargetingRecommendationsSuccess
+	SdProductTargetingRecommendationsSuccess
 }

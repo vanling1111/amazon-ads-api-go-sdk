@@ -9,7 +9,7 @@
 package audiencesdiscovery
 
 type InventoryForecastV1 struct {
-    DspInventoryForecastV1
-    SdInventoryForecastV1
-    StInventoryForecastV1
+	DspInventoryForecastV1
+	SdInventoryForecastV1
+	StInventoryForecastV1
 }

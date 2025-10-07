@@ -11,10 +11,10 @@ package sponsoreddisplayv3
 // Request for targeting bid recommendations.
 type SdTargetingBidRecommendationsRequestV33 struct {
 	// A list of products to tailor bid recommendations for category and audience based targeting clauses.
-	Products []SdGoalProduct `json:"products,omitempty"`
+	Products        []SdGoalProduct       `json:"products,omitempty"`
 	BidOptimization *SdBidOptimizationV32 `json:"bidOptimization"`
-	CostType *SdCostTypeV31 `json:"costType"`
-	CreativeType *SdCreativeType `json:"creativeType,omitempty"`
+	CostType        *SdCostTypeV31        `json:"costType"`
+	CreativeType    *SdCreativeType       `json:"creativeType,omitempty"`
 	// A list of targeting clauses to receive bid recommendations for.
 	TargetingClauses []SdTargetingBidRecommendationsRequestV31TargetingClauses `json:"targetingClauses"`
 }

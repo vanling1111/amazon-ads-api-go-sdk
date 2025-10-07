@@ -10,7 +10,7 @@ package amazonadsv1
 
 type AdvertisedProductMarketplaceSetting struct {
 	GlobalStoreSetting *GlobalStoreSettings `json:"globalStoreSetting,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	Marketplace        *Marketplace         `json:"marketplace,omitempty"`
 	// The identifier of the product advertised.
 	ProductId string `json:"productId,omitempty"`
 	// The identifier of product associated with the advertised product. It's a read-only field.

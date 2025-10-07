@@ -10,6 +10,6 @@ package personabuilder
 
 type ActorInsight struct {
 	// The actor's name.
-	Actor string `json:"actor"`
+	Actor   string         `json:"actor"`
 	Insight *InsightMetric `json:"insight"`
 }

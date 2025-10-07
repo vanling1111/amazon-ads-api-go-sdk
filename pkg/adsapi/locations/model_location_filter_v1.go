@@ -10,6 +10,6 @@ package locations
 
 type LocationFilterV1 struct {
 	// Field to filter by. Supported enums are 'locationId', 'name', and 'category'. The 'name' filter is a fuzzy search. If 'category' is specified, the values must match either 'CITY', 'STATE', 'DMA', 'COUNTRY', or 'POSTAL_CODE'.
-	Field string `json:"field,omitempty"`
+	Field  string   `json:"field,omitempty"`
 	Values []string `json:"values,omitempty"`
 }

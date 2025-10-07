@@ -10,5 +10,5 @@ package partneropportunities
 
 type PartnerOpportunitiesOpportunityProductFilterSummaryV1 struct {
 	Count float64 `json:"count"`
-	Value string `json:"value"`
+	Value string  `json:"value"`
 }

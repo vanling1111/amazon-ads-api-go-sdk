@@ -26,7 +26,7 @@ type AsyncReport struct {
 	ReportId string `json:"reportId"`
 	// The start date for the reporting period in YYYY-mm-dd format.
 	StartDate string `json:"startDate"`
-	// The build status of the report.   - `PENDING` - Report is created and awaiting processing.   - `PROCESSING` - Report is processing. Please wait.   - `COMPLETED` - Report has completed.  Check the `url` for the output file.   - `FAILED` - Report generation failed.  Check the `failureReason` for details. 
+	// The build status of the report.   - `PENDING` - Report is created and awaiting processing.   - `PROCESSING` - Report is processing. Please wait.   - `COMPLETED` - Report has completed.  Check the `url` for the output file.   - `FAILED` - Report generation failed.  Check the `failureReason` for details.
 	Status string `json:"status"`
 	// The date at which the report was last updated in ISO 8601 date time format.
 	UpdatedAt string `json:"updatedAt"`

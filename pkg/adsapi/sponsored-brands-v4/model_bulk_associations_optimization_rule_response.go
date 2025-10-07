@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type BulkAssociationsOptimizationRuleResponse struct {
 	Success []OptimizationRuleToEntityMappingSuccessResponseItem `json:"success,omitempty"`
-	Error_ []OptimizationRuleFailureResponseItem `json:"error,omitempty"`
+	Error_  []OptimizationRuleFailureResponseItem                `json:"error,omitempty"`
 }

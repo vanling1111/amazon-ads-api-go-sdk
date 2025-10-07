@@ -10,6 +10,6 @@ package dspmeasurement
 
 // A list of study surveys.
 type PaginatedSurveysV1 struct {
-	NextToken string `json:"nextToken,omitempty"`
-	Surveys []SurveyV1 `json:"surveys,omitempty"`
+	NextToken string     `json:"nextToken,omitempty"`
+	Surveys   []SurveyV1 `json:"surveys,omitempty"`
 }

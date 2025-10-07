@@ -14,6 +14,6 @@ type SdBudgetRecommendation struct {
 	// Campaign id.
 	CampaignId string `json:"campaignId"`
 	// Recommended budget for the campaign. This will be in local currency.
-	SuggestedBudget float64 `json:"suggestedBudget"`
+	SuggestedBudget              float64                         `json:"suggestedBudget"`
 	SevenDaysMissedOpportunities *SdSevenDaysMissedOpportunities `json:"sevenDaysMissedOpportunities"`
 }

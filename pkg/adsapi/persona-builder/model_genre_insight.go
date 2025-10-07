@@ -10,6 +10,6 @@ package personabuilder
 
 type GenreInsight struct {
 	// A human readable genre name.
-	Genre string `json:"genre"`
+	Genre   string         `json:"genre"`
 	Insight *InsightMetric `json:"insight"`
 }

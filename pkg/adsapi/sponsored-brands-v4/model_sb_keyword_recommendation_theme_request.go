@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 type SbKeywordRecommendationThemeRequest struct {
 	Themes []SbKeywordRecommendationThemes `json:"themes,omitempty"`
 	// Maximum number of suggestions to return for each theme. Max value is 1000. If not provided, default to 100.
-	MaxNumSuggestions int32 `json:"maxNumSuggestions,omitempty"`
-	LandingPages []SbKeywordRecommendationLandingPage `json:"landingPages,omitempty"`
+	MaxNumSuggestions int32                                `json:"maxNumSuggestions,omitempty"`
+	LandingPages      []SbKeywordRecommendationLandingPage `json:"landingPages,omitempty"`
 }

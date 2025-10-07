@@ -11,10 +11,10 @@ package retailadservice
 type Rasv1ListCampaignsRequestContent struct {
 	CampaignIdFilter *Rasv1EntityIdFilter `json:"campaignIdFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API
-	MaxResults int32 `json:"maxResults,omitempty"`
+	MaxResults int32            `json:"maxResults,omitempty"`
 	NameFilter *Rasv1NameFilter `json:"nameFilter,omitempty"`
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken         string                      `json:"nextToken,omitempty"`
 	PortfolioIdFilter *Rasv1ReducedEntityIdFilter `json:"portfolioIdFilter,omitempty"`
-	StateFilter *Rasv1StateFilter `json:"stateFilter,omitempty"`
+	StateFilter       *Rasv1StateFilter           `json:"stateFilter,omitempty"`
 }

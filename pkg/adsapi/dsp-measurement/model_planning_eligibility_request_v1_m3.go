@@ -11,8 +11,8 @@ package dspmeasurement
 // The request object of planning eligibility check.
 type PlanningEligibilityRequestV1M3 struct {
 	// The advertiserId.
-	AdvertiserId string `json:"advertiserId,omitempty"`
-	Locale *MeasurementLocaleV1 `json:"locale,omitempty"`
+	AdvertiserId  string                      `json:"advertiserId,omitempty"`
+	Locale        *MeasurementLocaleV1        `json:"locale,omitempty"`
 	OrderMetadata []PlanningOrderMetadataV1M3 `json:"orderMetadata,omitempty"`
 	// StudyType identifier filters to be applied when checking eligibility status. If not supplied we will check against all available vendor products.
 	StudyTypeFilters []StudyTypeV1M2 `json:"studyTypeFilters,omitempty"`

@@ -15,7 +15,7 @@ type OnlineVideoSettings struct {
 	ClickTrackingUrls []CreativeTrackingUrl `json:"clickTrackingUrls,omitempty"`
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
-	Products *AdvertisedProducts `json:"products,omitempty"`
-	Videos *Video `json:"videos,omitempty"`
+	Language               *LanguageLocale       `json:"language,omitempty"`
+	Products               *AdvertisedProducts   `json:"products,omitempty"`
+	Videos                 *Video                `json:"videos,omitempty"`
 }

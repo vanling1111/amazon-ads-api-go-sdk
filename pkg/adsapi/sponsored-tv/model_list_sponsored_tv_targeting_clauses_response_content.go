@@ -10,7 +10,7 @@ package sponsoredtv
 
 type ListSponsoredTvTargetingClausesResponseContent struct {
 	// Token value allowing to navigate to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken        string            `json:"nextToken,omitempty"`
 	TargetingClauses []TargetingClause `json:"targetingClauses,omitempty"`
 	// The total number of entities.
 	TotalResults int32 `json:"totalResults,omitempty"`

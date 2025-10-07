@@ -9,6 +9,6 @@
 package sponsoreddisplayv3
 
 type OneOfSdTargetingBidRecommendationsResponseV32BidRecommendationsItems struct {
-    SdTargetingBidRecommendationsResponseItemSuccessV31
-    SdTargetingBidRecommendationsResponseItemFailureV31
+	SdTargetingBidRecommendationsResponseItemSuccessV31
+	SdTargetingBidRecommendationsResponseItemFailureV31
 }

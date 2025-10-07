@@ -11,6 +11,6 @@ package posts
 // Returns a list of profiles that the user has access to.
 type ListProfilesResponseContent struct {
 	// Pagination token to get next page of results from previous call.
-	NextToken string `json:"nextToken,omitempty"`
-	Profiles []Profile `json:"profiles,omitempty"`
+	NextToken string    `json:"nextToken,omitempty"`
+	Profiles  []Profile `json:"profiles,omitempty"`
 }

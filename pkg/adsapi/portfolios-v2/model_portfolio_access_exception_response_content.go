@@ -10,8 +10,8 @@ package portfoliosv2
 
 // Exception resulting in accessing portfolio entity
 type PortfolioAccessExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []PortfolioAccessError `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []PortfolioAccessError    `json:"errors,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 }

@@ -9,6 +9,6 @@
 package reachforecasting
 
 type ContentGenreTargetV1 struct {
-	ContentGenre *ContentGenreV1 `json:"contentGenre"`
-	TargetType *ContentGenreTargetTypeV1 `json:"targetType"`
+	ContentGenre *ContentGenreV1           `json:"contentGenre"`
+	TargetType   *ContentGenreTargetTypeV1 `json:"targetType"`
 }

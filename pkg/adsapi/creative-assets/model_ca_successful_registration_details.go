@@ -11,6 +11,6 @@ package creativeassets
 // Structure containing details of successful registration for each url in a batch registration request.
 type CaSuccessfulRegistrationDetails struct {
 	// Url of the media file as provided in the input of batch registration request.
-	Url string `json:"url,omitempty"`
+	Url             string             `json:"url,omitempty"`
 	AssetIdentifier *CaAssetIdentifier `json:"assetIdentifier,omitempty"`
 }

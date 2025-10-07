@@ -14,10 +14,10 @@ type ProductAdResponseEx struct {
 	// The identifier of the ad group associated with the ad.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
 	// The identifier of the campaign associated with the ad.
-	CampaignId float64 `json:"campaignId,omitempty"`
-	LandingPageURL string `json:"landingPageURL,omitempty"`
+	CampaignId      float64          `json:"campaignId,omitempty"`
+	LandingPageURL  string           `json:"landingPageURL,omitempty"`
 	LandingPageType *LandingPageType `json:"landingPageType,omitempty"`
-	AdName string `json:"adName,omitempty"`
+	AdName          string           `json:"adName,omitempty"`
 	// The ASIN of the product being advertised. This parameter is included in the response for sellers and vendors.
 	Asin string `json:"asin,omitempty"`
 	// The SKU of the product being advertised. This parameter is included in the response for sellers.

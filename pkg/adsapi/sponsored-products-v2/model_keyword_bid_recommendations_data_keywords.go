@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type KeywordBidRecommendationsDataKeywords struct {
 	// The keyword text.
-	Keyword string `json:"keyword,omitempty"`
+	Keyword   string     `json:"keyword,omitempty"`
 	MatchType *MatchType `json:"matchType,omitempty"`
 }

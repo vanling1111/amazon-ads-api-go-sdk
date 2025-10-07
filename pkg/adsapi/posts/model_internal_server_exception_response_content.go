@@ -10,7 +10,7 @@ package posts
 
 // Internal Server Exception - Something went wrong with the server. Please try again later. If the issue persists, report an error.
 type InternalServerExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

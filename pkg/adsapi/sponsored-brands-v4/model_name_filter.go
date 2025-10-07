@@ -11,5 +11,5 @@ package sponsoredbrandsv4
 // Filter entities by name.
 type NameFilter struct {
 	QueryTermMatchType *QueryTermMatchType `json:"queryTermMatchType,omitempty"`
-	Include []string `json:"include,omitempty"`
+	Include            []string            `json:"include,omitempty"`
 }

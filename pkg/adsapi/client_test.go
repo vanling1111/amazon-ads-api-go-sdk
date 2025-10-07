@@ -294,7 +294,7 @@ func TestClient_DoRequest_ContextCancellation(t *testing.T) {
 			LWAEndpoint: lwaServer.URL,
 		}),
 		WithCredentials("test-client-id", "test-secret", "test-token"),
-		WithHTTPTimeout(5 * time.Second),
+		WithHTTPTimeout(5*time.Second),
 	)
 	require.NoError(t, err)
 
@@ -387,4 +387,3 @@ func BenchmarkClient_GetConfig(b *testing.B) {
 		_ = client.GetConfig()
 	}
 }
-

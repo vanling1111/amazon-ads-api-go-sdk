@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type MonetaryBudgetMarketplaceSetting struct {
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	Marketplace    *Marketplace    `json:"marketplace,omitempty"`
 	MonetaryBudget *MonetaryBudget `json:"monetaryBudget,omitempty"`
 }

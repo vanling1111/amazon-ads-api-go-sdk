@@ -12,6 +12,6 @@ package audiencesdiscovery
 type ListAudiencesRequestBodyV1 struct {
 	AdType string `json:"adType,omitempty"`
 	// The ISO Alpha-2 country codes to search audiences from. This field must be specified if the advertiser does not have an associated country. Currently, it is only supported to specify a single country per request.
-	Countries []string `json:"countries,omitempty"`
-	Filters []AudienceFilterV1 `json:"filters,omitempty"`
+	Countries []string           `json:"countries,omitempty"`
+	Filters   []AudienceFilterV1 `json:"filters,omitempty"`
 }

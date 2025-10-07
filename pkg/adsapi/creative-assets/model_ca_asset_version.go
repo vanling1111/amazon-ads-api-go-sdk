@@ -9,22 +9,22 @@
 package creativeassets
 
 type CaAssetVersion struct {
-	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
-	CreationTime int64 `json:"creationTime,omitempty"`
+	LastUpdatedBy             string                    `json:"lastUpdatedBy,omitempty"`
+	CreationTime              int64                     `json:"creationTime,omitempty"`
 	SpecCheckApprovedPrograms *[]CaSpecificationProgram `json:"specCheckApprovedPrograms,omitempty"`
-	AssetIdentifier *CaAssetIdentifier `json:"assetIdentifier,omitempty"`
-	AssetFiles *CaAssetFiles `json:"assetFiles,omitempty"`
-	OtherMetadata *map[string]string `json:"otherMetadata,omitempty"`
-	Url string `json:"url,omitempty"`
-	AssetSubTypes *[]CaAssetSubType `json:"assetSubTypes,omitempty"`
-	FileMetadata *CaFileMetadata `json:"fileMetadata,omitempty"`
-	CreatedBy string `json:"createdBy,omitempty"`
-	Name string `json:"name,omitempty"`
-	LastUpdatedTime int64 `json:"lastUpdatedTime,omitempty"`
+	AssetIdentifier           *CaAssetIdentifier        `json:"assetIdentifier,omitempty"`
+	AssetFiles                *CaAssetFiles             `json:"assetFiles,omitempty"`
+	OtherMetadata             *map[string]string        `json:"otherMetadata,omitempty"`
+	Url                       string                    `json:"url,omitempty"`
+	AssetSubTypes             *[]CaAssetSubType         `json:"assetSubTypes,omitempty"`
+	FileMetadata              *CaFileMetadata           `json:"fileMetadata,omitempty"`
+	CreatedBy                 string                    `json:"createdBy,omitempty"`
+	Name                      string                    `json:"name,omitempty"`
+	LastUpdatedTime           int64                     `json:"lastUpdatedTime,omitempty"`
 	// The URL of the asset
-	VersionNotes string `json:"versionNotes,omitempty"`
-	AssetStatus *CaAssetStatus `json:"assetStatus,omitempty"`
-	FailedSpecChecks *[]CaProgramSpecifications `json:"failedSpecChecks,omitempty"`
-	StorageLocationUrls *CaStorageLocationUrls `json:"storageLocationUrls,omitempty"`
-	ModerationContentList []CaModerationContent `json:"moderationContentList,omitempty"`
+	VersionNotes          string                     `json:"versionNotes,omitempty"`
+	AssetStatus           *CaAssetStatus             `json:"assetStatus,omitempty"`
+	FailedSpecChecks      *[]CaProgramSpecifications `json:"failedSpecChecks,omitempty"`
+	StorageLocationUrls   *CaStorageLocationUrls     `json:"storageLocationUrls,omitempty"`
+	ModerationContentList []CaModerationContent      `json:"moderationContentList,omitempty"`
 }

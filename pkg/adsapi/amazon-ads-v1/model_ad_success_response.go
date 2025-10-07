@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type AdSuccessResponse struct {
-	Ads []Ad `json:"ads,omitempty"`
+	Ads       []Ad   `json:"ads,omitempty"`
 	NextToken string `json:"nextToken,omitempty"`
 }

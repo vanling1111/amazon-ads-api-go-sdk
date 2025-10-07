@@ -10,9 +10,9 @@ package billing
 
 // Represents Seller Payable payment method structure. Seller Payable is a type of payment method where spends are deducted from the seller balance of a particular seller account.
 type AdPaymentsSellerPayablePaymentMethod struct {
-	CountryCode *AdPaymentsCountryCode `json:"countryCode,omitempty"`
+	CountryCode       *AdPaymentsCountryCode   `json:"countryCode,omitempty"`
 	EligibleCountries *[]AdPaymentsCountryCode `json:"eligibleCountries"`
 	// The seller account ID associated to this payment method
-	SellerAccountId string `json:"sellerAccountId,omitempty"`
-	Type_ *AdPaymentsPaymentMethodType `json:"type"`
+	SellerAccountId string                       `json:"sellerAccountId,omitempty"`
+	Type_           *AdPaymentsPaymentMethodType `json:"type"`
 }

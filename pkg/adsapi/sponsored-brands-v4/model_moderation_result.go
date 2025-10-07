@@ -9,12 +9,12 @@
 package sponsoredbrandsv4
 
 type ModerationResult struct {
-	VersionId string `json:"versionId,omitempty"`
-	IdType *IdType `json:"idType,omitempty"`
+	VersionId        string            `json:"versionId,omitempty"`
+	IdType           *IdType           `json:"idType,omitempty"`
 	ModerationStatus *ModerationStatus `json:"moderationStatus,omitempty"`
 	// A list of policy violations for a campaign that has failed moderation. Note that this field is present in the response only when moderationStatus is set to REJECTED.
 	PolicyViolations []PolicyViolation `json:"policyViolations,omitempty"`
 	// Expected date and time by which moderation will be complete. The format is ISO 8601 in UTC time zone. Note that this field is present in the response only when moderationStatus is set to IN_PROGRESS.
 	EtaForModeration string `json:"etaForModeration,omitempty"`
-	Id string `json:"id,omitempty"`
+	Id               string `json:"id,omitempty"`
 }

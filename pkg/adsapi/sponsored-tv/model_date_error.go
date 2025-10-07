@@ -12,6 +12,6 @@ package sponsoredtv
 type DateError struct {
 	Cause *ErrorCause `json:"cause"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Reason *DateErrorReason `json:"reason"`
+	Message string           `json:"message"`
+	Reason  *DateErrorReason `json:"reason"`
 }

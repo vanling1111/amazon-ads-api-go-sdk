@@ -9,6 +9,6 @@
 package sponsoredbrandsv4
 
 type AudienceSegment struct {
-	AudienceId string `json:"audienceId,omitempty"`
+	AudienceId          string               `json:"audienceId,omitempty"`
 	AudienceSegmentType *AudienceSegmentType `json:"audienceSegmentType,omitempty"`
 }

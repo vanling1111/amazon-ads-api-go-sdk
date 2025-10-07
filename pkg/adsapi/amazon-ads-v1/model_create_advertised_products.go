@@ -13,6 +13,6 @@ type CreateAdvertisedProducts struct {
 	// List of advertised product selectively applied at the given marketplace level
 	MarketplaceSettings []CreateAdvertisedProductMarketplaceSetting `json:"marketplaceSettings,omitempty"`
 	// The identifier of the advertised product.
-	ProductId string `json:"productId,omitempty"`
+	ProductId     string         `json:"productId,omitempty"`
 	ProductIdType *ProductIdType `json:"productIdType"`
 }

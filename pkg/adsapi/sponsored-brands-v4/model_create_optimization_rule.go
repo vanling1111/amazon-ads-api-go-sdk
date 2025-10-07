@@ -12,6 +12,6 @@ type CreateOptimizationRule struct {
 	// Enum: \"CAMPAIGN\"  The type of entity passed.
 	EntityType string `json:"entityType,omitempty"`
 	// Entity object identifier.
-	EntityId string `json:"entityId,omitempty"`
+	EntityId   string          `json:"entityId,omitempty"`
 	Conditions []RuleCondition `json:"conditions,omitempty"`
 }

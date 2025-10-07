@@ -11,5 +11,5 @@ package amazonadsv1
 // Target based on a specified domain.
 type CreateDomainTarget struct {
 	DomainTargetDetails *CreateDomainTargetDetails `json:"domainTargetDetails,omitempty"`
-	DomainTargetType *DomainTargetTypes `json:"domainTargetType,omitempty"`
+	DomainTargetType    *DomainTargetTypes         `json:"domainTargetType,omitempty"`
 }

@@ -12,6 +12,6 @@ type ModelType string
 
 // List of Type
 const (
-	AD_ModelType ModelType = "AD"
+	AD_ModelType                          ModelType = "AD"
 	AFFILIATE_MARKETING_CONTENT_ModelType ModelType = "AFFILIATE_MARKETING_CONTENT"
 )

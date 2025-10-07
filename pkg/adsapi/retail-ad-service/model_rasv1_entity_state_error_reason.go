@@ -12,8 +12,8 @@ type Rasv1EntityStateErrorReason string
 
 // List of RASv1EntityStateErrorReason
 const (
-	ARCHIVED_ENTITY_CANNOT_BE_MODIFIED_Rasv1EntityStateErrorReason Rasv1EntityStateErrorReason = "ARCHIVED_ENTITY_CANNOT_BE_MODIFIED"
-	PARENT_ARCHIVED_FORBIDS_UPDATES_Rasv1EntityStateErrorReason Rasv1EntityStateErrorReason = "PARENT_ARCHIVED_FORBIDS_UPDATES"
-	PARENT_ENTITY_FORBIDS_CREATION_Rasv1EntityStateErrorReason Rasv1EntityStateErrorReason = "PARENT_ENTITY_FORBIDS_CREATION"
+	ARCHIVED_ENTITY_CANNOT_BE_MODIFIED_Rasv1EntityStateErrorReason        Rasv1EntityStateErrorReason = "ARCHIVED_ENTITY_CANNOT_BE_MODIFIED"
+	PARENT_ARCHIVED_FORBIDS_UPDATES_Rasv1EntityStateErrorReason           Rasv1EntityStateErrorReason = "PARENT_ARCHIVED_FORBIDS_UPDATES"
+	PARENT_ENTITY_FORBIDS_CREATION_Rasv1EntityStateErrorReason            Rasv1EntityStateErrorReason = "PARENT_ENTITY_FORBIDS_CREATION"
 	PARENT_STATUS_FORBIDS_UPDATES_AND_CREATES_Rasv1EntityStateErrorReason Rasv1EntityStateErrorReason = "PARENT_STATUS_FORBIDS_UPDATES_AND_CREATES"
 )

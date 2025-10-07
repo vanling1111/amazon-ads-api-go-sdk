@@ -12,6 +12,6 @@ type PropertyOwnership string
 
 // List of PropertyOwnership
 const (
-	OWNING_PropertyOwnership PropertyOwnership = "OWNING"
+	OWNING_PropertyOwnership  PropertyOwnership = "OWNING"
 	RENTING_PropertyOwnership PropertyOwnership = "RENTING"
 )

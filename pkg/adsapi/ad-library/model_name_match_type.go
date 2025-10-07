@@ -12,6 +12,6 @@ type NameMatchType string
 
 // List of NameMatchType
 const (
-	CONTAINS_NameMatchType NameMatchType = "CONTAINS"
+	CONTAINS_NameMatchType    NameMatchType = "CONTAINS"
 	EXACT_MATCH_NameMatchType NameMatchType = "EXACT_MATCH"
 )

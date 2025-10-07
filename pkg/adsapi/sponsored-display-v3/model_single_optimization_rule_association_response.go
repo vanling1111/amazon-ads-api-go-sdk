@@ -12,6 +12,6 @@ type SingleOptimizationRuleAssociationResponse struct {
 	// The HTTP status code of the response.
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response.
-	Details string `json:"details,omitempty"`
+	Details            string `json:"details,omitempty"`
 	OptimizationRuleId string `json:"optimizationRuleId,omitempty"`
 }

@@ -15,8 +15,8 @@ type SurveyResponseResultV1M1 struct {
 	// The percent of people in control group choosing this response.
 	ControlGroupResponseRate float64 `json:"controlGroupResponseRate,omitempty"`
 	// Is the response a qualifying response. Used in calculating Brand Lift.
-	IsQualifyingResponse bool `json:"isQualifyingResponse,omitempty"`
-	QuestionObjective *SurveyQuestionObjectiveTypeV1M1 `json:"questionObjective,omitempty"`
+	IsQualifyingResponse bool                             `json:"isQualifyingResponse,omitempty"`
+	QuestionObjective    *SurveyQuestionObjectiveTypeV1M1 `json:"questionObjective,omitempty"`
 	// The response choosen by Survey audience.
 	QuestionResponse string `json:"questionResponse,omitempty"`
 	// Sequence number of the question in the Survey.

@@ -9,8 +9,8 @@
 package sponsoredtv
 
 type InvalidArgumentExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []InvalidArgumentError `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []InvalidArgumentError    `json:"errors,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

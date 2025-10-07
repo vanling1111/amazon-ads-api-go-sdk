@@ -12,13 +12,13 @@ type MultiAdGroupAd struct {
 	// The ad identifier.
 	AdId string `json:"adId"`
 	// The campaign identifier.
-	CampaignId string `json:"campaignId"`
+	CampaignId  string       `json:"campaignId"`
 	LandingPage *LandingPage `json:"landingPage,omitempty"`
 	// The name of the ad.
-	Name string `json:"name"`
+	Name  string       `json:"name"`
 	State *EntityState `json:"state"`
 	// The adGroup identifier.
-	AdGroupId string `json:"adGroupId"`
-	Creative *Creative `json:"creative,omitempty"`
+	AdGroupId    string          `json:"adGroupId"`
+	Creative     *Creative       `json:"creative,omitempty"`
 	ExtendedData *AdExtendedData `json:"extendedData,omitempty"`
 }

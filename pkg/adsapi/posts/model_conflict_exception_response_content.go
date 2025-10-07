@@ -10,7 +10,7 @@ package posts
 
 // Conflict Exception - Updating or deleting this resource can cause an inconsistent state.
 type ConflictExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

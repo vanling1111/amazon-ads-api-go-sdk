@@ -12,7 +12,7 @@ package audiencesdiscovery
 type DspAudienceRule struct {
 	AttributeType *AttributeType `json:"attributeType"`
 	// For a given audienceType and attributeType combination, the attribute values being supplied.
-	AttributeValues []string `json:"attributeValues"`
-	Clause *Clause `json:"clause"`
-	Operator *Operator `json:"operator"`
+	AttributeValues []string  `json:"attributeValues"`
+	Clause          *Clause   `json:"clause"`
+	Operator        *Operator `json:"operator"`
 }

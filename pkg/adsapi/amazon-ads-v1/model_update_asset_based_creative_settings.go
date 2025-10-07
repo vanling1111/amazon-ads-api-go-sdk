@@ -14,13 +14,13 @@ type UpdateAssetBasedCreativeSettings struct {
 	// The body text to use for the Asset Based Creative experience.
 	BodyText []string `json:"bodyText,omitempty"`
 	// The brand of the product(s) being advertised.
-	Brand string `json:"brand,omitempty"`
+	Brand         string                                `json:"brand,omitempty"`
 	CallToActions *UpdateAssetBasedCreativeCallToAction `json:"callToActions,omitempty"`
 	// The third party urls to trigger when an click is recorded.
 	ClickTrackingUrls []CreateCreativeTrackingUrl `json:"clickTrackingUrls,omitempty"`
 	// The placement sizes this creative should serve on.
 	CreativeSizes []CreateSize `json:"creativeSizes,omitempty"`
-	CustomVideos *UpdateVideo `json:"customVideos,omitempty"`
+	CustomVideos  *UpdateVideo `json:"customVideos,omitempty"`
 	// The disclaimers to use for the Asset Based Creative experience.
 	Disclaimers string `json:"disclaimers,omitempty"`
 	// The headline(s) to use for the Asset Based Creative experience.
@@ -29,11 +29,11 @@ type UpdateAssetBasedCreativeSettings struct {
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
 	// The inventory types this creative should serve on.
 	InventoryTypes []ComponentInventoryType `json:"inventoryTypes,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language       *LanguageLocale          `json:"language,omitempty"`
 	// The logos to use for the Asset Based Creative experience.
-	Logos []CreateImage `json:"logos,omitempty"`
-	OptimizationGoalKpi *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
-	ResponsiveSizingBehavior *ResponsiveSizingBehavior `json:"responsiveSizingBehavior,omitempty"`
+	Logos                    []CreateImage                `json:"logos,omitempty"`
+	OptimizationGoalKpi      *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
+	ResponsiveSizingBehavior *ResponsiveSizingBehavior    `json:"responsiveSizingBehavior,omitempty"`
 	// The square image(s) to use.
 	SquareImages []CreateImage `json:"squareImages,omitempty"`
 	// The tall image(s) to use.

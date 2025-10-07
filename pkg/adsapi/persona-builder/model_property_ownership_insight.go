@@ -9,8 +9,8 @@
 package personabuilder
 
 type PropertyOwnershipInsight struct {
-	Attribute *PropertyOwnership `json:"attribute"`
-	InsightMetrics *InsightMetric `json:"insightMetrics"`
+	Attribute      *PropertyOwnership `json:"attribute"`
+	InsightMetrics *InsightMetric     `json:"insightMetrics"`
 	// Canonical ID of the segment the demographic insight attribute maps to.
 	SegmentId string `json:"segmentId"`
 }

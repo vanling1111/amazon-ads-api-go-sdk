@@ -8,8 +8,8 @@
  */
 package creativeassets
 
-// used for pagination  when searching for the first page, no need to put anything, otherwise, use the token returned from previous search call 
+// used for pagination  when searching for the first page, no need to put anything, otherwise, use the token returned from previous search call
 type CaPageCriteria struct {
 	Identifier *CaPageIdentifier `json:"identifier,omitempty"`
-	Size int32 `json:"size,omitempty"`
+	Size       int32             `json:"size,omitempty"`
 }

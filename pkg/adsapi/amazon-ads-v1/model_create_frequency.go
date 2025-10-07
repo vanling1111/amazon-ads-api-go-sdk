@@ -10,9 +10,9 @@ package amazonadsv1
 
 type CreateFrequency struct {
 	// The maximum number of times an EventType is served per user. For ADSP ad group, maximum supported value is 500.
-	EventMaxCount int32 `json:"eventMaxCount,omitempty"`
+	EventMaxCount             int32                      `json:"eventMaxCount,omitempty"`
 	FrequencyTargetingSetting *FrequencyTargetingSetting `json:"frequencyTargetingSetting,omitempty"`
 	// The value associated with the time and unit of time for this frequency cap.
-	TimeCount int32 `json:"timeCount,omitempty"`
-	TimeUnit *TimeUnit `json:"timeUnit,omitempty"`
+	TimeCount int32     `json:"timeCount,omitempty"`
+	TimeUnit  *TimeUnit `json:"timeUnit,omitempty"`
 }

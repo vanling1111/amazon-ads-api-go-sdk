@@ -10,11 +10,11 @@ package sponsoredtv
 
 type CreateAdGroup struct {
 	// The identifier of the Campaign associated with the Ad Group.
-	CampaignId string `json:"campaignId"`
+	CampaignId string      `json:"campaignId"`
 	DefaultBid *DefaultBid `json:"defaultBid,omitempty"`
 	// full funnel campaign id for child ad group
 	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
 	// The name of the Ad Group.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 }

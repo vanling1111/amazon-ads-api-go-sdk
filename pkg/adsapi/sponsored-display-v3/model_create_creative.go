@@ -11,9 +11,9 @@ package sponsoreddisplayv3
 // Creative create model.
 type CreateCreative struct {
 	// Unqiue identifier for the ad group associated with the creative.
-	AdGroupId float64 `json:"adGroupId"`
+	AdGroupId    float64                        `json:"adGroupId"`
 	CreativeType *CreativeTypeInCreativeRequest `json:"creativeType,omitempty"`
-	Properties *CreativeProperties `json:"properties"`
+	Properties   *CreativeProperties            `json:"properties"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch.
 	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`
 }

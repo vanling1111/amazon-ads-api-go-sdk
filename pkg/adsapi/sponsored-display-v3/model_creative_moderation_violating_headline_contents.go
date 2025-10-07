@@ -10,6 +10,6 @@ package sponsoreddisplayv3
 
 type CreativeModerationViolatingHeadlineContents struct {
 	// The specific text reviewed during moderation.
-	ReviewedText string `json:"reviewedText,omitempty"`
+	ReviewedText string                           `json:"reviewedText,omitempty"`
 	TextEvidence []CreativeModerationTextEvidence `json:"textEvidence,omitempty"`
 }

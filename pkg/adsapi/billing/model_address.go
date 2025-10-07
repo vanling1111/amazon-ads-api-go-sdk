@@ -9,13 +9,13 @@
 package billing
 
 type Address struct {
-	AddressLine1 string `json:"addressLine1"`
-	AddressLine2 string `json:"addressLine2"`
-	AddressLine3 string `json:"addressLine3"`
+	AddressLine1  string `json:"addressLine1"`
+	AddressLine2  string `json:"addressLine2"`
+	AddressLine3  string `json:"addressLine3"`
 	AttentionName string `json:"attentionName,omitempty"`
-	City string `json:"city"`
-	CompanyName string `json:"companyName"`
-	CountryCode string `json:"countryCode"`
-	PostalCode string `json:"postalCode"`
+	City          string `json:"city"`
+	CompanyName   string `json:"companyName"`
+	CountryCode   string `json:"countryCode"`
+	PostalCode    string `json:"postalCode"`
 	StateOrRegion string `json:"stateOrRegion"`
 }

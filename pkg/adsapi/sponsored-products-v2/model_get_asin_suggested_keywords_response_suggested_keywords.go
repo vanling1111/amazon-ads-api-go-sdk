@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type GetAsinSuggestedKeywordsResponseSuggestedKeywords struct {
 	// The text of the suggested keyword.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	KeywordText string     `json:"keywordText,omitempty"`
+	MatchType   *MatchType `json:"matchType,omitempty"`
 }

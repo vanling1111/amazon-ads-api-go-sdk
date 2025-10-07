@@ -11,6 +11,6 @@ package profilesv3
 // A ranged value.
 type CurvePointRangedValue struct {
 	// KPI label.
-	Label string `json:"label,omitempty"`
+	Label string               `json:"label,omitempty"`
 	Value *ForecastRangeDouble `json:"value,omitempty"`
 }

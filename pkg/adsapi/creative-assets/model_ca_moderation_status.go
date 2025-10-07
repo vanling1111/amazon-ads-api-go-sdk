@@ -14,5 +14,5 @@ type CaModerationStatus string
 const (
 	REJECTED_CaModerationStatus CaModerationStatus = "REJECTED"
 	APPROVED_CaModerationStatus CaModerationStatus = "APPROVED"
-	PENDING_CaModerationStatus CaModerationStatus = "PENDING"
+	PENDING_CaModerationStatus  CaModerationStatus = "PENDING"
 )

@@ -9,12 +9,12 @@
 package posts
 
 type Product struct {
-	Availability string `json:"availability,omitempty"`
+	Availability          string                `json:"availability,omitempty"`
 	CustomerReviewSummary *ProductReviewSummary `json:"customerReviewSummary,omitempty"`
-	DetailPageUrl string `json:"detailPageUrl,omitempty"`
-	Id string `json:"id,omitempty"`
-	ImageUrl string `json:"imageUrl,omitempty"`
-	IsPrime bool `json:"isPrime,omitempty"`
-	Name string `json:"name,omitempty"`
-	PriceSummary *ProductPriceSummary `json:"priceSummary,omitempty"`
+	DetailPageUrl         string                `json:"detailPageUrl,omitempty"`
+	Id                    string                `json:"id,omitempty"`
+	ImageUrl              string                `json:"imageUrl,omitempty"`
+	IsPrime               bool                  `json:"isPrime,omitempty"`
+	Name                  string                `json:"name,omitempty"`
+	PriceSummary          *ProductPriceSummary  `json:"priceSummary,omitempty"`
 }

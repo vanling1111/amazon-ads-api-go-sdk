@@ -1,4 +1,3 @@
-
 /*
  * Partner Opportunities
  *
@@ -11,12 +10,12 @@ package partneropportunities
 
 import (
 	"context"
+	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,22 +24,24 @@ var (
 )
 
 type PartnerOpportunitiesApiService service
+
 /*
 PartnerOpportunitiesApiService
 Retrieves the current status of applied recommendations.  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;MasterAccount_Manager\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MA_ReadOnly\&quot;]
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body
- * @param amazonAdvertisingAPIClientId The identifier of a client associated with a &#x27;Login with Amazon&#x27; account.
- * @param amazonAdvertisingAPIManagerAccount &#x27;Partner Network Account ID&#x27; which is accessible from Partner Network under the [&#x27;User settings&#x27;](https://advertising.amazon.com/partner-network/settings) link in the upper right corner.
- * @param partnerOpportunityId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body
+  - @param amazonAdvertisingAPIClientId The identifier of a client associated with a &#x27;Login with Amazon&#x27; account.
+  - @param amazonAdvertisingAPIManagerAccount &#x27;Partner Network Account ID&#x27; which is accessible from Partner Network under the [&#x27;User settings&#x27;](https://advertising.amazon.com/partner-network/settings) link in the upper right corner.
+  - @param partnerOpportunityId
+
 @return PartnerOpportunitiesApplicationStatusResponseDtoV1
 */
 func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesApplicationStatus(ctx context.Context, body PartnerOpportunitiesApplicationStatusRequestDtoV1, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIManagerAccount string, partnerOpportunityId string) (PartnerOpportunitiesApplicationStatusResponseDtoV1, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue PartnerOpportunitiesApplicationStatusResponseDtoV1
 	)
 
@@ -91,61 +92,61 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesApplicationStatus(c
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v PartnerOpportunitiesApplicationStatusResponseDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v PartnerOpportunitiesApplicationStatusErrorDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v PartnerOpportunitiesApplicationStatusErrorDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
 }
+
 /*
 PartnerOpportunitiesApiService
 Applies a given set of recommendations. Application may be asynchronous. Application status may be checked using the applicationStatus operation. Note that all required parameters are retrieved from opportunity data.  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;MasterAccount_Manager\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MA_ReadOnly\&quot;]
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body
- * @param amazonAdvertisingAPIClientId The identifier of a client associated with a &#x27;Login with Amazon&#x27; account.
- * @param amazonAdvertisingAPIManagerAccount &#x27;Partner Network Account ID&#x27; which is accessible from Partner Network under the [&#x27;User settings&#x27;](https://advertising.amazon.com/partner-network/settings) link in the upper right corner.
- * @param partnerOpportunityId
-
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body
+  - @param amazonAdvertisingAPIClientId The identifier of a client associated with a &#x27;Login with Amazon&#x27; account.
+  - @param amazonAdvertisingAPIManagerAccount &#x27;Partner Network Account ID&#x27; which is accessible from Partner Network under the [&#x27;User settings&#x27;](https://advertising.amazon.com/partner-network/settings) link in the upper right corner.
+  - @param partnerOpportunityId
 */
 func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesApply(ctx context.Context, body PartnerOpportunitiesApplyRequestDtoV1, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIManagerAccount string, partnerOpportunityId string) (*http.Response, error) {
 	var (
@@ -153,7 +154,6 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesApply(ctx context.C
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		
 	)
 
 	// create path and map variables
@@ -201,47 +201,47 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesApply(ctx context.C
 		return localVarHttpResponse, err
 	}
 
-
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 400 {
 			var v PartnerOpportunitiesApplyErrorDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 422 {
 			var v PartnerOpportunitiesApplyErrorDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 500 {
 			var v PartnerOpportunitiesApplyErrorDtoV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarHttpResponse, newErr
 		}
 		return localVarHttpResponse, newErr
 	}
 
 	return localVarHttpResponse, nil
 }
+
 /*
 PartnerOpportunitiesApiService
 Gets a 307 - TEMPORARY_REDIRECT to an opportunity data file.  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;MasterAccount_Manager\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MA_ReadOnly\&quot;]
@@ -255,7 +255,7 @@ Gets a 307 - TEMPORARY_REDIRECT to an opportunity data file.  **Authorized resou
 */
 
 type PartnerOpportunitiesApiPartnerOpportunitiesGetOpportunityFileOpts struct {
-    FileFormat optional.String
+	FileFormat optional.String
 }
 
 func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesGetOpportunityFile(ctx context.Context, partnerOpportunityId string, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIManagerAccount string, localVarOptionals *PartnerOpportunitiesApiPartnerOpportunitiesGetOpportunityFileOpts) (*http.Response, error) {
@@ -264,7 +264,6 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesGetOpportunityFile(
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		
 	)
 
 	// create path and map variables
@@ -313,10 +312,9 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesGetOpportunityFile(
 		return localVarHttpResponse, err
 	}
 
-
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		return localVarHttpResponse, newErr
@@ -324,6 +322,7 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesGetOpportunityFile(
 
 	return localVarHttpResponse, nil
 }
+
 /*
 PartnerOpportunitiesApiService
 Gets a list of opportunities specific to the partner making the request.  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;MasterAccount_Manager\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MA_ReadOnly\&quot;]
@@ -334,33 +333,33 @@ Gets a list of opportunities specific to the partner making the request.  **Auth
      * @param "MaxResults" (optional.Float64) -  The maximum number of results to return in a single page.
      * @param "NextToken" (optional.String) -  An obfuscated cursor value that indicates which &#x27;page&#x27; of results should be returned next.
      * @param "Locale" (optional.Interface of Locale) -  The desired locale for opportunity data to be presented in. The &#x60;title&#x60;, &#x60;description&#x60;, and &#x60;callToAction&#x60; fields of the response items support localization.
-     * @param "RetrieveTranslationKeys" (optional.Bool) - 
+     * @param "RetrieveTranslationKeys" (optional.Bool) -
      * @param "AdvertiserId" (optional.Interface of []string) -  Filter for opportunities using advertiserId. Each advertiserId must be fewer than 50 characters.
      * @param "ProfileId" (optional.Interface of []float64) -  Filter for opportunities using profileId. Each profileId must be fewer than 50 characters.
      * @param "Audience" (optional.Interface of []string) -  Filter for opportunities with these audience values. * PARTNER_MANAGED_ADVERTISERS - Recommendation relates to advertisers the partner manages. * PARTNER_MANAGED_AD_BUSINESS - Recommendation relates to other partners the partner interacts with. * PARTNER - Recommendation relates to you, the partner.
-     * @param "ObjectiveType" (optional.Interface of []string) -  Filter for opportunities with these objectiveType values. * AD_API_ENDPOINT_ADOPTION - Recommendation relates to adopting a new API endpoint. * ADVERTISER_INSIGHTS - Recommendation relates to advertiser insights. * AMAZON_ACCOUNT_TEAM_RECOMMENDATIONS - Recommendation is provided by the Amazon Ads Account Team. * BENCHMARKING_INSIGHTS - Recommendation relates to performance insights comparing against similar partners, brands, campaigns, or ASINs. * CAMPAIGN_OPTIMIZATION - Recommendation relates to optimizing campaigns. * CATEGORY_INSIGHTS - Recommendation relates to advertising insights across product categories.. * CLICK_CREDITS - Recommendation relates to available click credits. * DEALS - Recommendation relates to deals. * MARKETPLACE_EXPANSION - Recommendation relates to expanding to new marketplaces. * NEW_TO_BRAND_INSIGHTS - Recommendation relates to new to brand advertising insights. * PARTNER_GROWTH - Recommendation relates to growing your business as a partner. * PATH_TO_PURCHASE_INSIGHTS - Recommendation relates to path to purchase insights. * READY_TO_LAUNCH_CAMPAIGNS - Recommendation relates to ready to launch campaigns. * RETAIL_INSIGHTS - Recommendation related to retail insights about products you manage. * SHARE_OF_VOICE_INSIGHTS - Recommendation relates to share of voice for a particular audience. * UNLAUNCHED_ASINS - Recommendation relates to ASINs you manage that are not enrolled in advertising campaigns. 
+     * @param "ObjectiveType" (optional.Interface of []string) -  Filter for opportunities with these objectiveType values. * AD_API_ENDPOINT_ADOPTION - Recommendation relates to adopting a new API endpoint. * ADVERTISER_INSIGHTS - Recommendation relates to advertiser insights. * AMAZON_ACCOUNT_TEAM_RECOMMENDATIONS - Recommendation is provided by the Amazon Ads Account Team. * BENCHMARKING_INSIGHTS - Recommendation relates to performance insights comparing against similar partners, brands, campaigns, or ASINs. * CAMPAIGN_OPTIMIZATION - Recommendation relates to optimizing campaigns. * CATEGORY_INSIGHTS - Recommendation relates to advertising insights across product categories.. * CLICK_CREDITS - Recommendation relates to available click credits. * DEALS - Recommendation relates to deals. * MARKETPLACE_EXPANSION - Recommendation relates to expanding to new marketplaces. * NEW_TO_BRAND_INSIGHTS - Recommendation relates to new to brand advertising insights. * PARTNER_GROWTH - Recommendation relates to growing your business as a partner. * PATH_TO_PURCHASE_INSIGHTS - Recommendation relates to path to purchase insights. * READY_TO_LAUNCH_CAMPAIGNS - Recommendation relates to ready to launch campaigns. * RETAIL_INSIGHTS - Recommendation related to retail insights about products you manage. * SHARE_OF_VOICE_INSIGHTS - Recommendation relates to share of voice for a particular audience. * UNLAUNCHED_ASINS - Recommendation relates to ASINs you manage that are not enrolled in advertising campaigns.
      * @param "Product" (optional.Interface of []string) -  Filter for opportunities with these product values. * AMAZON_DSP - Recommendation relates to the Amazon DSP. * AMAZON_LIVE - Recommendation relates to Amazon&#x27;s Live Show and Tell program. * CROSS_PRODUCT - Recommendation relates to multiple Amazon Ads products including leveraging insights between products * POSTS - Deprecated * SPONSORED_BRANDS - Recommendation relates to Sponsored Brands. * SPONSORED_BRANDS_VIDEO - Recommendation relates to Sponsored Brands Video. * SPONSORED_DISPLAY - Recommendation relates to Sponsored Display. * SPONSORED_DISPLAY_VIDEO - Recommendation relates to Sponsored Display Video. * SPONSORED_PRODUCTS - Recommendation relates to Sponsored Products. * SPONSORED_TV - Recommendation relates to Sponsored TV. * STORES - Recommendation relates to building a storefront page on Amazon. * VIDEO_ADS - Deprecated value, replaced by SPONSORED_BRANDS_VIDEO and SPONSORED_DISPLAY_VIDEO values.
 @return PartnerOpportunitiesOpportunitiesPageV1
 */
 
 type PartnerOpportunitiesApiPartnerOpportunitiesListOpportunitiesOpts struct {
-    MaxResults optional.Float64
-    NextToken optional.String
-    Locale optional.Interface
-    RetrieveTranslationKeys optional.Bool
-    AdvertiserId optional.Interface
-    ProfileId optional.Interface
-    Audience optional.Interface
-    ObjectiveType optional.Interface
-    Product optional.Interface
+	MaxResults              optional.Float64
+	NextToken               optional.String
+	Locale                  optional.Interface
+	RetrieveTranslationKeys optional.Bool
+	AdvertiserId            optional.Interface
+	ProfileId               optional.Interface
+	Audience                optional.Interface
+	ObjectiveType           optional.Interface
+	Product                 optional.Interface
 }
 
 func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesListOpportunities(ctx context.Context, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIManagerAccount string, localVarOptionals *PartnerOpportunitiesApiPartnerOpportunitiesListOpportunitiesOpts) (PartnerOpportunitiesOpportunitiesPageV1, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Get")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue PartnerOpportunitiesOpportunitiesPageV1
 	)
 
@@ -435,32 +434,33 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesListOpportunities(c
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v PartnerOpportunitiesOpportunitiesPageV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHttpResponse, nil
 }
+
 /*
 PartnerOpportunitiesApiService
 Gets aggregated information about all opportunities specific to the partner making the request. Supported since V1.1.  **Authorized resource type**: Global Manager Account ID  **Parameter name**: Amazon-Advertising-API-Manager-Account  **Parameter in**: header  **Requires one of these permissions**: [\&quot;MasterAccount_Manager\&quot;,\&quot;MasterAccount_Viewer\&quot;,\&quot;ManagerAccount_Dev\&quot;,\&quot;MA_ReadOnly\&quot;]
@@ -469,23 +469,23 @@ Gets aggregated information about all opportunities specific to the partner maki
  * @param amazonAdvertisingAPIManagerAccount &#x27;Partner Network Account ID&#x27; which is accessible from Partner Network under the [&#x27;User settings&#x27;](https://advertising.amazon.com/partner-network/settings) link in the upper right corner.
  * @param optional nil or *PartnerOpportunitiesApiPartnerOpportunitiesSummarizeOpportunitiesOpts - Optional Parameters:
      * @param "Audience" (optional.Interface of []string) -  Filter for opportunities with these audience values. * PARTNER_MANAGED_ADVERTISERS - Recommendation relates to advertisers the partner manages. * PARTNER_MANAGED_AD_BUSINESS - Recommendation relates to other partners the partner interacts with. * PARTNER - Recommendation relates to you, the partner.
-     * @param "ObjectiveType" (optional.Interface of []string) -  Filter for opportunities with these objectiveType values. * AD_API_ENDPOINT_ADOPTION - Recommendation relates to adopting a new API endpoint. * ADVERTISER_INSIGHTS - Recommendation relates to advertiser insights. * AMAZON_ACCOUNT_TEAM_RECOMMENDATIONS - Recommendation is provided by the Amazon Ads Account Team. * BENCHMARKING_INSIGHTS - Recommendation relates to performance insights comparing against similar partners, brands, campaigns, or ASINs. * CAMPAIGN_OPTIMIZATION - Recommendation relates to optimizing campaigns. * CATEGORY_INSIGHTS - Recommendation relates to advertising insights across product categories.. * CLICK_CREDITS - Recommendation relates to available click credits. * DEALS - Recommendation relates to deals. * MARKETPLACE_EXPANSION - Recommendation relates to expanding to new marketplaces. * NEW_TO_BRAND_INSIGHTS - Recommendation relates to new to brand advertising insights. * PARTNER_GROWTH - Recommendation relates to growing your business as a partner. * PATH_TO_PURCHASE_INSIGHTS - Recommendation relates to path to purchase insights. * READY_TO_LAUNCH_CAMPAIGNS - Recommendation relates to ready to launch campaigns. * RETAIL_INSIGHTS - Recommendation related to retail insights about products you manage. * SHARE_OF_VOICE_INSIGHTS - Recommendation relates to share of voice for a particular audience. * UNLAUNCHED_ASINS - Recommendation relates to ASINs you manage that are not enrolled in advertising campaigns. 
+     * @param "ObjectiveType" (optional.Interface of []string) -  Filter for opportunities with these objectiveType values. * AD_API_ENDPOINT_ADOPTION - Recommendation relates to adopting a new API endpoint. * ADVERTISER_INSIGHTS - Recommendation relates to advertiser insights. * AMAZON_ACCOUNT_TEAM_RECOMMENDATIONS - Recommendation is provided by the Amazon Ads Account Team. * BENCHMARKING_INSIGHTS - Recommendation relates to performance insights comparing against similar partners, brands, campaigns, or ASINs. * CAMPAIGN_OPTIMIZATION - Recommendation relates to optimizing campaigns. * CATEGORY_INSIGHTS - Recommendation relates to advertising insights across product categories.. * CLICK_CREDITS - Recommendation relates to available click credits. * DEALS - Recommendation relates to deals. * MARKETPLACE_EXPANSION - Recommendation relates to expanding to new marketplaces. * NEW_TO_BRAND_INSIGHTS - Recommendation relates to new to brand advertising insights. * PARTNER_GROWTH - Recommendation relates to growing your business as a partner. * PATH_TO_PURCHASE_INSIGHTS - Recommendation relates to path to purchase insights. * READY_TO_LAUNCH_CAMPAIGNS - Recommendation relates to ready to launch campaigns. * RETAIL_INSIGHTS - Recommendation related to retail insights about products you manage. * SHARE_OF_VOICE_INSIGHTS - Recommendation relates to share of voice for a particular audience. * UNLAUNCHED_ASINS - Recommendation relates to ASINs you manage that are not enrolled in advertising campaigns.
      * @param "Product" (optional.Interface of []string) -  Filter for opportunities with these product values. * AMAZON_DSP - Recommendation relates to the Amazon DSP. * AMAZON_LIVE - Recommendation relates to Amazon&#x27;s Live Show and Tell program. * CROSS_PRODUCT - Recommendation relates to multiple Amazon Ads products including leveraging insights between products * POSTS - Deprecated * SPONSORED_BRANDS - Recommendation relates to Sponsored Brands. * SPONSORED_BRANDS_VIDEO - Recommendation relates to Sponsored Brands Video. * SPONSORED_DISPLAY - Recommendation relates to Sponsored Display. * SPONSORED_DISPLAY_VIDEO - Recommendation relates to Sponsored Display Video. * SPONSORED_PRODUCTS - Recommendation relates to Sponsored Products. * SPONSORED_TV - Recommendation relates to Sponsored TV. * STORES - Recommendation relates to building a storefront page on Amazon. * VIDEO_ADS - Deprecated value, replaced by SPONSORED_BRANDS_VIDEO and SPONSORED_DISPLAY_VIDEO values.
 @return PartnerOpportunitiesOpportunitiesSummaryV1
 */
 
 type PartnerOpportunitiesApiPartnerOpportunitiesSummarizeOpportunitiesOpts struct {
-    Audience optional.Interface
-    ObjectiveType optional.Interface
-    Product optional.Interface
+	Audience      optional.Interface
+	ObjectiveType optional.Interface
+	Product       optional.Interface
 }
 
 func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesSummarizeOpportunities(ctx context.Context, amazonAdvertisingAPIClientId string, amazonAdvertisingAPIManagerAccount string, localVarOptionals *PartnerOpportunitiesApiPartnerOpportunitiesSummarizeOpportunitiesOpts) (PartnerOpportunitiesOpportunitiesSummaryV1, *http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
+		localVarHttpMethod  = strings.ToUpper("Get")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
 		localVarReturnValue PartnerOpportunitiesOpportunitiesSummaryV1
 	)
 
@@ -542,26 +542,26 @@ func (a *PartnerOpportunitiesApiService) PartnerOpportunitiesSummarizeOpportunit
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
 
 	if localVarHttpResponse.StatusCode >= 300 {
 		newErr := GenericSwaggerError{
-			body: localVarBody,
+			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v PartnerOpportunitiesOpportunitiesSummaryV1
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		return localVarReturnValue, localVarHttpResponse, newErr
 	}

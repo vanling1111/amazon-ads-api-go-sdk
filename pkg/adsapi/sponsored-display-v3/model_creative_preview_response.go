@@ -9,6 +9,6 @@
 package sponsoreddisplayv3
 
 type CreativePreviewResponse struct {
-	PreviewHtml string `json:"previewHtml"`
+	PreviewHtml  string   `json:"previewHtml"`
 	PreviewHtmls []string `json:"previewHtmls,omitempty"`
 }

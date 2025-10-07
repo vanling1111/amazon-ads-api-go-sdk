@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type CreateOptimization struct {
-	BidStrategy *BidStrategy `json:"bidStrategy,omitempty"`
+	BidStrategy    *BidStrategy                 `json:"bidStrategy,omitempty"`
 	BudgetSettings *CreateAdGroupBudgetSettings `json:"budgetSettings,omitempty"`
-	GoalSettings *CreateAdGroupGoalSettings `json:"goalSettings,omitempty"`
+	GoalSettings   *CreateAdGroupGoalSettings   `json:"goalSettings,omitempty"`
 }

@@ -10,9 +10,9 @@ package portfoliosv2
 
 // Errors not related to any of the other error types
 type PortfolioOtherError struct {
-	Cause *ErrorCause `json:"cause"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause `json:"cause"`
+	Marketplace string      `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioOtherErrorReason `json:"reason"`
+	Message string                     `json:"message"`
+	Reason  *PortfolioOtherErrorReason `json:"reason"`
 }

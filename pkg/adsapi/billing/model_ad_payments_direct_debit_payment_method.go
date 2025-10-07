@@ -14,6 +14,6 @@ type AdPaymentsDirectDebitPaymentMethod struct {
 	// Identifies a direct debit payment method.
 	InstrumentId string `json:"instrumentId"`
 	// The last four digits of the bank account number.
-	Tail string `json:"tail"`
+	Tail  string                       `json:"tail"`
 	Type_ *AdPaymentsPaymentMethodType `json:"type"`
 }

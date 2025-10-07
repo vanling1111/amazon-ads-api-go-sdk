@@ -10,7 +10,7 @@ package posts
 
 // Validation Exception - Request failed because invalid parameters were provided.
 type ValidationExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

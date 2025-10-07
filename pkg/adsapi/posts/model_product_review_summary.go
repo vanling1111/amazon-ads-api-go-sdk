@@ -9,9 +9,9 @@
 package posts
 
 type ProductReviewSummary struct {
-	DisplayString string `json:"displayString,omitempty"`
-	HalfStar bool `json:"halfStar,omitempty"`
-	ReviewFullStar float64 `json:"reviewFullStar,omitempty"`
+	DisplayString            string  `json:"displayString,omitempty"`
+	HalfStar                 bool    `json:"halfStar,omitempty"`
+	ReviewFullStar           float64 `json:"reviewFullStar,omitempty"`
 	TotalCustomerReviewCount float64 `json:"totalCustomerReviewCount,omitempty"`
-	Value float32 `json:"value,omitempty"`
+	Value                    float32 `json:"value,omitempty"`
 }

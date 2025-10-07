@@ -11,11 +11,11 @@ package sponsoredproductsv2
 type UpdateTargetingClause struct {
 	// The target identifier.
 	TargetId float64 `json:"targetId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State    *State  `json:"state,omitempty"`
 	// The targeting expression.
 	Expression []TargetingExpressionPredicate `json:"expression,omitempty"`
 	// The resolved targeting expression.
 	ResolvedExpression []TargetingExpressionPredicate `json:"resolvedExpression,omitempty"`
-	ExpressionType *ExpressionType `json:"expressionType,omitempty"`
-	Bid float32 `json:"bid,omitempty"`
+	ExpressionType     *ExpressionType                `json:"expressionType,omitempty"`
+	Bid                float32                        `json:"bid,omitempty"`
 }

@@ -9,9 +9,9 @@
 package profilesv3
 
 type Campaign struct {
-	CampaignId int64 `json:"campaignId,omitempty"`
-	Tactic *Tactic `json:"tactic,omitempty"`
-	DeliveryProfile string `json:"deliveryProfile,omitempty"`
+	CampaignId      int64            `json:"campaignId,omitempty"`
+	Tactic          *Tactic          `json:"tactic,omitempty"`
+	DeliveryProfile string           `json:"deliveryProfile,omitempty"`
 	RuleBasedBudget *RuleBasedBudget `json:"ruleBasedBudget,omitempty"`
 	// The name of the campaign.
 	Name string `json:"name,omitempty"`

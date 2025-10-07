@@ -10,6 +10,6 @@ package retailadservice
 
 type Rasv1UpdateProductAdInput struct {
 	// The identifier of the ProductAd.
-	ProductAdId string `json:"productAdId"`
-	State *Rasv1EntityState `json:"state,omitempty"`
+	ProductAdId string            `json:"productAdId"`
+	State       *Rasv1EntityState `json:"state,omitempty"`
 }

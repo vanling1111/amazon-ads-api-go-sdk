@@ -9,7 +9,7 @@
 package reachforecasting
 
 type KeywordTargetV1 struct {
-	Keyword string `json:"keyword"`
-	MatchType *KeywordTargetMatchTypeV1 `json:"matchType"`
-	TargetType *KeywordTargetTypeV1 `json:"targetType"`
+	Keyword    string                    `json:"keyword"`
+	MatchType  *KeywordTargetMatchTypeV1 `json:"matchType"`
+	TargetType *KeywordTargetTypeV1      `json:"targetType"`
 }

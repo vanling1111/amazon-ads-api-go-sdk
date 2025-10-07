@@ -13,5 +13,5 @@ type DocumentType string
 // List of documentType
 const (
 	CREDIT_NOTE_DocumentType DocumentType = "CREDIT_NOTE"
-	INVOICE_DocumentType DocumentType = "INVOICE"
+	INVOICE_DocumentType     DocumentType = "INVOICE"
 )

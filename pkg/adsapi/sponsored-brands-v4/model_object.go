@@ -1,4 +1,4 @@
-package sponsorebrandsv4
+package sponsoredbrandsv4
 
 // Object is a generic map for unstructured data
 type Object map[string]interface{}

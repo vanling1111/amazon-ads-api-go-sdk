@@ -10,7 +10,7 @@ package amazonadsv1
 
 type DoubleVerifyStandardDisplayBrandSafety struct {
 	// A list of content categories to exclude from targeting.
-	ContentCategories []DvBrandSafetyContentCategoryType `json:"contentCategories,omitempty"`
+	ContentCategories         []DvBrandSafetyContentCategoryType          `json:"contentCategories,omitempty"`
 	ContentCategoriesWithRisk []DvBrandSafetyContentCategoriesWithRiskMap `json:"contentCategoriesWithRisk,omitempty"`
 	// Set to true to exclude unknown content.
 	UnknownContent bool `json:"unknownContent,omitempty"`

@@ -9,6 +9,6 @@
 package billing
 
 type CurrencyAmount struct {
-	Amount float64 `json:"amount,omitempty"`
+	Amount       float64       `json:"amount,omitempty"`
 	CurrencyCode *CurrencyCode `json:"currencyCode,omitempty"`
 }

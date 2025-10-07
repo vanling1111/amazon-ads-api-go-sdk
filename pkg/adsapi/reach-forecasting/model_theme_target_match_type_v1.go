@@ -12,6 +12,6 @@ type ThemeTargetMatchTypeV1 string
 
 // List of ThemeTargetMatchTypeV1
 const (
-	BRAND_ThemeTargetMatchTypeV1 ThemeTargetMatchTypeV1 = "KEYWORDS_RELATED_TO_YOUR_BRAND"
+	BRAND_ThemeTargetMatchTypeV1         ThemeTargetMatchTypeV1 = "KEYWORDS_RELATED_TO_YOUR_BRAND"
 	LANDING_PAGES_ThemeTargetMatchTypeV1 ThemeTargetMatchTypeV1 = "KEYWORDS_RELATED_TO_YOUR_LANDING_PAGES"
 )

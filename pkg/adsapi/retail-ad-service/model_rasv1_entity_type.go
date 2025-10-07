@@ -12,13 +12,13 @@ type Rasv1EntityType string
 
 // List of RASv1EntityType
 const (
-	AD_GROUP_Rasv1EntityType Rasv1EntityType = "AD_GROUP"
-	CAMPAIGN_Rasv1EntityType Rasv1EntityType = "CAMPAIGN"
-	CAMPAIGN_NEGATIVE_KEYWORD_Rasv1EntityType Rasv1EntityType = "CAMPAIGN_NEGATIVE_KEYWORD"
+	AD_GROUP_Rasv1EntityType                           Rasv1EntityType = "AD_GROUP"
+	CAMPAIGN_Rasv1EntityType                           Rasv1EntityType = "CAMPAIGN"
+	CAMPAIGN_NEGATIVE_KEYWORD_Rasv1EntityType          Rasv1EntityType = "CAMPAIGN_NEGATIVE_KEYWORD"
 	CAMPAIGN_NEGATIVE_TARGETING_CLAUSE_Rasv1EntityType Rasv1EntityType = "CAMPAIGN_NEGATIVE_TARGETING_CLAUSE"
-	KEYWORD_Rasv1EntityType Rasv1EntityType = "KEYWORD"
-	NEGATIVE_KEYWORD_Rasv1EntityType Rasv1EntityType = "NEGATIVE_KEYWORD"
-	NEGATIVE_TARGETING_CLAUSE_Rasv1EntityType Rasv1EntityType = "NEGATIVE_TARGETING_CLAUSE"
-	PRODUCT_AD_Rasv1EntityType Rasv1EntityType = "PRODUCT_AD"
-	TARGETING_CLAUSE_Rasv1EntityType Rasv1EntityType = "TARGETING_CLAUSE"
+	KEYWORD_Rasv1EntityType                            Rasv1EntityType = "KEYWORD"
+	NEGATIVE_KEYWORD_Rasv1EntityType                   Rasv1EntityType = "NEGATIVE_KEYWORD"
+	NEGATIVE_TARGETING_CLAUSE_Rasv1EntityType          Rasv1EntityType = "NEGATIVE_TARGETING_CLAUSE"
+	PRODUCT_AD_Rasv1EntityType                         Rasv1EntityType = "PRODUCT_AD"
+	TARGETING_CLAUSE_Rasv1EntityType                   Rasv1EntityType = "TARGETING_CLAUSE"
 )

@@ -10,13 +10,13 @@ package sponsoredbrandsv4
 
 type ProductCollectionCreative struct {
 	// An array of ASINs associated with the creative.
-	Asins []string `json:"asins"`
+	Asins         []string   `json:"asins"`
 	BrandLogoCrop *AssetCrop `json:"brandLogoCrop,omitempty"`
 	// The displayed brand name in the ad headline. Maximum length is 30 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
 	BrandName string `json:"brandName"`
 	// The identifier of the Custom image from the Store assets library. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#customimage) for more information on what constitutes a valid Custom image.
-	CustomImageAssetId string `json:"customImageAssetId,omitempty"`
-	CustomImageCrop *AssetCrop `json:"customImageCrop,omitempty"`
+	CustomImageAssetId string     `json:"customImageAssetId,omitempty"`
+	CustomImageCrop    *AssetCrop `json:"customImageCrop,omitempty"`
 	// The identifier of the [brand logo](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#brandlogo) image from the brand store's asset library. Note that for campaigns created in the Amazon Advertising console prior to release of the brand store's assets library, responses will not include a value for this field.
 	BrandLogoAssetId string `json:"brandLogoAssetId"`
 	// The headline text. Maximum length of the string is 50 characters for all marketplaces other than Japan, which has a maximum length of 35 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.

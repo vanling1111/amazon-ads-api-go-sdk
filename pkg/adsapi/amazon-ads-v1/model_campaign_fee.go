@@ -11,6 +11,6 @@ package amazonadsv1
 type CampaignFee struct {
 	FeeType *CampaignFeeType `json:"feeType,omitempty"`
 	// A service fee that is subtracted from the campaign budget as a percent of budget. This setting can’t be changed after an ad group has been added to a campaign.
-	FeeValue float64 `json:"feeValue,omitempty"`
+	FeeValue     float64               `json:"feeValue,omitempty"`
 	FeeValueType *CampaignFeeValueType `json:"feeValueType,omitempty"`
 }

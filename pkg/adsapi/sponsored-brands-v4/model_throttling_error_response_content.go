@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type ThrottlingErrorResponseContent struct {
-	Code *ThrottlingErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *ThrottlingErrorCode `json:"code"`
+	RequestId string               `json:"requestId"`
+	Message   string               `json:"message"`
 }

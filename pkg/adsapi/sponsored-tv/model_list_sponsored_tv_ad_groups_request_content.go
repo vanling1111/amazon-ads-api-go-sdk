@@ -9,13 +9,13 @@
 package sponsoredtv
 
 type ListSponsoredTvAdGroupsRequestContent struct {
-	AdGroupIdFilter *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
-	CampaignIdFilter *ObjectIdFilter `json:"campaignIdFilter,omitempty"`
+	AdGroupIdFilter            *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
+	CampaignIdFilter           *ObjectIdFilter `json:"campaignIdFilter,omitempty"`
 	FullFunnelCampaignIdFilter *ObjectIdFilter `json:"fullFunnelCampaignIdFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
-	MaxResults int32 `json:"maxResults,omitempty"`
+	MaxResults int32       `json:"maxResults,omitempty"`
 	NameFilter *NameFilter `json:"nameFilter,omitempty"`
 	// Token value allowing to navigate to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken   string             `json:"nextToken,omitempty"`
 	StateFilter *EntityStateFilter `json:"stateFilter,omitempty"`
 }

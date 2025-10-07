@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 type AdSuccessResponseItem struct {
 	// the Ad ID.
-	AdId string `json:"adId,omitempty"`
-	Ad *MultiAdGroupAd `json:"ad,omitempty"`
+	AdId string          `json:"adId,omitempty"`
+	Ad   *MultiAdGroupAd `json:"ad,omitempty"`
 	// The index in the original list from the request.
 	Index float64 `json:"index"`
 }

@@ -9,9 +9,9 @@
 package dataprovider
 
 type V2dpaudiencemetadataMetadata struct {
-	Type_ *MetadataType `json:"type"`
-	ExternalAudienceId string `json:"externalAudienceId"`
-	Ttl int32 `json:"ttl,omitempty"`
-	AudienceFees *[]AudienceFeesInner `json:"audienceFees,omitempty"`
-	DataSourceCountry *[]string `json:"dataSourceCountry"`
+	Type_              *MetadataType        `json:"type"`
+	ExternalAudienceId string               `json:"externalAudienceId"`
+	Ttl                int32                `json:"ttl,omitempty"`
+	AudienceFees       *[]AudienceFeesInner `json:"audienceFees,omitempty"`
+	DataSourceCountry  *[]string            `json:"dataSourceCountry"`
 }

@@ -12,13 +12,13 @@ type Ad struct {
 	// The ad identifier. Note: Ads created using version 3/non-multi ad group campaigns do not have an associated adId. [Learn more](https://advertising.amazon.com/API/docs/en-us/sponsored-brands/campaigns/managing-multi-ad-group-campaigns#ads).
 	AdId string `json:"adId,omitempty"`
 	// The campaign identifier.
-	CampaignId string `json:"campaignId"`
+	CampaignId  string       `json:"campaignId"`
 	LandingPage *LandingPage `json:"landingPage,omitempty"`
 	// The name of the ad. Note: Ads created using version 3/non-multi ad group campaigns do not have an associated name. [Learn more](https://advertising.amazon.com/API/docs/en-us/sponsored-brands/campaigns/managing-multi-ad-group-campaigns#ads).
-	Name string `json:"name,omitempty"`
+	Name  string       `json:"name,omitempty"`
 	State *EntityState `json:"state"`
 	// The adGroup identifier.
-	AdGroupId string `json:"adGroupId"`
-	Creative *Creative `json:"creative,omitempty"`
+	AdGroupId    string          `json:"adGroupId"`
+	Creative     *Creative       `json:"creative,omitempty"`
 	ExtendedData *AdExtendedData `json:"extendedData,omitempty"`
 }

@@ -12,6 +12,6 @@ type CampaignMutationSuccessResponseItem struct {
 	// The campaign ID.
 	CampaignId string `json:"campaignId,omitempty"`
 	// The index of the campaign in the array from the request body.
-	Index float64 `json:"index"`
+	Index    float64   `json:"index"`
 	Campaign *Campaign `json:"campaign,omitempty"`
 }

@@ -14,6 +14,6 @@ type Rasv1UpdateAdGroupInput struct {
 	// A bid value for use when no bid is specified for keywords in the ad group. For more information about bid constraints by marketplace, see [bid limits](https://advertising.amazon.com/API/docs/en-us/concepts/limits#bid-constraints-by-marketplace).
 	DefaultBid float64 `json:"defaultBid,omitempty"`
 	// The name of the ad group.
-	Name string `json:"name,omitempty"`
+	Name  string            `json:"name,omitempty"`
 	State *Rasv1EntityState `json:"state,omitempty"`
 }

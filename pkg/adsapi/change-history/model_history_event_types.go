@@ -10,11 +10,11 @@ package changehistory
 
 // Event types that can be queried. **Note:** THEME event type requires API version 1.1 or higher (Accept: application/vnd.historyresponse.v1.1+json)
 type HistoryEventTypes struct {
-	AD *HistoryEventType `json:"AD,omitempty"`
-	AD_GROUP *HistoryEventType `json:"AD_GROUP,omitempty"`
-	CAMPAIGN *HistoryEventType `json:"CAMPAIGN,omitempty"`
-	KEYWORD *HistoryEventType `json:"KEYWORD,omitempty"`
-	NEGATIVE_KEYWORD *HistoryEventType `json:"NEGATIVE_KEYWORD,omitempty"`
-	PRODUCT_TARGETING *HistoryEventType `json:"PRODUCT_TARGETING,omitempty"`
-	THEME *AllOfHistoryEventTypesTheme `json:"THEME,omitempty"`
+	AD                *HistoryEventType            `json:"AD,omitempty"`
+	AD_GROUP          *HistoryEventType            `json:"AD_GROUP,omitempty"`
+	CAMPAIGN          *HistoryEventType            `json:"CAMPAIGN,omitempty"`
+	KEYWORD           *HistoryEventType            `json:"KEYWORD,omitempty"`
+	NEGATIVE_KEYWORD  *HistoryEventType            `json:"NEGATIVE_KEYWORD,omitempty"`
+	PRODUCT_TARGETING *HistoryEventType            `json:"PRODUCT_TARGETING,omitempty"`
+	THEME             *AllOfHistoryEventTypesTheme `json:"THEME,omitempty"`
 }

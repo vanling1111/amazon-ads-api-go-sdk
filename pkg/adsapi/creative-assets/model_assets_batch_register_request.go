@@ -10,6 +10,6 @@ package creativeassets
 
 type AssetsBatchRegisterRequest struct {
 	// List containing details of assets to register.
-	AssetDetailsList []AssetsbatchRegisterAssetDetailsList `json:"assetDetailsList,omitempty"`
-	BatchRegistrationContext *CaBatchRegistrationContext `json:"batchRegistrationContext,omitempty"`
+	AssetDetailsList         []AssetsbatchRegisterAssetDetailsList `json:"assetDetailsList,omitempty"`
+	BatchRegistrationContext *CaBatchRegistrationContext           `json:"batchRegistrationContext,omitempty"`
 }

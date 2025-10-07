@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type CreateStoreSpotlightCreativeRequestContent struct {
 	// The unique ID of a Sponsored Brands ad.
-	AdId string `json:"adId"`
+	AdId     string                  `json:"adId"`
 	Creative *StoreSpotlightCreative `json:"creative"`
 }

@@ -11,7 +11,7 @@ package sponsoredbrandsv4
 // Properties associated with Brand Logo.
 type BrandLogo struct {
 	BrandLogoCrop *AssetCrop `json:"brandLogoCrop,omitempty"`
-	BrandLogoUrl string `json:"brandLogoUrl,omitempty"`
+	BrandLogoUrl  string     `json:"brandLogoUrl,omitempty"`
 	// The identifier of image/video asset from the store's asset library
 	BrandLogoAssetId string `json:"brandLogoAssetId,omitempty"`
 }

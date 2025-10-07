@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type BidRecommendationRequest struct {
 	// The identifier of the ad group that is associated with the targeting expression used to generate the bid recommendation.
-	AdGroupId float64 `json:"adGroupId,omitempty"`
+	AdGroupId   float64              `json:"adGroupId,omitempty"`
 	Expressions *TargetingExpression `json:"expressions,omitempty"`
 }

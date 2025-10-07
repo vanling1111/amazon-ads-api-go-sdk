@@ -10,5 +10,5 @@ package retailadservice
 
 type Rasv1RequiredDynamicBidding struct {
 	PlacementBidding []Rasv1PlacementBidAdjustment `json:"placementBidding,omitempty"`
-	Strategy *Rasv1BiddingStrategy `json:"strategy"`
+	Strategy         *Rasv1BiddingStrategy         `json:"strategy"`
 }

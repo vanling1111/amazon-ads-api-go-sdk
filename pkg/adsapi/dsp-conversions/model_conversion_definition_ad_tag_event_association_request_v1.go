@@ -11,6 +11,6 @@ package dspconversions
 // The combination of adTagId and adTagEventName identifies an unique adTag event.
 type ConversionDefinitionAdTagEventAssociationRequestV1 struct {
 	AdTagEventName string `json:"adTagEventName"`
-	AdTagId string `json:"adTagId"`
-	Operation string `json:"operation"`
+	AdTagId        string `json:"adTagId"`
+	Operation      string `json:"operation"`
 }

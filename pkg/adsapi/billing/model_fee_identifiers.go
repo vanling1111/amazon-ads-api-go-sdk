@@ -8,7 +8,7 @@
  */
 package billing
 
-// Identifiers describing attributes for different fee types. * countryCode: ISO 3611 country code for country specific Regulatory Advertising Fees. 
+// Identifiers describing attributes for different fee types. * countryCode: ISO 3611 country code for country specific Regulatory Advertising Fees.
 type FeeIdentifiers struct {
 	CountryCode string `json:"countryCode,omitempty"`
 }

@@ -9,6 +9,6 @@
 package billing
 
 type BulkGetBillingStatusResponse struct {
-	Error_ []BulkGetBillingStatusError `json:"error"`
+	Error_  []BulkGetBillingStatusError   `json:"error"`
 	Success []BulkGetBillingStatusSuccess `json:"success"`
 }

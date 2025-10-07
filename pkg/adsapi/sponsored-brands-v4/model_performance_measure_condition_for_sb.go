@@ -9,8 +9,8 @@
 package sponsoredbrandsv4
 
 type PerformanceMeasureConditionForSb struct {
-	MetricName *PerformanceMetricForSb `json:"metricName"`
-	ComparisonOperator *ComparisonOperator `json:"comparisonOperator"`
+	MetricName         *PerformanceMetricForSb `json:"metricName"`
+	ComparisonOperator *ComparisonOperator     `json:"comparisonOperator"`
 	// The performance threshold value.
 	Threshold float64 `json:"threshold"`
 }

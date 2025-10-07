@@ -10,7 +10,7 @@ package amazonadsv1
 
 type AdGroupBid struct {
 	// The lower bound bid used for the ads in the ad group.
-	BaseBid float64 `json:"baseBid,omitempty"`
+	BaseBid      float64       `json:"baseBid,omitempty"`
 	CurrencyCode *CurrencyCode `json:"currencyCode,omitempty"`
 	// The default maximum bid for ads and targets in the ad group. This is used in sponsored ads as the maximum bid during the auction.
 	DefaultBid float64 `json:"defaultBid,omitempty"`

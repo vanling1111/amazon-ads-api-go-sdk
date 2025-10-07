@@ -11,8 +11,8 @@ package amazonadsv1
 // A CTA that directs a customer to a provided url.
 type UpdateAssetBasedCreativeCallToActionSettings struct {
 	// Type of CallToAction for AssetBasedCreative.
-	CallToActionType []AssetBasedCreativeCallToActionType `json:"callToActionType,omitempty"`
-	DeepLinkingBehavior *DeepLinkingBehavior `json:"deepLinkingBehavior,omitempty"`
+	CallToActionType    []AssetBasedCreativeCallToActionType `json:"callToActionType,omitempty"`
+	DeepLinkingBehavior *DeepLinkingBehavior                 `json:"deepLinkingBehavior,omitempty"`
 	// The application url that customers are directed to.
 	Url string `json:"url,omitempty"`
 }

@@ -9,6 +9,6 @@
 package dspconversions
 
 type BatchImportConversionEventDataRequestV1 struct {
-	EventData []ConversionEventDataV1 `json:"eventData"`
-	Source *ConversionDefinitionSourceV1 `json:"source"`
+	EventData []ConversionEventDataV1       `json:"eventData"`
+	Source    *ConversionDefinitionSourceV1 `json:"source"`
 }

@@ -9,7 +9,7 @@
 package partneropportunities
 
 type PartnerOpportunitiesApplicationStatus struct {
-	CampaignId string `json:"campaignId"`
+	CampaignId       string `json:"campaignId"`
 	RecommendationId string `json:"recommendationId"`
-	Status string `json:"status"`
+	Status           string `json:"status"`
 }

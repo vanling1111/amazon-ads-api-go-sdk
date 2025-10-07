@@ -10,8 +10,8 @@ package amazonadsv1
 
 type CreateDoubleVerifyViewability struct {
 	AverageCompletionAndFullyViewableRateTargeting *AverageCompletionAndFullyViewableRateTargetingType `json:"averageCompletionAndFullyViewableRateTargeting,omitempty"`
-	BrandExposureViewabilityTargeting *BrandExposureViewabilityTargetingType `json:"brandExposureViewabilityTargeting,omitempty"`
+	BrandExposureViewabilityTargeting              *BrandExposureViewabilityTargetingType              `json:"brandExposureViewabilityTargeting,omitempty"`
 	// Set to true to include impressions where impressions can't be measured.
-	IncludeUnmeasurableImpressions bool `json:"includeUnmeasurableImpressions,omitempty"`
-	MrcViewabilityTargeting *MrcViewabilityTargetingType `json:"mrcViewabilityTargeting,omitempty"`
+	IncludeUnmeasurableImpressions bool                         `json:"includeUnmeasurableImpressions,omitempty"`
+	MrcViewabilityTargeting        *MrcViewabilityTargetingType `json:"mrcViewabilityTargeting,omitempty"`
 }

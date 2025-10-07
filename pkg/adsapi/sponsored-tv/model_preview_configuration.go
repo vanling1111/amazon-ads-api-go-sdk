@@ -11,8 +11,8 @@ package sponsoredtv
 // Configuration settings for the preview.
 type PreviewConfiguration struct {
 	// Amazon Standard Identification Number: The code that identifies the product being advertised. You must provide either `asin` or `sku`. `asin` cannot be used in conjunction with `sku`.
-	Asin string `json:"asin,omitempty"`
-	CallToAction *CallToAction `json:"callToAction,omitempty"`
+	Asin                 string                `json:"asin,omitempty"`
+	CallToAction         *CallToAction         `json:"callToAction,omitempty"`
 	CallToActionPosition *CallToActionPosition `json:"callToActionPosition,omitempty"`
 	// Whether or not to see the safe zone as an overlay (true (default) | false).
 	SafeZoneEnabled bool `json:"safeZoneEnabled,omitempty"`

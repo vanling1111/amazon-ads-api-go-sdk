@@ -10,18 +10,18 @@ package sponsoredbrandsv4
 
 type UpdateCampaign struct {
 	// The identifier of an existing portfolio to which the campaign is associated.
-	PortfolioId string `json:"portfolioId,omitempty"`
-	Bidding *Bidding `json:"bidding,omitempty"`
+	PortfolioId string   `json:"portfolioId,omitempty"`
+	Bidding     *Bidding `json:"bidding,omitempty"`
 	// endDate is optional. If endDate is specified, startDate must be specified as well. Note: This property is nullable. If null is explicitly provided in a campaign update request, any existing endDate for the campaign will be removed.
 	EndDate string `json:"endDate,omitempty"`
 	// The identifier of the campaign.
 	CampaignId string `json:"campaignId"`
 	// The name of the campaign.
-	Name string `json:"name,omitempty"`
+	Name  string                     `json:"name,omitempty"`
 	State *CreateOrUpdateEntityState `json:"state,omitempty"`
 	// startDate can only be changed if the current startDate is in the future.
 	StartDate string `json:"startDate,omitempty"`
 	// The budget of the campaign. See https://advertising.amazon.com/help?entityId=ENTITYJDATFOIA05Q7#GE5QEBS6QRJJAT3A
-	Budget float64 `json:"budget,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	Budget float64            `json:"budget,omitempty"`
+	Tags   *map[string]string `json:"tags,omitempty"`
 }

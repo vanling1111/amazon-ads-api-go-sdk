@@ -9,8 +9,8 @@
 package amazonadsv1
 
 type CreateStandardDisplaySettings struct {
-	AdChoicesPosition *AdChoicesPosition `json:"adChoicesPosition,omitempty"`
-	CallToAction *CreateDisplayCallToAction `json:"callToAction,omitempty"`
+	AdChoicesPosition *AdChoicesPosition         `json:"adChoicesPosition,omitempty"`
+	CallToAction      *CreateDisplayCallToAction `json:"callToAction,omitempty"`
 	// The third party urls to trigger when an click is recorded.
 	ClickTrackingUrls []CreateCreativeTrackingUrl `json:"clickTrackingUrls,omitempty"`
 	// The list of placement sizes this creative should serve on.
@@ -19,5 +19,5 @@ type CreateStandardDisplaySettings struct {
 	CustomImages []CreateImage `json:"customImages,omitempty"`
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	Language               *LanguageLocale             `json:"language,omitempty"`
 }

@@ -9,7 +9,7 @@
 package dataprovider
 
 type InlineResponse400Error struct {
-	HttpStatusCode string `json:"httpStatusCode,omitempty"`
-	Description string `json:"description,omitempty"`
-	Errors *[]SubErrorInner `json:"errors,omitempty"`
+	HttpStatusCode string           `json:"httpStatusCode,omitempty"`
+	Description    string           `json:"description,omitempty"`
+	Errors         *[]SubErrorInner `json:"errors,omitempty"`
 }

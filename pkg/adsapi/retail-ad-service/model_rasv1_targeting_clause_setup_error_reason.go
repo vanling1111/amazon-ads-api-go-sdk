@@ -12,8 +12,8 @@ type Rasv1TargetingClauseSetupErrorReason string
 
 // List of RASv1TargetingClauseSetupErrorReason
 const (
-	AUTO_TARGETING_CLAUSE_CANNOT_BE_CREATED_MANUALLY_Rasv1TargetingClauseSetupErrorReason Rasv1TargetingClauseSetupErrorReason = "AUTO_TARGETING_CLAUSE_CANNOT_BE_CREATED_MANUALLY"
-	TARGETING_EXPRESSION_INVALID_VALUE_Rasv1TargetingClauseSetupErrorReason Rasv1TargetingClauseSetupErrorReason = "TARGETING_EXPRESSION_INVALID_VALUE"
+	AUTO_TARGETING_CLAUSE_CANNOT_BE_CREATED_MANUALLY_Rasv1TargetingClauseSetupErrorReason       Rasv1TargetingClauseSetupErrorReason = "AUTO_TARGETING_CLAUSE_CANNOT_BE_CREATED_MANUALLY"
+	TARGETING_EXPRESSION_INVALID_VALUE_Rasv1TargetingClauseSetupErrorReason                     Rasv1TargetingClauseSetupErrorReason = "TARGETING_EXPRESSION_INVALID_VALUE"
 	TARGETING_TYPE_NOT_ALLOWED_FOR_AUTO_TARGETING_CAMPAIGN_Rasv1TargetingClauseSetupErrorReason Rasv1TargetingClauseSetupErrorReason = "TARGETING_TYPE_NOT_ALLOWED_FOR_AUTO_TARGETING_CAMPAIGN"
-	TYPE_CONFLICT_IN_AD_GROUP_Rasv1TargetingClauseSetupErrorReason Rasv1TargetingClauseSetupErrorReason = "TYPE_CONFLICT_IN_AD_GROUP"
+	TYPE_CONFLICT_IN_AD_GROUP_Rasv1TargetingClauseSetupErrorReason                              Rasv1TargetingClauseSetupErrorReason = "TYPE_CONFLICT_IN_AD_GROUP"
 )

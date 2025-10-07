@@ -10,13 +10,13 @@ package moderation
 
 type ModerationResultsRequest struct {
 	AdProgramType *ModerationResultsAdProgramType `json:"adProgramType"`
-	Id string `json:"id"`
-	IdType *IdType `json:"idType"`
+	Id            string                          `json:"id"`
+	IdType        *IdType                         `json:"idType"`
 	// Sets a limit on the number of results returned by an operation.
 	MaxResults int32 `json:"maxResults"`
 	// Filter by specific moderation status.
 	ModerationStatusFilter []ModerationStatus `json:"moderationStatusFilter,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken              string             `json:"nextToken,omitempty"`
 	// Filter by specific version id of the ad. The API will return the ad's all versions moderation status if this field is empty.
 	VersionIdFilter []string `json:"versionIdFilter,omitempty"`
 }

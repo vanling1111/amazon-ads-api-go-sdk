@@ -9,8 +9,8 @@
 package billing
 
 type Portfolio struct {
-	FeeAmount *CurrencyAmount `json:"feeAmount,omitempty"`
-	Id int32 `json:"id"`
-	Name string `json:"name"`
+	FeeAmount   *CurrencyAmount `json:"feeAmount,omitempty"`
+	Id          int32           `json:"id"`
+	Name        string          `json:"name"`
 	TotalAmount *CurrencyAmount `json:"totalAmount"`
 }

@@ -9,13 +9,13 @@
 package amazonadsv1
 
 type QueryCampaignRequest struct {
-	AdProductFilter *CampaignAdProductFilter `json:"adProductFilter"`
-	CampaignIdFilter *CampaignCampaignIdFilter `json:"campaignIdFilter,omitempty"`
-	GoalFilter *CampaignGoalFilter `json:"goalFilter,omitempty"`
+	AdProductFilter        *CampaignAdProductFilter        `json:"adProductFilter"`
+	CampaignIdFilter       *CampaignCampaignIdFilter       `json:"campaignIdFilter,omitempty"`
+	GoalFilter             *CampaignGoalFilter             `json:"goalFilter,omitempty"`
 	MarketplaceScopeFilter *CampaignMarketplaceScopeFilter `json:"marketplaceScopeFilter,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
-	NameFilter *CampaignNameFilter `json:"nameFilter,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
-	PortfolioIdFilter *CampaignPortfolioIdFilter `json:"portfolioIdFilter,omitempty"`
-	StateFilter *CampaignStateFilter `json:"stateFilter,omitempty"`
+	MaxResults             int32                           `json:"maxResults,omitempty"`
+	NameFilter             *CampaignNameFilter             `json:"nameFilter,omitempty"`
+	NextToken              string                          `json:"nextToken,omitempty"`
+	PortfolioIdFilter      *CampaignPortfolioIdFilter      `json:"portfolioIdFilter,omitempty"`
+	StateFilter            *CampaignStateFilter            `json:"stateFilter,omitempty"`
 }

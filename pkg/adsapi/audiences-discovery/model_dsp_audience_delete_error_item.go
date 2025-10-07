@@ -10,13 +10,13 @@ package audiencesdiscovery
 
 type DspAudienceDeleteErrorItem struct {
 	// Identifier of audience for which delete was attempted.
-	AudienceId string `json:"audienceId"`
-	Errors []DspAudienceDeleteErrorItemError `json:"errors"`
+	AudienceId string                            `json:"audienceId"`
+	Errors     []DspAudienceDeleteErrorItemError `json:"errors"`
 	// HTTP Response Code for the request
 	HttpStatusCode int32 `json:"httpStatusCode"`
 	// Index of the DspAudienceDeleteRequestItem from the request. e.g. 1st item in the request will correspond to index 0 in the response.
 	Index int32 `json:"index"`
 	// A human-readable description of the response.
-	Message string `json:"message"`
+	Message   string `json:"message"`
 	RequestId string `json:"requestId"`
 }

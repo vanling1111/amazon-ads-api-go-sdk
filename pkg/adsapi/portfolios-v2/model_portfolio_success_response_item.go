@@ -10,7 +10,7 @@ package portfoliosv2
 
 type PortfolioSuccessResponseItem struct {
 	// the index of the portfolio in the array from the request body
-	Index float64 `json:"index"`
+	Index     float64    `json:"index"`
 	Portfolio *Portfolio `json:"portfolio,omitempty"`
 	// the Portfolio ID
 	PortfolioId string `json:"portfolioId,omitempty"`

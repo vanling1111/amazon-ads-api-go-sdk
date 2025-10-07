@@ -10,6 +10,6 @@ package sponsoreddisplayv3
 
 type CreativeModerationViolatingBrandLogoContents struct {
 	// Address of the image reviewed during moderation.
-	ReviewedImageUrl string `json:"reviewedImageUrl,omitempty"`
-	ImageEvidences []CreativeModerationImageEvidences `json:"imageEvidences,omitempty"`
+	ReviewedImageUrl string                             `json:"reviewedImageUrl,omitempty"`
+	ImageEvidences   []CreativeModerationImageEvidences `json:"imageEvidences,omitempty"`
 }

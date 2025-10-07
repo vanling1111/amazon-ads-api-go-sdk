@@ -9,6 +9,6 @@
 package dspconversions
 
 type BatchImportConversionEventDataResponseV1 struct {
-	Error_ []ConversionEventDataErrorResponseV1 `json:"error,omitempty"`
+	Error_  []ConversionEventDataErrorResponseV1   `json:"error,omitempty"`
 	Success []ConversionEventDataSuccessResponseV1 `json:"success,omitempty"`
 }

@@ -11,14 +11,14 @@ package portfoliosv2
 // Errors related to range constraints violations
 type PortfolioRangeError struct {
 	// allowed values
-	Allowed []string `json:"allowed,omitempty"`
-	Cause *ErrorCause `json:"cause"`
+	Allowed []string    `json:"allowed,omitempty"`
+	Cause   *ErrorCause `json:"cause"`
 	// optional lower limit
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	LowerLimit  string `json:"lowerLimit,omitempty"`
 	Marketplace string `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioValueLimitErrorReason `json:"reason"`
+	Message string                          `json:"message"`
+	Reason  *PortfolioValueLimitErrorReason `json:"reason"`
 	// optional upper limit
 	UpperLimit string `json:"upperLimit,omitempty"`
 }

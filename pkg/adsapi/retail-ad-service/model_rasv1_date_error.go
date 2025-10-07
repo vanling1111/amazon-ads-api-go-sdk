@@ -11,6 +11,6 @@ package retailadservice
 type Rasv1DateError struct {
 	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1DateErrorReason `json:"reason"`
+	Message string                `json:"message"`
+	Reason  *Rasv1DateErrorReason `json:"reason"`
 }

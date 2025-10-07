@@ -10,5 +10,5 @@ package sponsoredtv
 
 type LocationErrorSelector struct {
 	LocationError *LocationError `json:"locationError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
+	OtherError    *OtherError    `json:"otherError,omitempty"`
 }

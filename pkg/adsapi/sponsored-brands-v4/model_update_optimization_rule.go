@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type UpdateOptimizationRule struct {
 	// The identifier of the optimization rule.
-	OptimizationRuleId string `json:"optimizationRuleId,omitempty"`
-	Conditions []RuleCondition `json:"conditions,omitempty"`
+	OptimizationRuleId string          `json:"optimizationRuleId,omitempty"`
+	Conditions         []RuleCondition `json:"conditions,omitempty"`
 }

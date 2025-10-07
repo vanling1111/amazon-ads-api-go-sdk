@@ -12,6 +12,6 @@ type ListSponsoredBrandsOptimizationRulesResponseContent struct {
 	// Token value allowing to navigate to the next response page.
 	NextToken string `json:"nextToken,omitempty"`
 	// The total number of entities.
-	TotalCount float64 `json:"totalCount,omitempty"`
+	TotalCount        float64            `json:"totalCount,omitempty"`
 	OptimizationRules []OptimizationRule `json:"optimizationRules"`
 }

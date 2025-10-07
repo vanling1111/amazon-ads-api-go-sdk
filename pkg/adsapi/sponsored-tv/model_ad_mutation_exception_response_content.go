@@ -10,8 +10,8 @@ package sponsoredtv
 
 // Exception resulting in mutating campaign management entities
 type AdMutationExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []AdMutationError `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []AdMutationError         `json:"errors,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

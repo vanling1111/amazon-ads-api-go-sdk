@@ -14,5 +14,5 @@ type SdHeadlineRecommendationRequest struct {
 	Asins []string `json:"asins,omitempty"`
 	// Maximum number of recommendations that API should return. Response will [0, maxNumRecommendations] recommendations (recommendations are not guaranteed as there can be instances where the ML model can not generate policy compliant headlines for the given set of asins).
 	MaxNumRecommendations float64 `json:"maxNumRecommendations,omitempty"`
-	AdFormat string `json:"adFormat,omitempty"`
+	AdFormat              string  `json:"adFormat,omitempty"`
 }

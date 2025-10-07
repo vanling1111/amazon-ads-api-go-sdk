@@ -9,15 +9,15 @@
 package retailadservice
 
 type Rasv1TargetMutationErrorSelector struct {
-	DuplicateValueError *Rasv1DuplicateValueError `json:"duplicateValueError,omitempty"`
-	EntityNotFoundError *Rasv1EntityNotFoundError `json:"entityNotFoundError,omitempty"`
-	EntityStateError *Rasv1EntityStateError `json:"entityStateError,omitempty"`
-	InternalServerError *Rasv1InternalServerError `json:"internalServerError,omitempty"`
-	MalformedValueError *Rasv1MalformedValueError `json:"malformedValueError,omitempty"`
-	MissingValueError *Rasv1MissingValueError `json:"missingValueError,omitempty"`
-	OtherError *Rasv1OtherError `json:"otherError,omitempty"`
-	ParentEntityError *Rasv1ParentEntityError `json:"parentEntityError,omitempty"`
-	RangeError *Rasv1RangeError `json:"rangeError,omitempty"`
+	DuplicateValueError       *Rasv1DuplicateValueError       `json:"duplicateValueError,omitempty"`
+	EntityNotFoundError       *Rasv1EntityNotFoundError       `json:"entityNotFoundError,omitempty"`
+	EntityStateError          *Rasv1EntityStateError          `json:"entityStateError,omitempty"`
+	InternalServerError       *Rasv1InternalServerError       `json:"internalServerError,omitempty"`
+	MalformedValueError       *Rasv1MalformedValueError       `json:"malformedValueError,omitempty"`
+	MissingValueError         *Rasv1MissingValueError         `json:"missingValueError,omitempty"`
+	OtherError                *Rasv1OtherError                `json:"otherError,omitempty"`
+	ParentEntityError         *Rasv1ParentEntityError         `json:"parentEntityError,omitempty"`
+	RangeError                *Rasv1RangeError                `json:"rangeError,omitempty"`
 	TargetingClauseSetupError *Rasv1TargetingClauseSetupError `json:"targetingClauseSetupError,omitempty"`
-	ThrottledError *Rasv1ThrottledError `json:"throttledError,omitempty"`
+	ThrottledError            *Rasv1ThrottledError            `json:"throttledError,omitempty"`
 }

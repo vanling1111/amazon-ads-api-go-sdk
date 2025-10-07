@@ -12,9 +12,9 @@ package portfoliosv2
 type PortfolioMalformedValueError struct {
 	Cause *ErrorCause `json:"cause"`
 	// fragment of the value which is wrong
-	Fragment string `json:"fragment,omitempty"`
+	Fragment    string `json:"fragment,omitempty"`
 	Marketplace string `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioMalformedValueErrorReason `json:"reason"`
+	Message string                              `json:"message"`
+	Reason  *PortfolioMalformedValueErrorReason `json:"reason"`
 }

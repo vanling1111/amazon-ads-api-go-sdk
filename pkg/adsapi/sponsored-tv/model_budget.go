@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type Budget struct {
-	BudgetValue *BudgetValue `json:"budgetValue"`
+	BudgetValue    *BudgetValue    `json:"budgetValue"`
 	RecurrenceType *RecurrenceType `json:"recurrenceType,omitempty"`
 }

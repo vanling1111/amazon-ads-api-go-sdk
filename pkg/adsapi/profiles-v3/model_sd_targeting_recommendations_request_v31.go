@@ -10,7 +10,7 @@ package profilesv3
 
 // Request for targeting recommendations
 type SdTargetingRecommendationsRequestV31 struct {
-	Tactic *SdTacticV31 `json:"tactic"`
-	Products *[]SdGoalProduct `json:"products"`
+	Tactic     *SdTacticV31               `json:"tactic"`
+	Products   *[]SdGoalProduct           `json:"products"`
 	TypeFilter *[]SdRecommendationTypeV31 `json:"typeFilter"`
 }

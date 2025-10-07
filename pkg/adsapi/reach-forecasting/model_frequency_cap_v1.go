@@ -11,9 +11,9 @@ package reachforecasting
 // The limit of how many times ads appear to the same viewer.
 type FrequencyCapV1 struct {
 	// The maximum number of times an ad is displayed.
-	MaxImpressions int32 `json:"maxImpressions,omitempty"`
-	TimeUnit *FrequencyCapTimeUnitV1 `json:"timeUnit,omitempty"`
+	MaxImpressions int32                   `json:"maxImpressions,omitempty"`
+	TimeUnit       *FrequencyCapTimeUnitV1 `json:"timeUnit,omitempty"`
 	// The count of time units.
-	TimeUnitCount int32 `json:"timeUnitCount,omitempty"`
-	Type_ *AllOfFrequencyCapV1Type_ `json:"type,omitempty"`
+	TimeUnitCount int32                     `json:"timeUnitCount,omitempty"`
+	Type_         *AllOfFrequencyCapV1Type_ `json:"type,omitempty"`
 }

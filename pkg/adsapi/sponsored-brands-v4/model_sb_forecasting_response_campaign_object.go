@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type SbForecastingResponseCampaignObject struct {
 	Successes []SbForecastingSuccessObject `json:"successes,omitempty"`
-	Errors []SbForecastingErrorObject `json:"errors,omitempty"`
+	Errors    []SbForecastingErrorObject   `json:"errors,omitempty"`
 }

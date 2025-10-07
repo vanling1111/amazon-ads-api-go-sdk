@@ -10,7 +10,7 @@ package audiencesdiscovery
 
 type ListAudiencesResponseV1 struct {
 	// Array of segments matching given filters sorted by create time, earliest first.
-	Audiences []AudienceV1 `json:"audiences,omitempty"`
-	MatchCount int64 `json:"matchCount,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	Audiences  []AudienceV1 `json:"audiences,omitempty"`
+	MatchCount int64        `json:"matchCount,omitempty"`
+	NextToken  string       `json:"nextToken,omitempty"`
 }

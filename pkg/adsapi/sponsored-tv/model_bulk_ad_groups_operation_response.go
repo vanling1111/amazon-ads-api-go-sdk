@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type BulkAdGroupsOperationResponse struct {
-	Error_ []AdGroupFailureResponseItem `json:"error,omitempty"`
+	Error_  []AdGroupFailureResponseItem `json:"error,omitempty"`
 	Success []AdGroupSuccessResponseItem `json:"success,omitempty"`
 }

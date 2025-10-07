@@ -12,8 +12,8 @@ type PortfolioMalformedValueErrorReason string
 
 // List of PortfolioMalformedValueErrorReason
 const (
-	FORBIDDEN_CHARS_PortfolioMalformedValueErrorReason PortfolioMalformedValueErrorReason = "FORBIDDEN_CHARS"
+	FORBIDDEN_CHARS_PortfolioMalformedValueErrorReason     PortfolioMalformedValueErrorReason = "FORBIDDEN_CHARS"
 	PATTERN_NOT_MATCHED_PortfolioMalformedValueErrorReason PortfolioMalformedValueErrorReason = "PATTERN_NOT_MATCHED"
-	TOO_LONG_PortfolioMalformedValueErrorReason PortfolioMalformedValueErrorReason = "TOO_LONG"
-	TOO_SHORT_PortfolioMalformedValueErrorReason PortfolioMalformedValueErrorReason = "TOO_SHORT"
+	TOO_LONG_PortfolioMalformedValueErrorReason            PortfolioMalformedValueErrorReason = "TOO_LONG"
+	TOO_SHORT_PortfolioMalformedValueErrorReason           PortfolioMalformedValueErrorReason = "TOO_SHORT"
 )

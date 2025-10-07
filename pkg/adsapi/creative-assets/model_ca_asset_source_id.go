@@ -12,13 +12,13 @@ type CaAssetSourceId string
 
 // List of caAssetSourceId
 const (
-	AMAZON_CREATIVE_SERVICES_CaAssetSourceId CaAssetSourceId = "AMAZON_CREATIVE_SERVICES"
-	AMAZON_VIDEO_BUILDER_CaAssetSourceId CaAssetSourceId = "AMAZON_VIDEO_BUILDER"
-	ASSET_LIBRARY_CaAssetSourceId CaAssetSourceId = "ASSET_LIBRARY"
-	SELF_SERVICE_FIRE_TV_CaAssetSourceId CaAssetSourceId = "SELF_SERVICE_FIRE_TV"
+	AMAZON_CREATIVE_SERVICES_CaAssetSourceId    CaAssetSourceId = "AMAZON_CREATIVE_SERVICES"
+	AMAZON_VIDEO_BUILDER_CaAssetSourceId        CaAssetSourceId = "AMAZON_VIDEO_BUILDER"
+	ASSET_LIBRARY_CaAssetSourceId               CaAssetSourceId = "ASSET_LIBRARY"
+	SELF_SERVICE_FIRE_TV_CaAssetSourceId        CaAssetSourceId = "SELF_SERVICE_FIRE_TV"
 	INTEGRATED_VIDEO_EXPERIENCE_CaAssetSourceId CaAssetSourceId = "INTEGRATED_VIDEO_EXPERIENCE"
-	CANVA_PLUGIN_CaAssetSourceId CaAssetSourceId = "CANVA_PLUGIN"
-	AMAZON_DSP_CaAssetSourceId CaAssetSourceId = "AMAZON_DSP"
-	SPONSORED_DISPLAY_CaAssetSourceId CaAssetSourceId = "SPONSORED_DISPLAY"
-	SPONSORED_BRANDS_CaAssetSourceId CaAssetSourceId = "SPONSORED_BRANDS"
+	CANVA_PLUGIN_CaAssetSourceId                CaAssetSourceId = "CANVA_PLUGIN"
+	AMAZON_DSP_CaAssetSourceId                  CaAssetSourceId = "AMAZON_DSP"
+	SPONSORED_DISPLAY_CaAssetSourceId           CaAssetSourceId = "SPONSORED_DISPLAY"
+	SPONSORED_BRANDS_CaAssetSourceId            CaAssetSourceId = "SPONSORED_BRANDS"
 )

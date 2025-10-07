@@ -11,7 +11,7 @@ package dspmeasurement
 // The templated measurement survey question.
 type CustomSurveyQuestionV1 struct {
 	// The survey question text.
-	QuestionText string `json:"questionText,omitempty"`
-	Responses []string `json:"responses,omitempty"`
-	Type_ *SurveyQuestionTypeV1 `json:"type,omitempty"`
+	QuestionText string                `json:"questionText,omitempty"`
+	Responses    []string              `json:"responses,omitempty"`
+	Type_        *SurveyQuestionTypeV1 `json:"type,omitempty"`
 }

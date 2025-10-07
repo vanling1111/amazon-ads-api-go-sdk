@@ -10,7 +10,7 @@ package sponsoredtv
 
 type AdGroupMutationErrorSelector struct {
 	BiddingError *BiddingError `json:"biddingError,omitempty"`
-	DateError *DateError `json:"dateError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
-	RangeError *RangeError `json:"rangeError,omitempty"`
+	DateError    *DateError    `json:"dateError,omitempty"`
+	OtherError   *OtherError   `json:"otherError,omitempty"`
+	RangeError   *RangeError   `json:"rangeError,omitempty"`
 }

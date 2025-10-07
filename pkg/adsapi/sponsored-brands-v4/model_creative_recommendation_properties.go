@@ -15,15 +15,15 @@ type CreativeRecommendationProperties struct {
 	// The displayed brand name in the ad headline. Maximum length is 30 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
 	BrandName string `json:"brandName,omitempty"`
 	// An array of subpages
-	Subpages []Subpage `json:"subpages,omitempty"`
+	Subpages    []Subpage              `json:"subpages,omitempty"`
 	LandingPage *CreativeLandingPageV2 `json:"landingPage,omitempty"`
 	// An array of customImages associated with the creative.
 	CustomImages []CustomImage `json:"customImages,omitempty"`
 	// An array of videoAssetIds associated with the creative. Advertisers can get video assetIds from Asset Library /assets/search API.
 	VideoAssetIds []string `json:"videoAssetIds,omitempty"`
 	// a Unique Id identifying the creative Recommendation
-	RecommendedCreativeId string `json:"recommendedCreativeId,omitempty"`
-	BrandLogo *BrandLogo `json:"brandLogo,omitempty"`
+	RecommendedCreativeId string     `json:"recommendedCreativeId,omitempty"`
+	BrandLogo             *BrandLogo `json:"brandLogo,omitempty"`
 	// The headline text. Maximum length of the string is 50 characters for all marketplaces other than Japan, which has a maximum length of 35 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
 	Headline string `json:"headline,omitempty"`
 }

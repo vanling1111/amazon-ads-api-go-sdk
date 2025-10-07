@@ -10,5 +10,5 @@ package advertisingaccounts
 
 type ListAdsAccountsResponseContent struct {
 	AdsAccounts []AdsAccountWithMetaData `json:"adsAccounts,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken   string                   `json:"nextToken,omitempty"`
 }

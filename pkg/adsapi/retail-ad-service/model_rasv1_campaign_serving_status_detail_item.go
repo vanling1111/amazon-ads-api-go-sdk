@@ -12,6 +12,6 @@ type Rasv1CampaignServingStatusDetailItem struct {
 	// A URL with additional information about the status identifier.
 	HelpUrl string `json:"helpUrl,omitempty"`
 	// A human-readable description of the status identifier specified in the name field.
-	Message string `json:"message,omitempty"`
-	Name *Rasv1CampaignServingStatusReason `json:"name,omitempty"`
+	Message string                            `json:"message,omitempty"`
+	Name    *Rasv1CampaignServingStatusReason `json:"name,omitempty"`
 }

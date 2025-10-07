@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 type ErrorDetails struct {
 	ErrorMessage string `json:"errorMessage,omitempty"`
 	// The index of the image task in the array from the request body
-	Index float64 `json:"index,omitempty"`
-	ErrorCode string `json:"errorCode,omitempty"`
+	Index     float64 `json:"index,omitempty"`
+	ErrorCode string  `json:"errorCode,omitempty"`
 }

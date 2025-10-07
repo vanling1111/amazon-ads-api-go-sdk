@@ -10,12 +10,12 @@ package dspconversions
 
 type UpdateConversionDefinitionV1 struct {
 	// The identifier of the ConversionDefinition.
-	ConversionDefinitionId string `json:"conversionDefinitionId"`
-	ConversionType *ConversionDefinitionTypeV1 `json:"conversionType,omitempty"`
-	CountingMethod *ConversionDefinitionCountingMethodV1 `json:"countingMethod,omitempty"`
+	ConversionDefinitionId string                                `json:"conversionDefinitionId"`
+	ConversionType         *ConversionDefinitionTypeV1           `json:"conversionType,omitempty"`
+	CountingMethod         *ConversionDefinitionCountingMethodV1 `json:"countingMethod,omitempty"`
 	// The name of the ConversionDefinition.
-	Name string `json:"name,omitempty"`
-	Source *ConversionDefinitionSourceV1 `json:"source,omitempty"`
+	Name       string                            `json:"name,omitempty"`
+	Source     *ConversionDefinitionSourceV1     `json:"source,omitempty"`
 	SourceType *ConversionDefinitionSourceTypeV1 `json:"sourceType,omitempty"`
 	// The default value of each conversion event. Monetary value for OFF_AMAZON_PURCHASES ConversionDefinition type and non-monetary value for all other ConversionDefinition types.
 	Value float64 `json:"value,omitempty"`

@@ -10,7 +10,7 @@ package amazonadsv1
 
 type CardCreativeElement struct {
 	// The headline used for the card.
-	Headline string `json:"headline,omitempty"`
+	Headline    string                     `json:"headline,omitempty"`
 	LandingPage *StoreSpotlightLandingPage `json:"landingPage,omitempty"`
-	Products *AdvertisedProducts `json:"products,omitempty"`
+	Products    *AdvertisedProducts        `json:"products,omitempty"`
 }

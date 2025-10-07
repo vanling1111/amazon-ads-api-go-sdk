@@ -12,6 +12,6 @@ package sponsoredtv
 type OtherError struct {
 	Cause *ErrorCause `json:"cause"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Reason *OtherErrorReason `json:"reason"`
+	Message string            `json:"message"`
+	Reason  *OtherErrorReason `json:"reason"`
 }

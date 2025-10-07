@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1BulkCreateCampaignsOutcomes struct {
-	Error_ []Rasv1MutateCampaignFailureItem `json:"error,omitempty"`
+	Error_  []Rasv1MutateCampaignFailureItem `json:"error,omitempty"`
 	Success []Rasv1CreateCampaignSuccessItem `json:"success,omitempty"`
 }

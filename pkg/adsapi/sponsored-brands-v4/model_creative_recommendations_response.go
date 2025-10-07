@@ -9,6 +9,6 @@
 package sponsoredbrandsv4
 
 type CreativeRecommendationsResponse struct {
-	PrimaryHeadlines *[][]TextRecommendation `json:"primaryHeadlines,omitempty"`
+	PrimaryHeadlines   *[][]TextRecommendation `json:"primaryHeadlines,omitempty"`
 	SecondaryHeadlines *[][]TextRecommendation `json:"secondaryHeadlines,omitempty"`
 }

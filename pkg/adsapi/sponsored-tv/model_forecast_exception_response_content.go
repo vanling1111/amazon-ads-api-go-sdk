@@ -10,8 +10,8 @@ package sponsoredtv
 
 // Bad Request exception resulting in errors in ST forecast
 type ForecastExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []ForecastErrorItem `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []ForecastErrorItem       `json:"errors,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

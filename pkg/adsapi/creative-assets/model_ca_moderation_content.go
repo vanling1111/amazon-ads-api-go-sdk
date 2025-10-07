@@ -9,7 +9,7 @@
 package creativeassets
 
 type CaModerationContent struct {
-	AssetSubType *CaAssetSubType `json:"assetSubType,omitempty"`
+	AssetSubType                 *CaAssetSubType              `json:"assetSubType,omitempty"`
 	AdPolicyModerationResultList []CaAdPolicyModerationResult `json:"adPolicyModerationResultList,omitempty"`
-	ModerationContentStatus *CaModerationContentStatus `json:"moderationContentStatus,omitempty"`
+	ModerationContentStatus      *CaModerationContentStatus   `json:"moderationContentStatus,omitempty"`
 }

@@ -12,8 +12,8 @@ package sponsoredbrandsv4
 type RangeError struct {
 	Reason string `json:"reason"`
 	// Allowed values.
-	Allowed []string `json:"allowed,omitempty"`
-	Cause *ErrorCause `json:"cause"`
+	Allowed []string    `json:"allowed,omitempty"`
+	Cause   *ErrorCause `json:"cause"`
 	// Optional upper limit.
 	UpperLimit string `json:"upperLimit,omitempty"`
 	// Optional lower limit.

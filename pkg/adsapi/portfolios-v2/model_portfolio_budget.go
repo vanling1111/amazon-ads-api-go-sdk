@@ -10,11 +10,11 @@ package portfoliosv2
 
 type PortfolioBudget struct {
 	// The amount of the budget.
-	Amount float64 `json:"amount,omitempty"`
+	Amount       float64       `json:"amount,omitempty"`
 	CurrencyCode *CurrencyCode `json:"currencyCode,omitempty"`
 	// The end date after which the budget is no longer applied in ISO 8601.
-	EndDate string `json:"endDate,omitempty"`
-	Policy *PolicyType `json:"policy,omitempty"`
+	EndDate string      `json:"endDate,omitempty"`
+	Policy  *PolicyType `json:"policy,omitempty"`
 	// The starting date to which the budget is applied in ISO 8601.
 	StartDate string `json:"startDate,omitempty"`
 }

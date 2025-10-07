@@ -9,6 +9,6 @@
 package tacticalrecommendations
 
 type ApplyRecommendationsResponse struct {
-	Failures []ApplyRecommendationFailure `json:"failures"`
+	Failures  []ApplyRecommendationFailure `json:"failures"`
 	Successes []ApplyRecommendationSuccess `json:"successes"`
 }

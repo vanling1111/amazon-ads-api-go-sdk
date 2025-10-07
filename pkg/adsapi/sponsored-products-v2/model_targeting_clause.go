@@ -15,11 +15,11 @@ type TargetingClause struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which this target is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The targeting expression.
 	Expression []TargetingExpressionPredicate `json:"expression,omitempty"`
 	// The resolved targeting expression.
 	ResolvedExpression []TargetingExpressionPredicate `json:"resolvedExpression,omitempty"`
-	ExpressionType *ExpressionType `json:"expressionType,omitempty"`
-	Bid float32 `json:"bid,omitempty"`
+	ExpressionType     *ExpressionType                `json:"expressionType,omitempty"`
+	Bid                float32                        `json:"bid,omitempty"`
 }

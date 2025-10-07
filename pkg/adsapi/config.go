@@ -325,9 +325,9 @@ func WithDebug() ClientOption {
 		c.Debug = true
 		// 自动创建开发模式的日志器
 		if c.Logger == nil || c.Logger == zap.NewNop() {
-			logger, _ := zap.NewDevelopment()
-			c.Logger = logger
+			if logger, err := zap.NewDevelopment(); err == nil {
+				c.Logger = logger
+			}
 		}
 	}
 }
-

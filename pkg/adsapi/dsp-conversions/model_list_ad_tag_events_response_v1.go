@@ -11,7 +11,7 @@ package dspconversions
 type ListAdTagEventsResponseV1 struct {
 	// Array of Amazon ad tag events given filters.
 	AmazonAdTagEvents []AmazonAdTagEventV1 `json:"amazonAdTagEvents,omitempty"`
-	MaxResults int32 `json:"maxResults,omitempty"`
+	MaxResults        int32                `json:"maxResults,omitempty"`
 	// Token from a previous request. Use in conjunction with the `maxResults` parameter to control pagination of the returned array.
 	NextToken string `json:"nextToken,omitempty"`
 }

@@ -10,13 +10,13 @@ package reachforecasting
 
 type CreateReachForecastsV1RequestElement struct {
 	// The identifiers of the advertised product categories for the forecast. Use the DSP [ListAdvertisedProductCategories API](https://advertising.amazon.com/API/docs/en-us/dsp-discovery-advertised-product-categories#tag/Discovery-Advertised-Product-Categories/operation/DspListAdvertisedProductCategoriesV1) to look up advertised product category IDs.
-	AdvertisedProductCategoryIds []string `json:"advertisedProductCategoryIds,omitempty"`
-	CountryCode *CountryCodeV1 `json:"countryCode"`
-	DeliveryType *DeliveryTypeV1 `json:"deliveryType"`
+	AdvertisedProductCategoryIds []string        `json:"advertisedProductCategoryIds,omitempty"`
+	CountryCode                  *CountryCodeV1  `json:"countryCode"`
+	DeliveryType                 *DeliveryTypeV1 `json:"deliveryType"`
 	// The forecast end date in YYYY-MM-DD format.
-	EndDate string `json:"endDate"`
+	EndDate      string          `json:"endDate"`
 	FrequencyCap *FrequencyCapV1 `json:"frequencyCap,omitempty"`
-	ReachType *ReachTypeV1 `json:"reachType"`
+	ReachType    *ReachTypeV1    `json:"reachType"`
 	// The forecast start date in YYYY-MM-DD format.
 	StartDate string `json:"startDate"`
 	// The combination of Ads supply.

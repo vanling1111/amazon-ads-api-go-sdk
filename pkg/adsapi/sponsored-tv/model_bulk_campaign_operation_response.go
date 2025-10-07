@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type BulkCampaignOperationResponse struct {
-	Error_ []CampaignFailureResponseItem `json:"error,omitempty"`
+	Error_  []CampaignFailureResponseItem `json:"error,omitempty"`
 	Success []CampaignSuccessResponseItem `json:"success,omitempty"`
 }

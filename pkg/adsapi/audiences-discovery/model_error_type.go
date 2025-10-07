@@ -12,8 +12,8 @@ type ErrorType string
 
 // List of ErrorType
 const (
-	OTHER_ErrorType ErrorType = "OTHER"
-	VALUE_INVALID_ErrorType ErrorType = "VALUE_INVALID"
-	VALUE_NOT_FOUND_ErrorType ErrorType = "VALUE_NOT_FOUND"
+	OTHER_ErrorType              ErrorType = "OTHER"
+	VALUE_INVALID_ErrorType      ErrorType = "VALUE_INVALID"
+	VALUE_NOT_FOUND_ErrorType    ErrorType = "VALUE_NOT_FOUND"
 	VALUE_OUT_OF_RANGE_ErrorType ErrorType = "VALUE_OUT_OF_RANGE"
 )

@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type SbForecastingSuccessObject struct {
 	// Correlates the campaign to the campaign list index specified in the request. Zero-based.
-	Index int32 `json:"index,omitempty"`
+	Index    int32                         `json:"index,omitempty"`
 	Campaign *SbForecastingSuccessCampaign `json:"campaign,omitempty"`
 }

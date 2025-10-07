@@ -10,6 +10,6 @@ package billing
 
 type AdPaymentsCurrencyAmount struct {
 	// A monetary amount.
-	Amount float64 `json:"amount"`
+	Amount       float64                 `json:"amount"`
 	CurrencyCode *AdPaymentsCurrencyCode `json:"currencyCode"`
 }

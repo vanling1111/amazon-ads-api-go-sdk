@@ -11,7 +11,7 @@ package producteligibility
 // An Amazon product identifier, seller product identifier, or both.
 type ProductDetails struct {
 	// An Amazon product identifier.
-	Asin string `json:"asin"`
+	Asin               string              `json:"asin"`
 	GlobalStoreSetting *GlobalStoreSetting `json:"globalStoreSetting,omitempty"`
 	// A seller product identifier.
 	Sku string `json:"sku,omitempty"`

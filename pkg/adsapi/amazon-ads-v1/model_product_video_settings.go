@@ -17,9 +17,9 @@ type ProductVideoSettings struct {
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation.
 	EnableCreativeAutoTranslation bool `json:"enableCreativeAutoTranslation,omitempty"`
 	// The headline submitted as part of the ad creative. During your campaign, Amazon will optimize amongst the headlines you provide to match customer intent.
-	Headlines []string `json:"headlines,omitempty"`
-	LandingPage *VideoLandingPage `json:"landingPage,omitempty"`
-	ModerationStatus *CreativeStatus `json:"moderationStatus,omitempty"`
+	Headlines        []string          `json:"headlines,omitempty"`
+	LandingPage      *VideoLandingPage `json:"landingPage,omitempty"`
+	ModerationStatus *CreativeStatus   `json:"moderationStatus,omitempty"`
 	// The products featured in the video ad.
 	Products []AdvertisedProducts `json:"products,omitempty"`
 	// The headline entered by the advertiser.

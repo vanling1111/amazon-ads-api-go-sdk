@@ -18,6 +18,6 @@ type Creative struct {
 	// The Creative identifier.
 	CreativeId string `json:"creativeId"`
 	// full funnel campaign id for child creative
-	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
-	ModerationStatus *SponsoredTvCreativesModerationsStatus `json:"moderationStatus"`
+	FullFunnelCampaignId string                                 `json:"fullFunnelCampaignId,omitempty"`
+	ModerationStatus     *SponsoredTvCreativesModerationsStatus `json:"moderationStatus"`
 }

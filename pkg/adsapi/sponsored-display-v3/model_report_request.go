@@ -10,9 +10,9 @@ package sponsoreddisplayv3
 
 type ReportRequest struct {
 	// Date in YYYYMMDD format. The report contains only metrics generated on the specified date. Note that the time zone used for date calculation is the one associated with the profile used to make the request.
-	ReportDate string `json:"reportDate,omitempty"`
-	Tactic *TacticReport `json:"tactic,omitempty"`
-	Segment *Segment `json:"segment,omitempty"`
+	ReportDate string        `json:"reportDate,omitempty"`
+	Tactic     *TacticReport `json:"tactic,omitempty"`
+	Segment    *Segment      `json:"segment,omitempty"`
 	// A comma-separated list of the metrics to be included in the report.  Each report type supports different metrics. **To understand supported metrics for each report type, see [Report types](/API/docs/en-us/guides/reporting/v2/report-types).**  **Note**: Campaigns with vCPM costType should use view+click based metrics (viewAttributedConversions14d, viewAttributedDetailPageView14d, viewAttributedSales14d, viewAttributedUnitsOrdered14d, viewImpressions).  **Note**: Detail page view metrics (attributedDetailPageView14d, viewAttributedDetailPageView14d) have an SLA of 3 days.  **Tip**: Use new-to-brand (NTB) metrics to calculate how efficient your campaigns are at driving new shoppers:    1. Percentage of NTB orders = attributedOrdersNewToBrand14d / attributedConversions14d   2. Percentage NTB sales = attributedSalesNewToBrand14d / attributedSales14d   3. Percentage NTB units = attributedUnitsOrderedNewToBrand14d / attributedUnitsOrdered14d   4. NTB order rate = attributedOrdersNewToBrand14 / impressions
 	Metrics string `json:"metrics,omitempty"`
 }

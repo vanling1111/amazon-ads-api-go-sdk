@@ -14,7 +14,7 @@ type PartnerOpportunitiesApplicationStatusRequestDtoV1 struct {
 	// The encrypted advertiser ID.  Provided in opportunity data.
 	EncryptedAdvertiserId string `json:"encryptedAdvertiserId"`
 	// Entity ID  Provided in opportunity data.
-	EntityId string `json:"entityId"`
+	EntityId    string                                      `json:"entityId"`
 	Marketplace *PartnerOpportunitiesApplicationMarketplace `json:"marketplace"`
 	// A list of recommendation IDs for which status will be retrieved.  Provided in opportunity data.
 	RecommendationIds []string `json:"recommendationIds"`

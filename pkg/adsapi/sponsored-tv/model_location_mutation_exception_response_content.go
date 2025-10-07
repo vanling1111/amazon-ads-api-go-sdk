@@ -10,8 +10,8 @@ package sponsoredtv
 
 // Exception resulting in mutating campaign management entities
 type LocationMutationExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []LocationMutationError `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []LocationMutationError   `json:"errors,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

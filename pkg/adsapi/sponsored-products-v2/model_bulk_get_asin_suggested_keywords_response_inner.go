@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type BulkGetAsinSuggestedKeywordsResponseInner struct {
 	// The keyword text.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	KeywordText string     `json:"keywordText,omitempty"`
+	MatchType   *MatchType `json:"matchType,omitempty"`
 }

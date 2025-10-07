@@ -13,5 +13,5 @@ type TargetResponse struct {
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response.
 	Description string `json:"description,omitempty"`
-	TargetId int64 `json:"targetId,omitempty"`
+	TargetId    int64  `json:"targetId,omitempty"`
 }

@@ -20,7 +20,7 @@ type CreativeImageRecommendationEntry struct {
 	// The width of the asset in pixels
 	Width float64 `json:"width,omitempty"`
 	// The fileName of the asset
-	Name string `json:"name,omitempty"`
+	Name        string     `json:"name,omitempty"`
 	ContentType *MediaType `json:"contentType,omitempty"`
 	// The height of the asset in pixels
 	Height float64 `json:"height,omitempty"`

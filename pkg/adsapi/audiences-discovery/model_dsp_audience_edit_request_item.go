@@ -11,7 +11,7 @@ package audiencesdiscovery
 // Partial audience model to be used for edit of the audience.
 type DspAudienceEditRequestItem struct {
 	// The audience identifier of the audience to be actioned.
-	AudienceId string `json:"audienceId"`
+	AudienceId   string        `json:"audienceId"`
 	AudienceType *AudienceType `json:"audienceType"`
 	// The audience description.
 	Description string `json:"description,omitempty"`

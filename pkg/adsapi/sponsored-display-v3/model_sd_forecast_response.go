@@ -18,6 +18,6 @@ type SdForecastResponse struct {
 	// Daily average forecasts.
 	DailyForecasts []Forecast `json:"dailyForecasts,omitempty"`
 	// Forecasting curves.
-	Curves []Curve `json:"curves,omitempty"`
+	Curves         []Curve         `json:"curves,omitempty"`
 	ForecastStatus *ForecastStatus `json:"forecastStatus,omitempty"`
 }

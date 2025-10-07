@@ -10,6 +10,6 @@ package billing
 
 // Represents Pay By Invoice payment method structure. Pay By Invoice is a type of payment method where the customer receives a physical invoice which they can pay via bank transfer.
 type AdPaymentsPayByInvoicePaymentMethod struct {
-	EligibleCountries *[]AdPaymentsCountryCode `json:"eligibleCountries"`
-	Type_ *AdPaymentsPaymentMethodType `json:"type"`
+	EligibleCountries *[]AdPaymentsCountryCode     `json:"eligibleCountries"`
+	Type_             *AdPaymentsPaymentMethodType `json:"type"`
 }

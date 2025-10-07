@@ -9,7 +9,7 @@
 package dspmeasurement
 
 type PaginatedSurveyQuestionTemplatesV1M1 struct {
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken               string                       `json:"nextToken,omitempty"`
 	SurveyQuestionTemplates []SurveyQuestionTemplateV1M1 `json:"surveyQuestionTemplates,omitempty"`
 	// The total number of templates.
 	TotalResults int32 `json:"totalResults,omitempty"`

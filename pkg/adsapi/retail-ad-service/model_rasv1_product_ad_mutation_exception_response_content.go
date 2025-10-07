@@ -10,8 +10,8 @@ package retailadservice
 
 // Exception resulting in mutating ProductAd management entities
 type Rasv1ProductAdMutationExceptionResponseContent struct {
-	Code *Rasv1InvalidArgumentErrorCode `json:"code"`
-	Errors []Rasv1ProductAdMutationError `json:"errors,omitempty"`
+	Code   *Rasv1InvalidArgumentErrorCode `json:"code"`
+	Errors []Rasv1ProductAdMutationError  `json:"errors,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 }

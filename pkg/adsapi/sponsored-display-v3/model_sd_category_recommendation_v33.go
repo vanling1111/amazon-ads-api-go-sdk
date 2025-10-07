@@ -18,7 +18,7 @@ type SdCategoryRecommendationV33 struct {
 	// The path of the category within the category catalogue.
 	Path []string `json:"path,omitempty"`
 	// The translated path of the category within the category catalogue by requested locale, field will not be provided if locale is not provided or campaign localization is down.
-	TranslatedPath []string `json:"translatedPath,omitempty"`
+	TranslatedPath           []string                                             `json:"translatedPath,omitempty"`
 	TargetableAsinCountRange *SdCategoryRecommendationV33TargetableAsinCountRange `json:"targetableAsinCountRange,omitempty"`
 	// A rank to signify which recommendations are weighed more heavily, with a lower rank signifying a stronger recommendation.
 	Rank int32 `json:"rank,omitempty"`

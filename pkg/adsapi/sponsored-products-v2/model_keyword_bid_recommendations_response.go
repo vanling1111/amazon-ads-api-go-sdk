@@ -12,6 +12,6 @@ type KeywordBidRecommendationsResponse struct {
 	// The identifier of the keyword that the bid is associated with.
 	KeywordId float64 `json:"keywordId,omitempty"`
 	// The identifier of the ad group that the bid is associated with.
-	AdGroupId float64 `json:"adGroupId,omitempty"`
+	AdGroupId    float64       `json:"adGroupId,omitempty"`
 	SuggestedBid *SuggestedBid `json:"suggestedBid,omitempty"`
 }

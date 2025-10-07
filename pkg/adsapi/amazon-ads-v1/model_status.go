@@ -11,7 +11,7 @@ package amazonadsv1
 type Status struct {
 	// This is the list of reasons behind the delivery status.
 	DeliveryReasons []DeliveryReason `json:"deliveryReasons,omitempty"`
-	DeliveryStatus *DeliveryStatus `json:"deliveryStatus,omitempty"`
+	DeliveryStatus  *DeliveryStatus  `json:"deliveryStatus,omitempty"`
 	// The list of marketplace level delivery status and reasons of global resources, for all the marketplaces the global resource is applicable in.
 	MarketplaceSettings []StatusMarketplaceSetting `json:"marketplaceSettings,omitempty"`
 }

@@ -9,7 +9,7 @@
 package creativeassets
 
 type InlineResponse2001 struct {
-	AssetId string `json:"assetId,omitempty"`
-	VersionId string `json:"versionId,omitempty"`
+	AssetId          string                     `json:"assetId,omitempty"`
+	VersionId        string                     `json:"versionId,omitempty"`
 	FailedSpecChecks *[]CaProgramSpecifications `json:"failedSpecChecks,omitempty"`
 }

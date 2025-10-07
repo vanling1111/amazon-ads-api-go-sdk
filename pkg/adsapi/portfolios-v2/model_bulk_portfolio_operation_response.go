@@ -9,6 +9,6 @@
 package portfoliosv2
 
 type BulkPortfolioOperationResponse struct {
-	Error_ []PortfolioFailureResponseItem `json:"error,omitempty"`
+	Error_  []PortfolioFailureResponseItem `json:"error,omitempty"`
 	Success []PortfolioSuccessResponseItem `json:"success,omitempty"`
 }

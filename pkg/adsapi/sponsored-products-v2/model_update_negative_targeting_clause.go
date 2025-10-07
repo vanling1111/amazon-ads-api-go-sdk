@@ -11,8 +11,8 @@ package sponsoredproductsv2
 type UpdateNegativeTargetingClause struct {
 	// The target identifier.
 	TargetId float64 `json:"targetId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State    *State  `json:"state,omitempty"`
 	// The targeting expression.
-	Expression []NegativeTargetingExpressionPredicate `json:"expression,omitempty"`
-	ExpressionType *ExpressionType `json:"expressionType,omitempty"`
+	Expression     []NegativeTargetingExpressionPredicate `json:"expression,omitempty"`
+	ExpressionType *ExpressionType                        `json:"expressionType,omitempty"`
 }

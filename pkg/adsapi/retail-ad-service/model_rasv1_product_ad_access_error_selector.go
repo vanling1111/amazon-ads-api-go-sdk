@@ -12,8 +12,8 @@ type Rasv1ProductAdAccessErrorSelector struct {
 	EntityNotFoundError *Rasv1EntityNotFoundError `json:"entityNotFoundError,omitempty"`
 	InternalServerError *Rasv1InternalServerError `json:"internalServerError,omitempty"`
 	MalformedValueError *Rasv1MalformedValueError `json:"malformedValueError,omitempty"`
-	MissingValueError *Rasv1MissingValueError `json:"missingValueError,omitempty"`
-	OtherError *Rasv1OtherError `json:"otherError,omitempty"`
-	RangeError *Rasv1RangeError `json:"rangeError,omitempty"`
-	ThrottledError *Rasv1ThrottledError `json:"throttledError,omitempty"`
+	MissingValueError   *Rasv1MissingValueError   `json:"missingValueError,omitempty"`
+	OtherError          *Rasv1OtherError          `json:"otherError,omitempty"`
+	RangeError          *Rasv1RangeError          `json:"rangeError,omitempty"`
+	ThrottledError      *Rasv1ThrottledError      `json:"throttledError,omitempty"`
 }

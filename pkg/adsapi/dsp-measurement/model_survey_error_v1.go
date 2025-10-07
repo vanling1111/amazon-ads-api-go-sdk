@@ -10,8 +10,8 @@ package dspmeasurement
 
 // The survey error object.
 type SurveyErrorV1 struct {
-	ErrorType string `json:"errorType"`
-	FieldName string `json:"fieldName,omitempty"`
-	Message string `json:"message"`
+	ErrorType          string `json:"errorType"`
+	FieldName          string `json:"fieldName,omitempty"`
+	Message            string `json:"message"`
 	QuestionTemplateId string `json:"questionTemplateId,omitempty"`
 }

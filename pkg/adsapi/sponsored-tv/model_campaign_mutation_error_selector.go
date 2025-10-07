@@ -10,8 +10,8 @@ package sponsoredtv
 
 type CampaignMutationErrorSelector struct {
 	BiddingError *BiddingError `json:"biddingError,omitempty"`
-	BudgetError *BudgetError `json:"budgetError,omitempty"`
-	DateError *DateError `json:"dateError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
-	RangeError *RangeError `json:"rangeError,omitempty"`
+	BudgetError  *BudgetError  `json:"budgetError,omitempty"`
+	DateError    *DateError    `json:"dateError,omitempty"`
+	OtherError   *OtherError   `json:"otherError,omitempty"`
+	RangeError   *RangeError   `json:"rangeError,omitempty"`
 }

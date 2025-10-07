@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type CampaignPartialIndex struct {
-	Campaign *Campaign `json:"campaign"`
-	Errors []ModelError `json:"errors"`
-	Index int32 `json:"index"`
+	Campaign *Campaign    `json:"campaign"`
+	Errors   []ModelError `json:"errors"`
+	Index    int32        `json:"index"`
 }

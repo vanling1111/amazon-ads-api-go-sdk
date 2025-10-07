@@ -12,6 +12,6 @@ type ViolatingImageContent struct {
 	// Moderation component which marked the policy violation.
 	ModeratedComponent string `json:"moderatedComponent,omitempty"`
 	// URL of the image which has the ad policy violation.
-	ReviewedImageUrl string `json:"reviewedImageUrl,omitempty"`
+	ReviewedImageUrl        string                   `json:"reviewedImageUrl,omitempty"`
 	ViolatingImageEvidences []ViolatingImageEvidence `json:"violatingImageEvidences,omitempty"`
 }

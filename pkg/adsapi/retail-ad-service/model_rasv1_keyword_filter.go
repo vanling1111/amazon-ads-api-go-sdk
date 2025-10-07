@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1KeywordFilter struct {
-	Include []string `json:"include,omitempty"`
+	Include            []string                 `json:"include,omitempty"`
 	QueryTermMatchType *Rasv1QueryTermMatchType `json:"queryTermMatchType"`
 }

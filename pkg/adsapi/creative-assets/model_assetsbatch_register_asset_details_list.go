@@ -10,17 +10,17 @@ package creativeassets
 
 // Object containing details for individual assets to register.
 type AssetsbatchRegisterAssetDetailsList struct {
-	AsinList *[]string `json:"asinList,omitempty"`
-	AssetSubTypeList *[]CaAssetSubType `json:"assetSubTypeList,omitempty"`
-	AssetType *CaAssetType `json:"assetType,omitempty"`
+	AsinList           *[]string             `json:"asinList,omitempty"`
+	AssetSubTypeList   *[]CaAssetSubType     `json:"assetSubTypeList,omitempty"`
+	AssetType          *CaAssetType          `json:"assetType,omitempty"`
 	AssociatedPrograms []CaAssociatedProgram `json:"associatedPrograms,omitempty"`
-	Name string `json:"name,omitempty"`
+	Name               string                `json:"name,omitempty"`
 	// Any other metadata that client wants to associate with this asset.
 	OtherMetadata map[string]string `json:"otherMetadata,omitempty"`
 	// Flag to determine if asset subtype detection should be skipped.
-	SkipAssetSubTypesDetection bool `json:"skipAssetSubTypesDetection,omitempty"`
-	TagList *[]string `json:"tagList,omitempty"`
+	SkipAssetSubTypesDetection bool      `json:"skipAssetSubTypesDetection,omitempty"`
+	TagList                    *[]string `json:"tagList,omitempty"`
 	// Url of the media file to be registered as an asset.
-	Url string `json:"url,omitempty"`
+	Url         string         `json:"url,omitempty"`
 	VersionInfo *CaVersionInfo `json:"versionInfo,omitempty"`
 }

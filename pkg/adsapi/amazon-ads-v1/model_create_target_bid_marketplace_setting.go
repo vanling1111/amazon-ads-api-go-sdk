@@ -10,7 +10,7 @@ package amazonadsv1
 
 type CreateTargetBidMarketplaceSetting struct {
 	// The maximum bid for a target.
-	Bid float64 `json:"bid,omitempty"`
+	Bid          float64       `json:"bid,omitempty"`
 	CurrencyCode *CurrencyCode `json:"currencyCode,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	Marketplace  *Marketplace  `json:"marketplace,omitempty"`
 }

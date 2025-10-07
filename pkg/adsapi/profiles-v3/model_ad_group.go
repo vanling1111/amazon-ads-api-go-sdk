@@ -9,12 +9,12 @@
 package profilesv3
 
 type AdGroup struct {
-	AdGroupId int64 `json:"adGroupId,omitempty"`
-	Tactic *Tactic `json:"tactic,omitempty"`
+	AdGroupId    int64         `json:"adGroupId,omitempty"`
+	Tactic       *Tactic       `json:"tactic,omitempty"`
 	CreativeType *CreativeType `json:"creativeType,omitempty"`
 	// The name of the ad group.
-	Name string `json:"name,omitempty"`
-	CampaignId int64 `json:"campaignId,omitempty"`
+	Name       string `json:"name,omitempty"`
+	CampaignId int64  `json:"campaignId,omitempty"`
 	// The amount of the default bid associated with the ad group. Used if no bid is specified.
 	DefaultBid float64 `json:"defaultBid,omitempty"`
 	// Bid Optimization for the Adgroup. Default behavior is to optimize for clicks. |Name|CostType|Description| |----|--------|-----------| |reach |vcpm|Optimize for viewable impressions. $1 is the minimum bid for vCPM.| |clicks |cpc|[Default] Optimize for page visits.| |conversions |cpc|Optimize for conversion.|

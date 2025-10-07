@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1Tag struct {
-	Key string `json:"key"`
+	Key   string `json:"key"`
 	Value string `json:"value"`
 }

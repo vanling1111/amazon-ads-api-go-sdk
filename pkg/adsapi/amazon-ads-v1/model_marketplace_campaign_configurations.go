@@ -10,7 +10,7 @@ package amazonadsv1
 
 type MarketplaceCampaignConfigurations struct {
 	// Represents marketplace campaign id (Ex: campaignId-US) associated to global campaign (Ex: campaignId-Global)
-	CampaignId string `json:"campaignId,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
-	Overrides *MarketplaceCampaignFieldOverrides `json:"overrides,omitempty"`
+	CampaignId  string                             `json:"campaignId,omitempty"`
+	Marketplace *Marketplace                       `json:"marketplace,omitempty"`
+	Overrides   *MarketplaceCampaignFieldOverrides `json:"overrides,omitempty"`
 }

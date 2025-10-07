@@ -10,6 +10,6 @@ package billing
 
 type BulkGetBillingStatusSuccess struct {
 	AdvertiserMarketplace *AdvertiserMarketplace `json:"advertiserMarketplace"`
-	BillingStatus *BillingStatus `json:"billingStatus"`
-	Index int32 `json:"index"`
+	BillingStatus         *BillingStatus         `json:"billingStatus"`
+	Index                 int32                  `json:"index"`
 }

@@ -11,9 +11,9 @@ package profilesv3
 // Request for targeting bid recommendations.
 type SdTargetingBidRecommendationsRequestV32 struct {
 	// A list of products to tailor bid recommendations for category and audience based targeting clauses.
-	Products []SdGoalProduct `json:"products,omitempty"`
+	Products        []SdGoalProduct       `json:"products,omitempty"`
 	BidOptimization *SdBidOptimizationV32 `json:"bidOptimization"`
-	CostType *SdCostTypeV31 `json:"costType"`
+	CostType        *SdCostTypeV31        `json:"costType"`
 	// A list of targeting clauses to receive bid recommendations for.
 	TargetingClauses []SdTargetingBidRecommendationsRequestV31TargetingClauses `json:"targetingClauses"`
 }

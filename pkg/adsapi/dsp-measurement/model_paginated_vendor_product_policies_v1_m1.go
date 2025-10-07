@@ -10,8 +10,8 @@ package dspmeasurement
 
 // A list of measurement vendor products policies.
 type PaginatedVendorProductPoliciesV1M1 struct {
-	NextToken string `json:"nextToken,omitempty"`
-	Policies []VendorProductPolicyV1M1 `json:"policies,omitempty"`
+	NextToken string                    `json:"nextToken,omitempty"`
+	Policies  []VendorProductPolicyV1M1 `json:"policies,omitempty"`
 	// The total number of vendor products.
 	TotalResults int32 `json:"totalResults,omitempty"`
 }

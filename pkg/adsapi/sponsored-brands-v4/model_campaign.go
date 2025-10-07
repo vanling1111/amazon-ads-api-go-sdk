@@ -9,19 +9,19 @@
 package sponsoredbrandsv4
 
 type Campaign struct {
-	BudgetType *BudgetType `json:"budgetType"`
-	RuleBasedBudget *RuleBasedBudget `json:"ruleBasedBudget,omitempty"`
-	BrandEntityId string `json:"brandEntityId,omitempty"`
-	IsMultiAdGroupsEnabled bool `json:"isMultiAdGroupsEnabled,omitempty"`
+	BudgetType             *BudgetType      `json:"budgetType"`
+	RuleBasedBudget        *RuleBasedBudget `json:"ruleBasedBudget,omitempty"`
+	BrandEntityId          string           `json:"brandEntityId,omitempty"`
+	IsMultiAdGroupsEnabled bool             `json:"isMultiAdGroupsEnabled,omitempty"`
 	// Goal will allow you to set goal type to help drive your campaign performance. If no goal is selected then it will default to PAGE_VISIT. The goal type of the campaign. - BRAND_IMPRESSION_SHARE - This goal will allow you grown your brand impression share on top of search placements - PAGE_VISIT [DEFAULT] - This goal drives traffic to your landing and detail pages through all placements - ACQUIRE_NEW_CUSTOMERS - This property is a PREVIEW ONLY and cannot be used as part of a request or response. This goal drives new customer acquisition for your brands. - AD_VIEWS - This property is a PREVIEW ONLY and cannot be used as part of a request or response. This goal maximizes view for your ads.
-	Goal string `json:"goal,omitempty"`
+	Goal    string   `json:"goal,omitempty"`
 	Bidding *Bidding `json:"bidding,omitempty"`
 	// The format of the date is YYYY-MM-DD.
 	EndDate string `json:"endDate,omitempty"`
 	// The identifier of the campaign.
-	CampaignId string `json:"campaignId"`
-	ProductLocation *ProductLocation `json:"productLocation,omitempty"`
-	Tags *map[string]string `json:"tags,omitempty"`
+	CampaignId      string             `json:"campaignId"`
+	ProductLocation *ProductLocation   `json:"productLocation,omitempty"`
+	Tags            *map[string]string `json:"tags,omitempty"`
 	// The identifier of an existing portfolio to which the campaign is associated.
 	PortfolioId string `json:"portfolioId,omitempty"`
 	// The costType can be set to determines how the campaign will bid and charge. To view the bid maximums and minimums by geography and costType, see https://advertising.amazon.com/API/docs/en-us/concepts/limits#bid-constraints-by-marketplace - CPC [Default] - Cost per click. The performance of this campaign is measured by the clicks triggered by the ad. - VCPM - Cost per 1000 viewable impressions. The performance of this campaign is measured by the viewable impressions triggered by the ad.
@@ -31,10 +31,10 @@ type Campaign struct {
 	// Restrict the ad to a particular site. siteRestrictions is an optional field.  If this field is not set, ads from the campaign will appear on Amazon - including both Amazon retail and Amazon Business.  Please note that: 1) AMAZON_BUSINESS option is only available for Amazon Business operated marketplaces (US, CA, MX, UK, DE, FR, IT, ES, IN, JP, AU); 2) siteRestrictions cannot be changed post campaign creation; 3) siteRestrictions doesn't support shopperCohortBidding setting.
 	SiteRestrictions []SiteRestriction `json:"siteRestrictions,omitempty"`
 	// The name of the campaign.
-	Name string `json:"name"`
+	Name  string       `json:"name"`
 	State *EntityState `json:"state"`
 	// The format of the date is YYYY-MM-DD.
-	StartDate string `json:"startDate,omitempty"`
-	Budget float64 `json:"budget"`
+	StartDate    string                `json:"startDate,omitempty"`
+	Budget       float64               `json:"budget"`
 	ExtendedData *CampaignExtendedData `json:"extendedData,omitempty"`
 }

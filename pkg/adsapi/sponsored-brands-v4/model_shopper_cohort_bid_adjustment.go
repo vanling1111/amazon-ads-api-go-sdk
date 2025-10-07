@@ -10,7 +10,7 @@ package sponsoredbrandsv4
 
 type ShopperCohortBidAdjustment struct {
 	ShopperCohortType *ShopperCohortType `json:"shopperCohortType,omitempty"`
-	Percentage float64 `json:"percentage,omitempty"`
+	Percentage        float64            `json:"percentage,omitempty"`
 	// Required when \"AUDIENCE_SEGMENT\" is used for shopperCohortType.
 	AudienceSegments []AudienceSegment `json:"audienceSegments,omitempty"`
 }

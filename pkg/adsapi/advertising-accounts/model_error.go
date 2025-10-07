@@ -10,7 +10,7 @@ package advertisingaccounts
 
 // Error structure is to describe the various errors consist of error id, error code, and a readable error message
 type ModelError struct {
-	ErrorCode string `json:"errorCode,omitempty"`
-	ErrorId float64 `json:"errorId,omitempty"`
-	ErrorMessage string `json:"errorMessage,omitempty"`
+	ErrorCode    string  `json:"errorCode,omitempty"`
+	ErrorId      float64 `json:"errorId,omitempty"`
+	ErrorMessage string  `json:"errorMessage,omitempty"`
 }

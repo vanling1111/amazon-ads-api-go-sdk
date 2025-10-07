@@ -9,8 +9,8 @@
 package sponsoredtv
 
 type ListSponsoredTvCreativesRequestContent struct {
-	AdGroupIdFilter *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
-	CreativeIdFilter *ObjectIdFilter `json:"creativeIdFilter,omitempty"`
+	AdGroupIdFilter            *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
+	CreativeIdFilter           *ObjectIdFilter `json:"creativeIdFilter,omitempty"`
 	FullFunnelCampaignIdFilter *ObjectIdFilter `json:"fullFunnelCampaignIdFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
 	MaxResults int32 `json:"maxResults,omitempty"`

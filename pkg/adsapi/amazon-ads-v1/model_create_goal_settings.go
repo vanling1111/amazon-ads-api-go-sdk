@@ -10,7 +10,7 @@ package amazonadsv1
 
 type CreateGoalSettings struct {
 	Goal *Goal `json:"goal,omitempty"`
-	Kpi *Kpi `json:"kpi,omitempty"`
+	Kpi  *Kpi  `json:"kpi,omitempty"`
 	// The value of the KPI that the campaign is working to optimize.
 	KpiValue float64 `json:"kpiValue,omitempty"`
 }

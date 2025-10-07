@@ -10,6 +10,6 @@ package marketingstream
 
 type UpdateStreamSubscriptionRequestContent struct {
 	// Additional details associated with the subscription
-	Notes string `json:"notes,omitempty"`
+	Notes  string              `json:"notes,omitempty"`
 	Status *UpdateEntityStatus `json:"status,omitempty"`
 }

@@ -9,6 +9,6 @@
 package sponsoredbrandsv4
 
 type BidAdjustmentByShopperSegment struct {
-	Percentage float64 `json:"percentage,omitempty"`
+	Percentage     float64         `json:"percentage,omitempty"`
 	ShopperSegment *ShopperSegment `json:"shopperSegment,omitempty"`
 }

@@ -12,6 +12,6 @@ package sponsoredtv
 type BillingError struct {
 	Cause *ErrorCause `json:"cause"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Reason *BillingErrorReason `json:"reason"`
+	Message string              `json:"message"`
+	Reason  *BillingErrorReason `json:"reason"`
 }

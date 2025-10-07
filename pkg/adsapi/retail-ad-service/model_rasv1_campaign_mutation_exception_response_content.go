@@ -10,8 +10,8 @@ package retailadservice
 
 // Exception resulting in mutating Campaign management entities
 type Rasv1CampaignMutationExceptionResponseContent struct {
-	Code *Rasv1InvalidArgumentErrorCode `json:"code"`
-	Errors []Rasv1CampaignMutationError `json:"errors,omitempty"`
+	Code   *Rasv1InvalidArgumentErrorCode `json:"code"`
+	Errors []Rasv1CampaignMutationError   `json:"errors,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 }

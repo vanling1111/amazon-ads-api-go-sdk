@@ -13,7 +13,7 @@ type ApprovedAdPolicy string
 // List of APPROVED_AD_POLICY
 const (
 	STORE4_V_SPOTLIGHT_ApprovedAdPolicy ApprovedAdPolicy = "STORE4V_SPOTLIGHT"
-	STORES_MODERATION_ApprovedAdPolicy ApprovedAdPolicy = "STORES_MODERATION"
-	HSA4_V_PRODUCTS_ApprovedAdPolicy ApprovedAdPolicy = "HSA4V_PRODUCTS"
-	AD_POST_ApprovedAdPolicy ApprovedAdPolicy = "AD_POST"
+	STORES_MODERATION_ApprovedAdPolicy  ApprovedAdPolicy = "STORES_MODERATION"
+	HSA4_V_PRODUCTS_ApprovedAdPolicy    ApprovedAdPolicy = "HSA4V_PRODUCTS"
+	AD_POST_ApprovedAdPolicy            ApprovedAdPolicy = "AD_POST"
 )

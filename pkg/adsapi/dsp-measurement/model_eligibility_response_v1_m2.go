@@ -10,7 +10,7 @@ package dspmeasurement
 
 // The eligibility check response object.
 type EligibilityResponseV1M2 struct {
-	Metadata *EligibilityMetadataV1 `json:"metadata,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	Metadata                   *EligibilityMetadataV1         `json:"metadata,omitempty"`
+	NextToken                  string                         `json:"nextToken,omitempty"`
 	VendorProductEligibilities []VendorProductEligibilityV1M2 `json:"vendorProductEligibilities,omitempty"`
 }

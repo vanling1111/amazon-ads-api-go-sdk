@@ -10,7 +10,7 @@ package retailadserviceidentity
 
 type IdentityListRetailersResponseContent struct {
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken string     `json:"nextToken,omitempty"`
 	Retailers []Retailer `json:"retailers,omitempty"`
 	// The total number of entities
 	TotalResults int64 `json:"totalResults,omitempty"`

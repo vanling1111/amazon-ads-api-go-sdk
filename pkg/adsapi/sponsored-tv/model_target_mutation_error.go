@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type TargetMutationError struct {
-	ErrorType *TargetingClauseErrorType `json:"errorType"`
+	ErrorType  *TargetingClauseErrorType    `json:"errorType"`
 	ErrorValue *TargetMutationErrorSelector `json:"errorValue"`
 }

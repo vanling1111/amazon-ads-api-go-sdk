@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type AdAssociationMultiStatusResponse struct {
-	Error_ []ErrorsIndex `json:"error,omitempty"`
+	Error_  []ErrorsIndex                     `json:"error,omitempty"`
 	Success []AdAssociationMultiStatusSuccess `json:"success,omitempty"`
 }

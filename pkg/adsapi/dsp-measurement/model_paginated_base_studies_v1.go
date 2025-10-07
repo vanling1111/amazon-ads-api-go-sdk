@@ -11,5 +11,5 @@ package dspmeasurement
 // A list of studies.
 type PaginatedBaseStudiesV1 struct {
 	Measurements []BaseStudyV1 `json:"measurements,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken    string        `json:"nextToken,omitempty"`
 }

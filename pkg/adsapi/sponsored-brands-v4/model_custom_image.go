@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type CustomImage struct {
-	AssetId string `json:"assetId,omitempty"`
-	Crop *CustomImageCrop `json:"crop,omitempty"`
-	Url string `json:"url,omitempty"`
+	AssetId string           `json:"assetId,omitempty"`
+	Crop    *CustomImageCrop `json:"crop,omitempty"`
+	Url     string           `json:"url,omitempty"`
 }

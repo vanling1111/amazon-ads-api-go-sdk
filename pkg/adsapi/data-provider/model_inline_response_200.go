@@ -9,6 +9,6 @@
 package dataprovider
 
 type InlineResponse200 struct {
-	RequestId string `json:"requestId,omitempty"`
-	Audience *InlineResponse200Audience `json:"audience,omitempty"`
+	RequestId string                     `json:"requestId,omitempty"`
+	Audience  *InlineResponse200Audience `json:"audience,omitempty"`
 }

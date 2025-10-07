@@ -9,11 +9,11 @@
 package personabuilder
 
 type DemographicInsights struct {
-	Age []RangedDemographicInsight `json:"age,omitempty"`
-	ChildrenAge []RangedDemographicInsight `json:"childrenAge,omitempty"`
-	ChildrenCount []RangedDemographicInsight `json:"childrenCount,omitempty"`
-	Education []EducationInsight `json:"education,omitempty"`
-	Gender []GenderInsight `json:"gender,omitempty"`
-	Income []IncomeDemographicInsight `json:"income,omitempty"`
+	Age               []RangedDemographicInsight `json:"age,omitempty"`
+	ChildrenAge       []RangedDemographicInsight `json:"childrenAge,omitempty"`
+	ChildrenCount     []RangedDemographicInsight `json:"childrenCount,omitempty"`
+	Education         []EducationInsight         `json:"education,omitempty"`
+	Gender            []GenderInsight            `json:"gender,omitempty"`
+	Income            []IncomeDemographicInsight `json:"income,omitempty"`
 	PropertyOwnership []PropertyOwnershipInsight `json:"propertyOwnership,omitempty"`
 }

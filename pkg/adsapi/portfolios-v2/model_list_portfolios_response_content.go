@@ -10,7 +10,7 @@ package portfoliosv2
 
 type ListPortfoliosResponseContent struct {
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken  string      `json:"nextToken,omitempty"`
 	Portfolios []Portfolio `json:"portfolios,omitempty"`
 	// The total number of entities
 	TotalResults float64 `json:"totalResults,omitempty"`

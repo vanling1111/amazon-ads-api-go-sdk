@@ -9,14 +9,14 @@
 package sponsoredbrandsv4
 
 type ListSponsoredBrandsAdGroupsBetaRequestContent struct {
-	CampaignIdFilter *ObjectIdFilter `json:"campaignIdFilter,omitempty"`
-	StateFilter *EntityStateFilter `json:"stateFilter,omitempty"`
+	CampaignIdFilter *ObjectIdFilter    `json:"campaignIdFilter,omitempty"`
+	StateFilter      *EntityStateFilter `json:"stateFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
 	MaxResults float64 `json:"maxResults,omitempty"`
 	// Token value allowing to navigate to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken       string          `json:"nextToken,omitempty"`
 	AdGroupIdFilter *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
 	// Setting to true will slow down performance because the API needs to retrieve extra information for each campaign.
-	IncludeExtendedDataFields bool `json:"includeExtendedDataFields,omitempty"`
-	NameFilter *NameFilter `json:"nameFilter,omitempty"`
+	IncludeExtendedDataFields bool        `json:"includeExtendedDataFields,omitempty"`
+	NameFilter                *NameFilter `json:"nameFilter,omitempty"`
 }

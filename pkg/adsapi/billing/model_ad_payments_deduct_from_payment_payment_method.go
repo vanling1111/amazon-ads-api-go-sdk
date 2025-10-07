@@ -10,11 +10,11 @@ package billing
 
 // Represents DeductFromPayment payment method structure. DeductFromPayment is a type of payment method where spends are deducted from vendor balance of a particular vendor code.
 type AdPaymentsDeductFromPaymentPaymentMethod struct {
-	CountryCode *AdPaymentsCountryCode `json:"countryCode,omitempty"`
-	EligibleCountries *[]AdPaymentsCountryCode `json:"eligibleCountries"`
-	Type_ *AdPaymentsPaymentMethodType `json:"type"`
+	CountryCode       *AdPaymentsCountryCode       `json:"countryCode,omitempty"`
+	EligibleCountries *[]AdPaymentsCountryCode     `json:"eligibleCountries"`
+	Type_             *AdPaymentsPaymentMethodType `json:"type"`
 	// A vendor code identifies a product being sold by a vendor on the retail website. When Amazon purchases products from a vendor, Amazon owes the vendor money which gets added to the vendor''s balance. An advertising account can then use this balance to pay for their advertising spends.
-	VendorCode string `json:"vendorCode"`
+	VendorCode        string                    `json:"vendorCode"`
 	VendorCodeBalance *AdPaymentsCurrencyAmount `json:"vendorCodeBalance,omitempty"`
 	// The name of the vendor code this payment method represents.
 	VendorCodeName string `json:"vendorCodeName"`

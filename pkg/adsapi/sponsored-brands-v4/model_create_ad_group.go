@@ -12,6 +12,6 @@ type CreateAdGroup struct {
 	// The identifier of the campaign to which the keyword is associated.
 	CampaignId string `json:"campaignId"`
 	// The name of the ad group.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 }

@@ -10,9 +10,9 @@ package retailadservice
 
 // Error describing missing values in API payloads
 type Rasv1MissingValueError struct {
-	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
+	Cause       *Rasv1ErrorCause  `json:"cause,omitempty"`
 	Marketplace *Rasv1Marketplace `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1MissingValueErrorReason `json:"reason"`
+	Message string                        `json:"message"`
+	Reason  *Rasv1MissingValueErrorReason `json:"reason"`
 }

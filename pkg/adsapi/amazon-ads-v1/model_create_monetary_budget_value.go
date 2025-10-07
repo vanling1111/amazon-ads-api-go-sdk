@@ -11,5 +11,5 @@ package amazonadsv1
 type CreateMonetaryBudgetValue struct {
 	// List of Monetary Budget values selectively applied at the given marketplace level
 	MarketplaceSettings []CreateMonetaryBudgetMarketplaceSetting `json:"marketplaceSettings,omitempty"`
-	MonetaryBudget *CreateMonetaryBudget `json:"monetaryBudget,omitempty"`
+	MonetaryBudget      *CreateMonetaryBudget                    `json:"monetaryBudget,omitempty"`
 }

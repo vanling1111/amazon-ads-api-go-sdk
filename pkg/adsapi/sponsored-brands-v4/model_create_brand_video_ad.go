@@ -11,9 +11,9 @@ package sponsoredbrandsv4
 type CreateBrandVideoAd struct {
 	LandingPage *LandingPage `json:"landingPage"`
 	// The name of the ad.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 	// The adGroup identifier.
-	AdGroupId string `json:"adGroupId"`
-	Creative *CreateBrandVideoCreative `json:"creative"`
+	AdGroupId string                    `json:"adGroupId"`
+	Creative  *CreateBrandVideoCreative `json:"creative"`
 }

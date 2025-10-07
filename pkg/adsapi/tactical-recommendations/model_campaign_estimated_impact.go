@@ -10,18 +10,18 @@ package tacticalrecommendations
 
 // Estimated impact at the campaign level.
 type CampaignEstimatedImpact struct {
-	Clicks *EstimatedImpactClicks `json:"clicks,omitempty"`
-	CohortTopOfSearchImpressionShare *EstimatedImpactCohortTopOfSearchImpressionShare `json:"cohortTopOfSearchImpressionShare,omitempty"`
-	Cost *EstimatedImpactCost `json:"cost,omitempty"`
-	Impressions *EstimatedImpactImpressions `json:"impressions,omitempty"`
-	IncrementalSalesIncrementalCostRatio *EstimatedImpactIncrementalSalesIncrementalCostRatio `json:"incrementalSalesIncrementalCostRatio,omitempty"`
-	OpportunityLostPurchaseJourney *EstimatedImpactOpportunityLostPurchaseJourney `json:"opportunityLostPurchaseJourney,omitempty"`
-	OpportunityLostToCompetitors *EstimatedImpactOpportunityLostToCompetitors `json:"opportunityLostToCompetitors,omitempty"`
+	Clicks                                 *EstimatedImpactClicks                                 `json:"clicks,omitempty"`
+	CohortTopOfSearchImpressionShare       *EstimatedImpactCohortTopOfSearchImpressionShare       `json:"cohortTopOfSearchImpressionShare,omitempty"`
+	Cost                                   *EstimatedImpactCost                                   `json:"cost,omitempty"`
+	Impressions                            *EstimatedImpactImpressions                            `json:"impressions,omitempty"`
+	IncrementalSalesIncrementalCostRatio   *EstimatedImpactIncrementalSalesIncrementalCostRatio   `json:"incrementalSalesIncrementalCostRatio,omitempty"`
+	OpportunityLostPurchaseJourney         *EstimatedImpactOpportunityLostPurchaseJourney         `json:"opportunityLostPurchaseJourney,omitempty"`
+	OpportunityLostToCompetitors           *EstimatedImpactOpportunityLostToCompetitors           `json:"opportunityLostToCompetitors,omitempty"`
 	OpportunityLostToCompetitorsPercentage *EstimatedImpactOpportunityLostToCompetitorsPercentage `json:"opportunityLostToCompetitorsPercentage,omitempty"`
-	OpportunityLostToCompetitorsSales *EstimatedImpactOpportunityLostToCompetitorsSales `json:"opportunityLostToCompetitorsSales,omitempty"`
-	Roas *EstimatedImpactRoas `json:"roas,omitempty"`
-	Sales *EstimatedImpactSales `json:"sales,omitempty"`
+	OpportunityLostToCompetitorsSales      *EstimatedImpactOpportunityLostToCompetitorsSales      `json:"opportunityLostToCompetitorsSales,omitempty"`
+	Roas                                   *EstimatedImpactRoas                                   `json:"roas,omitempty"`
+	Sales                                  *EstimatedImpactSales                                  `json:"sales,omitempty"`
 	// Time period of the estimated impact in days.
-	TimePeriodInDays int32 `json:"timePeriodInDays"`
+	TimePeriodInDays           int32                                      `json:"timePeriodInDays"`
 	TopOfSearchImpressionShare *EstimatedImpactTopOfSearchImpressionShare `json:"topOfSearchImpressionShare,omitempty"`
 }

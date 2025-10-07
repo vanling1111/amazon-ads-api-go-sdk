@@ -9,11 +9,11 @@
 package portfoliosv2
 
 type PortfolioBudgetError struct {
-	Cause *ErrorCause `json:"cause"`
-	LowerLimit string `json:"lowerLimit,omitempty"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause `json:"cause"`
+	LowerLimit  string      `json:"lowerLimit,omitempty"`
+	Marketplace string      `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioBudgetErrorReason `json:"reason"`
-	UpperLimit string `json:"upperLimit,omitempty"`
+	Message    string                      `json:"message"`
+	Reason     *PortfolioBudgetErrorReason `json:"reason"`
+	UpperLimit string                      `json:"upperLimit,omitempty"`
 }

@@ -13,5 +13,5 @@ type CampaignResponse struct {
 	Code string `json:"code,omitempty"`
 	// A human-readable description of the response.
 	Description string `json:"description,omitempty"`
-	CampaignId int64 `json:"campaignId,omitempty"`
+	CampaignId  int64  `json:"campaignId,omitempty"`
 }

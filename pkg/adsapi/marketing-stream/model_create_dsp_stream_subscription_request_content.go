@@ -12,7 +12,7 @@ type CreateDspStreamSubscriptionRequestContent struct {
 	// Unique value supplied by the caller used to track identical API requests. Should request be re-tried, the caller should supply the same value. We recommend using GUID.
 	ClientRequestToken string `json:"clientRequestToken"`
 	// Identifier of data set, callers can be subscribed to. Please refer to https://advertising.amazon.com/API/docs/en-us/amazon-marketing-stream/data-guide for the list of all data sets.
-	DataSetId string `json:"dataSetId"`
+	DataSetId   string       `json:"dataSetId"`
 	Destination *Destination `json:"destination,omitempty"`
 	// AWS ARN of the destination endpoint associated with the subscription. Supported destination types: - SQS
 	DestinationArn string `json:"destinationArn,omitempty"`

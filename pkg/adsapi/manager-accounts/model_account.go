@@ -13,7 +13,7 @@ type Account struct {
 	// Id of the Amazon Advertising account.
 	AccountId string `json:"accountId,omitempty"`
 	// The name given to the Amazon Advertising account.
-	AccountName string `json:"accountName,omitempty"`
+	AccountName string       `json:"accountName,omitempty"`
 	AccountType *AccountType `json:"accountType,omitempty"`
 	// The identifier of a DSP advertiser. Note that this value is only populated for accounts with type `DSP_ADVERTISING_ACCOUNT`. It will be `null` for accounts of other types.
 	DspAdvertiserId string `json:"dspAdvertiserId,omitempty"`

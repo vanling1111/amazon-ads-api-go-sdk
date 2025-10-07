@@ -9,8 +9,8 @@
 package sponsoreddisplayv3
 
 type OneOfTargetingExpressionItems struct {
-    TargetingPredicate
-    ContentTargetingPredicate
-    TargetingPredicateLegacy
-    TargetingPredicateNested
+	TargetingPredicate
+	ContentTargetingPredicate
+	TargetingPredicateLegacy
+	TargetingPredicateNested
 }

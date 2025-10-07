@@ -10,6 +10,6 @@ package profilesv3
 
 type CreativeModerationTextEvidence struct {
 	// The specific text determined to violate the specified policy in reviewedText
-	ViolatingText string `json:"violatingText,omitempty"`
+	ViolatingText         string                                   `json:"violatingText,omitempty"`
 	ViolatingTextPosition *CreativeModerationViolatingTextPosition `json:"violatingTextPosition,omitempty"`
 }

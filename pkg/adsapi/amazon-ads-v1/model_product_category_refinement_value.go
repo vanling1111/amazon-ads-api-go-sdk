@@ -10,6 +10,6 @@ package amazonadsv1
 
 type ProductCategoryRefinementValue struct {
 	// Marketplace specific product category refinements. Either the value or the marketplaceSettings should always be specified
-	MarketplaceSettings []ProductCategoryRefinementMarketplaceSetting `json:"marketplaceSettings,omitempty"`
-	ProductCategoryRefinement *ProductCategoryRefinement `json:"productCategoryRefinement,omitempty"`
+	MarketplaceSettings       []ProductCategoryRefinementMarketplaceSetting `json:"marketplaceSettings,omitempty"`
+	ProductCategoryRefinement *ProductCategoryRefinement                    `json:"productCategoryRefinement,omitempty"`
 }

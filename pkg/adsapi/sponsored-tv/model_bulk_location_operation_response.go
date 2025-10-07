@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type BulkLocationOperationResponse struct {
-	Error_ []LocationFailureResponseItem `json:"error,omitempty"`
+	Error_  []LocationFailureResponseItem `json:"error,omitempty"`
 	Success []LocationSuccessResponseItem `json:"success,omitempty"`
 }

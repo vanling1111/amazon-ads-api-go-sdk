@@ -18,13 +18,13 @@ type Ad struct {
 	// The asin associated with this Ad.
 	Asin string `json:"asin,omitempty"`
 	// The identifier of the Campaign associated with the Ad.
-	CampaignId string `json:"campaignId"`
+	CampaignId   string          `json:"campaignId"`
 	ExtendedData *AdExtendedData `json:"extendedData,omitempty"`
 	// full funnel campaign id for child ad
 	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
 	// The landing page type of the Ad. It can be one of ASIN_DP, SKU_DP, OFF_AMAZON_LINK, or STORE with ASIN, SKU, or an HTTPS URL value in the `landingPageValue` field.
 	LandingPageType string `json:"landingPageType,omitempty"`
 	// The landing page for the Ad.
-	LandingPageValue string `json:"landingPageValue,omitempty"`
-	State *EntityState `json:"state"`
+	LandingPageValue string       `json:"landingPageValue,omitempty"`
+	State            *EntityState `json:"state"`
 }

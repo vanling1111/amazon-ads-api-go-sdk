@@ -12,13 +12,13 @@ type Rasv1ProductAdOutput struct {
 	// The identifier of the ad group.
 	AdGroupId string `json:"adGroupId"`
 	// The identifier of the campaign.
-	CampaignId string `json:"campaignId"`
+	CampaignId   string                      `json:"campaignId"`
 	ExtendedData *Rasv1ProductAdExtendedData `json:"extendedData,omitempty"`
 	// The identifier of the ProductAd.
 	ProductAdId string `json:"productAdId"`
 	// Id of a retailer owning the offer to be advertised
 	RetailerId string `json:"retailerId"`
 	// Id of the offer to be advertised, must belong to retailer identified by retailerId field
-	RetailerOfferId string `json:"retailerOfferId"`
-	State *Rasv1EntityState `json:"state"`
+	RetailerOfferId string            `json:"retailerOfferId"`
+	State           *Rasv1EntityState `json:"state"`
 }

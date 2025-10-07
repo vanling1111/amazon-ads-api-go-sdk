@@ -9,10 +9,10 @@
 package retailadservice
 
 type Rasv1BudgetError struct {
-	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	Cause      *Rasv1ErrorCause `json:"cause,omitempty"`
+	LowerLimit string           `json:"lowerLimit,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1BudgetErrorReason `json:"reason"`
-	UpperLimit string `json:"upperLimit,omitempty"`
+	Message    string                  `json:"message"`
+	Reason     *Rasv1BudgetErrorReason `json:"reason"`
+	UpperLimit string                  `json:"upperLimit,omitempty"`
 }

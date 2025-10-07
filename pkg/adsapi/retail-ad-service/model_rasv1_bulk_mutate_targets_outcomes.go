@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1BulkMutateTargetsOutcomes struct {
-	Error_ []Rasv1MutateTargetFailureItem `json:"error,omitempty"`
+	Error_  []Rasv1MutateTargetFailureItem `json:"error,omitempty"`
 	Success []Rasv1MutateTargetSuccessItem `json:"success,omitempty"`
 }

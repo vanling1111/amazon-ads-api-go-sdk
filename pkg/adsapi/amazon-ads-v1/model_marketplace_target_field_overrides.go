@@ -11,6 +11,6 @@ package amazonadsv1
 type MarketplaceTargetFieldOverrides struct {
 	State *State `json:"state,omitempty"`
 	// Open ended labels with a key value pair applied to the target
-	Tags []Tag `json:"tags,omitempty"`
+	Tags          []Tag               `json:"tags,omitempty"`
 	TargetDetails *OverridableTargets `json:"targetDetails,omitempty"`
 }

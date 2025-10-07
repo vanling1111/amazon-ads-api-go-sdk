@@ -10,16 +10,16 @@ package retailadservice
 
 type Rasv1CreateTargetOutput struct {
 	// The identifier of the ad group.
-	AdGroupId string `json:"adGroupId,omitempty"`
-	Bid *Rasv1TargetBidOutput `json:"bid,omitempty"`
+	AdGroupId string                `json:"adGroupId,omitempty"`
+	Bid       *Rasv1TargetBidOutput `json:"bid,omitempty"`
 	// The identifier of the campaign.
 	CampaignId string `json:"campaignId"`
 	// Indicates whether the target is negative or not.
-	Negative bool `json:"negative"`
-	State *Rasv1EntityState `json:"state"`
+	Negative      bool                `json:"negative"`
+	State         *Rasv1EntityState   `json:"state"`
 	TargetDetails *Rasv1TargetDetails `json:"targetDetails"`
 	// The identifier of the Target.
-	TargetId string `json:"targetId"`
+	TargetId    string            `json:"targetId"`
 	TargetLevel *Rasv1TargetLevel `json:"targetLevel"`
-	TargetType *Rasv1TargetType `json:"targetType"`
+	TargetType  *Rasv1TargetType  `json:"targetType"`
 }

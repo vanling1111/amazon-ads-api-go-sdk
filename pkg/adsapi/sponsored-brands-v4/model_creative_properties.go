@@ -14,19 +14,19 @@ type CreativeProperties struct {
 	// The displayed brand name in the ad headline. Maximum length is 30 characters. See [the policy](https://advertising.amazon.com/resources/ad-policy/sponsored-ads-policies#headlines) for headline requirements.
 	BrandName string `json:"brandName,omitempty"`
 	// The identifier of image/video asset from the store's asset library
-	CustomImageAssetId string `json:"customImageAssetId,omitempty"`
-	LandingPage *CreativeLandingPage `json:"landingPage,omitempty"`
+	CustomImageAssetId string               `json:"customImageAssetId,omitempty"`
+	LandingPage        *CreativeLandingPage `json:"landingPage,omitempty"`
 	// An array of customImages associated with the creative.
 	CustomImages []CustomImage `json:"customImages,omitempty"`
 	// If set to true and the headline and/or video are not in the marketplace's default language, Amazon will attempt to translate them to the marketplace's default language. If Amazon is unable to translate them, the ad will be rejected by moderation. We only support translating headlines and videos from English to German, French, Italian, Spanish, Japanese, and Dutch. See developer notes for more information.
-	ConsentToTranslate bool `json:"consentToTranslate,omitempty"`
-	CustomImageCrop *AssetCrop `json:"customImageCrop,omitempty"`
-	CustomImageUrl string `json:"customImageUrl,omitempty"`
+	ConsentToTranslate bool       `json:"consentToTranslate,omitempty"`
+	CustomImageCrop    *AssetCrop `json:"customImageCrop,omitempty"`
+	CustomImageUrl     string     `json:"customImageUrl,omitempty"`
 	// The assetIds of the original videos submitted by the advertiser. If 'consentToTranslate' is set to true and translation is SUCCESSFUL then `originalVideoAssetIds` will return the original video assetId whereas `videoAssetIds` will return translated video assetId. In all other cases, 'originalVideoAssetIds' and `videoAssetIds` both will return original video assetId.
 	OriginalVideoAssetIds []string `json:"originalVideoAssetIds,omitempty"`
 	// ----------------------------------------------- List types ----------------------------------------------- A list of ASINs
-	Asins []string `json:"asins,omitempty"`
-	BrandLogoUrl string `json:"brandLogoUrl,omitempty"`
+	Asins        []string `json:"asins,omitempty"`
+	BrandLogoUrl string   `json:"brandLogoUrl,omitempty"`
 	// An array of subpages
 	Subpages []Subpage `json:"subpages,omitempty"`
 	// If this property is enabled, Sponsored Brands will dynamically optimize by enhancing or generating creative properties based on shopper search intent.

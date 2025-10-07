@@ -10,7 +10,7 @@ package retailadservice
 
 type Rasv1MutateTargetSuccessItem struct {
 	// The index of the Target in the array from the request body
-	Index int32 `json:"index"`
+	Index  int32              `json:"index"`
 	Target *Rasv1TargetOutput `json:"target,omitempty"`
 	// The identifier of the Target.
 	TargetId string `json:"targetId,omitempty"`

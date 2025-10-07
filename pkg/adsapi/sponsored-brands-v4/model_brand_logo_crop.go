@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 // The crop to apply to the selected Brand logo. A Brand logo must have minimum dimensions of 400x400. If a brandLogoAssetID is supplied but a crop is not, the crop will be defaulted to the whole image.
 type BrandLogoCrop struct {
-	Top float64 `json:"top,omitempty"`
-	Left float64 `json:"left,omitempty"`
-	Width float64 `json:"width,omitempty"`
+	Top    float64 `json:"top,omitempty"`
+	Left   float64 `json:"left,omitempty"`
+	Width  float64 `json:"width,omitempty"`
 	Height float64 `json:"height,omitempty"`
 }

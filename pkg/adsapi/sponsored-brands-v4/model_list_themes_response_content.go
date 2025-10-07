@@ -12,6 +12,6 @@ type ListThemesResponseContent struct {
 	// List of themes
 	Themes []Theme `json:"themes,omitempty"`
 	// If nextToken is not null, it means there are more results.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken  string  `json:"nextToken,omitempty"`
 	TotalCount float64 `json:"totalCount,omitempty"`
 }

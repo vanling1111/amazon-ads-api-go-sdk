@@ -9,26 +9,26 @@
 package billing
 
 type InvoiceSummary struct {
-	AmountDue *CurrencyAmount `json:"amountDue"`
+	AmountDue          *CurrencyAmount     `json:"amountDue"`
 	BillingAggregation *BillingAggregation `json:"billingAggregation,omitempty"`
-	// List of downloadable documents associated with this invoice and accessible from the advertising console. 
+	// List of downloadable documents associated with this invoice and accessible from the advertising console.
 	DownloadableDocuments []DocumentType `json:"downloadableDocuments,omitempty"`
-	DueDate string `json:"dueDate,omitempty"`
-	// Regulatory Advertising Fees. 
-	Fees []Fee `json:"fees,omitempty"`
-	FromDate string `json:"fromDate"`
-	Id string `json:"id"`
-	InvoiceDate string `json:"invoiceDate"`
-	PaymentMethod *PaymentMethod `json:"paymentMethod,omitempty"`
-	PaymentTermsDays int32 `json:"paymentTermsDays,omitempty"`
-	PaymentTermsType string `json:"paymentTermsType,omitempty"`
-	PurchaseOrderNumber string `json:"purchaseOrderNumber,omitempty"`
-	RemainingAmountDue *CurrencyAmount `json:"remainingAmountDue"`
-	// Remaining Regulatory Advertising Fees. 
-	RemainingFees []Fee `json:"remainingFees,omitempty"`
+	DueDate               string         `json:"dueDate,omitempty"`
+	// Regulatory Advertising Fees.
+	Fees                []Fee           `json:"fees,omitempty"`
+	FromDate            string          `json:"fromDate"`
+	Id                  string          `json:"id"`
+	InvoiceDate         string          `json:"invoiceDate"`
+	PaymentMethod       *PaymentMethod  `json:"paymentMethod,omitempty"`
+	PaymentTermsDays    int32           `json:"paymentTermsDays,omitempty"`
+	PaymentTermsType    string          `json:"paymentTermsType,omitempty"`
+	PurchaseOrderNumber string          `json:"purchaseOrderNumber,omitempty"`
+	RemainingAmountDue  *CurrencyAmount `json:"remainingAmountDue"`
+	// Remaining Regulatory Advertising Fees.
+	RemainingFees         []Fee           `json:"remainingFees,omitempty"`
 	RemainingTaxAmountDue *CurrencyAmount `json:"remainingTaxAmountDue,omitempty"`
-	Status *InvoiceStatus `json:"status"`
-	TaxAmountDue *CurrencyAmount `json:"taxAmountDue,omitempty"`
-	TaxRate float64 `json:"taxRate,omitempty"`
-	ToDate string `json:"toDate"`
+	Status                *InvoiceStatus  `json:"status"`
+	TaxAmountDue          *CurrencyAmount `json:"taxAmountDue,omitempty"`
+	TaxRate               float64         `json:"taxRate,omitempty"`
+	ToDate                string          `json:"toDate"`
 }

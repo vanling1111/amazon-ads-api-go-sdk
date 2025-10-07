@@ -9,6 +9,6 @@
 package audiencesdiscovery
 
 type FetchTaxonomyNodeV1 struct {
-	AudienceCount int64 `json:"audienceCount,omitempty"`
-	Category string `json:"category,omitempty"`
+	AudienceCount int64  `json:"audienceCount,omitempty"`
+	Category      string `json:"category,omitempty"`
 }

@@ -10,13 +10,13 @@ package portfoliosv2
 
 // Errors related to exceeding quota in portfolios service
 type PortfolioEntityQuotaError struct {
-	Cause *ErrorCause `json:"cause"`
-	EntityType *PortfolioEntityType `json:"entityType"`
-	Marketplace string `json:"marketplace,omitempty"`
+	Cause       *ErrorCause          `json:"cause"`
+	EntityType  *PortfolioEntityType `json:"entityType"`
+	Marketplace string               `json:"marketplace,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 	// optional current quota
-	Quota string `json:"quota,omitempty"`
-	QuotaScope *PortfolioQuotaScope `json:"quotaScope,omitempty"`
-	Reason *PortfolioEntityQuotaErrorReason `json:"reason"`
+	Quota      string                           `json:"quota,omitempty"`
+	QuotaScope *PortfolioQuotaScope             `json:"quotaScope,omitempty"`
+	Reason     *PortfolioEntityQuotaErrorReason `json:"reason"`
 }

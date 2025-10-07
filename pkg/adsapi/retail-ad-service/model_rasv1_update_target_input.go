@@ -9,8 +9,8 @@
 package retailadservice
 
 type Rasv1UpdateTargetInput struct {
-	Bid *Rasv1TargetBidInput `json:"bid,omitempty"`
-	State *Rasv1EntityState `json:"state,omitempty"`
+	Bid   *Rasv1TargetBidInput `json:"bid,omitempty"`
+	State *Rasv1EntityState    `json:"state,omitempty"`
 	// The identifier of the Target.
 	TargetId string `json:"targetId"`
 }

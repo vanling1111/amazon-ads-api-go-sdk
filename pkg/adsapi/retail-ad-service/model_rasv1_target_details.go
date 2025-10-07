@@ -9,7 +9,7 @@
 package retailadservice
 
 type Rasv1TargetDetails struct {
-	AutoTarget *Rasv1AutoTarget `json:"autoTarget,omitempty"`
+	AutoTarget    *Rasv1AutoTarget    `json:"autoTarget,omitempty"`
 	KeywordTarget *Rasv1KeywordTarget `json:"keywordTarget,omitempty"`
 	ProductTarget *Rasv1ProductTarget `json:"productTarget,omitempty"`
 }

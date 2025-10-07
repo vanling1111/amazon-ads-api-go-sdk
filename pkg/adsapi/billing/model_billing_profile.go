@@ -15,13 +15,13 @@ type BillingProfile struct {
 	// Billing profile identifier which will be used to identify a billing profile. This identifier will NOT affect billing process.
 	BillingProfileId string `json:"billingProfileId"`
 	// Whether the billingProfile created should be used for invoicing, taxation and other billing workflows. If the `billTo=false` is setthe `billingName` of that profile is used to determine the 'Advertiser Name' shown to consumers.To ensure accuracy of the information shown on the store, we request that you review the ‘Advertiser Name’ and ‘Payer Name’ in our ad systems and update them if required
-	IsBillTo bool `json:"isBillTo"`
-	Address *BaseBillingProfileAddress `json:"address"`
+	IsBillTo bool                       `json:"isBillTo"`
+	Address  *BaseBillingProfileAddress `json:"address"`
 	// List of tax-type and corresponding details.
 	Agreements []BaseBillingProfileAgreements `json:"agreements,omitempty"`
 	// Name of a billing profile. This name will only be used to identify the billing profile and will not be used for billing. This is for the client to organize the billing profiles and doesn't affect the billing process.
-	BillingProfileName string `json:"billingProfileName"`
-	DisplayInfo *BaseBillingProfileDisplayInfo `json:"displayInfo,omitempty"`
+	BillingProfileName string                         `json:"billingProfileName"`
+	DisplayInfo        *BaseBillingProfileDisplayInfo `json:"displayInfo,omitempty"`
 	// Type of holding company for agency billing profile. Agency Holding Companies are conglomerate entities that own multiple smaller advertising agencies. There are six holding companies, WPP, Omnicom, Publicis, Interpublic, Dentsu, and Havas. A holding company is provided if the billing party is an agency. If your agency is not associated with any of the above, choose NO_HOLDING_COMPANY Check following table for supported values: <br/><br/><table border=1><caption> **Supported Holding Company** </caption><tr>    <th>Holding Company</th>    </tr><tr>    <td>NO_HOLDING_COMPANY</td>    </tr><tr>    <td>WPP</td>    </tr><tr>    <td>OMNICOM</td>    </tr><tr>    <td>PUBLICIS_GROUPE</td>    </tr><tr>    <td>INTERPUBLIC</td>    </tr><tr>    <td>DENTSU</td>    </tr><tr>    <td>HAVAS</td>    </tr></table>
 	HoldingCompany string `json:"holdingCompany,omitempty"`
 	// Attribute to indicate if a billing profile is default or not under that global account. Once marked as default, for new countries this billing profile will get automatically applied, if all information provided are sufficient

@@ -12,7 +12,7 @@ type CampaignResponseEx struct {
 	// The identifier of the campaign.
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The name of the campaign.
-	Name string `json:"name,omitempty"`
+	Name   string  `json:"name,omitempty"`
 	Tactic *Tactic `json:"tactic,omitempty"`
 	// The time period over which the amount specified in the `budget` property is allocated.
 	BudgetType string `json:"budgetType,omitempty"`
@@ -33,6 +33,6 @@ type CampaignResponseEx struct {
 	// Epoch date the campaign was created.
 	CreationDate int64 `json:"creationDate,omitempty"`
 	// Epoch date of the last update to any property associated with the campaign.
-	LastUpdatedDate int64 `json:"lastUpdatedDate,omitempty"`
+	LastUpdatedDate int64            `json:"lastUpdatedDate,omitempty"`
 	RuleBasedBudget *RuleBasedBudget `json:"ruleBasedBudget,omitempty"`
 }

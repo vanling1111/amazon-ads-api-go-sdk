@@ -10,8 +10,8 @@ package sponsoredtv
 
 // Exception resulting in mutating creative management entities
 type CreativeMutationExceptionResponseContent struct {
-	Code *InvalidArgumentErrorCode `json:"code"`
-	Errors []CreativeMutationError `json:"errors,omitempty"`
+	Code   *InvalidArgumentErrorCode `json:"code"`
+	Errors []CreativeMutationError   `json:"errors,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

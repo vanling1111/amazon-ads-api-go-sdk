@@ -10,7 +10,7 @@ package sponsoreddisplayv3
 
 // Product that advertisers want to advertise. Recommendations will be made for specified products. SDAdvertisedProduct can only contain either asins or landing pages. If landingPageUrl is used, there can only be one item for each request.
 type SdAdvertisedProduct struct {
-	Asin string `json:"asin,omitempty"`
+	Asin            string             `json:"asin,omitempty"`
 	LandingPageType *SdLandingPageType `json:"landingPageType,omitempty"`
-	LandingPageURL string `json:"landingPageURL,omitempty"`
+	LandingPageURL  string             `json:"landingPageURL,omitempty"`
 }

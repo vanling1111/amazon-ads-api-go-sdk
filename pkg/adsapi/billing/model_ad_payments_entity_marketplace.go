@@ -12,6 +12,6 @@ package billing
 type AdPaymentsEntityMarketplace struct {
 	CountryCode *AdPaymentsCountryCode `json:"countryCode,omitempty"`
 	// The identifier of the entity.
-	EntityId string `json:"entityId"`
+	EntityId   string                `json:"entityId"`
 	EntityType *AdPaymentsEntityType `json:"entityType"`
 }

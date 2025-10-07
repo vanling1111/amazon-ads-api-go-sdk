@@ -10,6 +10,6 @@ package portfoliosv2
 
 // Filter entities by name
 type NameFilter struct {
-	Include []string `json:"include,omitempty"`
+	Include            []string            `json:"include,omitempty"`
 	QueryTermMatchType *QueryTermMatchType `json:"queryTermMatchType,omitempty"`
 }

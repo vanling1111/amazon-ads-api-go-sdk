@@ -12,7 +12,7 @@ type KeywordTargetMatchTypeV1 string
 
 // List of KeywordTargetMatchTypeV1
 const (
-	BROAD_KeywordTargetMatchTypeV1 KeywordTargetMatchTypeV1 = "BROAD"
-	EXACT_KeywordTargetMatchTypeV1 KeywordTargetMatchTypeV1 = "EXACT"
+	BROAD_KeywordTargetMatchTypeV1  KeywordTargetMatchTypeV1 = "BROAD"
+	EXACT_KeywordTargetMatchTypeV1  KeywordTargetMatchTypeV1 = "EXACT"
 	PHRASE_KeywordTargetMatchTypeV1 KeywordTargetMatchTypeV1 = "PHRASE"
 )

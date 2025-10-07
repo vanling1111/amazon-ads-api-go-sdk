@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type SbOptimizationRecommendationRequestContent struct {
 	CostControlMetric *CostControlMetric `json:"costControlMetric"`
-	LandingPages []LandingPage `json:"landingPages"`
+	LandingPages      []LandingPage      `json:"landingPages"`
 }

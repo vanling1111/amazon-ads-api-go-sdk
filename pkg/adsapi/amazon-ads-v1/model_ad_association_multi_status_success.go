@@ -10,5 +10,5 @@ package amazonadsv1
 
 type AdAssociationMultiStatusSuccess struct {
 	AdAssociation *AdAssociation `json:"adAssociation"`
-	Index int32 `json:"index"`
+	Index         int32          `json:"index"`
 }

@@ -10,5 +10,5 @@ package amazonadsv1
 
 type UpdateBidSettings struct {
 	BidAdjustments *UpdateBidAdjustments `json:"bidAdjustments,omitempty"`
-	BidStrategy *BidStrategy `json:"bidStrategy,omitempty"`
+	BidStrategy    *BidStrategy          `json:"bidStrategy,omitempty"`
 }

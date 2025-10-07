@@ -9,11 +9,11 @@
 package portfoliosv2
 
 type UpdatePortfolio struct {
-	Budget *PortfolioBudget `json:"budget,omitempty"`
-	BudgetControls *BudgetControls `json:"budgetControls,omitempty"`
+	Budget         *PortfolioBudget `json:"budget,omitempty"`
+	BudgetControls *BudgetControls  `json:"budgetControls,omitempty"`
 	// The name of the portfolio.
 	Name string `json:"name,omitempty"`
 	// The ID of the portfolio.
-	PortfolioId string `json:"portfolioId"`
-	State *EntityState `json:"state,omitempty"`
+	PortfolioId string       `json:"portfolioId"`
+	State       *EntityState `json:"state,omitempty"`
 }

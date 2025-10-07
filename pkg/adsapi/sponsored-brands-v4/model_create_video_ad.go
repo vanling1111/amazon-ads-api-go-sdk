@@ -10,9 +10,9 @@ package sponsoredbrandsv4
 
 type CreateVideoAd struct {
 	// The name of the ad.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 	// The adGroup identifier.
-	AdGroupId string `json:"adGroupId"`
-	Creative *CreateVideoCreative `json:"creative"`
+	AdGroupId string               `json:"adGroupId"`
+	Creative  *CreateVideoCreative `json:"creative"`
 }

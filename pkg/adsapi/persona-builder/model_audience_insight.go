@@ -12,10 +12,10 @@ type AudienceInsight struct {
 	// Link to the audience details page within the Amazon Advertising Console for the given audience.
 	AudienceDetailPageUrl string `json:"audienceDetailPageUrl,omitempty"`
 	// Category of the audience segment. Example: interests
-	Category string `json:"category"`
+	Category string    `json:"category"`
 	Forecast *Forecast `json:"forecast"`
 	// Identifier for the target audience.
-	Id string `json:"id"`
+	Id             string         `json:"id"`
 	InsightMetrics *InsightMetric `json:"insightMetrics"`
 	// Name of the target audience.
 	Name string `json:"name"`

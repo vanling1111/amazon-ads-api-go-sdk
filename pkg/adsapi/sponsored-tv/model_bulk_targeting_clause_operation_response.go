@@ -9,6 +9,6 @@
 package sponsoredtv
 
 type BulkTargetingClauseOperationResponse struct {
-	Error_ []TargetingClauseFailureResponseItem `json:"error,omitempty"`
+	Error_  []TargetingClauseFailureResponseItem `json:"error,omitempty"`
 	Success []TargetingClauseSuccessResponseItem `json:"success,omitempty"`
 }

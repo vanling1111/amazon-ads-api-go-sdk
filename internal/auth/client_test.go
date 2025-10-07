@@ -34,7 +34,7 @@ import (
 
 func TestNewClient(t *testing.T) {
 	client := NewClient("client-id", "client-secret", "refresh-token", "https://api.amazon.com/auth/o2/token")
-	
+
 	assert.NotNil(t, client)
 	assert.Equal(t, "client-id", client.clientID)
 	assert.Equal(t, "client-secret", client.clientSecret)
@@ -48,7 +48,7 @@ func TestGetAccessToken_Success(t *testing.T) {
 		// 验证请求
 		assert.Equal(t, http.MethodPost, r.Method)
 		assert.Equal(t, "application/x-www-form-urlencoded", r.Header.Get("Content-Type"))
-		
+
 		// 返回成功响应
 		resp := map[string]interface{}{
 			"access_token": "test-access-token",
@@ -61,12 +61,12 @@ func TestGetAccessToken_Success(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("client-id", "client-secret", "refresh-token", server.URL)
-	
+
 	// 第一次获取令牌
 	token, err := client.GetAccessToken(context.Background())
 	require.NoError(t, err)
 	assert.Equal(t, "test-access-token", token)
-	
+
 	// 第二次应该使用缓存
 	token2, err := client.GetAccessToken(context.Background())
 	require.NoError(t, err)
@@ -85,7 +85,7 @@ func TestGetAccessToken_Error(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("invalid-id", "invalid-secret", "invalid-token", server.URL)
-	
+
 	_, err := client.GetAccessToken(context.Background())
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "LWA error")
@@ -103,7 +103,7 @@ func TestGetAccessToken_EmptyToken(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("client-id", "client-secret", "refresh-token", server.URL)
-	
+
 	_, err := client.GetAccessToken(context.Background())
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "empty access token")
@@ -123,20 +123,20 @@ func TestClearCache(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("client-id", "client-secret", "refresh-token", server.URL)
-	
+
 	// 第一次获取
 	_, err := client.GetAccessToken(context.Background())
 	require.NoError(t, err)
 	assert.Equal(t, 1, callCount)
-	
+
 	// 第二次使用缓存
 	_, err = client.GetAccessToken(context.Background())
 	require.NoError(t, err)
 	assert.Equal(t, 1, callCount, "should use cache")
-	
+
 	// 清除缓存
 	client.ClearCache()
-	
+
 	// 第三次重新获取
 	_, err = client.GetAccessToken(context.Background())
 	require.NoError(t, err)
@@ -155,15 +155,15 @@ func TestGetAccessToken_CacheExpiry(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("client-id", "client-secret", "refresh-token", server.URL)
-	
+
 	// 第一次获取
 	token1, err := client.GetAccessToken(context.Background())
 	require.NoError(t, err)
-	
+
 	// 等待令牌过期（1秒 + 60秒安全缓冲 = 提前过期）
 	// 实际上由于安全缓冲，令牌立即就是过期状态
 	time.Sleep(100 * time.Millisecond)
-	
+
 	// 第二次应该重新获取
 	token2, err := client.GetAccessToken(context.Background())
 	require.NoError(t, err)
@@ -183,13 +183,12 @@ func TestGetAccessToken_ContextCanceled(t *testing.T) {
 	defer server.Close()
 
 	client := NewClient("client-id", "client-secret", "refresh-token", server.URL)
-	
+
 	// 创建可取消的 context
 	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
 	defer cancel()
-	
+
 	_, err := client.GetAccessToken(ctx)
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "context deadline exceeded")
 }
-

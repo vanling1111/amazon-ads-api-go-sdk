@@ -10,11 +10,11 @@ package sponsoredbrandsv4
 
 // Request structure of headline suggestion API.
 type HeadlineSuggestionRequest struct {
-	// An array of ASINs associated with the creative. Note do not pass an empty array, this results in an error. 
+	// An array of ASINs associated with the creative. Note do not pass an empty array, this results in an error.
 	Asins []string `json:"asins,omitempty"`
 	// An array of Store Pages associated with SB Spotlight Creative.
 	StorePages []StorePage `json:"storePages,omitempty"`
 	// Maximum number of suggestions that API should return. Response will [0, maxNumSuggestions] suggestions (suggestions are not guaranteed).
 	MaxNumSuggestions float64 `json:"maxNumSuggestions,omitempty"`
-	AdFormat string `json:"adFormat,omitempty"`
+	AdFormat          string  `json:"adFormat,omitempty"`
 }

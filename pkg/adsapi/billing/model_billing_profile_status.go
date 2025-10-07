@@ -10,6 +10,6 @@ package billing
 
 // Current Status of the link between the billing Profile and the country. The following table defines the statuses and their descriptions. <table><thead> <tr> <th>Status</th> <th>Description</th> </tr></thead><tbody> <tr> <td>OK</td> <td>There is no problem with the billing profile usage</td> </tr> <tr> <td>BILLING_PROFILE_INVALID_ADDRESS</td> <td>Billing profile usage has invalid address</td> </tr> <tr> <td>BILLING_PROFILE_INVALID_TAX</td> <td>Billing profile usage has invalid taxes</td> </tr> <tr> <td>BILLING_PROFILE_INVALID_PERMISSION</td> <td>User does not have the permission to view the billing profile</td> </tr> <tr> <td>BILLING_PROFILE_NOT_FOUND</td> <td>No billing profile was linked to this country</td> </tr> <tr> <td>BILLING_PROFILE_ERROR</td> <td>There is some other problem with the billing profile usage</td> </tr></tbody></table>
 type BillingProfileStatus struct {
-	StatusCode string `json:"statusCode,omitempty"`
+	StatusCode    string `json:"statusCode,omitempty"`
 	StatusMessage string `json:"statusMessage,omitempty"`
 }

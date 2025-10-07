@@ -9,10 +9,10 @@
 package sponsoreddisplayv3
 
 type NegativeTargetingClauseEx struct {
-	TargetId float64 `json:"targetId,omitempty"`
-	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State string `json:"state,omitempty"`
-	ExpressionType string `json:"expressionType,omitempty"`
+	TargetId       float64 `json:"targetId,omitempty"`
+	AdGroupId      float64 `json:"adGroupId,omitempty"`
+	State          string  `json:"state,omitempty"`
+	ExpressionType string  `json:"expressionType,omitempty"`
 	// The expression to negatively match against. * Only one brand may be specified per targeting expression. * Only one asin may be specified per targeting expression. * To exclude a brand from a targeting expression, you must create a negative targeting expression in the same ad group as the positive targeting expression.
 	Expression []NegativeTargetingClauseExExpression `json:"expression,omitempty"`
 	// The status of the target.

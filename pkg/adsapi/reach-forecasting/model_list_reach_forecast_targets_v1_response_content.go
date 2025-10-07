@@ -10,6 +10,6 @@ package reachforecasting
 
 type ListReachForecastTargetsV1ResponseContent struct {
 	// Token value for navigating to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
-	Targets []PlanningTargetV1 `json:"targets"`
+	NextToken string             `json:"nextToken,omitempty"`
+	Targets   []PlanningTargetV1 `json:"targets"`
 }

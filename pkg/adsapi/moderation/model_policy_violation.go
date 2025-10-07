@@ -12,9 +12,9 @@ type PolicyViolation struct {
 	// A human-readable description of the policy.
 	PolicyDescription string `json:"policyDescription,omitempty"`
 	// Address of the policy documentation. Follow the link to learn more about the specified policy.
-	PolicyLinkUrl string `json:"policyLinkUrl,omitempty"`
-	ViolatingAsinContents []ViolatingAsinContent `json:"violatingAsinContents,omitempty"`
+	PolicyLinkUrl          string                  `json:"policyLinkUrl,omitempty"`
+	ViolatingAsinContents  []ViolatingAsinContent  `json:"violatingAsinContents,omitempty"`
 	ViolatingImageContents []ViolatingImageContent `json:"violatingImageContents,omitempty"`
-	ViolatingTextContents []ViolatingTextContent `json:"violatingTextContents,omitempty"`
+	ViolatingTextContents  []ViolatingTextContent  `json:"violatingTextContents,omitempty"`
 	ViolatingVideoContents []ViolatingVideoContent `json:"violatingVideoContents,omitempty"`
 }

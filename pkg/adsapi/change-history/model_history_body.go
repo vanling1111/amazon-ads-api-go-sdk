@@ -10,14 +10,14 @@ package changehistory
 
 type HistoryBody struct {
 	// Requested number of results. Default 100. Minimum 50. Maximum 200.
-	Count int32 `json:"count,omitempty"`
+	Count      int32              `json:"count,omitempty"`
 	EventTypes *HistoryEventTypes `json:"eventTypes"`
 	// Max 90 days of history.
 	FromDate int32 `json:"fromDate"`
 	// token from previous response to get next set of data.
 	NextToken string `json:"nextToken,omitempty"`
 	// Mutually exclusive with 'nextToken'. Max results with pageOffset is 10000. Use nextToken instead for more results.
-	PageOffset int32 `json:"pageOffset,omitempty"`
-	Sort *HistorySortParameter `json:"sort,omitempty"`
-	ToDate int32 `json:"toDate"`
+	PageOffset int32                 `json:"pageOffset,omitempty"`
+	Sort       *HistorySortParameter `json:"sort,omitempty"`
+	ToDate     int32                 `json:"toDate"`
 }

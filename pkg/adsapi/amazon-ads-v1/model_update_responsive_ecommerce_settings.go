@@ -24,14 +24,14 @@ type UpdateResponsiveEcommerceSettings struct {
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
 	// The inventory types this creative should serve on.
-	InventoryTypes []ComponentInventoryType `json:"inventoryTypes,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
-	Logos *UpdateImage `json:"logos,omitempty"`
+	InventoryTypes      []ComponentInventoryType     `json:"inventoryTypes,omitempty"`
+	Language            *LanguageLocale              `json:"language,omitempty"`
+	Logos               *UpdateImage                 `json:"logos,omitempty"`
 	OptimizationGoalKpi *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
 	// The products advertised for the Responsive eCommerce experience.
 	Products []CreateAdvertisedProducts `json:"products,omitempty"`
 	// The rendering variations selected for the Responsive eCommerce experience.
-	RecAdVariations []ResponsiveEcommerceAdVariations `json:"recAdVariations,omitempty"`
-	ResponsiveSizingBehavior *ResponsiveSizingBehavior `json:"responsiveSizingBehavior,omitempty"`
-	SupportedThirdPartySellers *SupportedThirdPartySellers `json:"supportedThirdPartySellers,omitempty"`
+	RecAdVariations            []ResponsiveEcommerceAdVariations `json:"recAdVariations,omitempty"`
+	ResponsiveSizingBehavior   *ResponsiveSizingBehavior         `json:"responsiveSizingBehavior,omitempty"`
+	SupportedThirdPartySellers *SupportedThirdPartySellers       `json:"supportedThirdPartySellers,omitempty"`
 }

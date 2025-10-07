@@ -11,7 +11,7 @@ package creativeassets
 // Structure containing url, program, profile and metadata of processed output  program: This is the program for which this transcoding is done.  profile: This is the profile/outformat of the processed file.  url: This is the location of the processed file.  fileMetadata: This contains the metadata of file.
 type CaProcessedFile struct {
 	FileMetadata *CaProcessedFileMetadata `json:"fileMetadata,omitempty"`
-	Profile *CaProcessedUrlType `json:"profile,omitempty"`
-	Programs []CaProgram `json:"programs,omitempty"`
-	Url string `json:"url,omitempty"`
+	Profile      *CaProcessedUrlType      `json:"profile,omitempty"`
+	Programs     []CaProgram              `json:"programs,omitempty"`
+	Url          string                   `json:"url,omitempty"`
 }

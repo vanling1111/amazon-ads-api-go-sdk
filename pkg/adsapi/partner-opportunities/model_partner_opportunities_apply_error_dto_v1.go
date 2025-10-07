@@ -9,8 +9,8 @@
 package partneropportunities
 
 type PartnerOpportunitiesApplyErrorDtoV1 struct {
-	Code string `json:"code"`
-	Failures []PartnerOpportunitiesApplyErrorFailures `json:"failures"`
-	Message string `json:"message"`
+	Code      string                                    `json:"code"`
+	Failures  []PartnerOpportunitiesApplyErrorFailures  `json:"failures"`
+	Message   string                                    `json:"message"`
 	Successes []PartnerOpportunitiesApplyErrorSuccesses `json:"successes"`
 }

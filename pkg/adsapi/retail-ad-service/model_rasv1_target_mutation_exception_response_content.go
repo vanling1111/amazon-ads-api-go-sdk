@@ -10,8 +10,8 @@ package retailadservice
 
 // Exception resulting in mutating Target management entities
 type Rasv1TargetMutationExceptionResponseContent struct {
-	Code *Rasv1InvalidArgumentErrorCode `json:"code"`
-	Errors []Rasv1TargetMutationError `json:"errors,omitempty"`
+	Code   *Rasv1InvalidArgumentErrorCode `json:"code"`
+	Errors []Rasv1TargetMutationError     `json:"errors,omitempty"`
 	// Human readable error message
 	Message string `json:"message"`
 }

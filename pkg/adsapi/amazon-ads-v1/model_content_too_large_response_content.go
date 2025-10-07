@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type ContentTooLargeResponseContent struct {
-	Code *ErrorCode `json:"code"`
-	Message string `json:"message"`
+	Code    *ErrorCode `json:"code"`
+	Message string     `json:"message"`
 }

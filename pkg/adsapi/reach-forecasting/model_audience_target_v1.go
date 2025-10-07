@@ -12,6 +12,6 @@ type AudienceTargetV1 struct {
 	// The unique identifier for the audience. Use the [audiences](https://advertising.amazon.com/API/docs/en-us/audiences/#/Discovery/listAudiences) discovery resource to look up audience identifiers. <li>Included groups are joined by an intersection. Users must be in all of the groups specified to be included.</li> <li>Audiences within an inclusion group are joined by OR/ANY logic. Audiences within the exclusion group are joined by AND/ALL logic. This means that users can be in any of the audiences inside a group to be included or excluded.</li> <li>All audiences within the same group must either be included or excluded.</li> <li>You can specify up to 10 groups to be included, but only 1 group to be excluded.</li> <li>Up to 500 audience IDs can be specified per group.</li>
 	AudienceId string `json:"audienceId"`
 	// The string identifying a group of audiences. Only numbers formatted as strings are accepted (e.g., \"1\"). To add audiences to a new group, choose any string not currently being used on this forecast. To add audiences to an existing group, use the existing groupId from this forecast. You may specify up to 10 include groups and 1 exclude group.
-	GroupId string `json:"groupId,omitempty"`
+	GroupId    string                `json:"groupId,omitempty"`
 	TargetType *AudienceTargetTypeV1 `json:"targetType"`
 }

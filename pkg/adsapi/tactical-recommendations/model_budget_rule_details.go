@@ -9,8 +9,8 @@
 package tacticalrecommendations
 
 type BudgetRuleDetails struct {
-	BudgetIncreaseBy *BudgetRuleIncreaseBy `json:"budgetIncreaseBy,omitempty"`
-	Duration *BudgetRuleDuration `json:"duration,omitempty"`
+	BudgetIncreaseBy            *BudgetRuleIncreaseBy                  `json:"budgetIncreaseBy,omitempty"`
+	Duration                    *BudgetRuleDuration                    `json:"duration,omitempty"`
 	PerformanceMeasureCondition *BudgetRulePerformanceMeasureCondition `json:"performanceMeasureCondition,omitempty"`
 	// Name of the budget rule.
 	RuleName string `json:"ruleName,omitempty"`

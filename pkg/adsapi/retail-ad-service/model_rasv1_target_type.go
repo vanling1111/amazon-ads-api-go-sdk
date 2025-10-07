@@ -12,7 +12,7 @@ type Rasv1TargetType string
 
 // List of RASv1TargetType
 const (
-	AUTO_Rasv1TargetType Rasv1TargetType = "AUTO"
+	AUTO_Rasv1TargetType    Rasv1TargetType = "AUTO"
 	KEYWORD_Rasv1TargetType Rasv1TargetType = "KEYWORD"
 	PRODUCT_Rasv1TargetType Rasv1TargetType = "PRODUCT"
 )

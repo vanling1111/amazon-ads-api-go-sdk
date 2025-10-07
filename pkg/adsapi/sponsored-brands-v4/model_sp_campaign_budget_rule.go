@@ -13,7 +13,7 @@ type SpCampaignBudgetRule struct {
 	// Epoch time of budget rule update. Read-only.
 	LastUpdatedDate float64 `json:"lastUpdatedDate,omitempty"`
 	// Epoch time of budget rule creation. Read-only.
-	CreatedDate float64 `json:"createdDate,omitempty"`
+	CreatedDate float64              `json:"createdDate,omitempty"`
 	RuleDetails *SpBudgetRuleDetails `json:"ruleDetails,omitempty"`
 	// The budget rule identifier.
 	RuleId string `json:"ruleId"`

@@ -10,6 +10,6 @@ package posts
 
 // Additional information for a rejection of a post or profile.
 type RejectionEvidence struct {
-	ComponentId string `json:"componentId,omitempty"`
-	Type_ *RejectionEvidenceType `json:"type,omitempty"`
+	ComponentId string                 `json:"componentId,omitempty"`
+	Type_       *RejectionEvidenceType `json:"type,omitempty"`
 }

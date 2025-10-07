@@ -8,7 +8,7 @@
  */
 package billing
 
-// Government invoice data is provided in marketplaces (such as Italy or India) that require a government-assigned invoice ID. This object contains this identifier, along with the type of transaction (which will always be a debit in the case of an invoice) and presigned url link to download e-invoice document with expiry time of 45 sec. 
+// Government invoice data is provided in marketplaces (such as Italy or India) that require a government-assigned invoice ID. This object contains this identifier, along with the type of transaction (which will always be a debit in the case of an invoice) and presigned url link to download e-invoice document with expiry time of 45 sec.
 type GovernmentInvoiceInformation struct {
 	CountryCode string `json:"countryCode,omitempty"`
 	// PreSigned URL to grant time-limited download access for govt invoice pdf
@@ -17,5 +17,5 @@ type GovernmentInvoiceInformation struct {
 	GovernmentInvoiceId string `json:"governmentInvoiceId,omitempty"`
 	// PreSigned URL to grant time-limited download access for govt invoice XML
 	GovernmentXmlDocumentS3Link string `json:"governmentXmlDocumentS3Link,omitempty"`
-	TransactionType string `json:"transactionType,omitempty"`
+	TransactionType             string `json:"transactionType,omitempty"`
 }

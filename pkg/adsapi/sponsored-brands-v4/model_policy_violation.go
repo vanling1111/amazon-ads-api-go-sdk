@@ -10,11 +10,11 @@ package sponsoredbrandsv4
 
 type PolicyViolation struct {
 	// A human-readable description of the policy.
-	PolicyDescription string `json:"policyDescription,omitempty"`
-	ViolatingTextContents []ViolatingTextContent `json:"violatingTextContents,omitempty"`
+	PolicyDescription      string                  `json:"policyDescription,omitempty"`
+	ViolatingTextContents  []ViolatingTextContent  `json:"violatingTextContents,omitempty"`
 	ViolatingImageContents []ViolatingImageContent `json:"violatingImageContents,omitempty"`
 	// Address of the policy documentation. Follow the link to learn more about the specified policy.
-	PolicyLinkUrl string `json:"policyLinkUrl,omitempty"`
+	PolicyLinkUrl          string                  `json:"policyLinkUrl,omitempty"`
 	ViolatingVideoContents []ViolatingVideoContent `json:"violatingVideoContents,omitempty"`
-	ViolatingAsinContents []ViolatingAsinContent `json:"violatingAsinContents,omitempty"`
+	ViolatingAsinContents  []ViolatingAsinContent  `json:"violatingAsinContents,omitempty"`
 }

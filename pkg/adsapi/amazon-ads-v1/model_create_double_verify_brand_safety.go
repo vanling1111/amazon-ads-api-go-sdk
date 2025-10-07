@@ -10,10 +10,10 @@ package amazonadsv1
 
 type CreateDoubleVerifyBrandSafety struct {
 	// A list of app age ratings to be used for excluding apps. For example, TEENS_12_PLUS will only exclude apps with content rated for everyone ages 12 and over. UNKNOWN will exclude apps with content unrated or unknown to Double Verify.
-	AppAgeRating []DvBrandSafetyAppAgeRatingType `json:"appAgeRating,omitempty"`
+	AppAgeRating  []DvBrandSafetyAppAgeRatingType `json:"appAgeRating,omitempty"`
 	AppStarRating *DvBrandSafetyAppStarRatingType `json:"appStarRating,omitempty"`
 	// A list of content categories to exclude from targeting.
-	ContentCategories []DvBrandSafetyContentCategoryType `json:"contentCategories,omitempty"`
+	ContentCategories         []DvBrandSafetyContentCategoryType                `json:"contentCategories,omitempty"`
 	ContentCategoriesWithRisk []CreateDvBrandSafetyContentCategoriesWithRiskMap `json:"contentCategoriesWithRisk,omitempty"`
 	// Set to true to exclude unofficial apps or apps with insufficient user ratings (<100 lifetime).
 	ExcludeAppsWithInsufficientRating bool `json:"excludeAppsWithInsufficientRating,omitempty"`

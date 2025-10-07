@@ -10,5 +10,5 @@ package amazonadsv1
 
 type CampaignSuccessResponse struct {
 	Campaigns []Campaign `json:"campaigns,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken string     `json:"nextToken,omitempty"`
 }

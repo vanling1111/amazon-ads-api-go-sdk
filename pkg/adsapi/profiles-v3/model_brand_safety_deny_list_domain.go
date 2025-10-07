@@ -9,7 +9,7 @@
 package profilesv3
 
 type BrandSafetyDenyListDomain struct {
-	// The website or app identifier. This can be in the form of full domain (eg. 'example.com' or 'example.net'), or mobile app identifier (eg. 'com.example.app' for Android apps or '1234567890' for iOS apps) 
-	Name string `json:"name"`
+	// The website or app identifier. This can be in the form of full domain (eg. 'example.com' or 'example.net'), or mobile app identifier (eg. 'com.example.app' for Android apps or '1234567890' for iOS apps)
+	Name  string                         `json:"name"`
 	Type_ *BrandSafetyDenyListDomainType `json:"type"`
 }

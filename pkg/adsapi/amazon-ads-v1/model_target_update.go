@@ -14,10 +14,10 @@ type TargetUpdate struct {
 	CampaignId string `json:"campaignId,omitempty"`
 	// List of marketplace-specific configurations for a global target that enables overriding certain attributes at individual marketplace level. For example, if a global target is ENABLED but needs to be PAUSED in DE marketplace, you can specify: [{marketplace: DE, overrides: {state: PAUSED}}]. When a marketplace-specific override is not provided, the target's global value is applied to that marketplace.
 	MarketplaceConfigurations []CreateMarketplaceTargetConfigurations `json:"marketplaceConfigurations,omitempty"`
-	MarketplaceScope *MarketplaceScope `json:"marketplaceScope,omitempty"`
+	MarketplaceScope          *MarketplaceScope                       `json:"marketplaceScope,omitempty"`
 	// A list of country codes representing Amazon marketplaces | Marketplace | Description | | --- | --- | | `AE` |  | | `AU` |  | | `BE` |  | | `BR` |  | | `CA` |  | | `DE` |  | | `EG` |  | | `ES` |  | | `FR` |  | | `GB` |  | | `IN` |  | | `IT` |  | | `JP` |  | | `MX` |  | | `NL` |  | | `PL` |  | | `SA` |  | | `SE` |  | | `SG` |  | | `TR` |  | | `US` |  |
 	Marketplaces []Marketplace `json:"marketplaces,omitempty"`
-	State *UpdateState `json:"state,omitempty"`
+	State        *UpdateState  `json:"state,omitempty"`
 	// Open ended labels with a key value pair applied to the target
 	Tags []CreateTag `json:"tags,omitempty"`
 	// A unique identifier for the target.

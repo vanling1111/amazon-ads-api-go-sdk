@@ -79,4 +79,3 @@ func (c *Client) Do(req *http.Request) (*http.Response, error) {
 func (c *Client) GetHTTPClient() *http.Client {
 	return c.httpClient
 }
-

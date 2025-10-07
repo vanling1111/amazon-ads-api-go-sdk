@@ -10,6 +10,6 @@ package sponsoreddisplayv3
 
 type SnapshotRequest struct {
 	// Optional. Restricts results to entities with state within the specified comma-separated list. Default behavior is to include 'enabled' and 'paused'. You can include 'enabled', 'paused', and 'archived' or any combination.
-	StateFilter string `json:"stateFilter,omitempty"`
+	StateFilter  string        `json:"stateFilter,omitempty"`
 	TacticFilter *TacticFilter `json:"tacticFilter,omitempty"`
 }

@@ -12,7 +12,7 @@ type V2dpaudiencePatches struct {
 	// Specifies the type of operation. Valid operations are `add` or `remove`.
 	Op string `json:"op,omitempty"`
 	// A formatted string that specifies the URL of the record. The format of the string is `/<recordIdType>-<recordIdValue>/audiences`, where 'recordIdType' specifies the record's origin and 'recordIdValue' specifies the record's Id. Valid 'recordIdType' values are `COOKIE`, a cookie Id sent from a data provider to Amazon by a cookie sync; `MAID`, a mobile advertising identifier; `EXTERNAL_USER_ID`, an external id defined by data providers.
-	Path string `json:"path,omitempty"`
-	Value []int64 `json:"value,omitempty"`
+	Path    string               `json:"path,omitempty"`
+	Value   []int64              `json:"value,omitempty"`
 	Consent *V2dpaudienceConsent `json:"consent,omitempty"`
 }

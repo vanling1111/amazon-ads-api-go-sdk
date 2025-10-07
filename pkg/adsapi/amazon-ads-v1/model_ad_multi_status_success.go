@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type AdMultiStatusSuccess struct {
-	Ad *Ad `json:"ad"`
+	Ad    *Ad   `json:"ad"`
 	Index int32 `json:"index"`
 }

@@ -11,8 +11,8 @@ package sponsoredbrandsv4
 // Image component which needs to be pre moderated. A publicly accessible imageUrl must be sent.
 type ImageComponent struct {
 	// Type of the image component.
-	ComponentType string `json:"componentType"`
-	LandingPage *LandingPage `json:"landingPage,omitempty"`
+	ComponentType string       `json:"componentType"`
+	LandingPage   *LandingPage `json:"landingPage,omitempty"`
 	// Id of the component. The same will be returned as part of the response as well. This can be used to uniquely identify the component from the pre moderation response.
 	Id string `json:"id"`
 	// Url of the image to be pre moderated. The url must be publicly accessible.

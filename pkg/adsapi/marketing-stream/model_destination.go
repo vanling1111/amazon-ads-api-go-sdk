@@ -10,5 +10,5 @@ package marketingstream
 
 type Destination struct {
 	FirehoseDestination *FirehoseDestination `json:"firehoseDestination,omitempty"`
-	SqsDestination *SqsDestination `json:"sqsDestination,omitempty"`
+	SqsDestination      *SqsDestination      `json:"sqsDestination,omitempty"`
 }

@@ -9,6 +9,6 @@
 package retailadservice
 
 type Rasv1BulkCreateProductAdsOutcomes struct {
-	Error_ []Rasv1MutateProductAdFailureItem `json:"error,omitempty"`
+	Error_  []Rasv1MutateProductAdFailureItem `json:"error,omitempty"`
 	Success []Rasv1CreateProductAdSuccessItem `json:"success,omitempty"`
 }

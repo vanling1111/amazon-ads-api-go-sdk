@@ -10,5 +10,5 @@ package sponsoredbrandsv4
 
 type SbKeywordRecommendationThemeSuggestion struct {
 	Keywords []SbKeywordRecommendationThemeKeyword `json:"keywords,omitempty"`
-	Type_ *SbKeywordRecommendationThemeType `json:"type,omitempty"`
+	Type_    *SbKeywordRecommendationThemeType     `json:"type,omitempty"`
 }

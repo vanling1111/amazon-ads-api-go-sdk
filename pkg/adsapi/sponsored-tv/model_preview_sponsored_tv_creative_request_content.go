@@ -11,6 +11,6 @@ package sponsoredtv
 type PreviewSponsoredTvCreativeRequestContent struct {
 	AssetProperties *AssetProperties `json:"assetProperties,omitempty"`
 	// The unique identifier of the creative to preview. You must provide either `creativeId` or `assetProperties`. `creativeId` cannot be used in conjunction with `assetProperties`.
-	CreativeId string `json:"creativeId,omitempty"`
+	CreativeId           string                `json:"creativeId,omitempty"`
 	PreviewConfiguration *PreviewConfiguration `json:"previewConfiguration"`
 }

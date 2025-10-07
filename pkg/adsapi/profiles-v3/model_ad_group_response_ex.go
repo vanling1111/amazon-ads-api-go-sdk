@@ -19,8 +19,8 @@ type AdGroupResponseEx struct {
 	// The amount of the default bid associated with the ad group. Used if no bid is specified.
 	DefaultBid float64 `json:"defaultBid,omitempty"`
 	// The delivery state of the ad group.
-	State string `json:"state,omitempty"`
-	Tactic *Tactic `json:"tactic,omitempty"`
+	State        string                          `json:"state,omitempty"`
+	Tactic       *Tactic                         `json:"tactic,omitempty"`
 	CreativeType *CreativeTypeInCreativeResponse `json:"creativeType,omitempty"`
 	// The status of the ad group.
 	ServingStatus string `json:"servingStatus,omitempty"`

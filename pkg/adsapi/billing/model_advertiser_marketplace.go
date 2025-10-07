@@ -9,7 +9,7 @@
 package billing
 
 type AdvertiserMarketplace struct {
-	AdvertiserId string `json:"advertiserId"`
+	AdvertiserId   string           `json:"advertiserId"`
 	AdvertiserType *AdvertiserTypes `json:"advertiserType,omitempty"`
-	MarketplaceId string `json:"marketplaceId"`
+	MarketplaceId  string           `json:"marketplaceId"`
 }

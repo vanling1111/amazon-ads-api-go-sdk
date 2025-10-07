@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 // Errors not related to any of the other error types.
 type OtherError struct {
-	Reason string `json:"reason"`
-	Cause *ErrorCause `json:"cause"`
+	Reason string      `json:"reason"`
+	Cause  *ErrorCause `json:"cause"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

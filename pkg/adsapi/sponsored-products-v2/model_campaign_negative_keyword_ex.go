@@ -16,8 +16,8 @@ type CampaignNegativeKeywordEx struct {
 	// The campaign negative keyword state.
 	State string `json:"state,omitempty"`
 	// The text of the expression to match against a search query.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *NegativeMatchType `json:"matchType,omitempty"`
+	KeywordText string             `json:"keywordText,omitempty"`
+	MatchType   *NegativeMatchType `json:"matchType,omitempty"`
 	// Creation date in epoch time.
 	CreationDate float64 `json:"creationDate,omitempty"`
 	// Date of last update in epoch time.

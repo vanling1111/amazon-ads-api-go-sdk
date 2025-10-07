@@ -10,5 +10,5 @@ package changehistory
 
 type HistorySortParameter struct {
 	Direction string `json:"direction,omitempty"`
-	Key string `json:"key,omitempty"`
+	Key       string `json:"key,omitempty"`
 }

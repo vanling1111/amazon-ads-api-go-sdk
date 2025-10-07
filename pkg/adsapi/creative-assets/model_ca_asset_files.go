@@ -11,5 +11,5 @@ package creativeassets
 // Structure containing processed transcode files for an asset  defaultUrl: This is the location of the original source.  processedFiles: List of processed files with metadata.
 type CaAssetFiles struct {
 	ProcessedFiles []CaProcessedFile `json:"processedFiles,omitempty"`
-	DefaultUrl string `json:"defaultUrl,omitempty"`
+	DefaultUrl     string            `json:"defaultUrl,omitempty"`
 }

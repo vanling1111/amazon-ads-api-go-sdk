@@ -11,10 +11,10 @@ package sponsoredbrandsv4
 // Errors related to bids.
 type BiddingError struct {
 	// Exact error reason.
-	Reason string `json:"reason"`
-	Cause *ErrorCause `json:"cause"`
-	UpperLimit string `json:"upperLimit,omitempty"`
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	Reason     string      `json:"reason"`
+	Cause      *ErrorCause `json:"cause"`
+	UpperLimit string      `json:"upperLimit,omitempty"`
+	LowerLimit string      `json:"lowerLimit,omitempty"`
 	// Human readable error message.
 	Message string `json:"message"`
 }

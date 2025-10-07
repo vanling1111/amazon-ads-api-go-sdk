@@ -9,6 +9,6 @@
 package amazonattribution
 
 type Advertiser struct {
-	AdvertiserId string `json:"advertiserId,omitempty"`
+	AdvertiserId   string `json:"advertiserId,omitempty"`
 	AdvertiserName string `json:"advertiserName,omitempty"`
 }

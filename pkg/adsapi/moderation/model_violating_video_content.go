@@ -12,6 +12,6 @@ type ViolatingVideoContent struct {
 	// Moderation component which marked the policy violation.
 	ModeratedComponent string `json:"moderatedComponent,omitempty"`
 	// URL of the video which has the ad policy violation.
-	ReviewedVideoUrl string `json:"reviewedVideoUrl,omitempty"`
+	ReviewedVideoUrl        string                   `json:"reviewedVideoUrl,omitempty"`
 	ViolatingVideoEvidences []ViolatingVideoEvidence `json:"violatingVideoEvidences,omitempty"`
 }

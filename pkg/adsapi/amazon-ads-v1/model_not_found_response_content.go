@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type NotFoundResponseContent struct {
-	Code *ErrorCode `json:"code"`
-	Message string `json:"message"`
+	Code    *ErrorCode `json:"code"`
+	Message string     `json:"message"`
 }

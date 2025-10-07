@@ -10,7 +10,7 @@ package sponsoredbrandsv4
 
 type UpdateAdGroup struct {
 	// The name of the ad group.
-	Name string `json:"name,omitempty"`
+	Name  string                     `json:"name,omitempty"`
 	State *CreateOrUpdateEntityState `json:"state,omitempty"`
 	// The identifier of the keyword.
 	AdGroupId string `json:"adGroupId"`

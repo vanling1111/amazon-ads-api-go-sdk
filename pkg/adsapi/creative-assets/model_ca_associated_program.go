@@ -9,6 +9,6 @@
 package creativeassets
 
 type CaAssociatedProgram struct {
-	Metadata *map[string]string `json:"metadata,omitempty"`
-	ProgramName *CaProgram `json:"programName,omitempty"`
+	Metadata    *map[string]string `json:"metadata,omitempty"`
+	ProgramName *CaProgram         `json:"programName,omitempty"`
 }

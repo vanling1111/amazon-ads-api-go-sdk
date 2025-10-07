@@ -10,5 +10,5 @@ package personabuilder
 
 type Forecast struct {
 	DailyImpressions *ForecastBands `json:"dailyImpressions"`
-	DailyReach *ForecastBands `json:"dailyReach"`
+	DailyReach       *ForecastBands `json:"dailyReach"`
 }

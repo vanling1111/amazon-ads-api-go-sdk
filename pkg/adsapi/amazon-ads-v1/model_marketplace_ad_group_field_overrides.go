@@ -10,7 +10,7 @@ package amazonadsv1
 
 type MarketplaceAdGroupFieldOverrides struct {
 	// The name of the ad group for this marketplace
-	Name string `json:"name,omitempty"`
+	Name  string `json:"name,omitempty"`
 	State *State `json:"state,omitempty"`
 	// Marketplace specific tags for the ad group
 	Tags []Tag `json:"tags,omitempty"`

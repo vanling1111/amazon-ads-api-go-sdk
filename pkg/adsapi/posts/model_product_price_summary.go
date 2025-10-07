@@ -9,8 +9,8 @@
 package posts
 
 type ProductPriceSummary struct {
-	BasisPrice string `json:"basisPrice,omitempty"`
-	MaxPrice string `json:"maxPrice,omitempty"`
-	MinPrice string `json:"minPrice,omitempty"`
+	BasisPrice   string `json:"basisPrice,omitempty"`
+	MaxPrice     string `json:"maxPrice,omitempty"`
+	MinPrice     string `json:"minPrice,omitempty"`
 	WinningPrice string `json:"winningPrice,omitempty"`
 }

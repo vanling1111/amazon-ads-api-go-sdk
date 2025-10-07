@@ -473,4 +473,3 @@ func BenchmarkNewAPIClient(b *testing.B) {
 		_ = NewAPIClient(cfg)
 	}
 }
-

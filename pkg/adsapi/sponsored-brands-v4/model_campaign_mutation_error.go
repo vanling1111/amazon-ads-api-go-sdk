@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type CampaignMutationError struct {
 	// The type of the error.
-	ErrorType string `json:"errorType"`
+	ErrorType  string                         `json:"errorType"`
 	ErrorValue *CampaignMutationErrorSelector `json:"errorValue"`
 }

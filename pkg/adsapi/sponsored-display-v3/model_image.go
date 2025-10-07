@@ -13,6 +13,6 @@ type Image struct {
 	// The unique identifier of the image asset. This assetId comes from the Creative Asset Library.
 	AssetId string `json:"assetId"`
 	// The identifier of the particular image assetversion.
-	AssetVersion string `json:"assetVersion"`
+	AssetVersion        string                    `json:"assetVersion"`
 	CroppingCoordinates *ImageCroppingCoordinates `json:"croppingCoordinates,omitempty"`
 }

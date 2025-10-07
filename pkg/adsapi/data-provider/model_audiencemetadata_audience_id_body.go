@@ -10,6 +10,6 @@ package dataprovider
 
 // A data provider audience object with updated values.
 type AudiencemetadataAudienceIdBody struct {
-	Description string `json:"description,omitempty"`
-	Metadata *V2dpaudiencemetadataaudienceIdMetadata `json:"metadata,omitempty"`
+	Description string                                  `json:"description,omitempty"`
+	Metadata    *V2dpaudiencemetadataaudienceIdMetadata `json:"metadata,omitempty"`
 }

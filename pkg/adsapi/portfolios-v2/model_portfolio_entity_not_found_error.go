@@ -11,10 +11,10 @@ package portfoliosv2
 type PortfolioEntityNotFoundError struct {
 	Cause *ErrorCause `json:"cause"`
 	// The entity id in the request
-	EntityId string `json:"entityId"`
-	EntityType *PortfolioEntityType `json:"entityType"`
-	Marketplace string `json:"marketplace,omitempty"`
+	EntityId    string               `json:"entityId"`
+	EntityType  *PortfolioEntityType `json:"entityType"`
+	Marketplace string               `json:"marketplace,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *PortfolioEntityNotFoundErrorReason `json:"reason"`
+	Message string                              `json:"message"`
+	Reason  *PortfolioEntityNotFoundErrorReason `json:"reason"`
 }

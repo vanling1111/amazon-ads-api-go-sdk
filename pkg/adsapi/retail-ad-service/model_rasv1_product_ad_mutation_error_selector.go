@@ -9,15 +9,15 @@
 package retailadservice
 
 type Rasv1ProductAdMutationErrorSelector struct {
-	AdEligibilityError *Rasv1AdEligibilityError `json:"adEligibilityError,omitempty"`
+	AdEligibilityError  *Rasv1AdEligibilityError  `json:"adEligibilityError,omitempty"`
 	DuplicateValueError *Rasv1DuplicateValueError `json:"duplicateValueError,omitempty"`
 	EntityNotFoundError *Rasv1EntityNotFoundError `json:"entityNotFoundError,omitempty"`
-	EntityStateError *Rasv1EntityStateError `json:"entityStateError,omitempty"`
+	EntityStateError    *Rasv1EntityStateError    `json:"entityStateError,omitempty"`
 	InternalServerError *Rasv1InternalServerError `json:"internalServerError,omitempty"`
 	MalformedValueError *Rasv1MalformedValueError `json:"malformedValueError,omitempty"`
-	MissingValueError *Rasv1MissingValueError `json:"missingValueError,omitempty"`
-	OtherError *Rasv1OtherError `json:"otherError,omitempty"`
-	ParentEntityError *Rasv1ParentEntityError `json:"parentEntityError,omitempty"`
-	RangeError *Rasv1RangeError `json:"rangeError,omitempty"`
-	ThrottledError *Rasv1ThrottledError `json:"throttledError,omitempty"`
+	MissingValueError   *Rasv1MissingValueError   `json:"missingValueError,omitempty"`
+	OtherError          *Rasv1OtherError          `json:"otherError,omitempty"`
+	ParentEntityError   *Rasv1ParentEntityError   `json:"parentEntityError,omitempty"`
+	RangeError          *Rasv1RangeError          `json:"rangeError,omitempty"`
+	ThrottledError      *Rasv1ThrottledError      `json:"throttledError,omitempty"`
 }

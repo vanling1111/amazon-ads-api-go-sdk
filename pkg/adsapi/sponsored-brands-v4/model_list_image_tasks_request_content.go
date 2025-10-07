@@ -10,9 +10,9 @@ package sponsoredbrandsv4
 
 type ListImageTasksRequestContent struct {
 	StatusFilter *StatusFilter `json:"statusFilter,omitempty"`
-	MaxResults float64 `json:"maxResults,omitempty"`
+	MaxResults   float64       `json:"maxResults,omitempty"`
 	// Operations that return paginated results include a pagination token in this field. To retrieve the next page of results, call the same operation and specify this token in the request. If the `NextToken` field is empty, there are no further results.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken    string        `json:"nextToken,omitempty"`
 	TaskIdFilter *TaskIdFilter `json:"taskIdFilter,omitempty"`
-	BatchId string `json:"batchId"`
+	BatchId      string        `json:"batchId"`
 }

@@ -12,7 +12,7 @@ package billing
 type AdPaymentsPaymentResult struct {
 	ForeignExchange *AdPaymentsForeignExchange `json:"foreignExchange,omitempty"`
 	// The customer facing ID of the invoice.
-	InvoiceCFID string `json:"invoiceCFID"`
+	InvoiceCFID   string                    `json:"invoiceCFID"`
 	PaymentAmount *AdPaymentsCurrencyAmount `json:"paymentAmount,omitempty"`
 	// A human-readable reason explaining the payment result.
 	Reason string `json:"reason,omitempty"`

@@ -12,13 +12,13 @@ package dspaudiences
 type DspAudienceCreateRequestItem struct {
 	// Type of audience to create.
 	AudienceType string `json:"audienceType"`
-	// The ISO Alpha-2 code for the country in which the audience will be available during audience discovery and targeting setup.  **Notes:**  - If you are using a Global Advertising account, this field is required. - If you are not using a Global Advertising account, this field is optional. If used, it must be same as the advertiser's country. 
+	// The ISO Alpha-2 code for the country in which the audience will be available during audience discovery and targeting setup.  **Notes:**  - If you are using a Global Advertising account, this field is required. - If you are not using a Global Advertising account, this field is optional. If used, it must be same as the advertiser's country.
 	Country string `json:"country,omitempty"`
 	// The audience description.
 	Description string `json:"description"`
 	// The unique UUID for this requested audience.
 	IdempotencyKey string `json:"idempotencyKey"`
-	// The specified time period (in days) to include those who performed the action in the audience. Lookback Constraints Table: Provides available valid values of lookback allowed for given audienceType   | audienceType | lookback range |   |------------------------------|-------|   | PRODUCT_PURCHASES            | 1-365 |   | PRODUCT_VIEWS                |  1-90 |   | PRODUCT_SEARCH               |  1-90 |   | PRODUCT_SIMS                 |  1-90 |   | WHOLE_FOODS_MARKET_PURCHASES | 1-365 | 
+	// The specified time period (in days) to include those who performed the action in the audience. Lookback Constraints Table: Provides available valid values of lookback allowed for given audienceType   | audienceType | lookback range |   |------------------------------|-------|   | PRODUCT_PURCHASES            | 1-365 |   | PRODUCT_VIEWS                |  1-90 |   | PRODUCT_SEARCH               |  1-90 |   | PRODUCT_SIMS                 |  1-90 |   | WHOLE_FOODS_MARKET_PURCHASES | 1-365 |
 	Lookback int32 `json:"lookback"`
 	// The audience name.
 	Name string `json:"name"`

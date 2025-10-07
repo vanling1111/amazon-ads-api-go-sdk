@@ -9,7 +9,7 @@
 package exports
 
 type UniversalApiError struct {
-	// - INTERNAL_ERROR: The export has failed with an internal error. If the issue persists, please contact customer support. - TIMED_OUT: The export request has timed out. For exports with millions of entities, try using filters to reduce the size of the export. If the issue persists, please contact customer support. 
+	// - INTERNAL_ERROR: The export has failed with an internal error. If the issue persists, please contact customer support. - TIMED_OUT: The export request has timed out. For exports with millions of entities, try using filters to reduce the size of the export. If the issue persists, please contact customer support.
 	ErrorCode string `json:"errorCode,omitempty"`
 	// A human-readable description of the error.
 	Message string `json:"message"`

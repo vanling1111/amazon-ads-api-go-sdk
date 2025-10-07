@@ -11,6 +11,6 @@ package sponsoredbrandsv4
 type InvalidArgumentExceptionResponseContent struct {
 	Code *InvalidArgumentErrorCode `json:"code"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Errors []InvalidArgumentError `json:"errors,omitempty"`
+	Message string                 `json:"message"`
+	Errors  []InvalidArgumentError `json:"errors,omitempty"`
 }

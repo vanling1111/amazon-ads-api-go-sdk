@@ -17,10 +17,10 @@ type SurveyResponseResultV1M2 struct {
 	// Is the response a qualifying response. Used in calculating Brand Lift.
 	IsQualifyingResponse bool `json:"isQualifyingResponse,omitempty"`
 	// The percentage of margin of error for this response.
-	MarginOfError float64 `json:"marginOfError,omitempty"`
-	QuestionAsset *AssetV1M2 `json:"questionAsset,omitempty"`
+	MarginOfError     float64                        `json:"marginOfError,omitempty"`
+	QuestionAsset     *AssetV1M2                     `json:"questionAsset,omitempty"`
 	QuestionObjective *SurveyQuestionObjectiveTypeV1 `json:"questionObjective,omitempty"`
-	QuestionResponse *SurveyQuestionResponseV1M2 `json:"questionResponse,omitempty"`
+	QuestionResponse  *SurveyQuestionResponseV1M2    `json:"questionResponse,omitempty"`
 	// Sequence number of the question in the Survey.
 	QuestionSequence float64 `json:"questionSequence,omitempty"`
 	// Text of the Survey question.

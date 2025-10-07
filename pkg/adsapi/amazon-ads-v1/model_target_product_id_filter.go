@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type TargetProductIdFilter struct {
-	Include []string `json:"include"`
+	Include            []string                   `json:"include"`
 	QueryTermMatchType *TargetProductIdFilterType `json:"queryTermMatchType"`
 }

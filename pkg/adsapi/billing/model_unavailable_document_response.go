@@ -9,9 +9,9 @@
 package billing
 
 type UnavailableDocumentResponse struct {
-	ContentType string `json:"contentType,omitempty"`
-	DocType *DocType `json:"docType,omitempty"`
-	FileName string `json:"fileName,omitempty"`
-	Reason string `json:"reason,omitempty"`
-	StoragePath string `json:"storagePath,omitempty"`
+	ContentType string   `json:"contentType,omitempty"`
+	DocType     *DocType `json:"docType,omitempty"`
+	FileName    string   `json:"fileName,omitempty"`
+	Reason      string   `json:"reason,omitempty"`
+	StoragePath string   `json:"storagePath,omitempty"`
 }

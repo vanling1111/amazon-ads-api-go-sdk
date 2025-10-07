@@ -14,8 +14,8 @@ type AdGroupSuggestedKeywordsResponseEx struct {
 	// The campaign identifier.
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The suggested keyword.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	KeywordText string     `json:"keywordText,omitempty"`
+	MatchType   *MatchType `json:"matchType,omitempty"`
 	// The state of the ad for which the keyword is suggested.
 	State string `json:"state,omitempty"`
 	// The suggested bid for the suggested keyword. Note that this field will not be included in the response if the `suggestBids` query parameter is set to `no` in the request.

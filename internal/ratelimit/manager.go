@@ -78,4 +78,3 @@ func (m *Manager) SetRate(requestsPerSecond float64, burst int) {
 	m.limiter.SetLimit(rate.Limit(requestsPerSecond))
 	m.limiter.SetBurst(burst)
 }
-

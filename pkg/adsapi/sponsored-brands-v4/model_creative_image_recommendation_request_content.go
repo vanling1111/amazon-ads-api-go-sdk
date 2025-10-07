@@ -10,7 +10,7 @@ package sponsoredbrandsv4
 
 type CreativeImageRecommendationRequestContent struct {
 	// ----------------------------------------------- List types ----------------------------------------------- A list of ASINs
-	Asins []string `json:"asins"`
+	Asins        []string      `json:"asins"`
 	AssetSubType *AssetSubType `json:"assetSubType,omitempty"`
 	// Maximum number of recommendations that API should return. Response will [0, recommendations] recommendations (recommendations are not guaranteed).
 	MaxNumRecommendations float64 `json:"maxNumRecommendations,omitempty"`

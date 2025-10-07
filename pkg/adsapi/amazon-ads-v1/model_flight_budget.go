@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type FlightBudget struct {
-	BudgetType *BudgetType `json:"budgetType,omitempty"`
+	BudgetType  *BudgetType  `json:"budgetType,omitempty"`
 	BudgetValue *BudgetValue `json:"budgetValue,omitempty"`
 }

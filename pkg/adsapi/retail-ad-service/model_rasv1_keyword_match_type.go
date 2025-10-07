@@ -12,7 +12,7 @@ type Rasv1KeywordMatchType string
 
 // List of RASv1KeywordMatchType
 const (
-	BROAD_Rasv1KeywordMatchType Rasv1KeywordMatchType = "BROAD"
-	EXACT_Rasv1KeywordMatchType Rasv1KeywordMatchType = "EXACT"
+	BROAD_Rasv1KeywordMatchType  Rasv1KeywordMatchType = "BROAD"
+	EXACT_Rasv1KeywordMatchType  Rasv1KeywordMatchType = "EXACT"
 	PHRASE_Rasv1KeywordMatchType Rasv1KeywordMatchType = "PHRASE"
 )

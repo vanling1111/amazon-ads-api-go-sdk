@@ -38,8 +38,8 @@ type VendorProductPolicyV1M1 struct {
 	RequiredQuestionCategories []SurveyQuestionCategoryRequirementV1M1 `json:"requiredQuestionCategories,omitempty"`
 	// The required question objectives that need to be included as part of the survey.
 	RequiredQuestionObjectives []SurveyQuestionObjectiveTypeV1M1 `json:"requiredQuestionObjectives,omitempty"`
-	SupportedGoals []MeasurementGoalV1 `json:"supportedGoals,omitempty"`
-	SupportedMarketplaces []MeasurementMarketplaceV1 `json:"supportedMarketplaces,omitempty"`
+	SupportedGoals             []MeasurementGoalV1               `json:"supportedGoals,omitempty"`
+	SupportedMarketplaces      []MeasurementMarketplaceV1        `json:"supportedMarketplaces,omitempty"`
 	// List of supported verbs that can be used in survey questions.
 	SupportedVerbs []string `json:"supportedVerbs,omitempty"`
 	// Whether or not the vendor requires an additional sign off process to fully qualify for study.

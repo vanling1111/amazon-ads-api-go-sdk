@@ -10,17 +10,17 @@ package amazonadsv1
 
 type AdCreate struct {
 	// The ad group associated with the ad.
-	AdGroupId string `json:"adGroupId,omitempty"`
-	AdProduct *AdProduct `json:"adProduct"`
-	AdType *AdType `json:"adType"`
-	Creative *CreateCreative `json:"creative"`
+	AdGroupId string          `json:"adGroupId,omitempty"`
+	AdProduct *AdProduct      `json:"adProduct"`
+	AdType    *AdType         `json:"adType"`
+	Creative  *CreateCreative `json:"creative"`
 	// List of marketplace-specific configurations for a global ad that enables overriding certain attributes at individual marketplace level. For example, if a global ad is ENABLED but needs to be PAUSED in DE marketplace, you can specify: [{marketplace: DE, overrides: {state: PAUSED}}]. When a marketplace-specific override is not provided, the ad's global value is applied to that marketplace.
 	MarketplaceConfigurations []CreateMarketplaceAdConfigurations `json:"marketplaceConfigurations,omitempty"`
-	MarketplaceScope *MarketplaceScope `json:"marketplaceScope,omitempty"`
+	MarketplaceScope          *MarketplaceScope                   `json:"marketplaceScope,omitempty"`
 	// A list of country codes representing Amazon marketplaces | Marketplace | Description | | --- | --- | | `AE` |  | | `AU` |  | | `BE` |  | | `BR` |  | | `CA` |  | | `DE` |  | | `EG` |  | | `ES` |  | | `FR` |  | | `GB` |  | | `IN` |  | | `IT` |  | | `JP` |  | | `MX` |  | | `NL` |  | | `PL` |  | | `SA` |  | | `SE` |  | | `SG` |  | | `TR` |  | | `US` |  |
 	Marketplaces []Marketplace `json:"marketplaces,omitempty"`
 	// The name of the ad.
-	Name string `json:"name,omitempty"`
+	Name  string       `json:"name,omitempty"`
 	State *CreateState `json:"state"`
 	// Open ended labels with a key value pair applied to the ad
 	Tags []CreateTag `json:"tags,omitempty"`

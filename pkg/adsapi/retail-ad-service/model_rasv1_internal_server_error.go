@@ -12,6 +12,6 @@ package retailadservice
 type Rasv1InternalServerError struct {
 	Cause *Rasv1ErrorCause `json:"cause,omitempty"`
 	// Human readable error message
-	Message string `json:"message"`
-	Reason *Rasv1InternalServerErrorReason `json:"reason"`
+	Message string                          `json:"message"`
+	Reason  *Rasv1InternalServerErrorReason `json:"reason"`
 }

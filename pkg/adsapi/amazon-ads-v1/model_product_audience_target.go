@@ -10,8 +10,8 @@ package amazonadsv1
 
 // Target customers who have viewed or purchased a certain product within a specified lookback window.
 type ProductAudienceTarget struct {
-	Asin *MarketplaceStringValue `json:"asin,omitempty"`
-	Event *TargetEvent `json:"event,omitempty"`
-	Lookback *Lookback `json:"lookback,omitempty"`
+	Asin      *MarketplaceStringValue   `json:"asin,omitempty"`
+	Event     *TargetEvent              `json:"event,omitempty"`
+	Lookback  *Lookback                 `json:"lookback,omitempty"`
 	MatchType *ProductAudienceMatchType `json:"matchType,omitempty"`
 }

@@ -16,6 +16,6 @@ type Rasv1CreateAdGroupInput struct {
 	// The name of the ad group.
 	Name string `json:"name"`
 	// Id of retailer targeted by the ad group
-	RetailerId string `json:"retailerId"`
-	State *Rasv1EntityState `json:"state"`
+	RetailerId string            `json:"retailerId"`
+	State      *Rasv1EntityState `json:"state"`
 }

@@ -15,12 +15,12 @@ type KeywordEx struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which this keyword is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The text of the expression to match against a search query.
 	KeywordText string `json:"keywordText,omitempty"`
 	// The unlocalized keyword text in the preferred locale of the advertiser.
-	NativeLanguageKeyword string `json:"nativeLanguageKeyword,omitempty"`
-	MatchType *MatchType `json:"matchType,omitempty"`
+	NativeLanguageKeyword string     `json:"nativeLanguageKeyword,omitempty"`
+	MatchType             *MatchType `json:"matchType,omitempty"`
 	// Bid associated with this keyword. This table details the maximum allowable bid (in local currency) for keywords by marketplace: | Marketplace | Currency | Min / Max bid for SP | | --- | --- | --- | | US | USD | 0.02 / 1000 | | CA | CAD | 0.02 / 1000 | | UK | GBP | 0.02 / 1000 | | DE | EUR | 0.02 / 1000 | | FR | EUR | 0.02 / 1000 | | ES | EUR | 0.02 / 1000 | | IT | EUR | 0.02 / 1000 | | JP | JPY | 2.0 / 100000 | | AU | AUD | 0.10 / 1410 | | AE | AED | 0.24 / 184.0 |
 	Bid float32 `json:"bid,omitempty"`
 	// Creation date in epoch time.

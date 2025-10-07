@@ -10,10 +10,10 @@ package sponsoredtv
 
 // Errors related to bids.
 type BiddingError struct {
-	Cause *ErrorCause `json:"cause"`
-	LowerLimit string `json:"lowerLimit,omitempty"`
+	Cause      *ErrorCause `json:"cause"`
+	LowerLimit string      `json:"lowerLimit,omitempty"`
 	// Human readable error message.
-	Message string `json:"message"`
-	Reason *BiddingErrorReason `json:"reason"`
-	UpperLimit string `json:"upperLimit,omitempty"`
+	Message    string              `json:"message"`
+	Reason     *BiddingErrorReason `json:"reason"`
+	UpperLimit string              `json:"upperLimit,omitempty"`
 }

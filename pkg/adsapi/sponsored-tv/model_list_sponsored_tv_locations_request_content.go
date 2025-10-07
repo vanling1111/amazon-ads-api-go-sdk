@@ -9,8 +9,8 @@
 package sponsoredtv
 
 type ListSponsoredTvLocationsRequestContent struct {
-	AdGroupIdFilter *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
-	CampaignIdFilter *ObjectIdFilter `json:"campaignIdFilter,omitempty"`
+	AdGroupIdFilter            *ObjectIdFilter `json:"adGroupIdFilter,omitempty"`
+	CampaignIdFilter           *ObjectIdFilter `json:"campaignIdFilter,omitempty"`
 	LocationExpressionIdFilter *ObjectIdFilter `json:"locationExpressionIdFilter,omitempty"`
 	// Number of records to include in the Locations paginated response. Defaults to max page size for given API.
 	MaxResults int32 `json:"maxResults,omitempty"`

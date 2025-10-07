@@ -10,9 +10,9 @@ package sponsoredtv
 
 type UpdateAdGroup struct {
 	// The Ad Group ID.
-	AdGroupId string `json:"adGroupId"`
+	AdGroupId  string      `json:"adGroupId"`
 	DefaultBid *DefaultBid `json:"defaultBid,omitempty"`
 	// The name of the Ad Group.
-	Name string `json:"name,omitempty"`
+	Name  string                     `json:"name,omitempty"`
 	State *CreateOrUpdateEntityState `json:"state,omitempty"`
 }

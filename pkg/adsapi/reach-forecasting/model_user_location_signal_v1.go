@@ -12,7 +12,7 @@ type UserLocationSignalV1 string
 
 // List of UserLocationSignalV1
 const (
-	CURRENT_UserLocationSignalV1 UserLocationSignalV1 = "CURRENT"
-	HOME_UserLocationSignalV1 UserLocationSignalV1 = "HOME"
+	CURRENT_UserLocationSignalV1          UserLocationSignalV1 = "CURRENT"
+	HOME_UserLocationSignalV1             UserLocationSignalV1 = "HOME"
 	MULTIPLE_SIGNALS_UserLocationSignalV1 UserLocationSignalV1 = "MULTIPLE_SIGNALS"
 )

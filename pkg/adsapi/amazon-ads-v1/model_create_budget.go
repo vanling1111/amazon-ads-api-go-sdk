@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type CreateBudget struct {
-	BudgetType *BudgetType `json:"budgetType"`
-	BudgetValue *CreateBudgetValue `json:"budgetValue"`
-	RecurrenceTimePeriod *Recurrence `json:"recurrenceTimePeriod"`
+	BudgetType           *BudgetType        `json:"budgetType"`
+	BudgetValue          *CreateBudgetValue `json:"budgetValue"`
+	RecurrenceTimePeriod *Recurrence        `json:"recurrenceTimePeriod"`
 }

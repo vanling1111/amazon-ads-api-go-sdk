@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type NotFoundErrorResponseContent struct {
-	Code *NotFoundErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *NotFoundErrorCode `json:"code"`
+	RequestId string             `json:"requestId"`
+	Message   string             `json:"message"`
 }

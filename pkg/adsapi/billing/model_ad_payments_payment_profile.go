@@ -10,9 +10,9 @@ package billing
 
 // Represents a list of payment methods and the scope of advertisers able to access them.
 type AdPaymentsPaymentProfile struct {
-	DefaultFor *[]AdPaymentsEntityMarketplace `json:"defaultFor,omitempty"`
+	DefaultFor       *[]AdPaymentsEntityMarketplace `json:"defaultFor,omitempty"`
 	EligibleEntities *[]AdPaymentsEntityMarketplace `json:"eligibleEntities,omitempty"`
-	PaymentMethods *[]AdPaymentsPaymentMethod `json:"paymentMethods,omitempty"`
+	PaymentMethods   *[]AdPaymentsPaymentMethod     `json:"paymentMethods,omitempty"`
 	// The ID associated to this payment profile.
 	PaymentProfileId string `json:"paymentProfileId,omitempty"`
 }

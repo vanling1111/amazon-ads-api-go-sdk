@@ -11,6 +11,6 @@ package producteligibility
 type ReasonItem struct {
 	Code *ReasonCode `json:"code,omitempty"`
 	// Message explaining what the status means. Example: Payment preference not found for associated billing account. Please add a new payment method
-	Description string `json:"description,omitempty"`
-	Level *IneligibleLevel `json:"level,omitempty"`
+	Description string           `json:"description,omitempty"`
+	Level       *IneligibleLevel `json:"level,omitempty"`
 }

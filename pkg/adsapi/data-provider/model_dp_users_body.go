@@ -9,6 +9,6 @@
 package dataprovider
 
 type DpUsersBody struct {
-	Users []V2dpusersUsers `json:"users,omitempty"`
-	Operation string `json:"operation,omitempty"`
+	Users     []V2dpusersUsers `json:"users,omitempty"`
+	Operation string           `json:"operation,omitempty"`
 }

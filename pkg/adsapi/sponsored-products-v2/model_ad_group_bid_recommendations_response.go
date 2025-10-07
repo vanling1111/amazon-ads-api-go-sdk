@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type AdGroupBidRecommendationsResponse struct {
 	// The identifier of the ad group.
-	AdGroupId float64 `json:"adGroupId,omitempty"`
+	AdGroupId    float64       `json:"adGroupId,omitempty"`
 	SuggestedBid *SuggestedBid `json:"suggestedBid,omitempty"`
 }

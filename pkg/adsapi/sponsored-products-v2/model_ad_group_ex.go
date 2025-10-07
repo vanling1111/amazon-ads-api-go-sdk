@@ -17,7 +17,7 @@ type AdGroupEx struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The bid value used when no bid is specified for keywords in the ad group.
 	DefaultBid float64 `json:"defaultBid,omitempty"`
-	State *State `json:"state,omitempty"`
+	State      *State  `json:"state,omitempty"`
 	// The creation date of the ad group in epoch time.
 	CreationDate float64 `json:"creationDate,omitempty"`
 	// The date that any value associated with the ad group was last changed, in epoch time.

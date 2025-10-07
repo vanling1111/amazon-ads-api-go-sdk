@@ -12,6 +12,6 @@ type BillingAggregation struct {
 	// An identifier that helps associate this invoice with specific billing entities, such as campaigns or rodeo advertiser accounts.
 	BillingAggregationId string `json:"billingAggregationId,omitempty"`
 	// The resource path to suffix to the base URL endpoints to retrieve the corresponding billing aggregation entity, such as a specific campaign or all active campaigns under DSP Rodeo Advertiser. An example URL after suffixing will be 'https://advertising-api.amazon.com/dsp/orders/123'. The base URL endpoints for the different regions and marketplaces can be found in the Amazon Advertising API Reference Portal.
-	BillingAggregationResourcePath string `json:"billingAggregationResourcePath,omitempty"`
-	BillingLevel *BillingLevel `json:"billingLevel,omitempty"`
+	BillingAggregationResourcePath string        `json:"billingAggregationResourcePath,omitempty"`
+	BillingLevel                   *BillingLevel `json:"billingLevel,omitempty"`
 }

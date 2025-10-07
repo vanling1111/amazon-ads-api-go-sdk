@@ -11,8 +11,8 @@ package amazonadsv1
 // Target based on user device.
 type DeviceTarget struct {
 	DeviceOrientation *DeviceOrientation `json:"deviceOrientation,omitempty"`
-	DeviceType *DeviceType `json:"deviceType,omitempty"`
-	MobileDevice *MobileDevice `json:"mobileDevice,omitempty"`
+	DeviceType        *DeviceType        `json:"deviceType,omitempty"`
+	MobileDevice      *MobileDevice      `json:"mobileDevice,omitempty"`
 	MobileEnvironment *MobileEnvironment `json:"mobileEnvironment,omitempty"`
-	MobileOs *MobileOs `json:"mobileOs,omitempty"`
+	MobileOs          *MobileOs          `json:"mobileOs,omitempty"`
 }

@@ -11,6 +11,6 @@ package dspconversions
 type OrderAssociatedConversionDefinitionsResponseV1 struct {
 	// List of associated ConversionDefinition identifiers for the order.
 	ConversionDefinitionIds []string `json:"conversionDefinitionIds,omitempty"`
-	MaxResults string `json:"maxResults,omitempty"`
-	NextToken string `json:"nextToken,omitempty"`
+	MaxResults              string   `json:"maxResults,omitempty"`
+	NextToken               string   `json:"nextToken,omitempty"`
 }

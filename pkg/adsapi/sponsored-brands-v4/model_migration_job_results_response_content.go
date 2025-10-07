@@ -11,8 +11,8 @@ package sponsoredbrandsv4
 type MigrationJobResultsResponseContent struct {
 	JobId string `json:"jobId,omitempty"`
 	// Enumerated status code for migration job status | Status                                             |  Description | |----------------------------------------------------------|--------------| | COMPLETE  | Migration job is complete | | FAILED    | Migration failed and no V3 campaigns were migrated | | IN_PROGRESS    | Migration job is running |
-	MigrationJobStatus string `json:"migrationJobStatus,omitempty"`
-	Campaigns []CampaignMigrationFinalStatus `json:"campaigns,omitempty"`
+	MigrationJobStatus string                         `json:"migrationJobStatus,omitempty"`
+	Campaigns          []CampaignMigrationFinalStatus `json:"campaigns,omitempty"`
 	// Token value allowing to navigate to the next response page.
 	NextToken string `json:"nextToken,omitempty"`
 }

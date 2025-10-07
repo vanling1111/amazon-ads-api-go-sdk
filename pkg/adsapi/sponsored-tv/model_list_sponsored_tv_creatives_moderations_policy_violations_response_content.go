@@ -10,6 +10,6 @@ package sponsoredtv
 
 type ListSponsoredTvCreativesModerationsPolicyViolationsResponseContent struct {
 	// Token value allowing to navigate to the next response page.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken        string                       `json:"nextToken,omitempty"`
 	PolicyViolations []SponsoredTvPolicyViolation `json:"policyViolations,omitempty"`
 }

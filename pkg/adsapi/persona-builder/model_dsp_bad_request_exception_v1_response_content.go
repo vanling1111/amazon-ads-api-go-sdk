@@ -9,7 +9,7 @@
 package personabuilder
 
 type DspBadRequestExceptionV1ResponseContent struct {
-	Errors []DspSubErrorV1 `json:"errors,omitempty"`
-	Message string `json:"message,omitempty"`
-	RequestId string `json:"requestId,omitempty"`
+	Errors    []DspSubErrorV1 `json:"errors,omitempty"`
+	Message   string          `json:"message,omitempty"`
+	RequestId string          `json:"requestId,omitempty"`
 }

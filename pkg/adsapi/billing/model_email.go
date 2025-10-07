@@ -9,7 +9,7 @@
 package billing
 
 type Email struct {
-	// Customer name used in email communication. 
-	DisplayName string `json:"displayName"`
+	// Customer name used in email communication.
+	DisplayName  string `json:"displayName"`
 	EmailAddress string `json:"emailAddress"`
 }

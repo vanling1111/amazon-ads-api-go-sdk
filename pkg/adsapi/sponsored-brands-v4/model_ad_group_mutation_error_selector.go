@@ -9,8 +9,8 @@
 package sponsoredbrandsv4
 
 type AdGroupMutationErrorSelector struct {
-	DateError *DateError `json:"dateError,omitempty"`
+	DateError    *DateError    `json:"dateError,omitempty"`
 	BiddingError *BiddingError `json:"biddingError,omitempty"`
-	RangeError *RangeError `json:"rangeError,omitempty"`
-	OtherError *OtherError `json:"otherError,omitempty"`
+	RangeError   *RangeError   `json:"rangeError,omitempty"`
+	OtherError   *OtherError   `json:"otherError,omitempty"`
 }

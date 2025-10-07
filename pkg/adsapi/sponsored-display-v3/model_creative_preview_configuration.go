@@ -12,10 +12,10 @@ package sponsoreddisplayv3
 type CreativePreviewConfiguration struct {
 	Size *CreativePreviewConfigurationSize `json:"size,omitempty"`
 	// The products to preview. Currently only the first product is previewable.
-	Products []CreativePreviewConfigurationProducts `json:"products,omitempty"`
-	LandingPageURL string `json:"landingPageURL,omitempty"`
-	LandingPageType *LandingPageType `json:"landingPageType,omitempty"`
-	AdName string `json:"adName,omitempty"`
+	Products        []CreativePreviewConfigurationProducts `json:"products,omitempty"`
+	LandingPageURL  string                                 `json:"landingPageURL,omitempty"`
+	LandingPageType *LandingPageType                       `json:"landingPageType,omitempty"`
+	AdName          string                                 `json:"adName,omitempty"`
 	// Preview the creative as if it is on a mobile environment.
 	IsMobile bool `json:"isMobile,omitempty"`
 	// Preview the creative as if it is on an amazon site or third party site. The main difference is whether the preview will contain an AdChoices icon.

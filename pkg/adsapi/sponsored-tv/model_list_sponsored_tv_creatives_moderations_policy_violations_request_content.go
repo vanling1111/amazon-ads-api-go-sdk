@@ -10,7 +10,7 @@ package sponsoredtv
 
 type ListSponsoredTvCreativesModerationsPolicyViolationsRequestContent struct {
 	CreativeIdFilter *CreativeIdFilter `json:"creativeIdFilter"`
-	Locale *Locale `json:"locale,omitempty"`
+	Locale           *Locale           `json:"locale,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size for given API.
 	MaxResults int32 `json:"maxResults,omitempty"`
 	// Token value allowing to navigate to the next response page.

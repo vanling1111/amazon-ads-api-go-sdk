@@ -9,6 +9,6 @@
 package dspconversions
 
 type BatchDeleteUserEventsResponseV1 struct {
-	Error_ []ConversionDeletionRequestErrorResponseV1 `json:"error,omitempty"`
+	Error_  []ConversionDeletionRequestErrorResponseV1   `json:"error,omitempty"`
 	Success []ConversionDeletionRequestSuccessResponseV1 `json:"success,omitempty"`
 }

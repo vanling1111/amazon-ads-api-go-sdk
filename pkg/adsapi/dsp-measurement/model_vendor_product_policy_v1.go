@@ -36,8 +36,8 @@ type VendorProductPolicyV1 struct {
 	MinimumSurveyQuestions int32 `json:"minimumSurveyQuestions,omitempty"`
 	// The required question objectives that need to be included as part of the survey.
 	RequiredQuestionObjectives []SurveyQuestionObjectiveTypeV1 `json:"requiredQuestionObjectives,omitempty"`
-	SupportedGoals []MeasurementGoalV1 `json:"supportedGoals,omitempty"`
-	SupportedMarketplaces []MeasurementMarketplaceV1 `json:"supportedMarketplaces,omitempty"`
+	SupportedGoals             []MeasurementGoalV1             `json:"supportedGoals,omitempty"`
+	SupportedMarketplaces      []MeasurementMarketplaceV1      `json:"supportedMarketplaces,omitempty"`
 	// Whether or not the vendor requires an additional sign off process to fully qualify for study.
 	VendorApprovalRequired bool `json:"vendorApprovalRequired,omitempty"`
 	// vendor product canonical identifier.

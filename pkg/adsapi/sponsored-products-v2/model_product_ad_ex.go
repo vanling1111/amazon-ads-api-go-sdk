@@ -18,7 +18,7 @@ type ProductAdEx struct {
 	// The SKU associated with the product. Defined for seller accounts only.
 	Sku string `json:"sku,omitempty"`
 	// The ASIN associated with the product. Defined for vendors only.
-	Asin string `json:"asin,omitempty"`
+	Asin  string `json:"asin,omitempty"`
 	State *State `json:"state,omitempty"`
 	// The epoch date the product ad was created.
 	CreationDate float64 `json:"creationDate,omitempty"`

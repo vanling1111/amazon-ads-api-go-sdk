@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type AdNameFilter struct {
-	Include []string `json:"include"`
+	Include            []string          `json:"include"`
 	QueryTermMatchType *AdNameFilterType `json:"queryTermMatchType"`
 }

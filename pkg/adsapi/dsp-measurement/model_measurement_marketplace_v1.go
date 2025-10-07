@@ -14,6 +14,6 @@ type MeasurementMarketplaceV1 struct {
 	// The minimum budget. Expressed in dollars.
 	MinimumBudget float64 `json:"minimumBudget,omitempty"`
 	// The minimum impressions.
-	MinimumImpressions int64 `json:"minimumImpressions,omitempty"`
-	SupportedLocales []MeasurementLocaleV1 `json:"supportedLocales,omitempty"`
+	MinimumImpressions int64                 `json:"minimumImpressions,omitempty"`
+	SupportedLocales   []MeasurementLocaleV1 `json:"supportedLocales,omitempty"`
 }

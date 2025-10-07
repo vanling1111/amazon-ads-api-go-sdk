@@ -10,6 +10,6 @@ package audiencesdiscovery
 
 type DspAudienceErrorItemError struct {
 	ErrorType *ErrorType `json:"errorType"`
-	FieldName string `json:"fieldName,omitempty"`
-	Message string `json:"message"`
+	FieldName string     `json:"fieldName,omitempty"`
+	Message   string     `json:"message"`
 }

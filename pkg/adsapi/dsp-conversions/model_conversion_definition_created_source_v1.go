@@ -12,7 +12,7 @@ type ConversionDefinitionCreatedSourceV1 string
 
 // List of ConversionDefinitionCreatedSourceV1
 const (
-	AMAZON_AD_TAG_ConversionDefinitionCreatedSourceV1 ConversionDefinitionCreatedSourceV1 = "AMAZON_AD_TAG"
-	MMP_ConversionDefinitionCreatedSourceV1 ConversionDefinitionCreatedSourceV1 = "MMP"
+	AMAZON_AD_TAG_ConversionDefinitionCreatedSourceV1    ConversionDefinitionCreatedSourceV1 = "AMAZON_AD_TAG"
+	MMP_ConversionDefinitionCreatedSourceV1              ConversionDefinitionCreatedSourceV1 = "MMP"
 	SERVER_TO_SERVER_ConversionDefinitionCreatedSourceV1 ConversionDefinitionCreatedSourceV1 = "SERVER_TO_SERVER"
 )

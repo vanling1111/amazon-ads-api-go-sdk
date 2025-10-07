@@ -10,9 +10,9 @@ package amazonadsv1
 
 // Target based on a specified audience ID.
 type AudienceTarget struct {
-	AcrossGroupOperator *AcrossGroupOperator `json:"acrossGroupOperator,omitempty"`
-	AudienceId *MarketplaceStringValue `json:"audienceId,omitempty"`
+	AcrossGroupOperator *AcrossGroupOperator    `json:"acrossGroupOperator,omitempty"`
+	AudienceId          *MarketplaceStringValue `json:"audienceId,omitempty"`
 	// The string identifying a group of audiences. Only numbers formatted as strings are accepted (e.g. '1'). To add audiences to a new group, choose any string not currently being used on this ad group. To add audiences to an existing group, use the existing groupId from this ad group. You may specify up to 10 include groups and 1 exclude group.
-	GroupId string `json:"groupId,omitempty"`
+	GroupId         string           `json:"groupId,omitempty"`
 	InGroupOperator *InGroupOperator `json:"inGroupOperator,omitempty"`
 }

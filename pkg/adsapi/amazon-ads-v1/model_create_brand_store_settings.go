@@ -14,7 +14,7 @@ type CreateBrandStoreSettings struct {
 	// The body text to use for the Brand Store Creative experience.
 	BodyText []string `json:"bodyText,omitempty"`
 	// The brand of the product(s) being advertised.
-	Brand string `json:"brand,omitempty"`
+	Brand         string                        `json:"brand,omitempty"`
 	CallToActions *CreateBrandStoreCallToAction `json:"callToActions,omitempty"`
 	// The third party urls to trigger when an click is recorded.
 	ClickTrackingUrls []CreateCreativeTrackingUrl `json:"clickTrackingUrls,omitempty"`
@@ -27,11 +27,11 @@ type CreateBrandStoreSettings struct {
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
 	// The inventory types this creative should serve on.
-	InventoryTypes []ComponentInventoryType `json:"inventoryTypes,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
-	Logos *CreateImage `json:"logos,omitempty"`
-	OptimizationGoalKpi *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
-	ResponsiveSizingBehavior *ResponsiveSizingBehavior `json:"responsiveSizingBehavior,omitempty"`
+	InventoryTypes           []ComponentInventoryType     `json:"inventoryTypes,omitempty"`
+	Language                 *LanguageLocale              `json:"language,omitempty"`
+	Logos                    *CreateImage                 `json:"logos,omitempty"`
+	OptimizationGoalKpi      *CreativeOptimizationGoalKpi `json:"optimizationGoalKpi,omitempty"`
+	ResponsiveSizingBehavior *ResponsiveSizingBehavior    `json:"responsiveSizingBehavior,omitempty"`
 	// The square image(s) to use.
 	SquareImages []CreateImage `json:"squareImages,omitempty"`
 	// The tall image(s) to use.

@@ -12,13 +12,13 @@ type CreateCampaign struct {
 	// The identifier of an existing portfolio to which the campaign is associated.
 	PortfolioId float64 `json:"portfolioId,omitempty"`
 	// A name for the campaign. Note that idempotency for this field works different for sellers and vendors. Sellers aren't allowed to have duplicate campaign names, but vendors can have duplicate campaign names.
-	Name string `json:"name,omitempty"`
+	Name string             `json:"name,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
 	// The advertising product managed by this campaign.
 	CampaignType string `json:"campaignType,omitempty"`
 	// The type of targeting for the campaign.
 	TargetingType string `json:"targetingType,omitempty"`
-	State *State `json:"state,omitempty"`
+	State         *State `json:"state,omitempty"`
 	// A daily budget for the campaign.
 	DailyBudget float32 `json:"dailyBudget,omitempty"`
 	// A starting date for the campaign to go live. The format of the date is YYYYMMDD.
@@ -26,6 +26,6 @@ type CreateCampaign struct {
 	// An ending date for the campaign to stop running. The format of the date is YYYYMMDD.
 	EndDate string `json:"endDate,omitempty"`
 	// If set to true, Amazon increases the default bid for ads that are eligible to appear in this placement. See developer notes for more information.
-	PremiumBidAdjustment bool `json:"premiumBidAdjustment,omitempty"`
-	Bidding *Bidding `json:"bidding,omitempty"`
+	PremiumBidAdjustment bool     `json:"premiumBidAdjustment,omitempty"`
+	Bidding              *Bidding `json:"bidding,omitempty"`
 }

@@ -9,6 +9,6 @@
 package amazonadsv1
 
 type TargetMultiStatusSuccess struct {
-	Index int32 `json:"index"`
+	Index  int32   `json:"index"`
 	Target *Target `json:"target"`
 }

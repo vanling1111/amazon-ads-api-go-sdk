@@ -12,10 +12,10 @@ type PaymentMethod string
 
 // List of paymentMethod
 const (
-	CREDIT_CARD_PaymentMethod PaymentMethod = "CREDIT_CARD"
-	DEDUCT_FROM_PAYMENT_PaymentMethod PaymentMethod = "DEDUCT_FROM_PAYMENT"
-	DIRECT_DEBIT_PaymentMethod PaymentMethod = "DIRECT_DEBIT"
+	CREDIT_CARD_PaymentMethod               PaymentMethod = "CREDIT_CARD"
+	DEDUCT_FROM_PAYMENT_PaymentMethod       PaymentMethod = "DEDUCT_FROM_PAYMENT"
+	DIRECT_DEBIT_PaymentMethod              PaymentMethod = "DIRECT_DEBIT"
 	ELECTRONIC_FUNDS_TRANSFER_PaymentMethod PaymentMethod = "ELECTRONIC_FUNDS_TRANSFER"
-	PREPAY_PaymentMethod PaymentMethod = "PREPAY"
-	UNIFIED_BILLING_PaymentMethod PaymentMethod = "UNIFIED_BILLING"
+	PREPAY_PaymentMethod                    PaymentMethod = "PREPAY"
+	UNIFIED_BILLING_PaymentMethod           PaymentMethod = "UNIFIED_BILLING"
 )

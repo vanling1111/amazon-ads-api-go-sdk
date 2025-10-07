@@ -10,6 +10,6 @@ package sponsoredproductsv2
 
 type ProductRecommendationsResponse struct {
 	// The total number of recommendations in the response.
-	TotalResultCount float64 `json:"totalResultCount,omitempty"`
+	TotalResultCount    float64                                             `json:"totalResultCount,omitempty"`
 	RecommendedProducts []ProductRecommendationsResponseRecommendedProducts `json:"recommendedProducts,omitempty"`
 }

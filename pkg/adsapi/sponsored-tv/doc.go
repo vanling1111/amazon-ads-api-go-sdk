@@ -48,4 +48,3 @@
 //
 // Dual-licensed: AGPL-3.0 (open source) / Commercial License (proprietary)
 package sponsoredtv
-

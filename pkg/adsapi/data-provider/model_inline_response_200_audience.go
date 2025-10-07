@@ -9,9 +9,9 @@
 package dataprovider
 
 type InlineResponse200Audience struct {
-	Id int64 `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-	AdvertiserId int64 `json:"advertiserId,omitempty"`
-	Metadata *InlineResponse200AudienceMetadata `json:"metadata,omitempty"`
+	Id           int64                              `json:"id,omitempty"`
+	Name         string                             `json:"name,omitempty"`
+	Description  string                             `json:"description,omitempty"`
+	AdvertiserId int64                              `json:"advertiserId,omitempty"`
+	Metadata     *InlineResponse200AudienceMetadata `json:"metadata,omitempty"`
 }

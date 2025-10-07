@@ -9,10 +9,10 @@
 package personabuilder
 
 type PrimeVideoInsight struct {
-	Actors []ActorInsight `json:"actors,omitempty"`
+	Actors    []ActorInsight    `json:"actors,omitempty"`
 	DateRange *DateRangeInsight `json:"dateRange,omitempty"`
 	Directors []DirectorInsight `json:"directors,omitempty"`
-	Genres []GenreInsight `json:"genres,omitempty"`
-	Movies []MovieInsight `json:"movies,omitempty"`
-	Series []SeriesInsight `json:"series,omitempty"`
+	Genres    []GenreInsight    `json:"genres,omitempty"`
+	Movies    []MovieInsight    `json:"movies,omitempty"`
+	Series    []SeriesInsight   `json:"series,omitempty"`
 }

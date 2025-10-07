@@ -12,6 +12,6 @@ package advertisingaccounts
 type AdsAccount struct {
 	AccountName string `json:"accountName,omitempty"`
 	// This is the global advertising account Id from the client.
-	AdsAccountId string `json:"adsAccountId"`
-	Status *Status `json:"status,omitempty"`
+	AdsAccountId string  `json:"adsAccountId"`
+	Status       *Status `json:"status,omitempty"`
 }

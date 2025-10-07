@@ -10,6 +10,6 @@ package profilesv3
 
 type CreativeModerationViolatingVideoContents struct {
 	// Address of the video reviewed during moderation.
-	ReviewedVideoUrl string `json:"reviewedVideoUrl,omitempty"`
-	VideoEvidences []CreativeModerationVideoEvidences `json:"videoEvidences,omitempty"`
+	ReviewedVideoUrl string                             `json:"reviewedVideoUrl,omitempty"`
+	VideoEvidences   []CreativeModerationVideoEvidences `json:"videoEvidences,omitempty"`
 }

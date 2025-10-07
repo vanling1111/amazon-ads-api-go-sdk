@@ -9,29 +9,29 @@
 package billing
 
 type InvoiceLine struct {
-	CampaignId int64 `json:"campaignId,omitempty"`
+	CampaignId   int64  `json:"campaignId,omitempty"`
 	CampaignName string `json:"campaignName,omitempty"`
 	// Campaign tags in the form of string key-value pairs.
-	CampaignTags map[string]string `json:"campaignTags,omitempty"`
-	CommissionAmount *CurrencyAmount `json:"commissionAmount,omitempty"`
-	CommissionRate float64 `json:"commissionRate,omitempty"`
-	Cost *CurrencyAmount `json:"cost"`
+	CampaignTags     map[string]string `json:"campaignTags,omitempty"`
+	CommissionAmount *CurrencyAmount   `json:"commissionAmount,omitempty"`
+	CommissionRate   float64           `json:"commissionRate,omitempty"`
+	Cost             *CurrencyAmount   `json:"cost"`
 	// Number of clicks/impressions charged
 	CostEventCount int64 `json:"costEventCount"`
 	// Type of event charged (clicks or impressions)
 	CostEventType string `json:"costEventType"`
-	// Ad spends cost (Cost exclusive of adjustments/promotions/fees/etc) per unit (thousand impressions/clicks). 
+	// Ad spends cost (Cost exclusive of adjustments/promotions/fees/etc) per unit (thousand impressions/clicks).
 	CostPerEventType float64 `json:"costPerEventType,omitempty"`
-	CostPerUnit float64 `json:"costPerUnit"`
-	// Charges can include different fees (see feeType below). 
-	Fees []Fee `json:"fees,omitempty"`
+	CostPerUnit      float64 `json:"costPerUnit"`
+	// Charges can include different fees (see feeType below).
+	Fees []Fee  `json:"fees,omitempty"`
 	Name string `json:"name"`
-	// Sponsored Ads only. This identifier maps to one of the portfolios listed in the portfolios section. 
+	// Sponsored Ads only. This identifier maps to one of the portfolios listed in the portfolios section.
 	PortfolioId int64 `json:"portfolioId,omitempty"`
 	// Metric used for performance measurement.
-	PriceType string `json:"priceType"`
-	ProgramName *AdProgram `json:"programName,omitempty"`
-	PromotionAmount *CurrencyAmount `json:"promotionAmount,omitempty"`
-	PurchaseOrderNumber string `json:"purchaseOrderNumber,omitempty"`
-	SupplyCost *CurrencyAmount `json:"supplyCost,omitempty"`
+	PriceType           string          `json:"priceType"`
+	ProgramName         *AdProgram      `json:"programName,omitempty"`
+	PromotionAmount     *CurrencyAmount `json:"promotionAmount,omitempty"`
+	PurchaseOrderNumber string          `json:"purchaseOrderNumber,omitempty"`
+	SupplyCost          *CurrencyAmount `json:"supplyCost,omitempty"`
 }

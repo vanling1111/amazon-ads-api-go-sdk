@@ -10,11 +10,11 @@ package sponsoredbrandsv4
 
 // The ad group settings.
 type SbForecastingAdGroup struct {
-	Targets []SbForecastingProductTarget `json:"targets,omitempty"`
-	NegativeTargets []SbForecastingNegativeProductTarget `json:"negativeTargets,omitempty"`
-	LandingPages []SbForecastingLandingPageObject `json:"landingPages,omitempty"`
-	Themes []SbForecastingTheme `json:"themes,omitempty"`
-	Keywords []SbForecastingKeyword `json:"keywords,omitempty"`
-	NegativeKeywords []SbForecastingNegativeKeyword `json:"negativeKeywords,omitempty"`
-	CreativeAsins []string `json:"creativeAsins,omitempty"`
+	Targets          []SbForecastingProductTarget         `json:"targets,omitempty"`
+	NegativeTargets  []SbForecastingNegativeProductTarget `json:"negativeTargets,omitempty"`
+	LandingPages     []SbForecastingLandingPageObject     `json:"landingPages,omitempty"`
+	Themes           []SbForecastingTheme                 `json:"themes,omitempty"`
+	Keywords         []SbForecastingKeyword               `json:"keywords,omitempty"`
+	NegativeKeywords []SbForecastingNegativeKeyword       `json:"negativeKeywords,omitempty"`
+	CreativeAsins    []string                             `json:"creativeAsins,omitempty"`
 }

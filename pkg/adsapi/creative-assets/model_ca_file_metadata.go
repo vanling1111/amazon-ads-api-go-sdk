@@ -13,15 +13,15 @@ type CaFileMetadata struct {
 	// The extension of the file name.
 	Extension string `json:"extension,omitempty"`
 	// The asset size in bytes.
-	FileSize float64 `json:"fileSize,omitempty"`
-	ResolutionHeight int32 `json:"resolutionHeight,omitempty"`
+	FileSize         float64 `json:"fileSize,omitempty"`
+	ResolutionHeight int32   `json:"resolutionHeight,omitempty"`
 	// The width of the asset in pixels.
 	Width float64 `json:"width,omitempty"`
 	// The aspect ration of the asset.
-	AspectRatio string `json:"aspectRatio,omitempty"`
-	ResolutionWidth int32 `json:"resolutionWidth,omitempty"`
+	AspectRatio     string `json:"aspectRatio,omitempty"`
+	ResolutionWidth int32  `json:"resolutionWidth,omitempty"`
 	// The content type of the asset.
-	ContentType string `json:"contentType,omitempty"`
+	ContentType     string  `json:"contentType,omitempty"`
 	AudioSampleRate float64 `json:"audioSampleRate,omitempty"`
 	// The height of the asset in pixels.
 	Height float64 `json:"height,omitempty"`

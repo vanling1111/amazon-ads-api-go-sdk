@@ -13,14 +13,14 @@ type PortfolioServingStatusReason string
 // List of PortfolioServingStatusReason
 const (
 	ADVERTISER_ACCOUNT_OUT_OF_BUDGET_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_ACCOUNT_OUT_OF_BUDGET_DETAIL"
-	ADVERTISER_ARCHIVED_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_ARCHIVED_DETAIL"
-	ADVERTISER_EXCEED_SPENDS_LIMIT_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_EXCEED_SPENDS_LIMIT_DETAIL"
-	ADVERTISER_OUT_OF_BUDGET_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_OUT_OF_BUDGET_DETAIL"
+	ADVERTISER_ARCHIVED_DETAIL_PortfolioServingStatusReason              PortfolioServingStatusReason = "ADVERTISER_ARCHIVED_DETAIL"
+	ADVERTISER_EXCEED_SPENDS_LIMIT_DETAIL_PortfolioServingStatusReason   PortfolioServingStatusReason = "ADVERTISER_EXCEED_SPENDS_LIMIT_DETAIL"
+	ADVERTISER_OUT_OF_BUDGET_DETAIL_PortfolioServingStatusReason         PortfolioServingStatusReason = "ADVERTISER_OUT_OF_BUDGET_DETAIL"
 	ADVERTISER_OUT_OF_PREPAY_BALANCE_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_OUT_OF_PREPAY_BALANCE_DETAIL"
-	ADVERTISER_PAUSED_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_PAUSED_DETAIL"
-	ADVERTISER_PAYMENT_FAILURE_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "ADVERTISER_PAYMENT_FAILURE_DETAIL"
-	PORTFOLIO_ENDED_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "PORTFOLIO_ENDED_DETAIL"
-	PORTFOLIO_OUT_OF_BUDGET_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "PORTFOLIO_OUT_OF_BUDGET_DETAIL"
-	PORTFOLIO_PENDING_START_DATE_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "PORTFOLIO_PENDING_START_DATE_DETAIL"
-	PORTFOLIO_STATUS_ENABLED_DETAIL_PortfolioServingStatusReason PortfolioServingStatusReason = "PORTFOLIO_STATUS_ENABLED_DETAIL"
+	ADVERTISER_PAUSED_DETAIL_PortfolioServingStatusReason                PortfolioServingStatusReason = "ADVERTISER_PAUSED_DETAIL"
+	ADVERTISER_PAYMENT_FAILURE_DETAIL_PortfolioServingStatusReason       PortfolioServingStatusReason = "ADVERTISER_PAYMENT_FAILURE_DETAIL"
+	PORTFOLIO_ENDED_DETAIL_PortfolioServingStatusReason                  PortfolioServingStatusReason = "PORTFOLIO_ENDED_DETAIL"
+	PORTFOLIO_OUT_OF_BUDGET_DETAIL_PortfolioServingStatusReason          PortfolioServingStatusReason = "PORTFOLIO_OUT_OF_BUDGET_DETAIL"
+	PORTFOLIO_PENDING_START_DATE_DETAIL_PortfolioServingStatusReason     PortfolioServingStatusReason = "PORTFOLIO_PENDING_START_DATE_DETAIL"
+	PORTFOLIO_STATUS_ENABLED_DETAIL_PortfolioServingStatusReason         PortfolioServingStatusReason = "PORTFOLIO_STATUS_ENABLED_DETAIL"
 )

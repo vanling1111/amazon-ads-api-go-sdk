@@ -12,7 +12,7 @@ type CaAssetStatus string
 
 // List of caAssetStatus
 const (
-	ACTIVE_CaAssetStatus CaAssetStatus = "ACTIVE"
+	ACTIVE_CaAssetStatus     CaAssetStatus = "ACTIVE"
 	PROCESSING_CaAssetStatus CaAssetStatus = "PROCESSING"
-	ARCHIVED_CaAssetStatus CaAssetStatus = "ARCHIVED"
+	ARCHIVED_CaAssetStatus   CaAssetStatus = "ARCHIVED"
 )

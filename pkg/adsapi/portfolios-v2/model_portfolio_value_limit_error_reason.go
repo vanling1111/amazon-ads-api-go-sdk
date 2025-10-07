@@ -13,6 +13,6 @@ type PortfolioValueLimitErrorReason string
 // List of PortfolioValueLimitErrorReason
 const (
 	INVALID_ENUM_VALUE_PortfolioValueLimitErrorReason PortfolioValueLimitErrorReason = "INVALID_ENUM_VALUE"
-	TOO_HIGH_PortfolioValueLimitErrorReason PortfolioValueLimitErrorReason = "TOO_HIGH"
-	TOO_LOW_PortfolioValueLimitErrorReason PortfolioValueLimitErrorReason = "TOO_LOW"
+	TOO_HIGH_PortfolioValueLimitErrorReason           PortfolioValueLimitErrorReason = "TOO_HIGH"
+	TOO_LOW_PortfolioValueLimitErrorReason            PortfolioValueLimitErrorReason = "TOO_LOW"
 )

@@ -9,14 +9,14 @@
 package profilesv3
 
 type TargetingClauseEx struct {
-	TargetId float64 `json:"targetId,omitempty"`
-	AdGroupId float64 `json:"adGroupId,omitempty"`
-	CampaignId float64 `json:"campaignId,omitempty"`
-	State string `json:"state,omitempty"`
-	ExpressionType string `json:"expressionType,omitempty"`
+	TargetId       float64 `json:"targetId,omitempty"`
+	AdGroupId      float64 `json:"adGroupId,omitempty"`
+	CampaignId     float64 `json:"campaignId,omitempty"`
+	State          string  `json:"state,omitempty"`
+	ExpressionType string  `json:"expressionType,omitempty"`
 	// If a value for `bid` is specified, it overrides the current adGroup bid. When using vcpm costType. $1 is the minimum bid for vCPM. Note that this field is ignored for negative targeting clauses.
-	Bid float64 `json:"bid,omitempty"`
-	Expression *[]OneOfTargetingExpressionItems `json:"expression,omitempty"`
+	Bid                float64                          `json:"bid,omitempty"`
+	Expression         *[]OneOfTargetingExpressionItems `json:"expression,omitempty"`
 	ResolvedExpression *[]OneOfTargetingExpressionItems `json:"resolvedExpression,omitempty"`
 	// The status of the target.
 	ServingStatus string `json:"servingStatus,omitempty"`

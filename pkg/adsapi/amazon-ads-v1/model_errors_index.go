@@ -10,5 +10,5 @@ package amazonadsv1
 
 type ErrorsIndex struct {
 	Errors []ModelError `json:"errors"`
-	Index int32 `json:"index"`
+	Index  int32        `json:"index"`
 }

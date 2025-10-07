@@ -9,6 +9,6 @@
 package sponsoredbrandsv4
 
 type BidAdjustmentByPlacement struct {
-	Percentage float64 `json:"percentage,omitempty"`
-	Placement *Placement `json:"placement,omitempty"`
+	Percentage float64    `json:"percentage,omitempty"`
+	Placement  *Placement `json:"placement,omitempty"`
 }

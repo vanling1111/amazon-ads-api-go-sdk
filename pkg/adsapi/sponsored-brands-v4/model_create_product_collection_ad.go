@@ -11,9 +11,9 @@ package sponsoredbrandsv4
 type CreateProductCollectionAd struct {
 	LandingPage *LandingPage `json:"landingPage"`
 	// The name of the ad.
-	Name string `json:"name"`
+	Name  string                     `json:"name"`
 	State *CreateOrUpdateEntityState `json:"state"`
 	// The adGroup identifier.
-	AdGroupId string `json:"adGroupId"`
-	Creative *CreateProductCollectionCreative `json:"creative"`
+	AdGroupId string                           `json:"adGroupId"`
+	Creative  *CreateProductCollectionCreative `json:"creative"`
 }

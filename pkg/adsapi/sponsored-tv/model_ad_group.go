@@ -12,12 +12,12 @@ type AdGroup struct {
 	// The identifier of the Ad Group.
 	AdGroupId string `json:"adGroupId"`
 	// The identifier of the Campaign associated with the Ad Group.
-	CampaignId string `json:"campaignId"`
-	DefaultBid *DefaultBid `json:"defaultBid,omitempty"`
+	CampaignId   string               `json:"campaignId"`
+	DefaultBid   *DefaultBid          `json:"defaultBid,omitempty"`
 	ExtendedData *AdGroupExtendedData `json:"extendedData,omitempty"`
 	// full funnel campaign id for child ad group
 	FullFunnelCampaignId string `json:"fullFunnelCampaignId,omitempty"`
 	// The name of the Ad Group.
-	Name string `json:"name"`
+	Name  string       `json:"name"`
 	State *EntityState `json:"state"`
 }

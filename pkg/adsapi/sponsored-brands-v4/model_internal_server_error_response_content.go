@@ -9,7 +9,7 @@
 package sponsoredbrandsv4
 
 type InternalServerErrorResponseContent struct {
-	Code *InternalServerErrorCode `json:"code"`
-	RequestId string `json:"requestId"`
-	Message string `json:"message"`
+	Code      *InternalServerErrorCode `json:"code"`
+	RequestId string                   `json:"requestId"`
+	Message   string                   `json:"message"`
 }

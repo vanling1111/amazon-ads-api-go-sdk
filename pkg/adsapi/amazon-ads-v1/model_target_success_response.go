@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type TargetSuccessResponse struct {
-	NextToken string `json:"nextToken,omitempty"`
-	Targets []Target `json:"targets,omitempty"`
-	TotalResults int32 `json:"totalResults,omitempty"`
+	NextToken    string   `json:"nextToken,omitempty"`
+	Targets      []Target `json:"targets,omitempty"`
+	TotalResults int32    `json:"totalResults,omitempty"`
 }

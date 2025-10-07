@@ -11,7 +11,7 @@ package sponsoredbrandsv4
 type CampaignMigrationFinalStatus struct {
 	// Entity object identifier.
 	LegacyCampaignId string `json:"legacyCampaignId,omitempty"`
-	NewCampaignId string `json:"newCampaignId,omitempty"`
+	NewCampaignId    string `json:"newCampaignId,omitempty"`
 	// Enumerated status code for migration job status | Status                                             |  Description | |----------------------------------------------------------|--------------| | MIGRATION_COMPLETE  | Migration is complete and new V4 campaigns are ready to serve. The V3 campaigns are archived | | STAGING_COMPLETE    | Staging of V4 campaign IDs are complete | | MIGRATION_FAILED         | Migration of V3 campaign failed  | | MIGRATION_IN_PROGRESS   | Migration for V3 campaign is in-progress |
 	MigrationStatus string `json:"migrationStatus,omitempty"`
 	// Status reason for the given migration status

@@ -10,7 +10,7 @@ package marketingmixmodeling
 
 type BrandGroupsListBody struct {
 	BrandGroupIdFilter *Mmmv1brandGroupslistBrandGroupIdFilter `json:"brandGroupIdFilter,omitempty"`
-	CountryCodeFilter *Mmmv1brandGroupslistCountryCodeFilter `json:"countryCodeFilter,omitempty"`
+	CountryCodeFilter  *Mmmv1brandGroupslistCountryCodeFilter  `json:"countryCodeFilter,omitempty"`
 	// Number of records to include in the paginated response. Defaults to max page size.
 	MaxResults int32 `json:"maxResults,omitempty"`
 	// Token value allowing navigation to the next response page.

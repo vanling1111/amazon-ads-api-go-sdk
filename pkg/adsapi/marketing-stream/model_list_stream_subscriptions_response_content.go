@@ -10,6 +10,6 @@ package marketingstream
 
 type ListStreamSubscriptionsResponseContent struct {
 	// Token which can be used to get the next page of results, if more entries exist
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken     string               `json:"nextToken,omitempty"`
 	Subscriptions []StreamSubscription `json:"subscriptions"`
 }

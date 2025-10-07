@@ -10,6 +10,6 @@ package retailadservice
 
 type Rasv1BudgetInput struct {
 	// Monetary value
-	Budget float64 `json:"budget"`
+	Budget     float64          `json:"budget"`
 	BudgetType *Rasv1BudgetType `json:"budgetType"`
 }

@@ -11,6 +11,6 @@ package amazonadsv1
 type StatusMarketplaceSetting struct {
 	// This is the list of reasons behind the delivery status.
 	DeliveryReasons []DeliveryReason `json:"deliveryReasons,omitempty"`
-	DeliveryStatus *DeliveryStatus `json:"deliveryStatus,omitempty"`
-	Marketplace *Marketplace `json:"marketplace,omitempty"`
+	DeliveryStatus  *DeliveryStatus  `json:"deliveryStatus,omitempty"`
+	Marketplace     *Marketplace     `json:"marketplace,omitempty"`
 }

@@ -10,8 +10,8 @@ package sponsoredbrandsv4
 
 // The crop to apply to the selected Custom image. A Custom image must have a 1200x628 aspect ratio, with a .01 delta for floating point precision. If a customImageAssetId is supplied but a crop is not, the crop will be defaulted to the whole image.
 type CustomImageCrop struct {
-	Top float64 `json:"top,omitempty"`
-	Left float64 `json:"left,omitempty"`
-	Width float64 `json:"width,omitempty"`
+	Top    float64 `json:"top,omitempty"`
+	Left   float64 `json:"left,omitempty"`
+	Width  float64 `json:"width,omitempty"`
 	Height float64 `json:"height,omitempty"`
 }

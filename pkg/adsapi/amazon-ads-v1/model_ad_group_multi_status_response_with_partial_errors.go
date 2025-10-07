@@ -9,7 +9,7 @@
 package amazonadsv1
 
 type AdGroupMultiStatusResponseWithPartialErrors struct {
-	Error_ []ErrorsIndex `json:"error,omitempty"`
-	PartialSuccess []AdGroupPartialIndex `json:"partialSuccess,omitempty"`
-	Success []AdGroupMultiStatusSuccess `json:"success,omitempty"`
+	Error_         []ErrorsIndex               `json:"error,omitempty"`
+	PartialSuccess []AdGroupPartialIndex       `json:"partialSuccess,omitempty"`
+	Success        []AdGroupMultiStatusSuccess `json:"success,omitempty"`
 }

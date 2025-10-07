@@ -10,7 +10,7 @@ package posts
 
 // Access Denied Exception - Caller was not authorized to make this call.
 type AccessDeniedExceptionResponseContent struct {
-	Code string `json:"code,omitempty"`
-	Message string `json:"message,omitempty"`
+	Code      string `json:"code,omitempty"`
+	Message   string `json:"message,omitempty"`
 	RequestId string `json:"requestId,omitempty"`
 }

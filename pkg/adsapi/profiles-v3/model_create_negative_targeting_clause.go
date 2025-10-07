@@ -11,7 +11,7 @@ package profilesv3
 type CreateNegativeTargetingClause struct {
 	AdGroupId int64 `json:"adGroupId"`
 	// The expression to negatively match against. * Only one brand may be specified per targeting expression. * Only one asin may be specified per targeting expression. * To exclude a brand from a targeting expression, you must create a negative targeting expression in the same ad group as the positive targeting expression.
-	Expression []NegativeTargetingExpression `json:"expression"`
-	ExpressionType string `json:"expressionType"`
-	State string `json:"state"`
+	Expression     []NegativeTargetingExpression `json:"expression"`
+	ExpressionType string                        `json:"expressionType"`
+	State          string                        `json:"state"`
 }

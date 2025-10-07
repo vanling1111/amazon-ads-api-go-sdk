@@ -10,5 +10,5 @@ package audiencesdiscovery
 
 type DspInventoryForecastV1 struct {
 	DailyImpressions *ForecastBucketV1 `json:"dailyImpressions"`
-	DailyReach *ForecastBucketV1 `json:"dailyReach"`
+	DailyReach       *ForecastBucketV1 `json:"dailyReach"`
 }

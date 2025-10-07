@@ -13,7 +13,7 @@ type TargetMethodRecipientGroup string
 // List of TargetMethodRecipientGroup
 const (
 	ADS_PREFERENCES_TargetMethodRecipientGroup TargetMethodRecipientGroup = "ADS_PREFERENCES"
-	LOCATION_TargetMethodRecipientGroup TargetMethodRecipientGroup = "LOCATION"
-	PAST_ACTIVITY_TargetMethodRecipientGroup TargetMethodRecipientGroup = "PAST_ACTIVITY"
-	SEARCH_TERMS_TargetMethodRecipientGroup TargetMethodRecipientGroup = "SEARCH_TERMS"
+	LOCATION_TargetMethodRecipientGroup        TargetMethodRecipientGroup = "LOCATION"
+	PAST_ACTIVITY_TargetMethodRecipientGroup   TargetMethodRecipientGroup = "PAST_ACTIVITY"
+	SEARCH_TERMS_TargetMethodRecipientGroup    TargetMethodRecipientGroup = "SEARCH_TERMS"
 )

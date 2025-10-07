@@ -10,8 +10,8 @@ package billing
 
 type AdPaymentsTarget struct {
 	AgreementType *AdPaymentsPaymentAgreementType `json:"agreementType"`
-	CountryCode *AdPaymentsCountryCode `json:"countryCode"`
+	CountryCode   *AdPaymentsCountryCode          `json:"countryCode"`
 	// The ID associated to the entity in this target.
-	EntityId string `json:"entityId,omitempty"`
+	EntityId   string                `json:"entityId,omitempty"`
 	EntityType *AdPaymentsEntityType `json:"entityType,omitempty"`
 }

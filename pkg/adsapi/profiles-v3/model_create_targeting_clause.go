@@ -11,9 +11,9 @@ package profilesv3
 type CreateTargetingClause struct {
 	AdGroupId int64 `json:"adGroupId"`
 	// Tactic T00020 ad groups only allow manual targeting.
-	ExpressionType string `json:"expressionType"`
-	Expression *[]OneOfCreateTargetingExpressionItems `json:"expression"`
-	State string `json:"state,omitempty"`
+	ExpressionType string                                 `json:"expressionType"`
+	Expression     *[]OneOfCreateTargetingExpressionItems `json:"expression"`
+	State          string                                 `json:"state,omitempty"`
 	// The bid will override the adGroup bid if specified. This field is not used for negative targeting clauses. The bid must be less than the maximum allowable bid for the campaign's marketplace; for a list of maximum allowable bids, find the [\"Bid constraints by marketplace\" table in our documentation overview](https://advertising.amazon.com/API/docs/en-us/concepts/limits#bid-constraints-by-marketplace). You cannot manually set a bid when the targeting clause's adGroup has an enabled optimization rule.
 	Bid float32 `json:"bid,omitempty"`
 }

@@ -15,5 +15,5 @@ type CreativeRecommendationsRequestContent struct {
 	NextToken string `json:"nextToken,omitempty"`
 	// Set a limit on the number of results returned by an operation.
 	MaxResults float64 `json:"maxResults,omitempty"`
-	Source *Source `json:"source"`
+	Source     *Source `json:"source"`
 }

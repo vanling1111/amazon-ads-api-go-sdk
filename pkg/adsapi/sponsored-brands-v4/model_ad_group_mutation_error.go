@@ -10,6 +10,6 @@ package sponsoredbrandsv4
 
 type AdGroupMutationError struct {
 	// The type of the error.
-	ErrorType string `json:"errorType"`
+	ErrorType  string                        `json:"errorType"`
 	ErrorValue *AdGroupMutationErrorSelector `json:"errorValue"`
 }

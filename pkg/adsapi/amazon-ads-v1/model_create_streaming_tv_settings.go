@@ -13,9 +13,9 @@ type CreateStreamingTvSettings struct {
 	CallToActions []CreateVideoCallToAction `json:"callToActions,omitempty"`
 	// The third party urls to trigger when an impression is recorded.
 	ImpressionTrackingUrls []CreateCreativeTrackingUrl `json:"impressionTrackingUrls,omitempty"`
-	LandingPage *CreateVideoLandingPage `json:"landingPage,omitempty"`
-	Language *LanguageLocale `json:"language,omitempty"`
+	LandingPage            *CreateVideoLandingPage     `json:"landingPage,omitempty"`
+	Language               *LanguageLocale             `json:"language,omitempty"`
 	// The product advertised on this video creative.
 	Products []CreateAdvertisedProducts `json:"products,omitempty"`
-	Videos *CreateVideo `json:"videos,omitempty"`
+	Videos   *CreateVideo               `json:"videos,omitempty"`
 }

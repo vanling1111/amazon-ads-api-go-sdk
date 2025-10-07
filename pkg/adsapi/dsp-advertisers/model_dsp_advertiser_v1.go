@@ -13,10 +13,10 @@ type DspAdvertiserV1 struct {
 	// The advertiser identifier.
 	AdvertiserId string `json:"advertiserId,omitempty"`
 	// The advertiser name.
-	Name string `json:"name,omitempty"`
+	Name     string                  `json:"name,omitempty"`
 	Currency *DspSupportedCurrencyV1 `json:"currency,omitempty"`
 	// The URL of the advertiser’s website.
-	Url string `json:"url,omitempty"`
-	Country *DspCountryV1 `json:"country,omitempty"`
-	Timezone string `json:"timezone,omitempty"`
+	Url      string        `json:"url,omitempty"`
+	Country  *DspCountryV1 `json:"country,omitempty"`
+	Timezone string        `json:"timezone,omitempty"`
 }

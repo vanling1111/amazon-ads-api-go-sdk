@@ -11,9 +11,9 @@ package tacticalrecommendations
 // Underlying diagnostic context behind generating the recommendation.
 type DiagnosticContext struct {
 	// The number of days since the ASIN was added to the advertiser’s catalog.
-	AsinAge float64 `json:"asinAge,omitempty"`
+	AsinAge          float64           `json:"asinAge,omitempty"`
 	BenchmarkContext *BenchmarkContext `json:"benchmarkContext,omitempty"`
 	// The date on which the campaign was diagnosed.
-	DiagnosticDate string `json:"diagnosticDate,omitempty"`
-	Summary *Summary `json:"summary,omitempty"`
+	DiagnosticDate string   `json:"diagnosticDate,omitempty"`
+	Summary        *Summary `json:"summary,omitempty"`
 }

@@ -10,17 +10,17 @@ package billing
 
 // Payload with filter, sort and aggregate key(s) to fetch list of billing invoice summary(s).
 type BillingInvoiceSummariesRequest struct {
-	Aggregation *BillingInvoiceSummariesRequestAggregation `json:"aggregation,omitempty"`
-	CountryValueFilter *BillingInvoiceSummariesRequestCountryValueFilter `json:"countryValueFilter,omitempty"`
-	InvoiceDueDateRangeFilter *BillingInvoiceSummariesRequestInvoiceDueDateRangeFilter `json:"invoiceDueDateRangeFilter,omitempty"`
+	Aggregation                  *BillingInvoiceSummariesRequestAggregation                  `json:"aggregation,omitempty"`
+	CountryValueFilter           *BillingInvoiceSummariesRequestCountryValueFilter           `json:"countryValueFilter,omitempty"`
+	InvoiceDueDateRangeFilter    *BillingInvoiceSummariesRequestInvoiceDueDateRangeFilter    `json:"invoiceDueDateRangeFilter,omitempty"`
 	InvoiceIssuedDateRangeFilter *BillingInvoiceSummariesRequestInvoiceIssuedDateRangeFilter `json:"invoiceIssuedDateRangeFilter,omitempty"`
-	InvoiceNumberFilter *BillingInvoiceSummariesRequestInvoiceNumberFilter `json:"invoiceNumberFilter,omitempty"`
+	InvoiceNumberFilter          *BillingInvoiceSummariesRequestInvoiceNumberFilter          `json:"invoiceNumberFilter,omitempty"`
 	// Max results / billing invoice summary(s) to be shown in a single page.
 	MaxResults int64 `json:"maxResults,omitempty"`
 	// Offset to fetch next page with list of billing invoice summary(s).
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken                    string                                                      `json:"nextToken,omitempty"`
 	PaymentMethodTypeValueFilter *BillingInvoiceSummariesRequestPaymentMethodTypeValueFilter `json:"paymentMethodTypeValueFilter,omitempty"`
-	ReserveOrderNumberFilter *BillingInvoiceSummariesRequestReserveOrderNumberFilter `json:"reserveOrderNumberFilter,omitempty"`
-	Sort *BillingInvoiceSummariesRequestSort `json:"sort,omitempty"`
-	StatusValueFilter *BillingInvoiceSummariesRequestStatusValueFilter `json:"statusValueFilter,omitempty"`
+	ReserveOrderNumberFilter     *BillingInvoiceSummariesRequestReserveOrderNumberFilter     `json:"reserveOrderNumberFilter,omitempty"`
+	Sort                         *BillingInvoiceSummariesRequestSort                         `json:"sort,omitempty"`
+	StatusValueFilter            *BillingInvoiceSummariesRequestStatusValueFilter            `json:"statusValueFilter,omitempty"`
 }

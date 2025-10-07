@@ -13,8 +13,8 @@ type CreateNegativeKeyword struct {
 	CampaignId float64 `json:"campaignId,omitempty"`
 	// The identifier of the ad group to which the negative keyword is associated.
 	AdGroupId float64 `json:"adGroupId,omitempty"`
-	State *State `json:"state,omitempty"`
+	State     *State  `json:"state,omitempty"`
 	// The text of the expression to match against a search query.
-	KeywordText string `json:"keywordText,omitempty"`
-	MatchType *NegativeMatchType `json:"matchType,omitempty"`
+	KeywordText string             `json:"keywordText,omitempty"`
+	MatchType   *NegativeMatchType `json:"matchType,omitempty"`
 }

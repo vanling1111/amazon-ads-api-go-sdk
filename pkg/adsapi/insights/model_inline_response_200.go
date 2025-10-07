@@ -15,6 +15,6 @@ type InlineResponse200 struct {
 	// If present, there are more overlapping audiences than initially returned. Use this token to call the operation again and have the additional overlapping audiences returned. The token is valid for 8 hours from the initial request. Note: subsequent calls must be made using the same parameters as used in previous requests.
 	NextToken string `json:"nextToken,omitempty"`
 	// The list of overlapping audiences.
-	OverlappingAudiences []InsightsAudiencesOverlapEntryV2 `json:"overlappingAudiences"`
+	OverlappingAudiences      []InsightsAudiencesOverlapEntryV2           `json:"overlappingAudiences"`
 	RequestedAudienceMetadata *InsightsAudiencesOverlapAudienceMetadataV2 `json:"requestedAudienceMetadata"`
 }

@@ -13,8 +13,8 @@ type GetBillingProfileUsageRequest struct {
 	// By default only the billingProfileId linked to the country will be returned. Choose `true` if you would like to see the content of the billing profiles linked to a country
 	ExpandBillingProfile bool `json:"expandBillingProfile,omitempty"`
 	// Choose `true` if you would like to see the information currently being used for billing for this marketplace. Useful when the billingProfileUsage status is not `OK` and the billing information coundn't be propagated for that country. If set to `true`, `fallbackBillingProfiles` attribute will be returned.
-	ExpandFallbackBillingProfile bool `json:"expandFallbackBillingProfile,omitempty"`
-	Filters *GetBillingProfileUsageRequestFilters `json:"filters,omitempty"`
+	ExpandFallbackBillingProfile bool                                  `json:"expandFallbackBillingProfile,omitempty"`
+	Filters                      *GetBillingProfileUsageRequestFilters `json:"filters,omitempty"`
 	// Max results / billing profile usage(s) to be shown in a single page.
 	MaxResults int64 `json:"maxResults,omitempty"`
 	// Offset to fetch next page with list of billing profile usage(s).

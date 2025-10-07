@@ -9,7 +9,7 @@
 package marketingstream
 
 type FirehoseDestination struct {
-	DeliveryStreamArn string `json:"deliveryStreamArn"`
-	SubscriberRoleArn string `json:"subscriberRoleArn"`
+	DeliveryStreamArn   string `json:"deliveryStreamArn"`
+	SubscriberRoleArn   string `json:"subscriberRoleArn"`
 	SubscriptionRoleArn string `json:"subscriptionRoleArn"`
 }

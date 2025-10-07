@@ -10,6 +10,6 @@ package amazonadsv1
 
 // Target based on the rating of content being viewed.
 type ContentRatingTarget struct {
-	ContentRatingType *ContentRatingTypes `json:"contentRatingType,omitempty"`
-	ContentRatingTypeDetails *ContentRating `json:"contentRatingTypeDetails,omitempty"`
+	ContentRatingType        *ContentRatingTypes `json:"contentRatingType,omitempty"`
+	ContentRatingTypeDetails *ContentRating      `json:"contentRatingTypeDetails,omitempty"`
 }

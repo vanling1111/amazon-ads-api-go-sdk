@@ -9,6 +9,6 @@
 package storesanalytics
 
 type GetAsinEngagementForStoreResponse struct {
-	Dimension *AsinEngagementDimension `json:"dimension,omitempty"`
-	MetricsDetails []map[string]Object `json:"metricsDetails,omitempty"`
+	Dimension      *AsinEngagementDimension `json:"dimension,omitempty"`
+	MetricsDetails []map[string]Object      `json:"metricsDetails,omitempty"`
 }

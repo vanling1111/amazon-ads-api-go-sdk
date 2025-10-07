@@ -10,10 +10,10 @@ package portfoliosv2
 
 type ListPortfoliosRequestContent struct {
 	// whether to get a list of targetingClauses with extended data fields (creationDate, lastUpdateDate, servingStatus).
-	IncludeExtendedDataFields bool `json:"includeExtendedDataFields,omitempty"`
-	NameFilter *NameFilter `json:"nameFilter,omitempty"`
+	IncludeExtendedDataFields bool        `json:"includeExtendedDataFields,omitempty"`
+	NameFilter                *NameFilter `json:"nameFilter,omitempty"`
 	// token value allowing to navigate to the next response page
-	NextToken string `json:"nextToken,omitempty"`
-	PortfolioIdFilter *ObjectIdFilter `json:"portfolioIdFilter,omitempty"`
-	StateFilter *EntityStateFilter `json:"stateFilter,omitempty"`
+	NextToken         string             `json:"nextToken,omitempty"`
+	PortfolioIdFilter *ObjectIdFilter    `json:"portfolioIdFilter,omitempty"`
+	StateFilter       *EntityStateFilter `json:"stateFilter,omitempty"`
 }

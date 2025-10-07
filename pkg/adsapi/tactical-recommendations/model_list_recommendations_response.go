@@ -10,7 +10,7 @@ package tacticalrecommendations
 
 type ListRecommendationsResponse struct {
 	// Token to retrieve the next page of results.
-	NextToken string `json:"nextToken,omitempty"`
+	NextToken       string           `json:"nextToken,omitempty"`
 	Recommendations []Recommendation `json:"recommendations"`
 	// Total number of results.
 	TotalResults int32 `json:"totalResults"`

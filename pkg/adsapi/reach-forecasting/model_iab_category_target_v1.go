@@ -10,6 +10,6 @@ package reachforecasting
 
 type IabCategoryTargetV1 struct {
 	// The IAB content category to target. To get the list of valid values, see https://advertising.amazon.com/API/docs/en-us/dsp-campaigns/#tag/Discovery/operation/getIabContentCategories
-	IabContentCategory string `json:"iabContentCategory"`
-	TargetType *IabCategoryTargetTypeV1 `json:"targetType"`
+	IabContentCategory string                   `json:"iabContentCategory"`
+	TargetType         *IabCategoryTargetTypeV1 `json:"targetType"`
 }
