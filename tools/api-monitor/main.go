@@ -16,6 +16,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+	
+	"gopkg.in/yaml.v3"
 )
 
 // APISpec 表示一个 API 规范
@@ -285,17 +287,23 @@ func calculateChecksum(content []byte) string {
 
 // extractVersion 从规范中提取版本号
 func extractVersion(content []byte) string {
-	// 尝试解析 JSON
 	var data map[string]interface{}
-	if err := json.Unmarshal(content, &data); err == nil {
-		if info, ok := data["info"].(map[string]interface{}); ok {
-			if version, ok := info["version"].(string); ok {
-				return version
-			}
+	
+	// 先尝试解析 JSON
+	if err := json.Unmarshal(content, &data); err != nil {
+		// JSON 解析失败，尝试 YAML
+		if err := yaml.Unmarshal(content, &data); err != nil {
+			return "unknown"
 		}
 	}
 	
-	// 如果是 YAML 或解析失败，返回 unknown
+	// 提取 info.version
+	if info, ok := data["info"].(map[string]interface{}); ok {
+		if version, ok := info["version"].(string); ok {
+			return version
+		}
+	}
+	
 	return "unknown"
 }
 
