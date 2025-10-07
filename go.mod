@@ -1,6 +1,6 @@
 module github.com/vanling1111/amazon-ads-api-go-sdk
 
-go 1.25
+go 1.24.0
 
 require (
 	github.com/antihax/optional v1.0.0
