@@ -123,7 +123,7 @@ func main() {
 	log.Println("🔍 Starting Amazon Ads API Monitor...")
 	log.Printf("📊 Monitoring %d APIs in total", len(apiSpecs))
 	
-	configPath := "tools/api-monitor/monitor-state.json"
+	configPath := "monitor-state.json"
 	
 	// 加载之前的状态
 	config, err := loadConfig(configPath)
@@ -350,7 +350,7 @@ func saveConfig(path string, config *MonitorConfig) error {
 
 // generateReport 生成详细的变更报告
 func generateReport(changes []string, newAPIs []string, deletedAPIs []string) {
-	reportPath := "tools/api-monitor/latest-changes.md"
+	reportPath := "latest-changes.md"
 	
 	report := fmt.Sprintf(`# API Change Report
 
