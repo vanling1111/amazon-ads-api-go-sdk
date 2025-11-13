@@ -6,19 +6,19 @@
 
 > **Official Documentation**: https://advertising.amazon.com/API/docs  
 > **Project Status**: Beta - All 45 APIs Implemented  
-> **Current Version**: v0.2.0
+> **Current Version**: v0.3.0
 
 
 
 **Amazon Advertising API 的非官方 Go SDK，提供完整的类型安全 API 封装，支持所有广告产品。**
 
-**最新更新**:
+**最新更新 (v0.3.0)**:
+- ✅ **接口抽象层** - Logger, MetricsCollector, Tracer 接口
+- ✅ **零依赖友好** - No-Op 默认实现，无需强制依赖
+- ✅ **Facade 设计模式** - 更好的内部组件封装
+- ✅ **架构优化** - 移除 zap 和 prometheus 硬依赖
 - ✅ **所有 45 个 API 已生成**（100% API 覆盖）
-- ✅ 自动修复生成代码的已知问题
-- ✅ 所有 API 包含 `doc.go` 文档
-- ✅ 完整的认证、传输、速率限制模块
 - ✅ 核心模块单元测试覆盖率 90%+
-- ✅ 一键生成脚本
 
 ---
 
@@ -26,6 +26,8 @@
 
 - ✅ **完整的 API 覆盖** - 支持所有主要的 Amazon Ads API
 - ✅ **类型安全** - 完整的 Go 类型定义和编译时检查
+- ✅ **零依赖友好** - 可选的日志和指标收集，No-Op 默认实现
+- ✅ **接口抽象** - 面向接口编程，易于扩展和测试
 - ✅ **生产级质量** - 90%+ 测试覆盖率，完善的错误处理
 - ✅ **自动认证** - 内置 LWA OAuth 2.0 认证和 Token 刷新
 - ✅ **速率限制** - 智能速率限制管理，避免 API 限流
@@ -200,6 +202,41 @@ func main() {
 - 实际 API 调用方法请参考各 API 包的 `doc.go` 文件
 - swagger-codegen 生成的客户端使用方式与手动封装略有不同
 - 查看 `pkg/adsapi/sponsored-products-v3/doc.go` 获取完整示例
+
+### 使用自定义日志和指标 (v0.3.0+)
+
+```go
+package main
+
+import (
+    "github.com/vanling1111/amazon-ads-api-go-sdk/pkg/adsapi"
+    "github.com/vanling1111/amazon-ads-api-go-sdk/internal/models"
+)
+
+func main() {
+    // 使用默认的 No-Op 实现（零依赖）
+    client := adsapi.NewClient(
+        adsapi.WithRegion(models.RegionNA),
+        adsapi.WithCredentials("client-id", "secret", "token"),
+        adsapi.WithProfileID(123456789),
+    )
+
+    // 或使用自定义的日志和指标实现
+    client := adsapi.NewClient(
+        adsapi.WithRegion(models.RegionNA),
+        adsapi.WithCredentials("client-id", "secret", "token"),
+        adsapi.WithProfileID(123456789),
+        adsapi.WithLogger(myCustomLogger),    // 实现 adsapi.Logger 接口
+        adsapi.WithMetrics(myCustomMetrics),  // 实现 adsapi.MetricsCollector 接口
+    )
+}
+```
+
+**新架构优势**:
+- ✅ 不再强制依赖 zap 或 prometheus
+- ✅ 可以使用任何日志库（只需实现 Logger 接口）
+- ✅ 可以使用任何指标收集器（只需实现 MetricsCollector 接口）
+- ✅ 默认使用 No-Op 实现，零依赖
 
 ---
 
