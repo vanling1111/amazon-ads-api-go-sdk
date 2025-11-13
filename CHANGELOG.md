@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2025-11-13
+
+### Added
+
+#### 接口抽象层
+- 新增 `interfaces.go` - 定义 Logger, MetricsCollector, Tracer 接口
+- 新增 `noop.go` - 提供 No-Op 默认实现
+- 新增 `fields.go` - 日志字段辅助函数
+
+#### Facade设计模式
+- 新增 `internal/core/facade.go` - 核心门面层
+- 封装内部组件（auth, transport, ratelimit）
+- 提供统一的访问接口
+
+### Changed
+
+#### 架构优化
+- `Config.Logger` 从 `*zap.Logger` 改为 `Logger` 接口
+- `Config.Metrics` 从 `*metrics.PrometheusMetrics` 改为 `MetricsCollector` 接口
+- 移除对 zap 和 prometheus 的硬依赖
+- 更新所有日志调用使用接口
+
+### Benefits
+
+- ✅ **零依赖友好** - No-Op 默认实现
+- ✅ **更好的可扩展性** - 用户可以自定义实现
+- ✅ **架构一致性** - 与 SP-API SDK 保持一致
+- ✅ **符合Go最佳实践** - 面向接口编程
+
+### 示例
+
+```go
+// 使用默认的 No-Op 实现（零依赖）
+client := adsapi.NewClient(
+    adsapi.WithRegion(models.RegionNA),
+    adsapi.WithCredentials(...),
+)
+
+// 或使用自定义实现
+client := adsapi.NewClient(
+    adsapi.WithLogger(myLogger),
+    adsapi.WithMetrics(myMetrics),
+)
+```
+
 ## [0.2.0] - 2025-10-07
 
 ### 🎉 Major Achievement: 100% API Coverage
