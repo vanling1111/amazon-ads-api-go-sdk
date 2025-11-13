@@ -31,9 +31,7 @@ import (
 	"time"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/metrics"
 	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/models"
-	"go.uber.org/zap"
 )
 
 // Config 定义 Ads API 客户端的配置。
@@ -68,13 +66,13 @@ type Config struct {
 	// 例如 0.1 表示保留 10% 的速率限制作为缓冲。
 	RateLimitBuffer float64 `validate:"min=0,max=1"`
 
-	// Logger 是结构化日志记录器（使用 Uber Zap）。
-	// 如果为 nil，使用 zap.NewNop() 作为默认值（不输出日志）。
-	Logger *zap.Logger `validate:"-"`
+	// Logger 是结构化日志记录器接口。
+	// 如果为 nil，使用 no-op logger（不输出日志）。
+	Logger Logger `validate:"-"`
 
-	// Metrics 是 Prometheus 指标收集器（可选）。
+	// Metrics 是指标收集器接口（可选）。
 	// 如果设置，SDK 会自动收集请求、错误、延迟等指标。
-	Metrics *metrics.PrometheusMetrics `validate:"-"`
+	Metrics MetricsCollector `validate:"-"`
 
 	// Debug 启用调试模式（详细日志）。
 	Debug bool
@@ -89,14 +87,16 @@ var validate = validator.New()
 //   - HTTPTimeout: 30s
 //   - MaxRetries: 3
 //   - RateLimitBuffer: 0.1 (10%)
-//   - Logger: zap.NewNop() (不输出日志)
+//   - Logger: NoOpLogger (不输出日志)
+//   - Metrics: nil (不收集指标)
 //   - Debug: false
 func DefaultConfig() *Config {
 	return &Config{
 		HTTPTimeout:     30 * time.Second,
 		MaxRetries:      3,
 		RateLimitBuffer: 0.1,
-		Logger:          zap.NewNop(), // 默认不输出日志
+		Logger:          NewNoOpLogger(), // 默认不输出日志
+		Metrics:         nil,              // 默认不收集指标
 		Debug:           false,
 	}
 }
@@ -281,13 +281,13 @@ func WithRateLimitBuffer(buffer float64) ClientOption {
 // WithLogger 设置结构化日志记录器。
 //
 // 参数:
-//   - logger: Zap 日志记录器
+//   - logger: 日志记录器接口
 //
 // 示例:
 //
-//	logger, _ := zap.NewProduction()
+//	logger := NewZapLogger(zap.NewProduction())
 //	client := adsapi.NewClient(adsapi.WithLogger(logger))
-func WithLogger(logger *zap.Logger) ClientOption {
+func WithLogger(logger Logger) ClientOption {
 	return func(c *Config) {
 		if logger != nil {
 			c.Logger = logger
@@ -295,19 +295,19 @@ func WithLogger(logger *zap.Logger) ClientOption {
 	}
 }
 
-// WithMetrics 设置 Prometheus 指标收集器。
+// WithMetrics 设置指标收集器。
 //
 // 参数:
-//   - metrics: Prometheus 指标收集器
+//   - metrics: 指标收集器接口
 //
 // 示例:
 //
-//	metrics := metrics.NewPrometheusMetrics("adsapi")
+//	metrics := NewPrometheusMetrics("adsapi")
 //	client := adsapi.NewClient(adsapi.WithMetrics(metrics))
 //	// 暴露指标端点
 //	http.Handle("/metrics", promhttp.Handler())
 //	go http.ListenAndServe(":9090", nil)
-func WithMetrics(m *metrics.PrometheusMetrics) ClientOption {
+func WithMetrics(m MetricsCollector) ClientOption {
 	return func(c *Config) {
 		if m != nil {
 			c.Metrics = m
@@ -315,19 +315,18 @@ func WithMetrics(m *metrics.PrometheusMetrics) ClientOption {
 	}
 }
 
-// WithDebug 启用调试模式（自动配置 Development 级别的日志）。
+// WithDebug 启用调试模式。
+//
+// 注意：需要配合WithLogger使用才能看到调试日志。
 //
 // 示例:
 //
-//	client := adsapi.NewClient(adsapi.WithDebug())
+//	client := adsapi.NewClient(
+//	    adsapi.WithDebug(),
+//	    adsapi.WithLogger(NewZapLogger(zap.NewDevelopment())),
+//	)
 func WithDebug() ClientOption {
 	return func(c *Config) {
 		c.Debug = true
-		// 自动创建开发模式的日志器
-		if c.Logger == nil || c.Logger == zap.NewNop() {
-			if logger, err := zap.NewDevelopment(); err == nil {
-				c.Logger = logger
-			}
-		}
 	}
 }

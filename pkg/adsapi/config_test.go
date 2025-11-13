@@ -27,7 +27,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/models"
-	"go.uber.org/zap"
 )
 
 // TestDefaultConfig 测试默认配置
@@ -283,11 +282,13 @@ func TestClientOptions(t *testing.T) {
 	})
 
 	t.Run("WithLogger", func(t *testing.T) {
-		cfg := DefaultConfig()
-		logger, _ := zap.NewDevelopment()
+		logger := NewNoOpLogger()
 		opt := WithLogger(logger)
+		cfg := DefaultConfig()
 		opt(cfg)
-		assert.Equal(t, logger, cfg.Logger)
+		if cfg.Logger != logger {
+			t.Error("Logger not set correctly")
+		}
 	})
 
 	t.Run("WithLogger - nil 不应该覆盖默认值", func(t *testing.T) {

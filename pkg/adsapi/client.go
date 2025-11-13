@@ -51,7 +51,6 @@ import (
 	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/auth"
 	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/ratelimit"
 	"github.com/vanling1111/amazon-ads-api-go-sdk/internal/transport"
-	"go.uber.org/zap"
 )
 
 // Client 是 Amazon Advertising API 的主客户端。
@@ -106,11 +105,11 @@ func NewClient(opts ...ClientOption) (*Client, error) {
 	// 4. 初始化日志器
 	logger := cfg.Logger
 	if logger == nil {
-		logger = zap.NewNop()
+		logger = NewNoOpLogger()
 	}
 	logger.Info("initializing Ads API client",
-		zap.String("region", cfg.Region.Code),
-		zap.Int64("profile_id", cfg.ProfileID),
+		String("region", cfg.Region.Code),
+		Int64("profile_id", cfg.ProfileID),
 	)
 
 	// 3. 创建 LWA 认证客户端
@@ -125,8 +124,8 @@ func NewClient(opts ...ClientOption) (*Client, error) {
 
 	// 4. 创建 HTTP 传输客户端
 	logger.Debug("creating HTTP transport client",
-		zap.Duration("timeout", cfg.HTTPTimeout),
-		zap.Int("max_retries", cfg.MaxRetries),
+		Duration("timeout", cfg.HTTPTimeout),
+		Int("max_retries", cfg.MaxRetries),
 	)
 	httpClient := transport.NewClient(
 		cfg.HTTPTimeout,
@@ -167,8 +166,8 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 
 	// 记录请求开始
 	logger.Debug("starting API request",
-		zap.String("method", req.Method),
-		zap.String("url", req.URL.String()),
+		String("method", req.Method),
+		String("url", req.URL.String()),
 	)
 
 	// Prometheus: 增加活跃请求数
@@ -180,7 +179,7 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 	// 1. 获取访问令牌
 	token, err := c.lwaClient.GetAccessToken(ctx)
 	if err != nil {
-		logger.Error("failed to get access token", zap.Error(err))
+		logger.Error("failed to get access token", Error(err))
 		if c.config.Metrics != nil {
 			c.config.Metrics.RecordError("auth", "token_fetch_failed")
 		}
@@ -198,7 +197,7 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 	// 3. 速率限制
 	logger.Debug("checking rate limit")
 	if err := c.rateLimitManager.Wait(ctx); err != nil {
-		logger.Warn("rate limit exceeded", zap.Error(err))
+		logger.Warn("rate limit exceeded", Error(err))
 		if c.config.Metrics != nil {
 			c.config.Metrics.RecordRateLimitHit("ads_api")
 		}
@@ -211,8 +210,8 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 
 	if err != nil {
 		logger.Error("HTTP request failed",
-			zap.Error(err),
-			zap.Duration("duration", duration),
+			Error(err),
+			Duration("duration", duration),
 		)
 		if c.config.Metrics != nil {
 			c.config.Metrics.RecordError("http", "request_failed")
@@ -222,8 +221,8 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 
 	// 5. 记录成功的请求
 	logger.Info("API request completed",
-		zap.Int("status_code", resp.StatusCode),
-		zap.Duration("duration", duration),
+		Int("status_code", resp.StatusCode),
+		Duration("duration", duration),
 	)
 
 	// Prometheus: 记录请求指标
@@ -234,7 +233,7 @@ func (c *Client) DoRequest(ctx context.Context, req *http.Request) (*http.Respon
 	// 6. 检查错误
 	if resp.StatusCode >= 400 {
 		logger.Warn("API request returned error status",
-			zap.Int("status_code", resp.StatusCode),
+			Int("status_code", resp.StatusCode),
 		)
 		if c.config.Metrics != nil {
 			c.config.Metrics.RecordError("api", fmt.Sprintf("status_%d", resp.StatusCode))
