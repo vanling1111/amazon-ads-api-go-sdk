@@ -72,6 +72,6 @@ func (n *noOpTracer) StartSpan(ctx context.Context, name string) (context.Contex
 // noOpSpan 是Span接口的no-op实现。
 type noOpSpan struct{}
 
-func (n *noOpSpan) End()                                  {}
+func (n *noOpSpan) End()                                       {}
 func (n *noOpSpan) SetAttribute(key string, value interface{}) {}
-func (n *noOpSpan) RecordError(err error)                 {}
+func (n *noOpSpan) RecordError(err error)                      {}

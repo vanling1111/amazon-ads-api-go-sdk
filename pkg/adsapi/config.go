@@ -96,7 +96,7 @@ func DefaultConfig() *Config {
 		MaxRetries:      3,
 		RateLimitBuffer: 0.1,
 		Logger:          NewNoOpLogger(), // 默认不输出日志
-		Metrics:         nil,              // 默认不收集指标
+		Metrics:         nil,             // 默认不收集指标
 		Debug:           false,
 	}
 }

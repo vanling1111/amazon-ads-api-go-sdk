@@ -63,4 +63,3 @@ func (f *Facade) GetHTTPClient() *transport.Client {
 func (f *Facade) GetRateLimitManager() *ratelimit.Manager {
 	return f.rateLimitManager
 }
-
